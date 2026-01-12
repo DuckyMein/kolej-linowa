@@ -1,0 +1,22 @@
+# Binaries
+main
+kasjer
+generator
+bramka
+pracownik1
+pracownik2
+klient
+
+# Object files
+*.o
+
+# Output
+output/*.txt
+
+# Editor
+*.swp
+*~
+.vscode/
+
+# Archives
+*.tar.gz
