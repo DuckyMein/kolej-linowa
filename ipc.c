@@ -62,11 +62,22 @@ void ustaw_smierc_z_rodzicem(void) {
 }
 
 int czy_rodzic_zyje(void) {
-    /* Jeśli getppid() == 1, to zostaliśmy adoptowani przez init = rodzic umarł */
-    if (g_parent_pid == 0) {
-        g_parent_pid = getppid();
+    /* Sprawdź czy główny proces (main) jeszcze żyje */
+    /* Używamy g_shm->pid_main zamiast getppid() bo niektóre procesy */
+    /* są dziećmi generatora, nie maina */
+    if (g_shm == NULL) return 0;
+    
+    pid_t main_pid = g_shm->pid_main;
+    if (main_pid <= 0) return 0;
+    
+    /* kill z sygnałem 0 sprawdza tylko czy proces istnieje */
+    if (kill(main_pid, 0) == -1) {
+        if (errno == ESRCH) {
+            /* Proces nie istnieje */
+            return 0;
+        }
     }
-    return (getppid() == g_parent_pid);
+    return 1;
 }
 
 /* ============================================

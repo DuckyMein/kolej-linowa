@@ -33,6 +33,8 @@ static volatile sig_atomic_t g_zamykanie = 0;      /* flaga zamykania */
 static volatile sig_atomic_t g_awaria = 0;         /* flaga awarii (STOP) */
 static int g_N = N_LIMIT_TERENU;                   /* limit osób */
 static int g_czas_symulacji = CZAS_SYMULACJI;      /* czas symulacji */
+static int g_ipc_zainicjalizowane = 0;             /* czy IPC zostało utworzone */
+static int g_cleanup_wykonany = 0;                 /* czy cleanup już był */
 
 /* ============================================
  * DEKLARACJE FUNKCJI
@@ -50,6 +52,39 @@ static void zakoncz_procesy_potomne(void);
 static void procedura_konca_dnia(void);
 static void generuj_raport_koncowy(void);
 static void petla_glowna(void);
+static void awaryjny_cleanup(void);
+
+/* ============================================
+ * CLEANUP PRZY WYJŚCIU (atexit)
+ * ============================================ */
+static void awaryjny_cleanup(void) {
+    if (g_cleanup_wykonany) return;
+    g_cleanup_wykonany = 1;
+    
+    /* Wypisz ostrzeżenie jeśli to awaryjne zamknięcie */
+    if (g_ipc_zainicjalizowane && g_shm != NULL && !g_shm->koniec_dnia) {
+        fprintf(stderr, "\n[AWARYJNE ZAMKNIĘCIE] Sprzątanie zasobów IPC...\n");
+    }
+    
+    /* Zabij wszystkie procesy potomne */
+    if (g_shm != NULL) {
+        if (g_shm->pid_kasjer > 0) kill(g_shm->pid_kasjer, SIGKILL);
+        if (g_shm->pid_pracownik1 > 0) kill(g_shm->pid_pracownik1, SIGKILL);
+        if (g_shm->pid_pracownik2 > 0) kill(g_shm->pid_pracownik2, SIGKILL);
+        for (int i = 0; i < LICZBA_BRAMEK1; i++) {
+            if (g_shm->pid_bramki1[i] > 0) kill(g_shm->pid_bramki1[i], SIGKILL);
+        }
+        if (g_shm->pid_generator > 0) kill(g_shm->pid_generator, SIGKILL);
+    }
+    
+    /* Poczekaj chwilę na zakończenie procesów */
+    usleep(100000);
+    
+    /* Wyczyść IPC */
+    if (g_ipc_zainicjalizowane) {
+        cleanup_ipc();
+    }
+}
 
 /* ============================================
  * MAIN
@@ -59,27 +94,31 @@ int main(int argc, char *argv[]) {
     printf("   SYMULACJA KOLEI KRZESEŁKOWEJ\n");
     printf("==============================================\n\n");
     
-    /* 1. Walidacja argumentów */
+    /* 1. Zarejestruj cleanup przy wyjściu (nawet przy crash'u) */
+    atexit(awaryjny_cleanup);
+    
+    /* 2. Walidacja argumentów */
     if (waliduj_argumenty(argc, argv, &g_N, &g_czas_symulacji) != 0) {
         return EXIT_FAILURE;
     }
     
     loguj("Start symulacji: N=%d, czas=%d sekund", g_N, g_czas_symulacji);
     
-    /* 2. Inicjalizacja losowania */
+    /* 3. Inicjalizacja losowania */
     inicjalizuj_losowanie();
     
-    /* 3. Instalacja handlerów sygnałów */
+    /* 4. Instalacja handlerów sygnałów */
     instaluj_handlery_sygnalow();
     
-    /* 4. Inicjalizacja IPC */
+    /* 5. Inicjalizacja IPC */
     loguj("Inicjalizacja zasobów IPC...");
     if (init_ipc(g_N) != 0) {
         fprintf(stderr, "BŁĄD: Nie udało się zainicjalizować IPC!\n");
         return EXIT_FAILURE;
     }
+    g_ipc_zainicjalizowane = 1;
     
-    /* 5. Uruchomienie procesów stałych */
+    /* 6. Uruchomienie procesów stałych */
     loguj("Uruchamianie procesów stałych...");
     if (uruchom_procesy_stale() != 0) {
         fprintf(stderr, "BŁĄD: Nie udało się uruchomić procesów!\n");
@@ -87,20 +126,22 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    /* 6. Główna pętla symulacji */
+    /* 7. Główna pętla symulacji */
     loguj("=== SYMULACJA ROZPOCZĘTA ===");
     petla_glowna();
     
-    /* 7. Procedura końca dnia */
+    /* 8. Procedura końca dnia */
     loguj("=== KONIEC DNIA - ZAMYKANIE ===");
     procedura_konca_dnia();
     
-    /* 8. Generowanie raportu */
+    /* 9. Generowanie raportu */
     generuj_raport_koncowy();
     
-    /* 9. Cleanup */
+    /* 10. Cleanup (oznacz że wykonany normalnie) */
     loguj("Czyszczenie zasobów...");
+    g_cleanup_wykonany = 1;
     cleanup_ipc();
+    g_ipc_zainicjalizowane = 0;
     
     printf("\n==============================================\n");
     printf("   SYMULACJA ZAKOŃCZONA POMYŚLNIE\n");
@@ -200,10 +241,17 @@ static void handler_sigusr2(int sig) {
         return;
     }
     
-    /* Czekaj na gotowość pracowników */
-    loguj("Oczekiwanie na gotowość pracowników...");
+    /* Najpierw ustaw flagi */
+    g_awaria = 0;
+    if (g_shm != NULL) {
+        g_shm->awaria = 0;
+        g_shm->kolej_aktywna = 1;
+    }
     
-    /* Wysyłamy sygnał START */
+    /* Odblokuj wszystkich czekających na semaforze */
+    odblokuj_czekajacych();
+    
+    /* Wysyłamy sygnał START do pracowników */
     MsgPracownicy msg;
     msg.mtype = 1;
     msg.typ_komunikatu = MSG_TYP_START;
@@ -212,12 +260,6 @@ static void handler_sigusr2(int sig) {
     
     msg.mtype = 2;
     msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-    
-    g_awaria = 0;
-    if (g_shm != NULL) {
-        g_shm->awaria = 0;
-        g_shm->kolej_aktywna = 1;
-    }
     
     loguj("Kolej wznowiona");
 }
@@ -367,48 +409,70 @@ static void procedura_konca_dnia(void) {
     g_shm->koniec_dnia = 1;
     loguj("Krok 1: Flaga koniec_dnia ustawiona");
     
-    /* Krok 2: Zatrzymaj generator (nie przyjmuj nowych klientów) */
-    if (g_shm->pid_generator > 0) {
-        kill(g_shm->pid_generator, SIGTERM);
-        loguj("Krok 2: Generator zatrzymany");
+    /* Krok 2: NIE zabijaj generatora jeszcze! On sam się zakończy gdy zobaczy flagę */
+    /* Ważne: klienci są dziećmi generatora - jeśli go zabijesz, oni też dostaną sygnał */
+    loguj("Krok 2: Generator zakończy się sam (sprawdza flagę koniec_dnia)");
+    
+    /* Krok 3: Wyczyszczenie kolejek kasy - nowi klienci nie kupią biletów */
+    loguj("Krok 3: Czyszczenie kolejki kasy...");
+    MsgKasa msg_kasa;
+    while (msg_recv_nowait(g_mq_kasa, &msg_kasa, sizeof(msg_kasa), 0) > 0) {
+        MsgKasaOdp odp = {0};
+        odp.mtype = msg_kasa.pid_klienta;
+        odp.sukces = 0;
+        msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
     }
     
-    /* Krok 3: Poczekaj na opróżnienie terenu (max 30 sekund) */
-    loguj("Krok 3: Oczekiwanie na opróżnienie terenu...");
-    int timeout = 30;
-    while (g_shm->osoby_na_terenie > 0 && timeout > 0) {
-        loguj("  Pozostało osób na terenie: %d", g_shm->osoby_na_terenie);
+    /* Krok 4: Ciągłe zwalnianie SEM_PERON - pozwól klientom wsiadać i jechać */
+    loguj("Krok 4: Zwalnianie semaforów - klienci mogą wsiadać...");
+    
+    /* Krok 5: Czekaj na opróżnienie stacji (max 180 sekund) */
+    loguj("Krok 5: Oczekiwanie na opróżnienie stacji (max 180 sek)...");
+    int timeout = 180;
+    int ostatni_log = 0;
+    
+    while ((g_shm->osoby_na_terenie > 0 || g_shm->osoby_na_gorze > 0) && timeout > 0) {
+        /* AGRESYWNIE zwalniaj SEM_PERON - klienci muszą móc wsiadać! */
+        int peron_val = sem_getval_ipc(SEM_PERON);
+        int potrzebne = g_shm->osoby_na_terenie * 2 + 10;
+        
+        /* Zawsze dodawaj miejsca - nawet jeśli nie znamy aktualnej wartości */
+        if (peron_val < 0) {
+            /* sem_getval zawiodło - dodaj domyślną ilość */
+            sem_signal_n(SEM_PERON, KRZESLA_W_RZEDZIE);
+        } else if (peron_val < potrzebne) {
+            int dodaj = potrzebne - peron_val;
+            sem_signal_n(SEM_PERON, dodaj);
+        }
+        
+        /* Loguj co 5 sekund */
+        if (timeout != ostatni_log && timeout % 5 == 0) {
+            ostatni_log = timeout;
+            loguj("  Teren: %d, Góra: %d, SEM_PERON: %d (pozostało %d sek)", 
+                  g_shm->osoby_na_terenie, g_shm->osoby_na_gorze, peron_val, timeout);
+        }
+        
         sleep(1);
         timeout--;
     }
     
-    if (g_shm->osoby_na_terenie > 0) {
-        loguj("UWAGA: Timeout - na terenie wciąż %d osób", g_shm->osoby_na_terenie);
+    if (g_shm->osoby_na_terenie > 0 || g_shm->osoby_na_gorze > 0) {
+        loguj("UWAGA: Timeout - teren=%d, góra=%d", 
+              g_shm->osoby_na_terenie, g_shm->osoby_na_gorze);
+    } else {
+        loguj("Wszyscy klienci opuścili stację");
     }
     
-    /* Krok 4: Poczekaj 3 sekundy (zgodnie ze specyfikacją) */
-    loguj("Krok 4: Oczekiwanie 3 sekundy...");
+    /* Krok 6: Poczekaj 3 sekundy (zgodnie ze specyfikacją) */
+    loguj("Krok 6: Oczekiwanie 3 sekundy...");
     sleep(3);
     
-    /* Krok 5: Zatrzymaj kolej */
+    /* Krok 7: Zatrzymaj kolej */
     g_shm->kolej_aktywna = 0;
-    loguj("Krok 5: Kolej zatrzymana");
+    loguj("Krok 7: Kolej zatrzymana");
     
-    /* Krok 6: Poczekaj na zejście wszystkich z góry (max 60 sekund) */
-    loguj("Krok 6: Oczekiwanie na zejście osób z góry...");
-    timeout = 60;
-    while (g_shm->osoby_na_gorze > 0 && timeout > 0) {
-        loguj("  Pozostało osób na górze: %d", g_shm->osoby_na_gorze);
-        sleep(1);
-        timeout--;
-    }
-    
-    if (g_shm->osoby_na_gorze > 0) {
-        loguj("UWAGA: Timeout - na górze wciąż %d osób", g_shm->osoby_na_gorze);
-    }
-    
-    /* Krok 7: Zakończ wszystkie procesy potomne */
-    loguj("Krok 7: Zamykanie procesów potomnych...");
+    /* Krok 8: TERAZ dopiero zakończ procesy stałe */
+    loguj("Krok 8: Zamykanie procesów stałych...");
     zakoncz_procesy_potomne();
     
     loguj("Procedura końca dnia zakończona");
