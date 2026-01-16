@@ -41,6 +41,9 @@ int main(int argc, char *argv[]) {
         if (czas_symulacji < 0) czas_symulacji = CZAS_SYMULACJI;
     }
     
+    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+    ustaw_smierc_z_rodzicem();
+    
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     

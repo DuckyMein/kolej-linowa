@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
     
+    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+    ustaw_smierc_z_rodzicem();
+    
     /* Obsługa sygnałów */
     signal(SIGTERM, handler_sigterm);
     signal(SIGINT, handler_sigterm);
@@ -54,8 +57,8 @@ int main(int argc, char *argv[]) {
     
     loguj("PRACOWNIK1: Rozpoczynam pracę na stacji dolnej");
     
-    /* Główna pętla */
-    while (!g_koniec && !g_shm->koniec_dnia) {
+    /* Główna pętla - czekaj na SIGTERM */
+    while (!g_koniec) {
         /* Sprawdź komunikaty od pracowników */
         MsgPracownicy msg;
         int ret = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), 1); /* mtype=1 = do P1 */
@@ -104,7 +107,7 @@ int main(int argc, char *argv[]) {
         if (cykl % 50 == 0) { /* Co 5 sekund (50 * 100ms) */
             /* Odnów miejsca w rzędzie (nowy rząd nadjechał) */
             int aktualna_wartosc = sem_getval_ipc(SEM_PERON);
-            if (aktualna_wartosc < KRZESLA_W_RZEDZIE) {
+            if (aktualna_wartosc >= 0 && aktualna_wartosc < KRZESLA_W_RZEDZIE) {
                 sem_signal_n(SEM_PERON, KRZESLA_W_RZEDZIE - aktualna_wartosc);
             }
             

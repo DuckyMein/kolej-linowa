@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
     
+    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+    ustaw_smierc_z_rodzicem();
+    
     /* Obsługa sygnałów */
     signal(SIGTERM, handler_sigterm);
     signal(SIGINT, handler_sigterm);
@@ -54,8 +57,8 @@ int main(int argc, char *argv[]) {
     
     loguj("PRACOWNIK2: Rozpoczynam pracę na stacji górnej");
     
-    /* Główna pętla */
-    while (!g_koniec && !g_shm->koniec_dnia) {
+    /* Główna pętla - czekaj na SIGTERM */
+    while (!g_koniec) {
         /* Sprawdź komunikaty */
         MsgPracownicy msg;
         int ret = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), 2); /* mtype=2 = do P2 */

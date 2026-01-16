@@ -30,6 +30,9 @@ int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
     
+    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+    ustaw_smierc_z_rodzicem();
+    
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     
@@ -43,10 +46,13 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    loguj("KASJER: Rozpoczynam pracę");
+    /* KASJER JAKO STRAŻNIK: Zapamiętaj PID głównego procesu */
+    pid_t main_pid = g_shm->pid_main;
     
-    /* Główna pętla */
-    while (!g_koniec && !g_shm->koniec_dnia) {
+    loguj("KASJER: Rozpoczynam pracę (strażnik IPC, main_pid=%d)", main_pid);
+    
+    /* Główna pętla - NIE sprawdzaj koniec_dnia, czekaj na SIGTERM! */
+    while (!g_koniec) {
         MsgKasa msg;
         MsgKasaOdp odp;
         
@@ -127,7 +133,31 @@ int main(int argc, char *argv[]) {
     }
     
     loguj("KASJER: Kończę pracę");
-    detach_ipc();
+    
+    /* STRAŻNIK IPC: Poczekaj chwilę i sprawdź czy main żyje */
+    usleep(200000); /* 200ms - daj czas na propagację sygnałów */
+    
+    int main_zyje = 0;
+    
+    if (main_pid > 0) {
+        /* kill z sygnałem 0 tylko sprawdza czy proces istnieje */
+        if (kill(main_pid, 0) == 0) {
+            main_zyje = 1;
+        } else if (errno != ESRCH) {
+            main_zyje = 1; /* Błąd inny niż "nie istnieje" - zakładaj że żyje */
+        }
+    }
+    
+    if (!main_zyje) {
+        loguj("KASJER: Main (PID=%d) nie żyje - SPRZĄTAM IPC jako strażnik!", main_pid);
+        /* Poczekaj aż inne procesy się zamkną */
+        usleep(500000); /* 500ms */
+        cleanup_ipc();
+        loguj("KASJER: IPC wyczyszczone");
+    } else {
+        loguj("KASJER: Main żyje - normalne zamknięcie");
+        detach_ipc();
+    }
     
     return EXIT_SUCCESS;
 }
