@@ -95,7 +95,8 @@
 #define SEM_GOTOWY_P1       7       // P1 gotowy po awarii (init: 0)
 #define SEM_GOTOWY_P2       8       // P2 gotowy po awarii (init: 0)
 #define SEM_KONIEC          9       // sygnał zakończenia (init: 0)
-#define SEM_COUNT           10      // łączna liczba semaforów
+#define SEM_BARIERA_AWARIA  10      // bariera podczas awarii (init: 0)
+#define SEM_COUNT           11      // łączna liczba semaforów
 
 /* ============================================
  * TYPY KOMUNIKATÓW (mtype w kolejkach)

@@ -34,6 +34,9 @@ int main(int argc, char *argv[]) {
         if (g_numer_bramki < 0) g_numer_bramki = 1;
     }
     
+    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+    ustaw_smierc_z_rodzicem();
+    
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     
@@ -62,17 +65,23 @@ int main(int argc, char *argv[]) {
             continue;
         }
         
-        /* Sprawdź czy kolej aktywna */
-        if (g_shm->awaria) {
-            /* Podczas awarii nie wpuszczamy */
-            odp.mtype = msg.pid_klienta;
-            odp.sukces = 0;
-            msg_send(g_mq_kasa_odp, &odp, sizeof(odp)); /* używamy tej samej kolejki */
-            continue;
-        }
-        
         loguj("BRAMKA%d: Klient z karnetem %d (grupa=%d)", 
               g_numer_bramki, msg.id_karnetu, msg.rozmiar_grupy);
+        
+        /* Podczas awarii - czekaj na semaforze (nie busy-wait!) */
+        if (g_shm->awaria && !g_koniec && !g_shm->koniec_dnia) {
+            char buf[32];
+            snprintf(buf, sizeof(buf), "BRAMKA%d", g_numer_bramki);
+            czekaj_na_wznowienie(buf);
+        }
+        
+        /* Sprawdź czy zamykamy */
+        if (g_koniec || g_shm->koniec_dnia) {
+            odp.mtype = msg.pid_klienta;
+            odp.sukces = 0;
+            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+            continue;
+        }
         
         /* Pobierz karnet i sprawdź ważność */
         Karnet *karnet = pobierz_karnet(msg.id_karnetu);
@@ -117,6 +126,16 @@ int main(int argc, char *argv[]) {
     }
     
     loguj("BRAMKA%d: Kończę pracę", g_numer_bramki);
+    
+    /* Odpowiedz wszystkim czekającym klientom odmową */
+    MsgBramka1 msg;
+    while (msg_recv_nowait(g_mq_bramka, &msg, sizeof(msg), 0) > 0) {
+        MsgBramkaOdp odp;
+        odp.mtype = msg.pid_klienta;
+        odp.sukces = 0;
+        msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
+    }
+    
     detach_ipc();
     
     return EXIT_SUCCESS;
