@@ -8,6 +8,8 @@
 #include <sys/sem.h>
 #include <sys/shm.h>
 #include <sys/msg.h>
+#include <sys/prctl.h>
+#include <signal.h>
 #include "ipc.h"
 #include "utils.h"
 
@@ -29,12 +31,43 @@ int g_mq_prac = -1;
 /* Klucz bazowy (ustawiany przy init) */
 static key_t g_klucz_bazowy = -1;
 
+/* PID rodzica (zapisany przy starcie) */
+static pid_t g_parent_pid = 0;
+
 /* Unia dla semctl (wymagana przez niektóre systemy) */
 union semun {
     int val;
     struct semid_ds *buf;
     unsigned short *array;
 };
+
+/* ============================================
+ * OCHRONA PROCESÓW POTOMNYCH
+ * ============================================ */
+
+void ustaw_smierc_z_rodzicem(void) {
+    /* Zapisz PID rodzica */
+    g_parent_pid = getppid();
+    
+    /* Ustaw aby dostać SIGTERM gdy rodzic umrze */
+    if (prctl(PR_SET_PDEATHSIG, SIGTERM) == -1) {
+        blad_ostrzezenie("prctl PR_SET_PDEATHSIG");
+    }
+    
+    /* Sprawdź czy rodzic nie umarł w międzyczasie (race condition) */
+    if (getppid() != g_parent_pid) {
+        loguj("Rodzic umarł podczas startu - kończę");
+        exit(EXIT_SUCCESS);
+    }
+}
+
+int czy_rodzic_zyje(void) {
+    /* Jeśli getppid() == 1, to zostaliśmy adoptowani przez init = rodzic umarł */
+    if (g_parent_pid == 0) {
+        g_parent_pid = getppid();
+    }
+    return (getppid() == g_parent_pid);
+}
 
 /* ============================================
  * FUNKCJE POMOCNICZE (prywatne)
@@ -84,16 +117,17 @@ int init_ipc(int N) {
     
     /* Inicjalizuj wartości semaforów */
     unsigned short sem_init_vals[SEM_COUNT] = {
-        [SEM_TEREN]      = N,    // limit osób
-        [SEM_MUTEX_SHM]  = 1,    // mutex
-        [SEM_MUTEX_KASA] = 1,    // mutex
-        [SEM_MUTEX_LOG]  = 1,    // mutex
-        [SEM_PERON]      = KRZESLA_W_RZEDZIE, // miejsca w rzędzie
-        [SEM_PRACOWNIK1] = 0,    // sygnalizacja
-        [SEM_PRACOWNIK2] = 0,    // sygnalizacja
-        [SEM_GOTOWY_P1]  = 0,    // gotowość
-        [SEM_GOTOWY_P2]  = 0,    // gotowość
-        [SEM_KONIEC]     = 0     // zakończenie
+        [SEM_TEREN]          = N,    // limit osób
+        [SEM_MUTEX_SHM]      = 1,    // mutex
+        [SEM_MUTEX_KASA]     = 1,    // mutex
+        [SEM_MUTEX_LOG]      = 1,    // mutex
+        [SEM_PERON]          = KRZESLA_W_RZEDZIE, // miejsca w rzędzie
+        [SEM_PRACOWNIK1]     = 0,    // sygnalizacja
+        [SEM_PRACOWNIK2]     = 0,    // sygnalizacja
+        [SEM_GOTOWY_P1]      = 0,    // gotowość
+        [SEM_GOTOWY_P2]      = 0,    // gotowość
+        [SEM_KONIEC]         = 0,    // zakończenie
+        [SEM_BARIERA_AWARIA] = 0     // bariera awarii (procesy czekają tu)
     };
     
     union semun arg;
@@ -305,51 +339,78 @@ void detach_ipc(void) {
  * ============================================ */
 
 void sem_wait_ipc(int sem_num) {
+    if (g_sem_id == -1) return;
+    
     struct sembuf op = {sem_num, -1, 0};
     while (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EINTR) continue; /* przerwane przez sygnał - powtórz */
-        blad_krytyczny("semop P()");
+        if (errno == EIDRM || errno == EINVAL) {
+            /* Semafor usunięty - cicho zakończ */
+            return;
+        }
+        blad_ostrzezenie("semop P()");
+        return;
     }
 }
 
 void sem_signal_ipc(int sem_num) {
+    if (g_sem_id == -1) return;
+    
     struct sembuf op = {sem_num, +1, 0};
     while (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EINTR) continue;
-        blad_krytyczny("semop V()");
+        if (errno == EIDRM || errno == EINVAL) return;
+        blad_ostrzezenie("semop V()");
+        return;
     }
 }
 
 void sem_wait_n(int sem_num, int n) {
+    if (g_sem_id == -1 || n <= 0) return;
+    
     struct sembuf op = {sem_num, -n, 0};
     while (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EINTR) continue;
-        blad_krytyczny("semop P(n)");
+        if (errno == EIDRM || errno == EINVAL) return;
+        blad_ostrzezenie("semop P(n)");
+        return;
     }
 }
 
 void sem_signal_n(int sem_num, int n) {
+    if (g_sem_id == -1 || n <= 0) return;
+    
     struct sembuf op = {sem_num, +n, 0};
     while (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EINTR) continue;
-        blad_krytyczny("semop V(n)");
+        if (errno == EIDRM || errno == EINVAL) return;
+        blad_ostrzezenie("semop V(n)");
+        return;
     }
 }
 
 int sem_trywait_ipc(int sem_num) {
+    if (g_sem_id == -1) return 0;
+    
     struct sembuf op = {sem_num, -1, IPC_NOWAIT};
     if (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EAGAIN) return 0; /* semafor = 0 */
         if (errno == EINTR) return 0;  /* przerwane */
-        blad_krytyczny("semop tryP()");
+        if (errno == EIDRM || errno == EINVAL) return 0;
+        blad_ostrzezenie("semop tryP()");
+        return 0;
     }
     return 1;
 }
 
 int sem_getval_ipc(int sem_num) {
+    if (g_sem_id == -1) return -1;
+    
     int val = semctl(g_sem_id, sem_num, GETVAL);
     if (val == -1) {
-        blad_ostrzezenie("semctl GETVAL");
+        if (errno != EIDRM && errno != EINVAL) {
+            blad_ostrzezenie("semctl GETVAL");
+        }
         return -1;
     }
     return val;
@@ -495,4 +556,35 @@ void dodaj_log(int id_karnetu, TypLogu typ, int numer_bramki) {
     }
     
     sem_signal_ipc(SEM_MUTEX_LOG);
+}
+
+/* ============================================
+ * OBSŁUGA AWARII
+ * ============================================ */
+
+void czekaj_na_wznowienie(const char *kto) {
+    /* Zarejestruj się jako czekający */
+    MUTEX_SHM_LOCK();
+    g_shm->czekajacych_na_wznowienie++;
+    int numer = g_shm->czekajacych_na_wznowienie;
+    MUTEX_SHM_UNLOCK();
+    
+    loguj("%s: Awaria - czekam na wznowienie (pozycja %d)", kto, numer);
+    
+    /* Czekaj na semaforze (blokujące) */
+    sem_wait_ipc(SEM_BARIERA_AWARIA);
+    
+    loguj("%s: Wznowiono - kontynuuję", kto);
+}
+
+void odblokuj_czekajacych(void) {
+    MUTEX_SHM_LOCK();
+    int ile = g_shm->czekajacych_na_wznowienie;
+    g_shm->czekajacych_na_wznowienie = 0;
+    MUTEX_SHM_UNLOCK();
+    
+    if (ile > 0) {
+        loguj("Odblokowuję %d czekających procesów", ile);
+        sem_signal_n(SEM_BARIERA_AWARIA, ile);
+    }
 }

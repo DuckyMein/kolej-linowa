@@ -6,6 +6,8 @@
 #include <sys/sem.h>
 #include <sys/shm.h>
 #include <sys/msg.h>
+#include <sys/prctl.h>
+#include <signal.h>
 #include "config.h"
 #include "types.h"
 
@@ -25,6 +27,22 @@ extern int g_mq_kasa;           // kolejka do kasy
 extern int g_mq_kasa_odp;       // kolejka odpowiedzi z kasy
 extern int g_mq_bramka;         // kolejka do bramek
 extern int g_mq_prac;           // kolejka pracowników
+
+/* ============================================
+ * OCHRONA PROCESÓW POTOMNYCH
+ * ============================================ */
+
+/*
+ * Ustawia proces potomny tak, aby dostał SIGTERM gdy rodzic umiera.
+ * Wywołać NA POCZĄTKU każdego procesu potomnego!
+ */
+void ustaw_smierc_z_rodzicem(void);
+
+/*
+ * Sprawdza czy rodzic jeszcze żyje (getppid() != 1)
+ * Zwraca: 1=żyje, 0=umarł (jesteśmy osieroceni)
+ */
+int czy_rodzic_zyje(void);
 
 /* ============================================
  * INICJALIZACJA I CLEANUP (tylko main)
@@ -207,5 +225,22 @@ void uzyj_karnet_jednorazowy(int id_karnetu);
  * Dodaje wpis do logu przejść
  */
 void dodaj_log(int id_karnetu, TypLogu typ, int numer_bramki);
+
+/* ============================================
+ * OBSŁUGA AWARII
+ * ============================================ */
+
+/*
+ * Czeka na wznowienie po awarii (blokuje na semaforze)
+ * Rejestruje się w liczniku, czeka, wyrejestrowuje
+ * Wywołać gdy g_shm->awaria == 1
+ */
+void czekaj_na_wznowienie(const char *kto);
+
+/*
+ * Odblokuj wszystkich czekających na wznowienie
+ * Wywołać w main przy SIGUSR2 (START)
+ */
+void odblokuj_czekajacych(void);
 
 #endif /* IPC_H */
