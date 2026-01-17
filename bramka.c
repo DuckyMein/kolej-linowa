@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 
 #include "config.h"
 #include "types.h"
@@ -52,8 +53,8 @@ int main(int argc, char *argv[]) {
     
     loguj("BRAMKA%d: Rozpoczynam pracę", g_numer_bramki);
     
-    /* Główna pętla */
-    while (!g_koniec && !g_shm->koniec_dnia) {
+    /* Główna pętla - czekaj na SIGTERM, nie na koniec_dnia */
+    while (!g_koniec) {
         MsgBramka1 msg;
         MsgBramkaOdp odp;
         
@@ -100,6 +101,27 @@ int main(int argc, char *argv[]) {
               g_numer_bramki, msg.rozmiar_grupy);
         
         sem_wait_n(SEM_TEREN, msg.rozmiar_grupy);
+        
+        /* WAŻNE: Po pobraniu semafora sprawdź PONOWNIE koniec_dnia!
+         * Race condition: main mógł ustawić koniec_dnia i zwolnić SEM_TEREN
+         * właśnie po tym jak sprawdziliśmy, ale przed pobraniem semafora.
+         * Musimy zwrócić semafor i odmówić. */
+        if (g_koniec || g_shm->koniec_dnia) {
+            sem_signal_n(SEM_TEREN, msg.rozmiar_grupy); /* Zwróć semafor */
+            odp.mtype = msg.pid_klienta;
+            odp.sukces = 0;
+            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: Koniec dnia po pobraniu semafora - odmowa", g_numer_bramki);
+            continue;
+        }
+        
+        /* Sprawdź czy klient jeszcze żyje - może się zakończyć podczas czekania */
+        if (kill(msg.pid_klienta, 0) == -1 && errno == ESRCH) {
+            /* Klient nie żyje - zwróć semafor i pomiń */
+            sem_signal_n(SEM_TEREN, msg.rozmiar_grupy);
+            loguj("BRAMKA%d: Klient PID %d nie żyje - pomijam", g_numer_bramki, msg.pid_klienta);
+            continue;
+        }
         
         /* Aktywuj karnet (jeśli pierwsze użycie) */
         aktywuj_karnet(msg.id_karnetu);
