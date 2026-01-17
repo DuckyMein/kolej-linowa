@@ -40,6 +40,7 @@ typedef enum {
 
 static volatile StanKlienta g_stan = STAN_KASA;
 
+
 /* Flaga: czy bramka wpuściła nas na teren (ale jeszcze nie poszliśmy na peron) */
 static volatile sig_atomic_t g_wpuszczony_na_teren = 0;
 
