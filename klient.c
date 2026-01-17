@@ -40,6 +40,9 @@ typedef enum {
 
 static volatile StanKlienta g_stan = STAN_KASA;
 
+/* Flaga: czy bramka wpuściła nas na teren (ale jeszcze nie poszliśmy na peron) */
+static volatile sig_atomic_t g_wpuszczony_na_teren = 0;
+
 static void handler_sigterm(int sig) {
     (void)sig;
     g_koniec = 1;
@@ -79,6 +82,22 @@ static void bezpieczne_zakonczenie(void) {
     
     if (g_shm == NULL) return;
     
+    /* PRZYPADEK SPECJALNY: Bramka wpuściła nas na teren, ale nie dotarliśmy na peron.
+     * Może się zdarzyć gdy SIGTERM przyszedł zanim odebraliśmy potwierdzenie od bramki,
+     * ale bramka już zwiększyła licznik osoby_na_terenie.
+     * Flaga g_wpuszczony_na_teren jest ustawiana gdy dostajemy sukces od bramki,
+     * a zerowana gdy przechodzimy na peron. */
+    if (g_wpuszczony_na_teren && g_stan != STAN_NA_PERONIE && g_stan != STAN_W_KRZESLE &&
+        g_stan != STAN_NA_GORZE && g_stan != STAN_NA_TRASIE) {
+        /* Byliśmy wpuszczeni ale nie doszliśmy do peronu - musimy zwolnić teren */
+        sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+        MUTEX_SHM_LOCK();
+        g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+        MUTEX_SHM_UNLOCK();
+        g_wpuszczony_na_teren = 0;
+        return; /* Już zwolniliśmy, nie przetwarzaj switch */
+    }
+    
     /* Zwolnij zasoby w zależności od stanu */
     switch (g_stan) {
         case STAN_NA_TERENIE:
@@ -90,10 +109,27 @@ static void bezpieczne_zakonczenie(void) {
             break;
             
         case STAN_NA_PERONIE:
-            /* Na peronie - zwolnij miejsce na terenie już zrobione przy wsiadaniu */
+            /* Na peronie - ale może jeszcze nie wsiadł do krzesełka!
+             * Jeśli czekał na sem_wait_n(SEM_PERON) i został przerwany,
+             * to teren NIE został jeszcze zwolniony. */
+            if (g_wpuszczony_na_teren) {
+                /* Teren NIE został zwolniony - musimy to zrobić */
+                sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+                MUTEX_SHM_LOCK();
+                g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+                MUTEX_SHM_UNLOCK();
+                g_wpuszczony_na_teren = 0;
+            }
             break;
             
         case STAN_W_KRZESLE:
+            /* W krzesełku - jeszcze na peronie (osoby_na_peronie++), 
+             * ale jeszcze NIE na górze (osoby_na_gorze nie zwiększone) */
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
+            break;
+            
         case STAN_NA_GORZE:
             /* Na górze - zmniejsz licznik */
             MUTEX_SHM_LOCK();
@@ -297,9 +333,26 @@ int main(int argc, char *argv[]) {
         }
         
         if (!otrzymano) {
-            /* Timeout - bramka mogła zwiększyć licznik, więc sprawdź */
-            loguj("KLIENT %d: Timeout czekając na bramkę - kończę", g_klient.id);
-            break;
+            /* Timeout lub g_koniec - MUSIMY sprawdzić czy bramka przypadkiem nie wpuściła!
+             * Bramka mogła wysłać odpowiedź tuż przed przerwaniem pętli.
+             * Próbujemy jeszcze raz odebrać odpowiedź. */
+            int ret = msg_recv_nowait(g_mq_kasa_odp, &odp_bramka, sizeof(odp_bramka), g_klient.pid);
+            if (ret > 0) {
+                otrzymano = 1;
+                /* Bramka odpowiedziała - sprawdź czy sukces */
+                if (odp_bramka.sukces) {
+                    loguj("KLIENT %d: Bramka wpuściła mimo timeout - ustawiam flagę", g_klient.id);
+                    g_wpuszczony_na_teren = 1;
+                }
+                /* Jeśli odmowa - flaga zostaje 0, OK */
+            }
+            
+            if (!otrzymano || !odp_bramka.sukces) {
+                /* Bramka nie odpowiedziała lub odmówiła - możemy bezpiecznie wyjść */
+                loguj("KLIENT %d: Timeout czekając na bramkę - kończę", g_klient.id);
+                break;
+            }
+            /* Jeśli bramka wpuściła (sukces=1), kontynuujemy normalny przepływ */
         }
         
         if (!odp_bramka.sukces) {
@@ -308,6 +361,7 @@ int main(int argc, char *argv[]) {
         }
         
         g_stan = STAN_NA_TERENIE;
+        g_wpuszczony_na_teren = 1; /* Bramka nas wpuściła - musimy to zapamiętać */
         loguj("KLIENT %d: Wszedłem na teren stacji", g_klient.id);
         
         /* ========================================
@@ -359,6 +413,7 @@ int main(int argc, char *argv[]) {
         g_shm->osoby_na_peronie += g_klient.rozmiar_grupy;
         MUTEX_SHM_UNLOCK();
         
+        g_wpuszczony_na_teren = 0; /* Opuściliśmy teren - przeszliśmy na peron */
         g_stan = STAN_W_KRZESLE;
         loguj("KLIENT %d: Wsiadam do krzesełka", g_klient.id);
         

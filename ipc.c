@@ -434,6 +434,7 @@ int sem_getval_ipc(int sem_num) {
 int msg_send(int mq_id, void *msg, size_t size) {
     while (msgsnd(mq_id, msg, size - sizeof(long), 0) == -1) {
         if (errno == EINTR) continue;
+        if (errno == EINVAL || errno == EIDRM) return -2; /* IPC usunięte */
         blad_ostrzezenie("msgsnd");
         return -1;
     }
@@ -444,6 +445,7 @@ int msg_send_nowait(int mq_id, void *msg, size_t size) {
     if (msgsnd(mq_id, msg, size - sizeof(long), IPC_NOWAIT) == -1) {
         if (errno == EAGAIN) return -1; /* kolejka pełna */
         if (errno == EINTR) return -1;
+        if (errno == EINVAL || errno == EIDRM) return -2; /* IPC usunięte */
         blad_ostrzezenie("msgsnd nowait");
         return -1;
     }
@@ -454,6 +456,7 @@ int msg_recv(int mq_id, void *msg, size_t size, long mtype) {
     ssize_t ret;
     while ((ret = msgrcv(mq_id, msg, size - sizeof(long), mtype, 0)) == -1) {
         if (errno == EINTR) continue;
+        if (errno == EINVAL || errno == EIDRM) return -2; /* IPC usunięte */
         blad_ostrzezenie("msgrcv");
         return -1;
     }
@@ -465,6 +468,8 @@ int msg_recv_nowait(int mq_id, void *msg, size_t size, long mtype) {
     if (ret == -1) {
         if (errno == ENOMSG || errno == EAGAIN) return -1; /* brak wiadomości */
         if (errno == EINTR) return -1;
+        /* IPC usunięte - zwróć -2 bez ostrzeżenia (normalne przy cleanup) */
+        if (errno == EINVAL || errno == EIDRM) return -2;
         blad_ostrzezenie("msgrcv nowait");
         return -1;
     }
