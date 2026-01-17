@@ -110,6 +110,7 @@ typedef struct {
     int awaria;                     // 0=brak, 1=STOP aktywny
     int koniec_dnia;                // 0=nie, 1=zamykamy
     time_t czas_startu;             // czas uruchomienia symulacji
+    int czekajacych_na_wznowienie;  // ile procesów czeka na SEM_BARIERA_AWARIA
     
     /* Liczniki bieżące */
     int osoby_na_terenie;           // aktualnie na terenie stacji
