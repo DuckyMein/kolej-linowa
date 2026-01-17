@@ -43,12 +43,21 @@ static volatile StanKlienta g_stan = STAN_KASA;
 static void handler_sigterm(int sig) {
     (void)sig;
     g_koniec = 1;
+    /* bezpieczne_zakonczenie() zostanie wywołane przed exit */
 }
 
 /* Sprawdza czy można kontynuować */
 static int czy_kontynuowac(void) {
     if (g_koniec) return 0;
     if (g_shm == NULL) return 0;
+    
+    /* Sprawdź czy main jeszcze żyje */
+    if (!czy_rodzic_zyje()) {
+        g_koniec = 1;
+        return 0;
+    }
+    
+    /* Przy koniec_dnia - nie wpuszczaj nowych na teren, ale dokończ istniejących */
     if (g_shm->koniec_dnia && g_stan == STAN_PRZED_BRAMKA1) return 0;
     return 1;
 }
@@ -57,12 +66,17 @@ static int czy_kontynuowac(void) {
 static void symuluj_czas(int sekundy) {
     for (int i = 0; i < sekundy * 10 && !g_koniec; i++) {
         usleep(100000); /* 100ms */
-        if (g_shm == NULL || g_shm->koniec_dnia) break;
+        if (g_shm == NULL) break;
+        /* NIE przerywaj na koniec_dnia - klient musi dokończyć przejazd! */
     }
 }
 
 /* Bezpieczne zakończenie - zwalnia zasoby w zależności od stanu */
 static void bezpieczne_zakonczenie(void) {
+    static int juz_wywolane = 0;
+    if (juz_wywolane) return;
+    juz_wywolane = 1;
+    
     if (g_shm == NULL) return;
     
     /* Zwolnij zasoby w zależności od stanu */
@@ -112,8 +126,9 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    /* Ustaw aby zginąć gdy rodzic (generator) umrze */
-    ustaw_smierc_z_rodzicem();
+    /* NIE używamy ustaw_smierc_z_rodzicem() bo rodzic klienta to generator,
+     * a generator kończy się normalnie gdy widzi koniec_dnia.
+     * Zamiast tego klient sprawdza g_shm->pid_main w czy_kontynuowac() */
     
     g_klient.id = atoi(argv[1]);
     g_klient.wiek = atoi(argv[2]);
@@ -144,6 +159,9 @@ int main(int argc, char *argv[]) {
     if (attach_ipc() != 0) {
         return EXIT_FAILURE;
     }
+    
+    /* Zarejestruj cleanup przy wyjściu (nawet przy sygnale) */
+    atexit(bezpieczne_zakonczenie);
     
     loguj("KLIENT %d: Start (wiek=%d, %s, VIP=%d, dzieci=%d, grupa=%d)",
           g_klient.id, g_klient.wiek,
@@ -189,6 +207,10 @@ int main(int argc, char *argv[]) {
         int ret = msg_recv_nowait(g_mq_kasa_odp, &odp_kasa, sizeof(odp_kasa), g_klient.pid);
         if (ret > 0) {
             otrzymano = 1;
+        } else if (ret == -2) {
+            /* IPC usunięte - zakończ cicho */
+            detach_ipc();
+            return EXIT_SUCCESS;
         } else {
             usleep(100000);
             timeout--;
@@ -255,22 +277,33 @@ int main(int argc, char *argv[]) {
         }
         
         /* Czekaj na wpuszczenie (z timeoutem) */
+        /* WAŻNE: NIE sprawdzamy czy_kontynuowac() - bramka już zwiększyła licznik!
+         * Musimy otrzymać odpowiedź żeby wiedzieć czy weszliśmy na teren */
         MsgBramkaOdp odp_bramka;
         timeout = 300; /* 30 sekund */
         otrzymano = 0;
         
-        while (timeout > 0 && czy_kontynuowac() && !otrzymano) {
+        while (timeout > 0 && !g_koniec && !otrzymano) {
             int ret = msg_recv_nowait(g_mq_kasa_odp, &odp_bramka, sizeof(odp_bramka), g_klient.pid);
             if (ret > 0) {
                 otrzymano = 1;
+            } else if (ret == -2) {
+                /* IPC usunięte - zakończ cicho */
+                break;
             } else {
                 usleep(100000);
                 timeout--;
             }
         }
         
-        if (!otrzymano || !odp_bramka.sukces) {
-            loguj("KLIENT %d: Nie wpuszczono na teren - kończę", g_klient.id);
+        if (!otrzymano) {
+            /* Timeout - bramka mogła zwiększyć licznik, więc sprawdź */
+            loguj("KLIENT %d: Timeout czekając na bramkę - kończę", g_klient.id);
+            break;
+        }
+        
+        if (!odp_bramka.sukces) {
+            loguj("KLIENT %d: Odmowa na bramce - kończę", g_klient.id);
             break;
         }
         
