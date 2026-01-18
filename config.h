@@ -24,14 +24,14 @@
 #define LICZBA_WYJSC_GORA   2       // wyjścia ze stacji górnej
 
 /* ============================================
- * CZASY (w sekundach symulacji)
- * W trybie testowym można zmniejszyć
+ * CZASY (w sekundach) - HIGH PERFORMANCE
+ * T1=1s, T2=2s, T3=3s, T4=4s
  * ============================================ */
-#define CZAS_T1             20      // trasa rowerowa łatwa
-#define CZAS_T2             35      // trasa rowerowa średnia
-#define CZAS_T3             50      // trasa rowerowa trudna
-#define CZAS_T4             60      // trasa piesza
-#define CZAS_WJAZDU         9       // czas wjazdu na górę
+#define CZAS_T1             1       // trasa rowerowa łatwa
+#define CZAS_T2             2       // trasa rowerowa średnia
+#define CZAS_T3             3       // trasa rowerowa trudna
+#define CZAS_T4             4       // trasa piesza
+#define CZAS_WJAZDU         0       // HIGH PERF: natychmiastowy wjazd
 
 /* ============================================
  * GODZINY PRACY

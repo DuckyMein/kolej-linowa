@@ -349,19 +349,18 @@ void detach_ipc(void) {
  * OPERACJE NA SEMAFORACH
  * ============================================ */
 
-void sem_wait_ipc(int sem_num) {
-    if (g_sem_id == -1) return;
+/* Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte */
+int sem_wait_ipc(int sem_num) {
+    if (g_sem_id == -1) return -2;
     
     struct sembuf op = {sem_num, -1, 0};
-    while (semop(g_sem_id, &op, 1) == -1) {
-        if (errno == EINTR) continue; /* przerwane przez sygnał - powtórz */
-        if (errno == EIDRM || errno == EINVAL) {
-            /* Semafor usunięty - cicho zakończ */
-            return;
-        }
+    if (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) return -1; /* Przerwane sygnałem */
+        if (errno == EIDRM || errno == EINVAL) return -2; /* IPC usunięte */
         blad_ostrzezenie("semop P()");
-        return;
+        return -2;
     }
+    return 0; /* Sukces */
 }
 
 void sem_signal_ipc(int sem_num) {
@@ -376,16 +375,18 @@ void sem_signal_ipc(int sem_num) {
     }
 }
 
-void sem_wait_n(int sem_num, int n) {
-    if (g_sem_id == -1 || n <= 0) return;
+/* Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte */
+int sem_wait_n(int sem_num, int n) {
+    if (g_sem_id == -1 || n <= 0) return -2;
     
     struct sembuf op = {sem_num, -n, 0};
-    while (semop(g_sem_id, &op, 1) == -1) {
-        if (errno == EINTR) continue;
-        if (errno == EIDRM || errno == EINVAL) return;
+    if (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) return -1; /* Przerwane sygnałem */
+        if (errno == EIDRM || errno == EINVAL) return -2; /* IPC usunięte */
         blad_ostrzezenie("semop P(n)");
-        return;
+        return -2;
     }
+    return 0; /* Sukces */
 }
 
 void sem_signal_n(int sem_num, int n) {
@@ -455,7 +456,7 @@ int msg_send_nowait(int mq_id, void *msg, size_t size) {
 int msg_recv(int mq_id, void *msg, size_t size, long mtype) {
     ssize_t ret;
     while ((ret = msgrcv(mq_id, msg, size - sizeof(long), mtype, 0)) == -1) {
-        if (errno == EINTR) continue;
+        if (errno == EINTR) return -1; /* Przerwane sygnałem - pozwól sprawdzić g_koniec */
         if (errno == EINVAL || errno == EIDRM) return -2; /* IPC usunięte */
         blad_ostrzezenie("msgrcv");
         return -1;
@@ -534,7 +535,20 @@ void aktywuj_karnet(int id_karnetu) {
     for (int i = 0; i < g_shm->liczba_karnetow; i++) {
         if (g_shm->karnety[i].id == id_karnetu) {
             if (g_shm->karnety[i].czas_aktywacji == 0) {
-                g_shm->karnety[i].czas_aktywacji = time(NULL);
+                time_t teraz = time(NULL);
+                g_shm->karnety[i].czas_aktywacji = teraz;
+                
+                /* UCINANIE DO KOŃCA DNIA */
+                if (g_shm->czas_konca_dnia > 0 && 
+                    g_shm->karnety[i].typ != KARNET_JEDNORAZOWY) {
+                    int pozostalo = (int)(g_shm->czas_konca_dnia - teraz);
+                    if (pozostalo < 0) pozostalo = 0;
+                    
+                    /* Ucięcie: min(nominalna_ważność, pozostało_do_zamknięcia) */
+                    if (pozostalo < g_shm->karnety[i].czas_waznosci_sek) {
+                        g_shm->karnety[i].czas_waznosci_sek = pozostalo;
+                    }
+                }
             }
             break;
         }

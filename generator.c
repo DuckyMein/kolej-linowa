@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <poll.h>
 
 #include "config.h"
 #include "types.h"
@@ -26,11 +27,10 @@ static void handler_sigterm(int sig) {
     g_koniec = 1;
 }
 
+/* SIGCHLD - ignorujemy, zbierzemy na końcu przez waitpid */
 static void handler_sigchld(int sig) {
     (void)sig;
-    int saved_errno = errno;
-    while (waitpid(-1, NULL, WNOHANG) > 0);
-    errno = saved_errno;
+    /* Nic nie robimy - waitpid na końcu zbierze wszystkie dzieci */
 }
 
 int main(int argc, char *argv[]) {
@@ -47,10 +47,18 @@ int main(int argc, char *argv[]) {
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     
-    /* Obsługa sygnałów */
-    signal(SIGTERM, handler_sigterm);
-    signal(SIGINT, handler_sigterm);
-    signal(SIGCHLD, handler_sigchld);
+    /* Obsługa sygnałów - sigaction BEZ SA_RESTART */
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = handler_sigterm;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
+    
+    /* SIGCHLD - ignorujemy (zbierzemy na końcu) */
+    sa.sa_handler = handler_sigchld;
+    sigaction(SIGCHLD, &sa, NULL);
     
     /* Dołącz do IPC */
     if (attach_ipc() != 0) {
@@ -63,8 +71,8 @@ int main(int argc, char *argv[]) {
     time_t czas_startu = g_shm->czas_startu;
     int id_klienta = 0;
     
-    /* Główna pętla generowania */
-    while (!g_koniec && !g_shm->koniec_dnia) {
+    /* Główna pętla generowania - TYLKO gdy FAZA_OPEN */
+    while (!g_koniec && g_shm->faza_dnia == FAZA_OPEN) {
         /* Sprawdź czas */
         if (czy_koniec_symulacji(czas_startu, czas_symulacji)) {
             loguj("GENERATOR: Czas symulacji upłynął");
@@ -73,15 +81,15 @@ int main(int argc, char *argv[]) {
         
         /* Sprawdź czy kolej aktywna */
         if (g_shm->awaria) {
-            usleep(100000); /* 100ms - czekaj na koniec awarii */
+            poll(NULL, 0, 100); /* 100ms - czekaj na koniec awarii */
             continue;
         }
         
-        /* Losuj czy generować klienta (średnio co 1-3 sekundy) */
-        int opoznienie = losuj_zakres(500, 2000); /* 0.5-2 sekundy */
-        usleep(opoznienie * 1000);
+        /* Losuj opóźnienie między klientami (0.5-2 sekundy) */
+        int opoznienie = losuj_zakres(500, 2000);
+        poll(NULL, 0, opoznienie);
         
-        if (g_koniec || g_shm->koniec_dnia) break;
+        if (g_koniec || g_shm->faza_dnia != FAZA_OPEN) break;
         
         /* Generuj parametry klienta */
         id_klienta++;
@@ -145,11 +153,17 @@ int main(int argc, char *argv[]) {
         /* Proces rodzica kontynuuje */
     }
     
-    loguj("GENERATOR: Kończę pracę (wygenerowano %d klientów)", id_klienta);
+    loguj("GENERATOR: Kończę generowanie (wygenerowano %d klientów)", id_klienta);
     
-    /* Czekaj na zakończenie wszystkich dzieci */
-    while (waitpid(-1, NULL, WNOHANG) > 0);
+    /* WAŻNE: Czekaj BLOKUJĄCO na zakończenie WSZYSTKICH dzieci (klientów) */
+    loguj("GENERATOR: Czekam na zakończenie wszystkich klientów...");
+    int status;
+    pid_t child_pid;
+    while ((child_pid = waitpid(-1, &status, 0)) > 0) {
+        /* Klient się zakończył */
+    }
     
+    loguj("GENERATOR: Wszyscy klienci zakończyli pracę");
     detach_ipc();
     
     return EXIT_SUCCESS;

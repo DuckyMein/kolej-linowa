@@ -86,8 +86,9 @@ void detach_ipc(void);
 /*
  * P() - wait/dekrementacja semafora
  * Blokuje jeśli wartość = 0
+ * Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte
  */
-void sem_wait_ipc(int sem_num);
+int sem_wait_ipc(int sem_num);
 
 /*
  * V() - signal/inkrementacja semafora
@@ -96,8 +97,9 @@ void sem_signal_ipc(int sem_num);
 
 /*
  * P() dla N jednostek (np. dla grup)
+ * Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte
  */
-void sem_wait_n(int sem_num, int n);
+int sem_wait_n(int sem_num, int n);
 
 /*
  * V() dla N jednostek

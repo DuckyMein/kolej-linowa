@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "utils.h"
+#include "ipc.h"  /* dla g_shm->czas_konca_dnia */
 
 /*
  * KOLEJ KRZESEŁKOWA - IMPLEMENTACJA FUNKCJI POMOCNICZYCH
@@ -228,6 +229,13 @@ int czy_karnet_wazny(Karnet *karnet, time_t aktualny_czas) {
     if (karnet == NULL) return 0;
     if (!karnet->aktywny) return 0;
     
+    /* GLOBALNA ZASADA: po zamknięciu stacji WSZYSTKIE karnety nieważne */
+    if (g_shm != NULL && g_shm->czas_konca_dnia > 0) {
+        if (aktualny_czas >= g_shm->czas_konca_dnia) {
+            return 0; /* Po zamknięciu */
+        }
+    }
+    
     /* Karnet jednorazowy - sprawdź czy już użyty */
     if (karnet->typ == KARNET_JEDNORAZOWY) {
         return !karnet->uzyty;
@@ -235,7 +243,7 @@ int czy_karnet_wazny(Karnet *karnet, time_t aktualny_czas) {
     
     /* Karnet czasowy - sprawdź czy nie wygasł */
     if (karnet->czas_aktywacji == 0) {
-        /* Jeszcze nieaktywowany - ważny */
+        /* Jeszcze nieaktywowany - ważny (ale tylko przed zamknięciem) */
         return 1;
     }
     

@@ -36,6 +36,13 @@ typedef enum {
     LOG_WYJSCIE_GORA        // wyjście ze stacji górnej
 } TypLogu;
 
+/* Faza dnia (do 2-fazowego zamykania) */
+typedef enum {
+    FAZA_OPEN = 0,          // normalny dzień pracy
+    FAZA_CLOSING = 1,       // zamykamy - nie wpuszczamy nowych
+    FAZA_DRAINING = 2       // drenujemy - czekamy aż wszyscy wyjdą
+} FazaDnia;
+
 /* Trasy powrotne */
 typedef enum {
     TRASA_T1 = 0,           // rowerowa łatwa (20 min)
@@ -108,9 +115,14 @@ typedef struct {
     /* Stan systemu */
     int kolej_aktywna;              // 0=stop, 1=działa
     int awaria;                     // 0=brak, 1=STOP aktywny
-    int koniec_dnia;                // 0=nie, 1=zamykamy
+    int koniec_dnia;                // DEPRECATED - używaj faza_dnia
     time_t czas_startu;             // czas uruchomienia symulacji
     int czekajacych_na_wznowienie;  // ile procesów czeka na SEM_BARIERA_AWARIA
+    
+    /* NOWE: 2-fazowe zamykanie */
+    FazaDnia faza_dnia;             // OPEN / CLOSING / DRAINING
+    time_t czas_konca_dnia;         // kiedy kończy się dzień (absolutny timestamp)
+    int aktywni_klienci;            // ile procesów klienta żyje (do drenowania)
     
     /* Liczniki bieżące */
     int osoby_na_terenie;           // aktualnie na terenie stacji

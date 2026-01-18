@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <errno.h>
+#include <string.h>
 
 #include "config.h"
 #include "types.h"
@@ -36,9 +37,14 @@ int main(int argc, char *argv[]) {
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     
-    /* Obsługa sygnałów */
-    signal(SIGTERM, handler_sigterm);
-    signal(SIGINT, handler_sigterm);
+    /* Obsługa sygnałów - sigaction BEZ SA_RESTART żeby SIGTERM przerwał msg_recv */
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = handler_sigterm;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;  /* BEZ SA_RESTART! */
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
     
     /* Dołącz do IPC */
     if (attach_ipc() != 0) {
@@ -46,22 +52,28 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    /* KASJER JAKO STRAŻNIK: Zapamiętaj PID głównego procesu */
-    pid_t main_pid = g_shm->pid_main;
+    loguj("KASJER: Rozpoczynam pracę");
     
-    loguj("KASJER: Rozpoczynam pracę (strażnik IPC, main_pid=%d)", main_pid);
-    
-    /* Główna pętla - NIE sprawdzaj koniec_dnia, czekaj na SIGTERM! */
+    /* Główna pętla - blokujące msg_recv */
     while (!g_koniec) {
         MsgKasa msg;
         MsgKasaOdp odp;
         
-        /* Odbierz zgłoszenie (priorytet VIP: mtype=-2) */
-        int ret = msg_recv_nowait(g_mq_kasa, &msg, sizeof(msg), -MSG_TYP_VIP);
+        /* Odbierz zgłoszenie BLOKUJĄCO (priorytet VIP: mtype=-2) */
+        int ret = msg_recv(g_mq_kasa, &msg, sizeof(msg), -MSG_TYP_VIP);
         
-        if (ret < 0) {
-            /* Brak wiadomości - krótka pauza */
-            usleep(50000); /* 50ms */
+        if (ret < 0 || g_koniec) {
+            /* Przerwane sygnałem lub koniec - wyjdź */
+            break;
+        }
+        
+        /* Sprawdź fazę dnia - w CLOSING/DRAINING odmawiaj nowym klientom */
+        if (g_shm->faza_dnia != FAZA_OPEN) {
+            /* Odmów i kontynuuj (wyczyść kolejkę) */
+            odp.mtype = msg.pid_klienta;
+            odp.sukces = 0;
+            odp.id_karnetu = -1;
+            msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
             continue;
         }
         
@@ -134,30 +146,8 @@ int main(int argc, char *argv[]) {
     
     loguj("KASJER: Kończę pracę");
     
-    /* STRAŻNIK IPC: Poczekaj chwilę i sprawdź czy main żyje */
-    usleep(200000); /* 200ms - daj czas na propagację sygnałów */
-    
-    int main_zyje = 0;
-    
-    if (main_pid > 0) {
-        /* kill z sygnałem 0 tylko sprawdza czy proces istnieje */
-        if (kill(main_pid, 0) == 0) {
-            main_zyje = 1;
-        } else if (errno != ESRCH) {
-            main_zyje = 1; /* Błąd inny niż "nie istnieje" - zakładaj że żyje */
-        }
-    }
-    
-    if (!main_zyje) {
-        loguj("KASJER: Main (PID=%d) nie żyje - SPRZĄTAM IPC jako strażnik!", main_pid);
-        /* Poczekaj aż inne procesy się zamkną */
-        usleep(500000); /* 500ms */
-        cleanup_ipc();
-        loguj("KASJER: IPC wyczyszczone");
-    } else {
-        loguj("KASJER: Main żyje - normalne zamknięcie");
-        detach_ipc();
-    }
+    /* Tylko detach - cleanup robi wyłącznie main */
+    detach_ipc();
     
     return EXIT_SUCCESS;
 }

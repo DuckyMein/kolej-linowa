@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <time.h>
+#include <poll.h>
 
 #include "config.h"
 #include "types.h"
@@ -77,8 +78,8 @@ static void awaryjny_cleanup(void) {
         if (g_shm->pid_generator > 0) kill(g_shm->pid_generator, SIGKILL);
     }
     
-    /* Poczekaj chwilę na zakończenie procesów */
-    usleep(100000);
+    /* Czekaj aż WSZYSTKIE procesy potomne się zamkną */
+    while (waitpid(-1, NULL, 0) > 0);
     
     /* Wyczyść IPC */
     if (g_ipc_zainicjalizowane) {
@@ -117,6 +118,13 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     g_ipc_zainicjalizowane = 1;
+    
+    /* 5a. Ustaw czas końca dnia (karnet ucięty do tego czasu) */
+    g_shm->czas_konca_dnia = g_shm->czas_startu + g_czas_symulacji;
+    g_shm->faza_dnia = FAZA_OPEN;
+    g_shm->aktywni_klienci = 0;
+    loguj("Czas końca dnia: %ld (za %d sekund)", 
+          (long)g_shm->czas_konca_dnia, g_czas_symulacji);
     
     /* 6. Uruchomienie procesów stałych */
     loguj("Uruchamianie procesów stałych...");
@@ -393,8 +401,8 @@ static void petla_glowna(void) {
                   g_shm->stats.przychod_gr / 100.0);
         }
         
-        /* Krótkie czekanie (nie busy-wait) */
-        usleep(100000);  /* 100ms */
+        /* Krótkie czekanie (poll zamiast busy-wait) */
+        poll(NULL, 0, 100);  /* 100ms */
     }
 }
 
@@ -403,18 +411,38 @@ static void petla_glowna(void) {
  * ============================================ */
 
 static void procedura_konca_dnia(void) {
-    loguj("Rozpoczęcie procedury końca dnia...");
+    loguj("=== PROCEDURA KOŃCA DNIA ===");
     
-    /* Krok 1: Oznacz koniec dnia */
-    g_shm->koniec_dnia = 1;
-    loguj("Krok 1: Flaga koniec_dnia ustawiona");
+    /* ==========================================
+     * FAZA 1: CLOSING (zamykanie)
+     * - Nie wpuszczamy nowych
+     * - Generator przestaje generować
+     * - Kasjer odmawia
+     * - Karnety "umierają" o czas_konca_dnia
+     * ========================================== */
+    loguj("FAZA 1: CLOSING - nie wpuszczamy nowych klientów");
     
-    /* Krok 2: NIE zabijaj generatora jeszcze! On sam się zakończy gdy zobaczy flagę */
-    /* Ważne: klienci są dziećmi generatora - jeśli go zabijesz, oni też dostaną sygnał */
-    loguj("Krok 2: Generator zakończy się sam (sprawdza flagę koniec_dnia)");
+    MUTEX_SHM_LOCK();
+    g_shm->faza_dnia = FAZA_CLOSING;
+    g_shm->koniec_dnia = 1;  /* LEGACY - dla kompatybilności */
     
-    /* Krok 3: Wyczyszczenie kolejek kasy - nowi klienci nie kupią biletów */
-    loguj("Krok 3: Czyszczenie kolejki kasy...");
+    /* Ustaw czas_konca_dnia jeśli jeszcze nie ustawiony */
+    if (g_shm->czas_konca_dnia == 0) {
+        g_shm->czas_konca_dnia = time(NULL);
+    }
+    MUTEX_SHM_UNLOCK();
+    
+    loguj("  faza_dnia = CLOSING");
+    loguj("  czas_konca_dnia = %ld", (long)g_shm->czas_konca_dnia);
+    loguj("  aktywni_klienci = %d", g_shm->aktywni_klienci);
+    
+    /* NIE zabijaj generatora! Generator sam:
+     * 1. Przestanie generować (bo faza_dnia != FAZA_OPEN)
+     * 2. Poczeka na wszystkie swoje dzieci (klientów)
+     * 3. Zakończy się sam */
+    
+    /* Wyczyść kolejkę kasy - odpowiedz odmową czekającym */
+    loguj("  Czyszczenie kolejki kasy...");
     MsgKasa msg_kasa;
     while (msg_recv_nowait(g_mq_kasa, &msg_kasa, sizeof(msg_kasa), 0) > 0) {
         MsgKasaOdp odp = {0};
@@ -423,59 +451,60 @@ static void procedura_konca_dnia(void) {
         msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
     }
     
-    /* Krok 4: Ciągłe zwalnianie SEM_PERON - pozwól klientom wsiadać i jechać */
-    loguj("Krok 4: Zwalnianie semaforów - klienci mogą wsiadać...");
+    /* ==========================================
+     * FAZA 2: DRAINING (drenowanie)
+     * - Czekamy aż wszyscy klienci zakończą
+     * - NIE manipulujemy semaforami
+     * ========================================== */
+    loguj("FAZA 2: DRAINING - czekamy na zakończenie klientów");
     
-    /* Krok 5: Czekaj na opróżnienie stacji (max 180 sekund) */
-    loguj("Krok 5: Oczekiwanie na opróżnienie stacji (max 180 sek)...");
-    int timeout = 180;
-    int ostatni_log = 0;
+    MUTEX_SHM_LOCK();
+    g_shm->faza_dnia = FAZA_DRAINING;
+    MUTEX_SHM_UNLOCK();
     
-    while ((g_shm->osoby_na_terenie > 0 || g_shm->osoby_na_gorze > 0) && timeout > 0) {
-        /* AGRESYWNIE zwalniaj SEM_PERON - klienci muszą móc wsiadać! */
-        int peron_val = sem_getval_ipc(SEM_PERON);
-        int potrzebne = g_shm->osoby_na_terenie * 2 + 10;
+    int ostatni_aktywni = -1;
+    int ostatni_teren = -1;
+    int ostatnia_gora = -1;
+    
+    /* Czekaj aż aktywni_klienci == 0 */
+    while (g_shm->aktywni_klienci > 0 || 
+           g_shm->osoby_na_terenie > 0 || 
+           g_shm->osoby_na_gorze > 0) {
         
-        /* Zawsze dodawaj miejsca - nawet jeśli nie znamy aktualnej wartości */
-        if (peron_val < 0) {
-            /* sem_getval zawiodło - dodaj domyślną ilość */
-            sem_signal_n(SEM_PERON, KRZESLA_W_RZEDZIE);
-        } else if (peron_val < potrzebne) {
-            int dodaj = potrzebne - peron_val;
-            sem_signal_n(SEM_PERON, dodaj);
+        /* Loguj tylko gdy się zmieni */
+        if (g_shm->aktywni_klienci != ostatni_aktywni ||
+            g_shm->osoby_na_terenie != ostatni_teren ||
+            g_shm->osoby_na_gorze != ostatnia_gora) {
+            
+            ostatni_aktywni = g_shm->aktywni_klienci;
+            ostatni_teren = g_shm->osoby_na_terenie;
+            ostatnia_gora = g_shm->osoby_na_gorze;
+            
+            loguj("  Aktywni: %d, Teren: %d, Góra: %d", 
+                  ostatni_aktywni, ostatni_teren, ostatnia_gora);
         }
         
-        /* Loguj co 5 sekund */
-        if (timeout != ostatni_log && timeout % 5 == 0) {
-            ostatni_log = timeout;
-            loguj("  Teren: %d, Góra: %d, SEM_PERON: %d (pozostało %d sek)", 
-                  g_shm->osoby_na_terenie, g_shm->osoby_na_gorze, peron_val, timeout);
-        }
+        /* Zbieraj zombie (klienty które się zakończyły ale są dziećmi generatora) */
+        while (waitpid(-1, NULL, WNOHANG) > 0);
         
-        sleep(1);
-        timeout--;
+        poll(NULL, 0, 100);
     }
     
-    if (g_shm->osoby_na_terenie > 0 || g_shm->osoby_na_gorze > 0) {
-        loguj("UWAGA: Timeout - teren=%d, góra=%d", 
-              g_shm->osoby_na_terenie, g_shm->osoby_na_gorze);
-    } else {
-        loguj("Wszyscy klienci opuścili stację");
-    }
+    loguj("Wszyscy klienci opuścili stację");
     
-    /* Krok 6: Poczekaj 3 sekundy (zgodnie ze specyfikacją) */
-    loguj("Krok 6: Oczekiwanie 3 sekundy...");
-    sleep(3);
+    /* ==========================================
+     * FAZA 3: SHUTDOWN
+     * - Zatrzymaj kolej
+     * - Zakończ procesy stałe
+     * ========================================== */
+    loguj("FAZA 3: SHUTDOWN - zamykanie procesów");
     
-    /* Krok 7: Zatrzymaj kolej */
     g_shm->kolej_aktywna = 0;
-    loguj("Krok 7: Kolej zatrzymana");
+    loguj("  Kolej zatrzymana");
     
-    /* Krok 8: TERAZ dopiero zakończ procesy stałe */
-    loguj("Krok 8: Zamykanie procesów stałych...");
     zakoncz_procesy_potomne();
     
-    loguj("Procedura końca dnia zakończona");
+    loguj("=== PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===");
 }
 
 static void zakoncz_procesy_potomne(void) {
@@ -498,39 +527,20 @@ static void zakoncz_procesy_potomne(void) {
         kill(g_shm->pid_generator, SIGTERM);
     }
     
-    /* Czekaj na zakończenie wszystkich dzieci */
+    /* Czekaj na zakończenie WSZYSTKICH dzieci (blokujące, bez timeout) */
     loguj("Oczekiwanie na zakończenie procesów potomnych...");
-    int status;
-    pid_t pid;
-    int timeout = 10;
     
-    while (timeout > 0) {
-        pid = waitpid(-1, &status, WNOHANG);
+    while (1) {
+        pid_t pid = waitpid(-1, NULL, 0);  /* BLOKUJĄCE */
         if (pid == -1) {
             if (errno == ECHILD) {
-                /* Brak więcej dzieci */
+                /* Brak więcej dzieci - WSZYSTKIE zamknięte */
                 break;
             }
-        } else if (pid == 0) {
-            /* Dzieci wciąż działają */
-            sleep(1);
-            timeout--;
+            /* Inny błąd - przerwane sygnałem, kontynuuj */
+            if (errno == EINTR) continue;
+            break;
         }
-    }
-    
-    /* Jeśli timeout - wymuś zakończenie */
-    if (timeout == 0) {
-        loguj("Wymuszanie zakończenia (SIGKILL)...");
-        if (g_shm->pid_kasjer > 0) kill(g_shm->pid_kasjer, SIGKILL);
-        if (g_shm->pid_pracownik1 > 0) kill(g_shm->pid_pracownik1, SIGKILL);
-        if (g_shm->pid_pracownik2 > 0) kill(g_shm->pid_pracownik2, SIGKILL);
-        for (int i = 0; i < LICZBA_BRAMEK1; i++) {
-            if (g_shm->pid_bramki1[i] > 0) kill(g_shm->pid_bramki1[i], SIGKILL);
-        }
-        if (g_shm->pid_generator > 0) kill(g_shm->pid_generator, SIGKILL);
-        
-        /* Zbierz wszystkie zombie */
-        while (waitpid(-1, &status, WNOHANG) > 0);
     }
     
     loguj("Wszystkie procesy potomne zakończone");

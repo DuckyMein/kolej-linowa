@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <errno.h>
+#include <string.h>
 
 #include "config.h"
 #include "types.h"
@@ -41,9 +42,14 @@ int main(int argc, char *argv[]) {
     /* Inicjalizacja */
     inicjalizuj_losowanie();
     
-    /* Obsługa sygnałów */
-    signal(SIGTERM, handler_sigterm);
-    signal(SIGINT, handler_sigterm);
+    /* Obsługa sygnałów - sigaction BEZ SA_RESTART */
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_handler = handler_sigterm;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
     
     /* Dołącz do IPC */
     if (attach_ipc() != 0) {
@@ -53,40 +59,31 @@ int main(int argc, char *argv[]) {
     
     loguj("BRAMKA%d: Rozpoczynam pracę", g_numer_bramki);
     
-    /* Główna pętla - czekaj na SIGTERM, nie na koniec_dnia */
+    /* Główna pętla - blokujące msg_recv */
     while (!g_koniec) {
         MsgBramka1 msg;
         MsgBramkaOdp odp;
         
-        /* Odbierz zgłoszenie (VIP ma priorytet) */
-        int ret = msg_recv_nowait(g_mq_bramka, &msg, sizeof(msg), -MSG_TYP_VIP);
+        /* Odbierz zgłoszenie BLOKUJĄCO (VIP ma priorytet) */
+        int ret = msg_recv(g_mq_bramka, &msg, sizeof(msg), -MSG_TYP_VIP);
         
-        if (ret < 0) {
-            usleep(50000); /* 50ms */
-            continue;
+        if (ret < 0 || g_koniec) {
+            /* Przerwane sygnałem lub koniec - wyjdź */
+            break;
         }
         
         loguj("BRAMKA%d: Klient z karnetem %d (grupa=%d)", 
               g_numer_bramki, msg.id_karnetu, msg.rozmiar_grupy);
         
-        /* Podczas awarii - czekaj na semaforze (nie busy-wait!) */
-        if (g_shm->awaria && !g_koniec && !g_shm->koniec_dnia) {
+        /* Podczas awarii - czekaj na wznowienie */
+        if (g_shm->awaria && !g_koniec) {
             char buf[32];
             snprintf(buf, sizeof(buf), "BRAMKA%d", g_numer_bramki);
             czekaj_na_wznowienie(buf);
         }
         
-        /* Sprawdź czy zamykamy */
-        if (g_koniec || g_shm->koniec_dnia) {
-            odp.mtype = msg.pid_klienta;
-            odp.sukces = 0;
-            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
-            continue;
-        }
-        
-        /* Pobierz karnet i sprawdź ważność */
+        /* CHECK #1: Czy karnet ważny? (karnet jest ucięty do końca dnia) */
         Karnet *karnet = pobierz_karnet(msg.id_karnetu);
-        
         odp.mtype = msg.pid_klienta;
         
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
@@ -100,18 +97,20 @@ int main(int argc, char *argv[]) {
         loguj("BRAMKA%d: Oczekiwanie na %d miejsc na terenie...", 
               g_numer_bramki, msg.rozmiar_grupy);
         
-        sem_wait_n(SEM_TEREN, msg.rozmiar_grupy);
-        
-        /* WAŻNE: Po pobraniu semafora sprawdź PONOWNIE koniec_dnia!
-         * Race condition: main mógł ustawić koniec_dnia i zwolnić SEM_TEREN
-         * właśnie po tym jak sprawdziliśmy, ale przed pobraniem semafora.
-         * Musimy zwrócić semafor i odmówić. */
-        if (g_koniec || g_shm->koniec_dnia) {
-            sem_signal_n(SEM_TEREN, msg.rozmiar_grupy); /* Zwróć semafor */
-            odp.mtype = msg.pid_klienta;
+        if (sem_wait_n(SEM_TEREN, msg.rozmiar_grupy) != 0) {
+            /* Semafor przerwany - odmów */
             odp.sukces = 0;
             msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
-            loguj("BRAMKA%d: Koniec dnia po pobraniu semafora - odmowa", g_numer_bramki);
+            continue;
+        }
+        
+        /* CHECK #2: Po pobraniu semafora sprawdź karnet PONOWNIE!
+         * Mógł wygasnąć w trakcie czekania (czas upłynął lub koniec dnia). */
+        if (!czy_karnet_wazny(karnet, time(NULL))) {
+            sem_signal_n(SEM_TEREN, msg.rozmiar_grupy); /* Zwróć semafor */
+            odp.sukces = 0;
+            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: Karnet wygasł podczas czekania - odmowa", g_numer_bramki);
             continue;
         }
         
@@ -123,7 +122,7 @@ int main(int argc, char *argv[]) {
             continue;
         }
         
-        /* Aktywuj karnet (jeśli pierwsze użycie) */
+        /* Aktywuj karnet (jeśli pierwsze użycie) - UCINANIE do końca dnia */
         aktywuj_karnet(msg.id_karnetu);
         
         /* Dla karnetu jednorazowego - oznacz jako użyty */
