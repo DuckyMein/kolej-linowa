@@ -379,6 +379,7 @@ void sem_signal_ipc(int sem_num) {
 int sem_wait_n(int sem_num, int n) {
     if (g_sem_id == -1 || n <= 0) return -2;
     
+    /* BEZ SEM_UNDO - bramka przekazuje własność semafora klientowi */
     struct sembuf op = {sem_num, -n, 0};
     if (semop(g_sem_id, &op, 1) == -1) {
         if (errno == EINTR) return -1; /* Przerwane sygnałem */

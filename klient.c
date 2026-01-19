@@ -51,7 +51,7 @@ static void symuluj_czas_ms(int ms) {
     }
 }
 
-/* Bezpieczne zakończenie - zwalnia zasoby i dekrementuje aktywni_klienci */
+/* Bezpieczne zakończenie - zwalnia semafory i aktualizuje liczniki */
 static void bezpieczne_zakonczenie(void) {
     static int juz_wywolane = 0;
     if (juz_wywolane) return;
@@ -60,51 +60,36 @@ static void bezpieczne_zakonczenie(void) {
     if (g_shm == NULL) return;
     
     /* Zwolnij zasoby w zależności od stanu */
-    if (g_wpuszczony_na_teren && g_stan != STAN_NA_PERONIE && 
-        g_stan != STAN_W_KRZESLE && g_stan != STAN_NA_GORZE && g_stan != STAN_NA_TRASIE) {
-        sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-        MUTEX_SHM_LOCK();
-        g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
-        MUTEX_SHM_UNLOCK();
-    } else {
-        switch (g_stan) {
-            case STAN_NA_TERENIE:
-                sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-                MUTEX_SHM_LOCK();
-                g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
-                MUTEX_SHM_UNLOCK();
-                break;
-                
-            case STAN_NA_PERONIE:
-                if (g_wpuszczony_na_teren) {
-                    sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-                    MUTEX_SHM_LOCK();
-                    g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
-                    MUTEX_SHM_UNLOCK();
-                }
-                break;
-                
-            case STAN_W_KRZESLE:
-                MUTEX_SHM_LOCK();
-                g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
-                MUTEX_SHM_UNLOCK();
-                break;
-                
-            case STAN_NA_GORZE:
-            case STAN_NA_TRASIE:
-                MUTEX_SHM_LOCK();
-                g_shm->osoby_na_gorze -= g_klient.rozmiar_grupy;
-                MUTEX_SHM_UNLOCK();
-                break;
-                
-            default:
-                break;
-        }
-    }
-    
-    /* WAŻNE: Dekrementuj licznik aktywnych klientów */
     MUTEX_SHM_LOCK();
-    g_shm->aktywni_klienci--;
+    switch (g_stan) {
+        case STAN_NA_TERENIE:
+            /* Na terenie - zwolnij SEM_TEREN */
+            sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+            g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+            break;
+            
+        case STAN_NA_PERONIE:
+            /* Na peronie ale jeszcze nie wsiadł - zwolnij SEM_TEREN */
+            if (g_wpuszczony_na_teren) {
+                sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+                g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+            }
+            break;
+            
+        case STAN_W_KRZESLE:
+            /* W krzesełku - aktualizuj licznik peronu */
+            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+            break;
+            
+        case STAN_NA_GORZE:
+        case STAN_NA_TRASIE:
+            /* Na górze/trasie - aktualizuj licznik */
+            g_shm->osoby_na_gorze -= g_klient.rozmiar_grupy;
+            break;
+            
+        default:
+            break;
+    }
     MUTEX_SHM_UNLOCK();
 }
 
@@ -142,11 +127,6 @@ int main(int argc, char *argv[]) {
     if (attach_ipc() != 0) {
         return EXIT_FAILURE;
     }
-    
-    /* WAŻNE: Zarejestruj się jako aktywny klient */
-    MUTEX_SHM_LOCK();
-    g_shm->aktywni_klienci++;
-    MUTEX_SHM_UNLOCK();
     
     atexit(bezpieczne_zakonczenie);
     

@@ -101,8 +101,8 @@
 /* ============================================
  * TYPY KOMUNIKATÓW (mtype w kolejkach)
  * ============================================ */
-#define MSG_TYP_NORMALNY    1       // zwykły klient
-#define MSG_TYP_VIP         2       // klient VIP (priorytet)
+#define MSG_TYP_VIP         1       // klient VIP (priorytet - NIŻSZY = WYŻSZY w msgrcv)
+#define MSG_TYP_NORMALNY    2       // zwykły klient
 #define MSG_TYP_STOP        10      // sygnał STOP
 #define MSG_TYP_GOTOWY      11      // potwierdzenie gotowości
 #define MSG_TYP_START       12      // sygnał START

@@ -453,8 +453,8 @@ static void procedura_konca_dnia(void) {
     
     /* ==========================================
      * FAZA 2: DRAINING (drenowanie)
-     * - Czekamy aż wszyscy klienci zakończą
-     * - NIE manipulujemy semaforami
+     * - Generator przestał generować i czeka na swoje dzieci
+     * - Czekamy aż generator się zakończy (= wszyscy klienci skończyli)
      * ========================================== */
     loguj("FAZA 2: DRAINING - czekamy na zakończenie klientów");
     
@@ -462,32 +462,21 @@ static void procedura_konca_dnia(void) {
     g_shm->faza_dnia = FAZA_DRAINING;
     MUTEX_SHM_UNLOCK();
     
-    int ostatni_aktywni = -1;
-    int ostatni_teren = -1;
-    int ostatnia_gora = -1;
-    
-    /* Czekaj aż aktywni_klienci == 0 */
-    while (g_shm->aktywni_klienci > 0 || 
-           g_shm->osoby_na_terenie > 0 || 
-           g_shm->osoby_na_gorze > 0) {
-        
-        /* Loguj tylko gdy się zmieni */
-        if (g_shm->aktywni_klienci != ostatni_aktywni ||
-            g_shm->osoby_na_terenie != ostatni_teren ||
-            g_shm->osoby_na_gorze != ostatnia_gora) {
-            
-            ostatni_aktywni = g_shm->aktywni_klienci;
-            ostatni_teren = g_shm->osoby_na_terenie;
-            ostatnia_gora = g_shm->osoby_na_gorze;
-            
-            loguj("  Aktywni: %d, Teren: %d, Góra: %d", 
-                  ostatni_aktywni, ostatni_teren, ostatnia_gora);
+    /* Czekaj na zakończenie GENERATORA
+     * Generator czeka BLOKUJĄCO na wszystkie swoje dzieci (klienci),
+     * więc gdy generator się zakończy, wszyscy klienci już wyszli */
+    if (g_shm->pid_generator > 0) {
+        loguj("  Czekam na generator (PID %d) i jego klientów...", g_shm->pid_generator);
+        int status;
+        pid_t ret;
+        while ((ret = waitpid(g_shm->pid_generator, &status, 0)) == -1) {
+            if (errno == EINTR) continue; /* Przerwane sygnałem - kontynuuj czekanie */
+            break; /* Inny błąd */
         }
-        
-        /* Zbieraj zombie (klienty które się zakończyły ale są dziećmi generatora) */
-        while (waitpid(-1, NULL, WNOHANG) > 0);
-        
-        poll(NULL, 0, 100);
+        if (ret > 0) {
+            loguj("  Generator zakończył pracę");
+        }
+        g_shm->pid_generator = 0;
     }
     
     loguj("Wszyscy klienci opuścili stację");
