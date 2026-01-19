@@ -51,7 +51,7 @@ static void symuluj_czas_ms(int ms) {
     }
 }
 
-/* Bezpieczne zakończenie - zwalnia semafory i aktualizuje liczniki */
+/* Bezpieczne zakończenie - zwalnia semafory, aktualizuje liczniki i detach */
 static void bezpieczne_zakonczenie(void) {
     static int juz_wywolane = 0;
     if (juz_wywolane) return;
@@ -60,37 +60,30 @@ static void bezpieczne_zakonczenie(void) {
     if (g_shm == NULL) return;
     
     /* Zwolnij zasoby w zależności od stanu */
-    MUTEX_SHM_LOCK();
     switch (g_stan) {
         case STAN_NA_TERENIE:
             /* Na terenie - zwolnij SEM_TEREN */
             sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-            g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
             break;
             
         case STAN_NA_PERONIE:
             /* Na peronie ale jeszcze nie wsiadł - zwolnij SEM_TEREN */
             if (g_wpuszczony_na_teren) {
                 sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-                g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
             }
-            break;
-            
-        case STAN_W_KRZESLE:
-            /* W krzesełku - aktualizuj licznik peronu */
-            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
-            break;
-            
-        case STAN_NA_GORZE:
-        case STAN_NA_TRASIE:
-            /* Na górze/trasie - aktualizuj licznik */
-            g_shm->osoby_na_gorze -= g_klient.rozmiar_grupy;
             break;
             
         default:
             break;
     }
+    
+    /* ZAWSZE dekrementuj licznik aktywnych klientów */
+    MUTEX_SHM_LOCK();
+    g_shm->aktywni_klienci--;
     MUTEX_SHM_UNLOCK();
+    
+    /* Detach IPC na samym końcu */
+    detach_ipc();
 }
 
 int main(int argc, char *argv[]) {
@@ -128,7 +121,13 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
+    /* WAŻNE: Zarejestruj cleanup PRZED inkrementacją licznika */
     atexit(bezpieczne_zakonczenie);
+    
+    /* Inkrementuj licznik aktywnych klientów */
+    MUTEX_SHM_LOCK();
+    g_shm->aktywni_klienci++;
+    MUTEX_SHM_UNLOCK();
     
     loguj("KLIENT %d: Start (wiek=%d, %s, VIP=%d, dzieci=%d)",
           g_klient.id, g_klient.wiek,
@@ -143,8 +142,7 @@ int main(int argc, char *argv[]) {
     /* CHECK #1: Przed kasą - czy stacja przyjmuje nowych? */
     if (g_shm->faza_dnia != FAZA_OPEN) {
         loguj("KLIENT %d: Stacja zamknięta - kończę", g_klient.id);
-        detach_ipc();
-        return EXIT_SUCCESS;
+        return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
     }
     
     MsgKasa msg_kasa;
@@ -159,8 +157,7 @@ int main(int argc, char *argv[]) {
     msg_kasa.wiek_dzieci[1] = g_klient.wiek_dzieci[1];
     
     if (msg_send(g_mq_kasa, &msg_kasa, sizeof(msg_kasa)) < 0) {
-        detach_ipc();
-        return EXIT_SUCCESS;
+        return EXIT_SUCCESS;  /* atexit() zrobi cleanup */
     }
     
     /* Czekaj na odpowiedź BLOKUJĄCO (kasjer ZAWSZE odpowiada) */
@@ -169,8 +166,7 @@ int main(int argc, char *argv[]) {
     
     if (ret < 0 || !odp_kasa.sukces) {
         loguj("KLIENT %d: Odmowa/błąd w kasie - kończę", g_klient.id);
-        detach_ipc();
-        return EXIT_SUCCESS;
+        return EXIT_SUCCESS;  /* atexit() zrobi cleanup */
     }
     
     g_klient.id_karnetu = odp_kasa.id_karnetu;
@@ -322,9 +318,6 @@ int main(int argc, char *argv[]) {
         symuluj_czas_ms(100);
     }
     
-    bezpieczne_zakonczenie();
     loguj("KLIENT %d: Kończę (%d przejazdów)", g_klient.id, przejazdy);
-    detach_ipc();
-    
-    return EXIT_SUCCESS;
+    return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
 }

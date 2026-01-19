@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
         MsgKasa msg;
         MsgKasaOdp odp;
         
-        /* Odbierz zgłoszenie BLOKUJĄCO (priorytet VIP: mtype=-2) */
-        int ret = msg_recv(g_mq_kasa, &msg, sizeof(msg), -MSG_TYP_VIP);
+        /* Odbierz zgłoszenie BLOKUJĄCO (mtype=0 = pierwsza dostępna wiadomość) */
+        int ret = msg_recv(g_mq_kasa, &msg, sizeof(msg), 0);
         
         if (ret < 0 || g_koniec) {
             /* Przerwane sygnałem lub koniec - wyjdź */
