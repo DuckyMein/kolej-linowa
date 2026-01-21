@@ -116,7 +116,8 @@
 #define IPC_KEY_MQ_KASA     2       // kolejka do kasy
 #define IPC_KEY_MQ_KASA_ODP 3       // kolejka odpowiedzi z kasy
 #define IPC_KEY_MQ_BRAMKA   4       // kolejka do bramek
-#define IPC_KEY_MQ_PRAC     5       // kolejka pracowników
+#define IPC_KEY_MQ_BRAMKA_ODP 5     // kolejka odpowiedzi z bramek (NOWA)
+#define IPC_KEY_MQ_PRAC     6       // kolejka pracowników
 
 /* ============================================
  * ŚCIEŻKI DO PLIKÓW WYKONYWALNYCH

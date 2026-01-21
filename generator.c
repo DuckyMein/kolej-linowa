@@ -75,13 +75,18 @@ int main(int argc, char *argv[]) {
     while (!g_koniec && g_shm->faza_dnia == FAZA_OPEN) {
         /* Sprawdź czas */
         if (czy_koniec_symulacji(czas_startu, czas_symulacji)) {
-            loguj("GENERATOR: Czas symulacji upłynął");
             break;
         }
         
         /* Sprawdź czy kolej aktywna */
         if (g_shm->awaria) {
-            poll(NULL, 0, 100); /* 100ms - czekaj na koniec awarii */
+            poll(NULL, 0, 100);
+            continue;
+        }
+        
+        /* LIMIT AKTYWNYCH KLIENTÓW - nie forkuj gdy za dużo */
+        if (g_shm->aktywni_klienci >= MAX_KLIENTOW) {
+            poll(NULL, 0, 100);  /* Czekaj 100ms */
             continue;
         }
         
@@ -112,16 +117,12 @@ int main(int argc, char *argv[]) {
             }
         }
         
-        loguj("GENERATOR: Tworzę klienta %d (wiek=%d, typ=%s, VIP=%d, dzieci=%d)",
-              id_klienta, wiek, 
-              typ == TYP_ROWERZYSTA ? "rowerzysta" : "pieszy",
-              vip, liczba_dzieci);
-        
         /* Fork procesu klienta */
         pid_t pid = fork();
         
         if (pid == -1) {
-            blad_ostrzezenie("fork klienta");
+            /* BACKOFF przy błędzie fork - nie spamuj CPU */
+            poll(NULL, 0, 1000);  /* Czekaj 1 sekundę */
             continue;
         }
         

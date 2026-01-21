@@ -141,7 +141,6 @@ int main(int argc, char *argv[]) {
     
     /* CHECK #1: Przed kasą - czy stacja przyjmuje nowych? */
     if (g_shm->faza_dnia != FAZA_OPEN) {
-        loguj("KLIENT %d: Stacja zamknięta - kończę", g_klient.id);
         return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
     }
     
@@ -165,13 +164,10 @@ int main(int argc, char *argv[]) {
     int ret = msg_recv(g_mq_kasa_odp, &odp_kasa, sizeof(odp_kasa), g_klient.pid);
     
     if (ret < 0 || !odp_kasa.sukces) {
-        loguj("KLIENT %d: Odmowa/błąd w kasie - kończę", g_klient.id);
         return EXIT_SUCCESS;  /* atexit() zrobi cleanup */
     }
     
     g_klient.id_karnetu = odp_kasa.id_karnetu;
-    loguj("KLIENT %d: Kupiłem karnet %d (%s)", 
-          g_klient.id, g_klient.id_karnetu, nazwa_karnetu(odp_kasa.typ_karnetu));
     
     /* ========================================
      * PĘTLA GŁÓWNA
@@ -189,7 +185,6 @@ int main(int argc, char *argv[]) {
         /* CHECK #2: Przed bramką - czy karnet ważny? (karnet ucięty do końca dnia) */
         Karnet *karnet = pobierz_karnet(g_klient.id_karnetu);
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
-            loguj("KLIENT %d: Karnet nieważny - kończę", g_klient.id);
             break;
         }
         
@@ -202,12 +197,11 @@ int main(int argc, char *argv[]) {
         
         if (msg_send(g_mq_bramka, &msg_bramka, sizeof(msg_bramka)) < 0) break;
         
-        /* Czekaj na bramkę BLOKUJĄCO (bramka ZAWSZE odpowiada) */
+        /* Czekaj na bramkę BLOKUJĄCO - osobna kolejka odpowiedzi */
         MsgBramkaOdp odp_bramka;
-        ret = msg_recv(g_mq_kasa_odp, &odp_bramka, sizeof(odp_bramka), g_klient.pid);
+        ret = msg_recv(g_mq_bramka_odp, &odp_bramka, sizeof(odp_bramka), g_klient.pid);
         
         if (ret < 0 || !odp_bramka.sukces) {
-            loguj("KLIENT %d: Odmowa na bramce - kończę", g_klient.id);
             break;
         }
         
@@ -301,23 +295,18 @@ int main(int argc, char *argv[]) {
         
         g_stan = STAN_PRZED_BRAMKA1;
         
-        /* ========================================
-         * CHECK #3: Czy kontynuować?
-         * ======================================== */
+        /* CHECK #3: Czy kontynuować? */
         karnet = pobierz_karnet(g_klient.id_karnetu);
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
-            loguj("KLIENT %d: Karnet wygasł po %d przejazdach", g_klient.id, przejazdy);
             break;
         }
         
         if (karnet->typ == KARNET_JEDNORAZOWY) {
-            loguj("KLIENT %d: Karnet jednorazowy wykorzystany", g_klient.id);
             break;
         }
         
         symuluj_czas_ms(100);
     }
     
-    loguj("KLIENT %d: Kończę (%d przejazdów)", g_klient.id, przejazdy);
     return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
 }

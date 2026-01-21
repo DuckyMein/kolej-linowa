@@ -26,6 +26,7 @@ extern SharedMemory *g_shm;     // wskaźnik na pamięć współdzieloną
 extern int g_mq_kasa;           // kolejka do kasy
 extern int g_mq_kasa_odp;       // kolejka odpowiedzi z kasy
 extern int g_mq_bramka;         // kolejka do bramek
+extern int g_mq_bramka_odp;     // kolejka odpowiedzi z bramek (NOWA)
 extern int g_mq_prac;           // kolejka pracowników
 
 /* ============================================
@@ -82,6 +83,13 @@ void detach_ipc(void);
 /* ============================================
  * OPERACJE NA SEMAFORACH
  * ============================================ */
+
+/*
+ * Mutex z SEM_UNDO - automatyczne odkręcenie przy śmierci procesu
+ * Używaj dla SEM_MUTEX_SHM i SEM_MUTEX_LOG
+ */
+int mutex_lock(int sem_num);
+void mutex_unlock(int sem_num);
 
 /*
  * P() - wait/dekrementacja semafora
@@ -151,10 +159,10 @@ int msg_recv_nowait(int mq_id, void *msg, size_t size, long mtype);
 
 /*
  * Blokuje mutex SHM, wykonuje operację, odblokowuje
- * Makra dla wygody
+ * Używa SEM_UNDO - automatyczne odkręcenie przy śmierci procesu
  */
-#define MUTEX_SHM_LOCK()   sem_wait_ipc(SEM_MUTEX_SHM)
-#define MUTEX_SHM_UNLOCK() sem_signal_ipc(SEM_MUTEX_SHM)
+#define MUTEX_SHM_LOCK()   mutex_lock(SEM_MUTEX_SHM)
+#define MUTEX_SHM_UNLOCK() mutex_unlock(SEM_MUTEX_SHM)
 
 /*
  * Bezpieczny odczyt zmiennej z shm

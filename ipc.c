@@ -26,6 +26,7 @@ SharedMemory *g_shm = NULL;
 int g_mq_kasa = -1;
 int g_mq_kasa_odp = -1;
 int g_mq_bramka = -1;
+int g_mq_bramka_odp = -1;  /* NOWA - osobna kolejka odpowiedzi bramek */
 int g_mq_prac = -1;
 
 /* Klucz bazowy (ustawiany przy init) */
@@ -217,6 +218,18 @@ int init_ipc(int N) {
         return -1;
     }
     
+    /* NOWA - osobna kolejka odpowiedzi bramek (mniej kontencji) */
+    g_mq_bramka_odp = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    if (g_mq_bramka_odp == -1 && errno == EEXIST) {
+        g_mq_bramka_odp = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA_ODP), IPC_PERMS);
+        if (g_mq_bramka_odp != -1) msgctl(g_mq_bramka_odp, IPC_RMID, NULL);
+        g_mq_bramka_odp = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    }
+    if (g_mq_bramka_odp == -1) {
+        blad_ostrzezenie("msgget bramka_odp");
+        return -1;
+    }
+    
     g_mq_prac = msgget(generuj_klucz(IPC_KEY_MQ_PRAC), IPC_CREAT | IPC_EXCL | IPC_PERMS);
     if (g_mq_prac == -1 && errno == EEXIST) {
         g_mq_prac = msgget(generuj_klucz(IPC_KEY_MQ_PRAC), IPC_PERMS);
@@ -228,8 +241,8 @@ int init_ipc(int N) {
         return -1;
     }
     
-    loguj("Kolejki komunikatów utworzone (kasa=%d, odp=%d, bramka=%d, prac=%d)",
-          g_mq_kasa, g_mq_kasa_odp, g_mq_bramka, g_mq_prac);
+    loguj("Kolejki komunikatów utworzone (kasa=%d, odp=%d, bramka=%d, bramka_odp=%d, prac=%d)",
+          g_mq_kasa, g_mq_kasa_odp, g_mq_bramka, g_mq_bramka_odp, g_mq_prac);
     
     loguj("Inicjalizacja IPC zakończona pomyślnie");
     return 0;
@@ -281,6 +294,10 @@ void cleanup_ipc(void) {
         msgctl(g_mq_bramka, IPC_RMID, NULL);
         g_mq_bramka = -1;
     }
+    if (g_mq_bramka_odp != -1) {
+        msgctl(g_mq_bramka_odp, IPC_RMID, NULL);
+        g_mq_bramka_odp = -1;
+    }
     if (g_mq_prac != -1) {
         msgctl(g_mq_prac, IPC_RMID, NULL);
         g_mq_prac = -1;
@@ -327,10 +344,11 @@ int attach_ipc(void) {
     g_mq_kasa = msgget(generuj_klucz(IPC_KEY_MQ_KASA), 0);
     g_mq_kasa_odp = msgget(generuj_klucz(IPC_KEY_MQ_KASA_ODP), 0);
     g_mq_bramka = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA), 0);
+    g_mq_bramka_odp = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA_ODP), 0);
     g_mq_prac = msgget(generuj_klucz(IPC_KEY_MQ_PRAC), 0);
     
     if (g_mq_kasa == -1 || g_mq_kasa_odp == -1 || 
-        g_mq_bramka == -1 || g_mq_prac == -1) {
+        g_mq_bramka == -1 || g_mq_bramka_odp == -1 || g_mq_prac == -1) {
         blad_ostrzezenie("msgget (attach)");
         return -1;
     }
@@ -348,6 +366,30 @@ void detach_ipc(void) {
 /* ============================================
  * OPERACJE NA SEMAFORACH
  * ============================================ */
+
+/* Mutex z SEM_UNDO - automatyczne odkręcenie przy śmierci procesu */
+int mutex_lock(int sem_num) {
+    if (g_sem_id == -1) return -2;
+    
+    struct sembuf op = {sem_num, -1, SEM_UNDO};
+    if (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) return -1;
+        if (errno == EIDRM || errno == EINVAL) return -2;
+        return -2;
+    }
+    return 0;
+}
+
+void mutex_unlock(int sem_num) {
+    if (g_sem_id == -1) return;
+    
+    struct sembuf op = {sem_num, +1, SEM_UNDO};
+    while (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) continue;
+        if (errno == EIDRM || errno == EINVAL) return;
+        return;
+    }
+}
 
 /* Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte */
 int sem_wait_ipc(int sem_num) {
@@ -479,7 +521,8 @@ int msg_recv_nowait(int mq_id, void *msg, size_t size, long mtype) {
 }
 
 /* ============================================
- * FUNKCJE POMOCNICZE DLA KARNETÓW
+ * FUNKCJE POMOCNICZE DLA KARNETÓW - O(1) dostęp
+ * ID karnetu = index + 1 (nigdy nie usuwamy karnetów)
  * ============================================ */
 
 int utworz_karnet(TypKarnetu typ, int cena_gr, int vip) {
@@ -487,12 +530,11 @@ int utworz_karnet(TypKarnetu typ, int cena_gr, int vip) {
     
     if (g_shm->liczba_karnetow >= MAX_KARNETOW) {
         MUTEX_SHM_UNLOCK();
-        loguj("BŁĄD: Przekroczono limit karnetów!");
-        return -1;
+        return -1;  /* Bez logowania w hot-path */
     }
     
-    int id = g_shm->nastepny_id_karnetu++;
     int idx = g_shm->liczba_karnetow++;
+    int id = idx + 1;  /* ID = index + 1 (O(1) dostęp) */
     
     Karnet *k = &g_shm->karnety[idx];
     k->id = id;
@@ -513,62 +555,47 @@ int utworz_karnet(TypKarnetu typ, int cena_gr, int vip) {
     return id;
 }
 
+/* O(1) dostęp - idx = id - 1, BEZ mutexa (tylko odczyt) */
 Karnet* pobierz_karnet(int id_karnetu) {
-    if (id_karnetu <= 0) return NULL;
-    
-    MUTEX_SHM_LOCK();
-    
-    for (int i = 0; i < g_shm->liczba_karnetow; i++) {
-        if (g_shm->karnety[i].id == id_karnetu) {
-            Karnet *k = &g_shm->karnety[i];
-            MUTEX_SHM_UNLOCK();
-            return k;
-        }
-    }
-    
-    MUTEX_SHM_UNLOCK();
-    return NULL;
+    if (id_karnetu <= 0 || id_karnetu > g_shm->liczba_karnetow) return NULL;
+    return &g_shm->karnety[id_karnetu - 1];
 }
 
+/* O(1) dostęp - mutex tylko przy zapisie */
 void aktywuj_karnet(int id_karnetu) {
+    if (id_karnetu <= 0 || id_karnetu > g_shm->liczba_karnetow) return;
+    
+    int idx = id_karnetu - 1;
+    Karnet *k = &g_shm->karnety[idx];
+    
+    /* Sprawdź bez mutexa czy już aktywowany */
+    if (k->czas_aktywacji != 0) return;
+    
     MUTEX_SHM_LOCK();
     
-    for (int i = 0; i < g_shm->liczba_karnetow; i++) {
-        if (g_shm->karnety[i].id == id_karnetu) {
-            if (g_shm->karnety[i].czas_aktywacji == 0) {
-                time_t teraz = time(NULL);
-                g_shm->karnety[i].czas_aktywacji = teraz;
-                
-                /* UCINANIE DO KOŃCA DNIA */
-                if (g_shm->czas_konca_dnia > 0 && 
-                    g_shm->karnety[i].typ != KARNET_JEDNORAZOWY) {
-                    int pozostalo = (int)(g_shm->czas_konca_dnia - teraz);
-                    if (pozostalo < 0) pozostalo = 0;
-                    
-                    /* Ucięcie: min(nominalna_ważność, pozostało_do_zamknięcia) */
-                    if (pozostalo < g_shm->karnety[i].czas_waznosci_sek) {
-                        g_shm->karnety[i].czas_waznosci_sek = pozostalo;
-                    }
-                }
+    /* Double-check po wzięciu mutexa */
+    if (k->czas_aktywacji == 0) {
+        time_t teraz = time(NULL);
+        k->czas_aktywacji = teraz;
+        
+        /* UCINANIE DO KOŃCA DNIA */
+        if (g_shm->czas_konca_dnia > 0 && k->typ != KARNET_JEDNORAZOWY) {
+            int pozostalo = (int)(g_shm->czas_konca_dnia - teraz);
+            if (pozostalo < 0) pozostalo = 0;
+            
+            if (pozostalo < k->czas_waznosci_sek) {
+                k->czas_waznosci_sek = pozostalo;
             }
-            break;
         }
     }
     
     MUTEX_SHM_UNLOCK();
 }
 
+/* O(1) dostęp */
 void uzyj_karnet_jednorazowy(int id_karnetu) {
-    MUTEX_SHM_LOCK();
-    
-    for (int i = 0; i < g_shm->liczba_karnetow; i++) {
-        if (g_shm->karnety[i].id == id_karnetu) {
-            g_shm->karnety[i].uzyty = 1;
-            break;
-        }
-    }
-    
-    MUTEX_SHM_UNLOCK();
+    if (id_karnetu <= 0 || id_karnetu > g_shm->liczba_karnetow) return;
+    g_shm->karnety[id_karnetu - 1].uzyty = 1;  /* Atomic write, bez mutexa */
 }
 
 /* ============================================
@@ -576,7 +603,7 @@ void uzyj_karnet_jednorazowy(int id_karnetu) {
  * ============================================ */
 
 void dodaj_log(int id_karnetu, TypLogu typ, int numer_bramki) {
-    sem_wait_ipc(SEM_MUTEX_LOG);
+    mutex_lock(SEM_MUTEX_LOG);  /* SEM_UNDO */
     
     if (g_shm->liczba_logow < MAX_LOGOW) {
         LogEntry *log = &g_shm->logi[g_shm->liczba_logow++];
@@ -586,7 +613,7 @@ void dodaj_log(int id_karnetu, TypLogu typ, int numer_bramki) {
         log->czas = time(NULL);
     }
     
-    sem_signal_ipc(SEM_MUTEX_LOG);
+    mutex_unlock(SEM_MUTEX_LOG);
 }
 
 /* ============================================

@@ -72,9 +72,6 @@ int main(int argc, char *argv[]) {
             break;
         }
         
-        loguj("BRAMKA%d: Klient z karnetem %d (grupa=%d)", 
-              g_numer_bramki, msg.id_karnetu, msg.rozmiar_grupy);
-        
         /* Podczas awarii - czekaj na wznowienie */
         if (g_shm->awaria && !g_koniec) {
             char buf[32];
@@ -87,20 +84,16 @@ int main(int argc, char *argv[]) {
         odp.mtype = msg.pid_klienta;
         
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
-            loguj("BRAMKA%d: Karnet %d nieważny - odmowa", g_numer_bramki, msg.id_karnetu);
             odp.sukces = 0;
-            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+            msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
             continue;
         }
         
         /* Czekaj na miejsce na terenie (dla całej grupy) */
-        loguj("BRAMKA%d: Oczekiwanie na %d miejsc na terenie...", 
-              g_numer_bramki, msg.rozmiar_grupy);
-        
         if (sem_wait_n(SEM_TEREN, msg.rozmiar_grupy) != 0) {
             /* Semafor przerwany - odmów */
             odp.sukces = 0;
-            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+            msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
             continue;
         }
         
@@ -109,8 +102,7 @@ int main(int argc, char *argv[]) {
         if (!czy_karnet_wazny(karnet, time(NULL))) {
             sem_signal_n(SEM_TEREN, msg.rozmiar_grupy); /* Zwróć semafor */
             odp.sukces = 0;
-            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
-            loguj("BRAMKA%d: Karnet wygasł podczas czekania - odmowa", g_numer_bramki);
+            msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
             continue;
         }
         
@@ -118,7 +110,6 @@ int main(int argc, char *argv[]) {
         if (kill(msg.pid_klienta, 0) == -1 && errno == ESRCH) {
             /* Klient nie żyje - zwróć semafor i pomiń */
             sem_signal_n(SEM_TEREN, msg.rozmiar_grupy);
-            loguj("BRAMKA%d: Klient PID %d nie żyje - pomijam", g_numer_bramki, msg.pid_klienta);
             continue;
         }
         
@@ -135,15 +126,12 @@ int main(int argc, char *argv[]) {
         g_shm->osoby_na_terenie += msg.rozmiar_grupy;
         MUTEX_SHM_UNLOCK();
         
-        /* Zaloguj przejście */
+        /* Zaloguj przejście do SHM (nie do stderr) */
         dodaj_log(msg.id_karnetu, LOG_BRAMKA1, g_numer_bramki);
-        
-        loguj("BRAMKA%d: Wpuszczono klienta z karnetem %d", 
-              g_numer_bramki, msg.id_karnetu);
         
         /* Wyślij potwierdzenie */
         odp.sukces = 1;
-        msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
+        msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
     }
     
     loguj("BRAMKA%d: Kończę pracę", g_numer_bramki);
@@ -154,7 +142,7 @@ int main(int argc, char *argv[]) {
         MsgBramkaOdp odp;
         odp.mtype = msg.pid_klienta;
         odp.sukces = 0;
-        msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
+        msg_send_nowait(g_mq_bramka_odp, &odp, sizeof(odp));
     }
     
     detach_ipc();

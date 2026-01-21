@@ -73,12 +73,9 @@ int main(int argc, char *argv[]) {
             odp.mtype = msg.pid_klienta;
             odp.sukces = 0;
             odp.id_karnetu = -1;
-            msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
+            msg_send(g_mq_kasa_odp, &odp, sizeof(odp));  /* BLOKUJĄCE - gwarantuje dostarczenie */
             continue;
         }
-        
-        loguj("KASJER: Obsługuję klienta %d (wiek=%d, dzieci=%d, VIP=%d)",
-              msg.id_klienta, msg.wiek, msg.liczba_dzieci, msg.vip);
         
         /* Domyślna odpowiedź */
         odp.mtype = msg.pid_klienta;
@@ -89,7 +86,6 @@ int main(int argc, char *argv[]) {
         
         /* Sprawdź czy dziecko <8 bez opiekuna */
         if (msg.wiek < WIEK_WYMAGA_OPIEKI && msg.liczba_dzieci == 0) {
-            loguj("KASJER: Odmowa - dziecko %d lat bez opiekuna", msg.wiek);
             SHM_INC(stats.liczba_dzieci_odrzuconych);
             msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
             continue;
@@ -105,7 +101,6 @@ int main(int argc, char *argv[]) {
         /* Utwórz karnet */
         int id = utworz_karnet(typ, cena, msg.vip);
         if (id < 0) {
-            loguj("KASJER: Błąd tworzenia karnetu");
             msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
             continue;
         }
@@ -136,9 +131,6 @@ int main(int argc, char *argv[]) {
             g_shm->stats.liczba_grup_rodzinnych++;
         }
         MUTEX_SHM_UNLOCK();
-        
-        loguj("KASJER: Sprzedano karnet %d (%s) klientowi %d",
-              id, nazwa_karnetu(typ), msg.id_klienta);
         
         /* Wyślij odpowiedź */
         msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
