@@ -599,21 +599,21 @@ void uzyj_karnet_jednorazowy(int id_karnetu) {
 }
 
 /* ============================================
- * FUNKCJE POMOCNICZE DLA LOGÓW
+ * FUNKCJE POMOCNICZE DLA LOGÓW - ATOMOWE
  * ============================================ */
 
 void dodaj_log(int id_karnetu, TypLogu typ, int numer_bramki) {
-    mutex_lock(SEM_MUTEX_LOG);  /* SEM_UNDO */
+    /* Atomowe indeksowanie - BEZ mutexa (unika thundering herd) */
+    int idx = __sync_fetch_and_add(&g_shm->liczba_logow, 1);
     
-    if (g_shm->liczba_logow < MAX_LOGOW) {
-        LogEntry *log = &g_shm->logi[g_shm->liczba_logow++];
+    if (idx < MAX_LOGOW) {
+        LogEntry *log = &g_shm->logi[idx];
         log->id_karnetu = id_karnetu;
         log->typ_bramki = typ;
         log->numer_bramki = numer_bramki;
         log->czas = time(NULL);
     }
-    
-    mutex_unlock(SEM_MUTEX_LOG);
+    /* Jeśli idx >= MAX_LOGOW, log jest "zgubiony" - to OK przy przepełnieniu */
 }
 
 /* ============================================

@@ -77,10 +77,8 @@ static void bezpieczne_zakonczenie(void) {
             break;
     }
     
-    /* ZAWSZE dekrementuj licznik aktywnych klientów */
-    MUTEX_SHM_LOCK();
-    g_shm->aktywni_klienci--;
-    MUTEX_SHM_UNLOCK();
+    /* ATOMOWY dekrement - BEZ mutexa (unika thundering herd) */
+    __sync_fetch_and_sub(&g_shm->aktywni_klienci, 1);
     
     /* Detach IPC na samym końcu */
     detach_ipc();
@@ -124,15 +122,8 @@ int main(int argc, char *argv[]) {
     /* WAŻNE: Zarejestruj cleanup PRZED inkrementacją licznika */
     atexit(bezpieczne_zakonczenie);
     
-    /* Inkrementuj licznik aktywnych klientów */
-    MUTEX_SHM_LOCK();
-    g_shm->aktywni_klienci++;
-    MUTEX_SHM_UNLOCK();
-    
-    loguj("KLIENT %d: Start (wiek=%d, %s, VIP=%d, dzieci=%d)",
-          g_klient.id, g_klient.wiek,
-          g_klient.typ == TYP_ROWERZYSTA ? "rowerzysta" : "pieszy",
-          g_klient.vip, g_klient.liczba_dzieci);
+    /* ATOMOWY inkrement - BEZ mutexa (unika thundering herd) */
+    __sync_fetch_and_add(&g_shm->aktywni_klienci, 1);
     
     /* ========================================
      * KROK 1: KASA

@@ -441,15 +441,8 @@ static void procedura_konca_dnia(void) {
      * 2. Poczeka na wszystkie swoje dzieci (klientów)
      * 3. Zakończy się sam */
     
-    /* Wyczyść kolejkę kasy - odpowiedz odmową czekającym */
-    loguj("  Czyszczenie kolejki kasy...");
-    MsgKasa msg_kasa;
-    while (msg_recv_nowait(g_mq_kasa, &msg_kasa, sizeof(msg_kasa), 0) > 0) {
-        MsgKasaOdp odp = {0};
-        odp.mtype = msg_kasa.pid_klienta;
-        odp.sukces = 0;
-        msg_send_nowait(g_mq_kasa_odp, &odp, sizeof(odp));
-    }
+    /* NIE czyścimy kolejki kasy manualnie - kasjer odmawia w CLOSING 
+     * z msg_send (blokujące), więc odpowiedzi zawsze dotrą */
     
     /* ==========================================
      * FAZA 2: DRAINING (drenowanie)
