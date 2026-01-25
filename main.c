@@ -435,6 +435,15 @@ static void procedura_konca_dnia(void) {
     loguj("  faza_dnia = CLOSING");
     loguj("  czas_konca_dnia = %ld", (long)g_shm->czas_konca_dnia);
     loguj("  aktywni_klienci = %d", g_shm->aktywni_klienci);
+
+    /* Jeśli kończymy dzień podczas awarii, część procesów (klienci/bramki)
+     * może wisieć na SEM_BARIERA_AWARIA. Na koniec dnia chcemy je wypuścić,
+     * żeby mogły dokończyć cleanup i wyjść. */
+    g_awaria = 0;
+    MUTEX_SHM_LOCK();
+    g_shm->awaria = 0;
+    MUTEX_SHM_UNLOCK();
+    odblokuj_czekajacych();
     
     /* NIE zabijaj generatora! Generator sam:
      * 1. Przestanie generować (bo faza_dnia != FAZA_OPEN)

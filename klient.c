@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <errno.h>
 #include <string.h>
 #include <poll.h>
 
@@ -49,6 +50,44 @@ static void symuluj_czas_ms(int ms) {
     if (!g_koniec && ms > 0) {
         poll(NULL, 0, ms);
     }
+}
+
+/*
+ * Wersja "odporna" na zapchanie kolejek SysV:
+ * - nie blokuje się w msgsnd() (używa IPC_NOWAIT)
+ * - stosuje exponential backoff (zmniejsza 100% CPU przy tysiącach procesów)
+ * - w CLOSING/DRAINING lub po koniec_dnia wraca, żeby klient mógł szybko wyjść
+ */
+static int wyslij_z_backoff(int mq_id, void *msg, size_t size) {
+    int delay_ms = 1;
+    const int max_delay_ms = 200;
+
+    while (!g_koniec) {
+        int r = msg_send_nowait(mq_id, msg, size);
+        if (r == 0) return 0;
+        if (r == -2) return -2; /* IPC usunięte */
+
+        /* Jeżeli dzień się kończy, nie próbuj już "przepchać" wiadomości */
+        if (g_shm != NULL) {
+            if (g_shm->koniec_dnia || g_shm->faza_dnia != FAZA_OPEN) {
+                return -1;
+            }
+        }
+
+        /* Gdy main umarł (albo IPC zaraz zniknie), wyjdź */
+        if (!czy_rodzic_zyje()) {
+            return -1;
+        }
+
+        /* Jeśli to nie jest typowy "queue full", potraktuj jako błąd */
+        if (errno != EAGAIN && errno != ENOSPC && errno != EINTR) {
+            return -1;
+        }
+
+        poll(NULL, 0, delay_ms);
+        if (delay_ms < max_delay_ms) delay_ms *= 2;
+    }
+    return -1;
 }
 
 /* Bezpieczne zakończenie - zwalnia semafory, aktualizuje liczniki i detach */
@@ -146,7 +185,8 @@ int main(int argc, char *argv[]) {
     msg_kasa.wiek_dzieci[0] = g_klient.wiek_dzieci[0];
     msg_kasa.wiek_dzieci[1] = g_klient.wiek_dzieci[1];
     
-    if (msg_send(g_mq_kasa, &msg_kasa, sizeof(msg_kasa)) < 0) {
+    /* Nie blokuj się na zapchanej kolejce - backoff + szybkie wyjście w CLOSING */
+    if (wyslij_z_backoff(g_mq_kasa, &msg_kasa, sizeof(msg_kasa)) < 0) {
         return EXIT_SUCCESS;  /* atexit() zrobi cleanup */
     }
     
@@ -186,7 +226,8 @@ int main(int argc, char *argv[]) {
         msg_bramka.rozmiar_grupy = g_klient.rozmiar_grupy;
         msg_bramka.numer_bramki = losuj_zakres(1, LICZBA_BRAMEK1);
         
-        if (msg_send(g_mq_bramka, &msg_bramka, sizeof(msg_bramka)) < 0) break;
+        /* Nie blokuj się na zapchanej kolejce - backoff + szybkie wyjście w CLOSING */
+        if (wyslij_z_backoff(g_mq_bramka, &msg_bramka, sizeof(msg_bramka)) < 0) break;
         
         /* Czekaj na bramkę BLOKUJĄCO - osobna kolejka odpowiedzi */
         MsgBramkaOdp odp_bramka;

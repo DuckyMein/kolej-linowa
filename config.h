@@ -9,9 +9,9 @@
 /* ============================================
  * LIMITY SYSTEMOWE
  * ============================================ */
-#define MAX_KLIENTOW        500     // max procesów klientów jednocześnie
-#define MAX_KARNETOW        1000    // max karnetów w pamięci
-#define MAX_LOGOW           5000    // max wpisów w logu przejść
+#define MAX_KLIENTOW        60000     // max procesów klientów jednocześnie
+#define MAX_KARNETOW        999999 // max karnetów w pamięci
+#define MAX_LOGOW           999999   // max wpisów w logu przejść
 
 /* ============================================
  * INFRASTRUKTURA KOLEI

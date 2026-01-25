@@ -477,7 +477,10 @@ int sem_getval_ipc(int sem_num) {
 
 int msg_send(int mq_id, void *msg, size_t size) {
     while (msgsnd(mq_id, msg, size - sizeof(long), 0) == -1) {
-        if (errno == EINTR) continue;
+        /* BEZ retry na EINTR: pozwól procesom zakończyć się po SIGTERM/SIGINT.
+         * Jeśli syscall został przerwany sygnałem, zwróć do wywołującego,
+         * żeby mógł sprawdzić flagi końca dnia / g_koniec. */
+        if (errno == EINTR) return -1;
         if (errno == EINVAL || errno == EIDRM) return -2; /* IPC usunięte */
         blad_ostrzezenie("msgsnd");
         return -1;

@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
         }
         
         /* Losuj opóźnienie między klientami (0.5-2 sekundy) */
-        int opoznienie = losuj_zakres(500, 2000);
+        int opoznienie = 0;
         poll(NULL, 0, opoznienie);
         
         if (g_koniec || g_shm->faza_dnia != FAZA_OPEN) break;
