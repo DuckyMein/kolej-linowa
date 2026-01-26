@@ -28,6 +28,8 @@ int g_mq_kasa_odp = -1;
 int g_mq_bramka = -1;
 int g_mq_bramka_odp = -1;  /* NOWA - osobna kolejka odpowiedzi bramek */
 int g_mq_prac = -1;
+int g_mq_wyciag_req = -1;  /* kolejka peron->wyciąg */
+int g_mq_wyciag_odp = -1;  /* odpowiedzi wyciągu */
 
 /* Klucz bazowy (ustawiany przy init) */
 static key_t g_klucz_bazowy = -1;
@@ -241,8 +243,31 @@ int init_ipc(int N) {
         return -1;
     }
     
-    loguj("Kolejki komunikatów utworzone (kasa=%d, odp=%d, bramka=%d, bramka_odp=%d, prac=%d)",
-          g_mq_kasa, g_mq_kasa_odp, g_mq_bramka, g_mq_bramka_odp, g_mq_prac);
+    /* Kolejka wyciągu - request */
+    g_mq_wyciag_req = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_REQ), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    if (g_mq_wyciag_req == -1 && errno == EEXIST) {
+        g_mq_wyciag_req = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_REQ), IPC_PERMS);
+        if (g_mq_wyciag_req != -1) msgctl(g_mq_wyciag_req, IPC_RMID, NULL);
+        g_mq_wyciag_req = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_REQ), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    }
+    if (g_mq_wyciag_req == -1) {
+        blad_ostrzezenie("msgget wyciag_req");
+        return -1;
+    }
+    
+    /* Kolejka wyciągu - odpowiedzi */
+    g_mq_wyciag_odp = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    if (g_mq_wyciag_odp == -1 && errno == EEXIST) {
+        g_mq_wyciag_odp = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_ODP), IPC_PERMS);
+        if (g_mq_wyciag_odp != -1) msgctl(g_mq_wyciag_odp, IPC_RMID, NULL);
+        g_mq_wyciag_odp = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    }
+    if (g_mq_wyciag_odp == -1) {
+        blad_ostrzezenie("msgget wyciag_odp");
+        return -1;
+    }
+    
+    loguj("Kolejki komunikatów utworzone");
     
     loguj("Inicjalizacja IPC zakończona pomyślnie");
     return 0;
@@ -302,6 +327,14 @@ void cleanup_ipc(void) {
         msgctl(g_mq_prac, IPC_RMID, NULL);
         g_mq_prac = -1;
     }
+    if (g_mq_wyciag_req != -1) {
+        msgctl(g_mq_wyciag_req, IPC_RMID, NULL);
+        g_mq_wyciag_req = -1;
+    }
+    if (g_mq_wyciag_odp != -1) {
+        msgctl(g_mq_wyciag_odp, IPC_RMID, NULL);
+        g_mq_wyciag_odp = -1;
+    }
     loguj("Kolejki komunikatów usunięte");
     
     loguj("Czyszczenie IPC zakończone");
@@ -346,9 +379,12 @@ int attach_ipc(void) {
     g_mq_bramka = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA), 0);
     g_mq_bramka_odp = msgget(generuj_klucz(IPC_KEY_MQ_BRAMKA_ODP), 0);
     g_mq_prac = msgget(generuj_klucz(IPC_KEY_MQ_PRAC), 0);
+    g_mq_wyciag_req = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_REQ), 0);
+    g_mq_wyciag_odp = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_ODP), 0);
     
     if (g_mq_kasa == -1 || g_mq_kasa_odp == -1 || 
-        g_mq_bramka == -1 || g_mq_bramka_odp == -1 || g_mq_prac == -1) {
+        g_mq_bramka == -1 || g_mq_bramka_odp == -1 || g_mq_prac == -1 ||
+        g_mq_wyciag_req == -1 || g_mq_wyciag_odp == -1) {
         blad_ostrzezenie("msgget (attach)");
         return -1;
     }
@@ -444,6 +480,38 @@ void sem_signal_n(int sem_num, int n) {
     }
 }
 
+/* P() dla N jednostek z SEM_UNDO - automatyczne odkręcenie przy śmierci procesu */
+int sem_wait_n_undo(int sem_num, int n) {
+    if (g_sem_id == -1) return -2;
+    if (n <= 0) return 0;
+    
+    struct sembuf op = {sem_num, (short)-n, SEM_UNDO};
+    while (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) {
+            return -1; /* Przerwane sygnałem */
+        }
+        if (errno == EIDRM || errno == EINVAL) {
+            return -2; /* IPC usunięte */
+        }
+        blad_ostrzezenie("semop P(n) UNDO");
+        return -1;
+    }
+    return 0; /* Sukces */
+}
+
+/* V() dla N jednostek z SEM_UNDO */
+void sem_signal_n_undo(int sem_num, int n) {
+    if (g_sem_id == -1 || n <= 0) return;
+    
+    struct sembuf op = {sem_num, +n, SEM_UNDO};
+    while (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EINTR) continue;
+        if (errno == EIDRM || errno == EINVAL) return;
+        blad_ostrzezenie("semop V(n) UNDO");
+        return;
+    }
+}
+
 int sem_trywait_ipc(int sem_num) {
     if (g_sem_id == -1) return 0;
     
@@ -453,6 +521,20 @@ int sem_trywait_ipc(int sem_num) {
         if (errno == EINTR) return 0;  /* przerwane */
         if (errno == EIDRM || errno == EINVAL) return 0;
         blad_ostrzezenie("semop tryP()");
+        return 0;
+    }
+    return 1;
+}
+
+int sem_trywait_n(int sem_num, int n) {
+    if (g_sem_id == -1 || n <= 0) return 0;
+    
+    struct sembuf op = {sem_num, (short)-n, IPC_NOWAIT};
+    if (semop(g_sem_id, &op, 1) == -1) {
+        if (errno == EAGAIN) return 0; /* brak zasobów */
+        if (errno == EINTR) return 0;  /* przerwane */
+        if (errno == EIDRM || errno == EINVAL) return 0;
+        blad_ostrzezenie("semop tryP(n)");
         return 0;
     }
     return 1;

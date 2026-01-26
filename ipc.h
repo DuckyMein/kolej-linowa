@@ -28,6 +28,8 @@ extern int g_mq_kasa_odp;       // kolejka odpowiedzi z kasy
 extern int g_mq_bramka;         // kolejka do bramek
 extern int g_mq_bramka_odp;     // kolejka odpowiedzi z bramek (NOWA)
 extern int g_mq_prac;           // kolejka pracowników
+extern int g_mq_wyciag_req;     // kolejka peron->wyciąg
+extern int g_mq_wyciag_odp;     // odpowiedzi wyciągu
 
 /* ============================================
  * OCHRONA PROCESÓW POTOMNYCH
@@ -115,10 +117,29 @@ int sem_wait_n(int sem_num, int n);
 void sem_signal_n(int sem_num, int n);
 
 /*
+ * P() dla N jednostek z SEM_UNDO (automatyczne odkręcenie przy śmierci procesu)
+ * Używaj dla SEM_PERON i SEM_TEREN w kliencie!
+ * Zwraca: 0=OK, -1=przerwane sygnałem, -2=IPC usunięte
+ */
+int sem_wait_n_undo(int sem_num, int n);
+
+/*
+ * V() dla N jednostek z SEM_UNDO
+ * WAŻNE: Jeśli P() było z UNDO, V() też musi być z UNDO!
+ */
+void sem_signal_n_undo(int sem_num, int n);
+
+/*
  * Próba P() bez blokowania
  * Zwraca: 1=udało się, 0=semafor=0
  */
 int sem_trywait_ipc(int sem_num);
+
+/*
+ * Próba P(n) bez blokowania
+ * Zwraca: 1=udało się, 0=brak zasobów
+ */
+int sem_trywait_n(int sem_num, int n);
 
 /*
  * Pobiera aktualną wartość semafora

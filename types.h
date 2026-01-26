@@ -128,6 +128,7 @@ typedef struct {
     int osoby_na_terenie;           // aktualnie na terenie stacji
     int osoby_na_gorze;             // aktualnie na górze
     int osoby_na_peronie;           // aktualnie na peronie
+    int osoby_w_krzesle;            // w trakcie wjazdu (na krzesełku)
     int aktualny_rzad;              // 0-17, który rząd jest gotowy
     
     /* Autoincrement ID */
@@ -152,6 +153,7 @@ typedef struct {
     pid_t pid_bramki1[LICZBA_BRAMEK1];
     pid_t pid_pracownik1;
     pid_t pid_pracownik2;
+    pid_t pid_wyciag;               // proces wyciągu
     
 } SharedMemory;
 
@@ -218,5 +220,34 @@ typedef struct {
     int miejsca;                // ile miejsc potrzebuje (1-4)
     int numer_bramki2;          // przez którą bramkę2 wchodzi (1-3)
 } MsgPeron;
+
+/* ============================================
+ * WYCIĄG - TYPY ODPOWIEDZI
+ * ============================================ */
+typedef enum {
+    WYCIAG_ODP_BOARD = 1,       // klient wsiadł (może zwolnić peron)
+    WYCIAG_ODP_ARRIVE = 2,      // klient dojechał na górę
+    WYCIAG_ODP_KONIEC = 3       // ewakuacja / koniec dnia
+} TypWyciagOdp;
+
+/* ============================================
+ * KOMUNIKATY - WYCIĄG REQUEST (klient -> wyciąg)
+ * ============================================ */
+typedef struct {
+    long mtype;                 // MSG_TYP_VIP lub MSG_TYP_NORMALNY
+    pid_t pid_klienta;          // PID klienta
+    int typ_klienta;            // TypKlienta (pieszy/rower)
+    int vip;                    // 0/1
+    int rozmiar_grupy;          // osoby (dorosły + dzieci)
+    int waga_slotow;            // sloty peronu (pieszy=1+dzieci, rower=2+dzieci)
+} MsgWyciagReq;
+
+/* ============================================
+ * KOMUNIKATY - WYCIĄG RESPONSE (wyciąg -> klient)
+ * ============================================ */
+typedef struct {
+    long mtype;                 // = pid klienta
+    TypWyciagOdp typ;           // BOARD/ARRIVE/KONIEC
+} MsgWyciagOdp;
 
 #endif /* TYPES_H */

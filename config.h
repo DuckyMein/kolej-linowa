@@ -31,7 +31,15 @@
 #define CZAS_T2             2       // trasa rowerowa średnia
 #define CZAS_T3             3       // trasa rowerowa trudna
 #define CZAS_T4             4       // trasa piesza
-#define CZAS_WJAZDU         0       // HIGH PERF: natychmiastowy wjazd
+#define CZAS_WJAZDU         0       // DEPRECATED - nieużywane
+
+/* ============================================
+ * WYCIĄG (MODEL RING 18 RZĘDÓW)
+ * Czas przejazdu = 9 * INTERWAL_KRZESELKA_MS
+ * ============================================ */
+#define INTERWAL_KRZESELKA_MS 200   // co ile podjeżdża krzesełko (ms)
+#define KURS_ROWEROWY_CO      3     // co który kurs gwarantuje rower
+#define PERON_SLOTY           4     // max slotów na peronie (pieszy=1, rower=2)
 
 /* ============================================
  * GODZINY PRACY
@@ -89,7 +97,7 @@
 #define SEM_MUTEX_SHM       1       // mutex pamięci współdzielonej (init: 1)
 #define SEM_MUTEX_KASA      2       // mutex kasy (init: 1)
 #define SEM_MUTEX_LOG       3       // mutex logów (init: 1)
-#define SEM_PERON           4       // miejsca w rzędzie krzesełek (init: 4)
+#define SEM_PERON           4       // sloty peronu (init: PERON_SLOTY=4, pieszy=1, rower=2)
 #define SEM_PRACOWNIK1      5       // sygnalizacja dla P1 (init: 0)
 #define SEM_PRACOWNIK2      6       // sygnalizacja dla P2 (init: 0)
 #define SEM_GOTOWY_P1       7       // P1 gotowy po awarii (init: 0)
@@ -118,6 +126,8 @@
 #define IPC_KEY_MQ_BRAMKA   4       // kolejka do bramek
 #define IPC_KEY_MQ_BRAMKA_ODP 5     // kolejka odpowiedzi z bramek (NOWA)
 #define IPC_KEY_MQ_PRAC     6       // kolejka pracowników
+#define IPC_KEY_MQ_WYCIAG_REQ 7     // kolejka peron->wyciąg
+#define IPC_KEY_MQ_WYCIAG_ODP 8     // odpowiedzi wyciągu
 
 /* ============================================
  * ŚCIEŻKI DO PLIKÓW WYKONYWALNYCH
@@ -128,6 +138,7 @@
 #define PATH_PRACOWNIK2     "./pracownik2"
 #define PATH_GENERATOR      "./generator"
 #define PATH_KLIENT         "./klient"
+#define PATH_WYCIAG         "./wyciag"
 
 /* ============================================
  * PLIKI RAPORTÓW
