@@ -72,6 +72,7 @@ static void awaryjny_cleanup(void) {
         if (g_shm->pid_kasjer > 0) kill(g_shm->pid_kasjer, SIGKILL);
         if (g_shm->pid_pracownik1 > 0) kill(g_shm->pid_pracownik1, SIGKILL);
         if (g_shm->pid_pracownik2 > 0) kill(g_shm->pid_pracownik2, SIGKILL);
+        if (g_shm->pid_wyciag > 0) kill(g_shm->pid_wyciag, SIGKILL);
         for (int i = 0; i < LICZBA_BRAMEK1; i++) {
             if (g_shm->pid_bramki1[i] > 0) kill(g_shm->pid_bramki1[i], SIGKILL);
         }
@@ -343,6 +344,15 @@ static int uruchom_procesy_stale(void) {
         loguj("Pracownik2 uruchomiony (PID=%d)", g_shm->pid_pracownik2);
     }
     
+    /* Wyciąg */
+    char *argv_wyciag[] = {PATH_WYCIAG, NULL};
+    g_shm->pid_wyciag = fork_exec(PATH_WYCIAG, argv_wyciag);
+    if (g_shm->pid_wyciag == -1) {
+        loguj("BŁĄD: Nie udało się uruchomić wyciągu");
+    } else {
+        loguj("Wyciąg uruchomiony (PID=%d)", g_shm->pid_wyciag);
+    }
+    
     /* Bramki (4 sztuki) */
     for (int i = 0; i < LICZBA_BRAMEK1; i++) {
         char arg_numer[8];
@@ -508,6 +518,9 @@ static void zakoncz_procesy_potomne(void) {
     }
     if (g_shm->pid_pracownik2 > 0) {
         kill(g_shm->pid_pracownik2, SIGTERM);
+    }
+    if (g_shm->pid_wyciag > 0) {
+        kill(g_shm->pid_wyciag, SIGTERM);
     }
     for (int i = 0; i < LICZBA_BRAMEK1; i++) {
         if (g_shm->pid_bramki1[i] > 0) {
