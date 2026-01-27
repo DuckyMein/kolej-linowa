@@ -26,6 +26,7 @@
 
 static volatile sig_atomic_t g_koniec = 0;
 static Klient g_klient;
+static int g_waga_peronu = 0;  /* ile slotów peronu zajmujemy */
 
 typedef enum {
     STAN_KASA,
@@ -103,13 +104,33 @@ static void bezpieczne_zakonczenie(void) {
         case STAN_NA_TERENIE:
             /* Na terenie - zwolnij SEM_TEREN */
             sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
             break;
             
         case STAN_NA_PERONIE:
-            /* Na peronie ale jeszcze nie wsiadł - zwolnij SEM_TEREN */
+            /* Na peronie - zwolnij SEM_PERON i SEM_TEREN */
+            if (g_waga_peronu > 0) {
+                sem_signal_n(SEM_PERON, g_waga_peronu);
+                g_waga_peronu = 0;
+            }
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
             if (g_wpuszczony_na_teren) {
                 sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+                MUTEX_SHM_LOCK();
+                g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+                MUTEX_SHM_UNLOCK();
             }
+            break;
+            
+        case STAN_W_KRZESLE:
+            /* W krzesełku - liczniki obsługuje wyciąg */
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
             break;
             
         default:
@@ -241,61 +262,150 @@ int main(int argc, char *argv[]) {
         g_wpuszczony_na_teren = 1;
         
         /* ========================================
-         * BRAMKA2 -> PERON -> KRZESEŁKO
+         * BRAMKA2 -> PERON -> WYCIĄG
          * ======================================== */
-        symuluj_czas_ms(100);
         
         int nr_bramki2 = losuj_zakres(1, LICZBA_BRAMEK2);
         dodaj_log(g_klient.id_karnetu, LOG_BRAMKA2, nr_bramki2);
         
-        g_stan = STAN_NA_PERONIE;
+        /* Oblicz wagę slotów peronu: pieszy=1/os, rower=2/os (dziecko rowerzysty też jest rowerzystą) */
+        g_waga_peronu = g_klient.rozmiar_grupy * (g_klient.typ == TYP_ROWERZYSTA ? 2 : 1);
+        
+        /* Sprawdź czy w ogóle zmieścimy się na krzesełko (max 4 sloty) */
+        if (g_waga_peronu > PERON_SLOTY) {
+            /* Grupa za duża - nie wejdziemy (np. rowerzysta + 2 dzieci = 6 > 4) */
+            sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
+            g_wpuszczony_na_teren = 0;
+            g_waga_peronu = 0;
+            break;
+        }
         
         /* Czekaj na awarii jeśli aktywna */
         if (g_shm->awaria && !g_koniec) {
             char buf[32];
-            snprintf(buf, sizeof(buf), "KLIENT %d (peron)", g_klient.id);
+            snprintf(buf, sizeof(buf), "KLIENT %d (przed peronem)", g_klient.id);
             czekaj_na_wznowienie(buf);
         }
         
-        /* Czekaj na miejsce w krzesełku (semafor) */
-        if (sem_wait_n(SEM_PERON, g_klient.rozmiar_grupy) != 0) {
+        /* Czekaj na miejsce na peronie (semafor slotów) */
+        if (sem_wait_n(SEM_PERON, g_waga_peronu) != 0) {
             /* Przerwane - muszę się ewakuować */
             sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
             MUTEX_SHM_LOCK();
             g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
             MUTEX_SHM_UNLOCK();
             g_wpuszczony_na_teren = 0;
+            g_waga_peronu = 0;
             break;
         }
         
-        /* HIGH PERF: Natychmiast zwolnij SEM_PERON */
-        sem_signal_n(SEM_PERON, g_klient.rozmiar_grupy);
+        g_stan = STAN_NA_PERONIE;
         
-        /* Zwolnij teren */
+        /* Zwolnij teren (ale jeszcze trzymamy peron) */
         sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
-        
         MUTEX_SHM_LOCK();
         g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;
         g_shm->osoby_na_peronie += g_klient.rozmiar_grupy;
         MUTEX_SHM_UNLOCK();
-        
         g_wpuszczony_na_teren = 0;
-        g_stan = STAN_W_KRZESLE;
         
-        /* ========================================
-         * WJAZD NA GÓRĘ
-         * ======================================== */
-        if (g_shm->awaria && !g_koniec) {
-            char buf[32];
-            snprintf(buf, sizeof(buf), "KLIENT %d (krzesło)", g_klient.id);
-            czekaj_na_wznowienie(buf);
+        /* Wyślij request do wyciągu */
+        MsgWyciagReq req;
+        req.mtype = g_klient.vip ? MSG_TYP_VIP : MSG_TYP_NORMALNY;
+        req.pid_klienta = g_klient.pid;
+        req.typ_klienta = g_klient.typ;
+        req.vip = g_klient.vip;
+        req.rozmiar_grupy = g_klient.rozmiar_grupy;
+        req.waga_slotow = g_waga_peronu;
+        
+        if (wyslij_z_backoff(g_mq_wyciag_req, &req, sizeof(req)) != 0) {
+            /* Nie udało się wysłać - ewakuacja */
+            sem_signal_n(SEM_PERON, g_waga_peronu);
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
+            g_waga_peronu = 0;
+            break;
         }
         
+        /* Czekaj na BOARD od wyciągu */
+        MsgWyciagOdp odp;
+        int got_board = 0;
+        while (!g_koniec && !got_board) {
+            int r = msg_recv_nowait(g_mq_wyciag_odp, &odp, sizeof(odp), (long)g_klient.pid);
+            if (r > 0) {
+                if (odp.typ == WYCIAG_ODP_BOARD) {
+                    got_board = 1;
+                } else if (odp.typ == WYCIAG_ODP_KONIEC) {
+                    /* Wyciąg kazał wyjść */
+                    sem_signal_n(SEM_PERON, g_waga_peronu);
+                    MUTEX_SHM_LOCK();
+                    g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+                    MUTEX_SHM_UNLOCK();
+                    g_waga_peronu = 0;
+                    g_stan = STAN_KASA;  /* reset stanu */
+                    goto koniec_petli;
+                }
+            } else {
+                poll(NULL, 0, 10);
+            }
+            if (g_shm->koniec_dnia && g_shm->faza_dnia != FAZA_OPEN) {
+                poll(NULL, 0, 50);  /* Cierpliwość - wyciąg nas obsłuży */
+            }
+        }
+        
+        if (!got_board) {
+            /* Przerwane sygnałem */
+            sem_signal_n(SEM_PERON, g_waga_peronu);
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
+            g_waga_peronu = 0;
+            break;
+        }
+        
+        /* BOARD - wsiedliśmy, zwalniamy peron */
+        sem_signal_n(SEM_PERON, g_waga_peronu);
         MUTEX_SHM_LOCK();
         g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
-        g_shm->osoby_na_gorze += g_klient.rozmiar_grupy;
-        g_shm->stats.liczba_przejazdow++;
+        g_shm->osoby_w_krzesle += g_klient.rozmiar_grupy;
         MUTEX_SHM_UNLOCK();
+        g_waga_peronu = 0;
+        g_stan = STAN_W_KRZESLE;
+        
+        /* Czekaj na ARRIVE od wyciągu */
+        int got_arrive = 0;
+        while (!g_koniec && !got_arrive) {
+            int r = msg_recv_nowait(g_mq_wyciag_odp, &odp, sizeof(odp), (long)g_klient.pid);
+            if (r > 0) {
+                if (odp.typ == WYCIAG_ODP_ARRIVE) {
+                    got_arrive = 1;
+                } else if (odp.typ == WYCIAG_ODP_KONIEC) {
+                    /* Wyciąg się zatrzymał - ewakuacja */
+                    MUTEX_SHM_LOCK();
+                    g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
+                    MUTEX_SHM_UNLOCK();
+                    g_stan = STAN_KASA;
+                    goto koniec_petli;
+                }
+            } else {
+                poll(NULL, 0, 10);
+            }
+        }
+        
+        if (!got_arrive) {
+            /* Przerwane - liczymy że wyciąg odkręci liczniki */
+            MUTEX_SHM_LOCK();
+            g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
+            MUTEX_SHM_UNLOCK();
+            break;
+        }
+        
+        /* ARRIVE - jesteśmy na górze (wyciąg już zaktualizował liczniki) */
+        g_stan = STAN_NA_GORZE;
         
         /* ========================================
          * WYJŚCIE ZE STACJI GÓRNEJ
@@ -337,8 +447,9 @@ int main(int argc, char *argv[]) {
             break;
         }
         
-        symuluj_czas_ms(100);
+        //symuluj_czas_ms(100);
     }
     
+koniec_petli:
     return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
 }
