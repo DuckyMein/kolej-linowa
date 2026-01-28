@@ -112,7 +112,7 @@ static void bezpieczne_zakonczenie(void) {
         case STAN_NA_PERONIE:
             /* Na peronie - zwolnij SEM_PERON i SEM_TEREN */
             if (g_waga_peronu > 0) {
-                sem_signal_n(SEM_PERON, g_waga_peronu);
+                sem_signal_n_undo(SEM_PERON, g_waga_peronu);
                 g_waga_peronu = 0;
             }
             MUTEX_SHM_LOCK();
@@ -291,7 +291,7 @@ int main(int argc, char *argv[]) {
         }
         
         /* Czekaj na miejsce na peronie (semafor slotów) */
-        if (sem_wait_n(SEM_PERON, g_waga_peronu) != 0) {
+        if (sem_wait_n_undo(SEM_PERON, g_waga_peronu) != 0) {
             /* Przerwane - muszę się ewakuować */
             sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
             MUTEX_SHM_LOCK();
@@ -323,7 +323,7 @@ int main(int argc, char *argv[]) {
         
         if (wyslij_z_backoff(g_mq_wyciag_req, &req, sizeof(req)) != 0) {
             /* Nie udało się wysłać - ewakuacja */
-            sem_signal_n(SEM_PERON, g_waga_peronu);
+            sem_signal_n_undo(SEM_PERON, g_waga_peronu);
             MUTEX_SHM_LOCK();
             g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
             MUTEX_SHM_UNLOCK();
@@ -341,7 +341,7 @@ int main(int argc, char *argv[]) {
                     got_board = 1;
                 } else if (odp.typ == WYCIAG_ODP_KONIEC) {
                     /* Wyciąg kazał wyjść */
-                    sem_signal_n(SEM_PERON, g_waga_peronu);
+                    sem_signal_n_undo(SEM_PERON, g_waga_peronu);
                     MUTEX_SHM_LOCK();
                     g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
                     MUTEX_SHM_UNLOCK();
@@ -359,7 +359,7 @@ int main(int argc, char *argv[]) {
         
         if (!got_board) {
             /* Przerwane sygnałem */
-            sem_signal_n(SEM_PERON, g_waga_peronu);
+            sem_signal_n_undo(SEM_PERON, g_waga_peronu);
             MUTEX_SHM_LOCK();
             g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
             MUTEX_SHM_UNLOCK();
@@ -368,7 +368,7 @@ int main(int argc, char *argv[]) {
         }
         
         /* BOARD - wsiedliśmy, zwalniamy peron */
-        sem_signal_n(SEM_PERON, g_waga_peronu);
+        sem_signal_n_undo(SEM_PERON, g_waga_peronu);
         MUTEX_SHM_LOCK();
         g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
         g_shm->osoby_w_krzesle += g_klient.rozmiar_grupy;
