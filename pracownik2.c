@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
+#include <poll.h>
 
 #include "config.h"
 #include "types.h"
@@ -13,7 +15,7 @@
  * 
  * Odpowiedzialności:
  * 1. Obsługa wysiadania ze krzesełek
- * 2. Kierowanie do wyjść (2 wyjścia)
+ * 2. Kierowanie do wyjść (2 bramki górne - dummy)
  * 3. Obsługa awarii (STOP/START)
  * 4. Komunikacja z Pracownikiem1
  */
@@ -43,11 +45,21 @@ int main(int argc, char *argv[]) {
     /* Ustaw aby zginąć gdy rodzic (main) umrze */
     ustaw_smierc_z_rodzicem();
     
-    /* Obsługa sygnałów */
-    signal(SIGTERM, handler_sigterm);
-    signal(SIGINT, handler_sigterm);
-    signal(SIGUSR1, handler_sigusr1);
-    signal(SIGUSR2, handler_sigusr2);
+    /* Obsługa sygnałów - sigaction BEZ SA_RESTART */
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+    
+    sa.sa_handler = handler_sigterm;
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
+    
+    sa.sa_handler = handler_sigusr1;
+    sigaction(SIGUSR1, &sa, NULL);
+    
+    sa.sa_handler = handler_sigusr2;
+    sigaction(SIGUSR2, &sa, NULL);
     
     /* Dołącz do IPC */
     if (attach_ipc() != 0) {
@@ -55,52 +67,47 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    loguj("PRACOWNIK2: Rozpoczynam pracę na stacji górnej");
+    loguj("PRACOWNIK2: Rozpoczynam pracę na stacji górnej (2 bramki dummy)");
     
-    /* Główna pętla - czekaj na SIGTERM */
+    /* Główna pętla - blokujące msg_recv */
     while (!g_koniec) {
-        /* Sprawdź komunikaty */
+        /* Odbierz komunikat BLOKUJĄCO (mtype=2 = do P2) */
         MsgPracownicy msg;
-        int ret = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), 2); /* mtype=2 = do P2 */
+        int ret = msg_recv(g_mq_prac, &msg, sizeof(msg), 2);
         
-        if (ret > 0) {
-            switch (msg.typ_komunikatu) {
-                case MSG_TYP_STOP:
-                    loguj("PRACOWNIK2: Otrzymano STOP");
-                    g_awaria = 1;
-                    
-                    /* Potwierdź gotowość */
-                    MsgPracownicy odp;
-                    odp.mtype = 1; /* do P1 */
-                    odp.typ_komunikatu = MSG_TYP_GOTOWY;
-                    odp.nadawca = getpid();
-                    msg_send(g_mq_prac, &odp, sizeof(odp));
-                    
-                    /* Sygnalizuj gotowość przez semafor */
-                    sem_signal_ipc(SEM_GOTOWY_P2);
-                    break;
-                    
-                case MSG_TYP_START:
-                    loguj("PRACOWNIK2: Otrzymano START - wznawianie");
-                    g_awaria = 0;
-                    break;
-                    
-                case MSG_TYP_GOTOWY:
-                    loguj("PRACOWNIK2: P1 gotowy");
-                    break;
-            }
+        if (ret < 0 || g_koniec) {
+            /* Przerwane sygnałem lub koniec - wyjdź */
+            break;
         }
         
-        /* Podczas awarii - nie obsługuj klientów */
-        if (g_awaria || g_shm->awaria) {
-            usleep(100000); /* 100ms */
-            continue;
+        switch (msg.typ_komunikatu) {
+            case MSG_TYP_STOP:
+                loguj("PRACOWNIK2: Otrzymano STOP");
+                g_awaria = 1;
+                
+                /* Potwierdź gotowość */
+                MsgPracownicy odp;
+                odp.mtype = 1; /* do P1 */
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send(g_mq_prac, &odp, sizeof(odp));
+                
+                /* Sygnalizuj gotowość przez semafor */
+                sem_signal_ipc(SEM_GOTOWY_P2);
+                break;
+                
+            case MSG_TYP_START:
+                loguj("PRACOWNIK2: Otrzymano START - wznawianie");
+                g_awaria = 0;
+                break;
+                
+            case MSG_TYP_GOTOWY:
+                loguj("PRACOWNIK2: P1 gotowy");
+                break;
         }
         
-        /* Obsługa stacji górnej */
-        /* W pełnej implementacji tu byłaby logika wysiadania */
-        
-        usleep(100000); /* 100ms */
+        /* BRAMKI GÓRNE (dummy) - zawsze przepuszczają */
+        /* Klienci po prostu przechodzą, logowanie w klient.c */
     }
     
     loguj("PRACOWNIK2: Kończę pracę");

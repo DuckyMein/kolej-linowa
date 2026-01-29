@@ -139,6 +139,7 @@
 #define PATH_GENERATOR      "./generator"
 #define PATH_KLIENT         "./klient"
 #define PATH_WYCIAG         "./wyciag"
+#define PATH_SPRZATACZ      "./sprzatacz"
 
 /* ============================================
  * PLIKI RAPORTÓW

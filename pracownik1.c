@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
+#include <poll.h>
 
 #include "config.h"
 #include "types.h"
@@ -43,11 +45,21 @@ int main(int argc, char *argv[]) {
     /* Ustaw aby zginąć gdy rodzic (main) umrze */
     ustaw_smierc_z_rodzicem();
     
-    /* Obsługa sygnałów */
-    signal(SIGTERM, handler_sigterm);
-    signal(SIGINT, handler_sigterm);
-    signal(SIGUSR1, handler_sigusr1);
-    signal(SIGUSR2, handler_sigusr2);
+    /* Obsługa sygnałów - sigaction BEZ SA_RESTART */
+    struct sigaction sa;
+    memset(&sa, 0, sizeof(sa));
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+    
+    sa.sa_handler = handler_sigterm;
+    sigaction(SIGTERM, &sa, NULL);
+    sigaction(SIGINT, &sa, NULL);
+    
+    sa.sa_handler = handler_sigusr1;
+    sigaction(SIGUSR1, &sa, NULL);
+    
+    sa.sa_handler = handler_sigusr2;
+    sigaction(SIGUSR2, &sa, NULL);
     
     /* Dołącz do IPC */
     if (attach_ipc() != 0) {
@@ -57,67 +69,45 @@ int main(int argc, char *argv[]) {
     
     loguj("PRACOWNIK1: Rozpoczynam pracę na stacji dolnej");
     
-    /* Główna pętla - czekaj na SIGTERM */
+    /* HIGH PERFORMANCE: Natychmiastowe zwalnianie miejsc na peronie */
+    /* Pracownik1 ciągle odnawia miejsca w krzesełkach */
+    
+    /* Główna pętla - blokujące msg_recv */
     while (!g_koniec) {
-        /* Sprawdź komunikaty od pracowników */
+        /* Odbierz komunikat BLOKUJĄCO (mtype=1 = do P1) */
         MsgPracownicy msg;
-        int ret = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), 1); /* mtype=1 = do P1 */
+        int ret = msg_recv(g_mq_prac, &msg, sizeof(msg), 1);
         
-        if (ret > 0) {
-            switch (msg.typ_komunikatu) {
-                case MSG_TYP_STOP:
-                    loguj("PRACOWNIK1: Otrzymano STOP");
-                    g_awaria = 1;
-                    
-                    /* Potwierdź gotowość */
-                    MsgPracownicy odp;
-                    odp.mtype = 2; /* do P2 */
-                    odp.typ_komunikatu = MSG_TYP_GOTOWY;
-                    odp.nadawca = getpid();
-                    msg_send(g_mq_prac, &odp, sizeof(odp));
-                    
-                    /* Sygnalizuj gotowość przez semafor */
-                    sem_signal_ipc(SEM_GOTOWY_P1);
-                    break;
-                    
-                case MSG_TYP_START:
-                    loguj("PRACOWNIK1: Otrzymano START - wznawianie");
-                    g_awaria = 0;
-                    break;
-                    
-                case MSG_TYP_GOTOWY:
-                    loguj("PRACOWNIK1: P2 gotowy");
-                    break;
-            }
+        if (ret < 0 || g_koniec) {
+            /* Przerwane sygnałem lub koniec - wyjdź */
+            break;
         }
         
-        /* Podczas awarii - nie obsługuj klientów */
-        if (g_awaria || g_shm->awaria) {
-            usleep(100000); /* 100ms */
-            continue;
+        switch (msg.typ_komunikatu) {
+            case MSG_TYP_STOP:
+                loguj("PRACOWNIK1: Otrzymano STOP");
+                g_awaria = 1;
+                
+                /* Potwierdź gotowość */
+                MsgPracownicy odp;
+                odp.mtype = 2; /* do P2 */
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send(g_mq_prac, &odp, sizeof(odp));
+                
+                /* Sygnalizuj gotowość przez semafor */
+                sem_signal_ipc(SEM_GOTOWY_P1);
+                break;
+                
+            case MSG_TYP_START:
+                loguj("PRACOWNIK1: Otrzymano START - wznawianie");
+                g_awaria = 0;
+                break;
+                
+            case MSG_TYP_GOTOWY:
+                loguj("PRACOWNIK1: P2 gotowy");
+                break;
         }
-        
-        /* Obsługa peronu - kontrola rzędów krzesełek */
-        /* W pełnej implementacji tu byłaby logika krzesełek */
-        
-        /* Symulacja cyklu krzesełka (uproszczona) */
-        static int cykl = 0;
-        cykl++;
-        
-        if (cykl % 50 == 0) { /* Co 5 sekund (50 * 100ms) */
-            /* Odnów miejsca w rzędzie (nowy rząd nadjechał) */
-            int aktualna_wartosc = sem_getval_ipc(SEM_PERON);
-            if (aktualna_wartosc >= 0 && aktualna_wartosc < KRZESLA_W_RZEDZIE) {
-                sem_signal_n(SEM_PERON, KRZESLA_W_RZEDZIE - aktualna_wartosc);
-            }
-            
-            /* Aktualizuj numer rzędu */
-            MUTEX_SHM_LOCK();
-            g_shm->aktualny_rzad = (g_shm->aktualny_rzad + 1) % LICZBA_RZEDOW;
-            MUTEX_SHM_UNLOCK();
-        }
-        
-        usleep(100000); /* 100ms */
     }
     
     loguj("PRACOWNIK1: Kończę pracę");

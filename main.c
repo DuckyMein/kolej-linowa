@@ -37,6 +37,10 @@ static int g_czas_symulacji = CZAS_SYMULACJI;      /* czas symulacji */
 static int g_ipc_zainicjalizowane = 0;             /* czy IPC zostało utworzone */
 static int g_cleanup_wykonany = 0;                 /* czy cleanup już był */
 
+static volatile sig_atomic_t g_child_event = 0;    /* flaga: jest SIGCHLD do obsłużenia */
+static pid_t g_pgid = -1;                          /* PGID grupy symulacji */
+static pid_t g_pid_sprzatacz = -1;                 /* PID strażnika czyszczącego IPC */
+
 /* ============================================
  * DEKLARACJE FUNKCJI
  * ============================================ */
@@ -46,6 +50,11 @@ static void handler_sigterm(int sig);
 static void handler_sigusr1(int sig);
 static void handler_sigusr2(int sig);
 static void handler_sigchld(int sig);
+
+static void start_sprzatacz(void);
+static int pid_jest_procesem_stalym(pid_t pid);
+static void reap_children_and_check(void);
+static void panic_shutdown(const char *powod, pid_t pid, int kod, int przez_sygnal);
 
 static int uruchom_procesy_stale(void);
 static pid_t fork_exec(const char *program, char *const argv[]);
@@ -109,6 +118,12 @@ int main(int argc, char *argv[]) {
     /* 3. Inicjalizacja losowania */
     inicjalizuj_losowanie();
     
+    /* 3b. Nowa grupa procesów: umożliwia killpg() całej symulacji */
+    if (setpgid(0, 0) == -1 && errno != EPERM) {
+        blad_ostrzezenie("setpgid");
+    }
+    g_pgid = getpgrp();
+    
     /* 4. Instalacja handlerów sygnałów */
     instaluj_handlery_sygnalow();
     
@@ -127,6 +142,9 @@ int main(int argc, char *argv[]) {
     loguj("Czas końca dnia: %ld (za %d sekund)", 
           (long)g_shm->czas_konca_dnia, g_czas_symulacji);
     
+    /* 5b. Uruchom strażnika: posprząta IPC nawet po SIGKILL main */
+    start_sprzatacz();
+
     /* 6. Uruchomienie procesów stałych */
     loguj("Uruchamianie procesów stałych...");
     if (uruchom_procesy_stale() != 0) {
@@ -209,6 +227,7 @@ static void handler_sigint(int sig) {
     /* Bezpiecznie zapisz do shm */
     if (g_shm != NULL) {
         g_shm->koniec_dnia = 1;
+        g_shm->faza_dnia = FAZA_CLOSING;
     }
 }
 
@@ -217,6 +236,7 @@ static void handler_sigterm(int sig) {
     g_zamykanie = 1;
     if (g_shm != NULL) {
         g_shm->koniec_dnia = 1;
+        g_shm->faza_dnia = FAZA_CLOSING;
     }
 }
 
@@ -276,16 +296,107 @@ static void handler_sigusr2(int sig) {
 static void handler_sigchld(int sig) {
     (void)sig;
     int saved_errno = errno;
-    
-    /* Zbierz wszystkie zakończone dzieci (unikaj zombie) */
-    pid_t pid;
-    int status;
-    while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
-        /* Opcjonalnie: loguj zakończenie procesu */
-        /* Nie logujemy tutaj bo to handler sygnału */
-    }
-    
+    g_child_event = 1; /* obsłużymy w pętli głównej (poza handlerem) */
     errno = saved_errno;
+}
+
+
+/* ============================================
+ * PANIC / MONITOROWANIE DZIECI
+ * ============================================ */
+
+static void start_sprzatacz(void) {
+    char arg_pgid[32];
+    snprintf(arg_pgid, sizeof(arg_pgid), "%d", (int)g_pgid);
+    char *argv_s[] = {PATH_SPRZATACZ, arg_pgid, NULL};
+
+    g_pid_sprzatacz = fork_exec(PATH_SPRZATACZ, argv_s);
+    if (g_pid_sprzatacz == -1) {
+        loguj("UWAGA: nie udało się uruchomić sprzątacza IPC (%s)", PATH_SPRZATACZ);
+    } else {
+        loguj("Sprzątacz IPC uruchomiony (PID=%d, PGID=%d)", g_pid_sprzatacz, (int)g_pgid);
+    }
+}
+
+static int pid_jest_procesem_stalym(pid_t pid) {
+    if (g_shm == NULL || pid <= 0) return 0;
+
+    if (pid == g_shm->pid_kasjer) return 1;
+    if (pid == g_shm->pid_generator) return 1;
+    if (pid == g_shm->pid_pracownik1) return 1;
+    if (pid == g_shm->pid_pracownik2) return 1;
+    if (pid == g_shm->pid_wyciag) return 1;
+
+    for (int i = 0; i < LICZBA_BRAMEK1; i++) {
+        if (pid == g_shm->pid_bramki1[i]) return 1;
+    }
+    return 0;
+}
+
+static void panic_shutdown(const char *powod, pid_t pid, int kod, int przez_sygnal) {
+    if (g_zamykanie) return;
+    g_zamykanie = 1;
+
+    if (g_shm != NULL) {
+        g_shm->panic = 1;
+        g_shm->panic_pid = pid;
+        g_shm->panic_sig = przez_sygnal ? kod : 0;
+        g_shm->faza_dnia = FAZA_CLOSING;
+        g_shm->koniec_dnia = 1;
+        g_shm->czas_konca_dnia = time(NULL);
+        g_shm->kolej_aktywna = 0;
+        g_shm->awaria = 0;
+    }
+
+    if (przez_sygnal) {
+        loguj("=== PANIC SHUTDOWN === %s (PID=%d, SIG=%d)", powod, (int)pid, kod);
+    } else {
+        loguj("=== PANIC SHUTDOWN === %s (PID=%d, exit=%d)", powod, (int)pid, kod);
+    }
+
+    /* Odblokuj ewentualnych czekających na barierze awarii */
+    odblokuj_czekajacych();
+
+    /* Poproś całą grupę o zakończenie. SIGKILL wykona sprzątacz po śmierci main. */
+    if (g_pgid > 1) {
+        kill(-g_pgid, SIGTERM);
+    }
+
+    /* Daj chwilę na zejście procesów i wyczyść IPC */
+    poll(NULL, 0, 200);
+
+    if (!g_cleanup_wykonany && g_ipc_zainicjalizowane) {
+        g_cleanup_wykonany = 1;
+        cleanup_ipc();
+        g_ipc_zainicjalizowane = 0;
+    }
+
+    _exit(EXIT_FAILURE);
+}
+
+static void reap_children_and_check(void) {
+    if (!g_child_event) return;
+    g_child_event = 0;
+
+    int status;
+    pid_t pid;
+
+    while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+        /* Jeśli trwa normalne zamykanie, ignoruj zakończenia */
+        if (g_shm != NULL && (g_shm->koniec_dnia || g_shm->faza_dnia != FAZA_OPEN || g_zamykanie)) {
+            continue;
+        }
+
+        if (pid_jest_procesem_stalym(pid)) {
+            if (WIFSIGNALED(status)) {
+                panic_shutdown("Proces stały zakończony sygnałem", pid, WTERMSIG(status), 1);
+            } else if (WIFEXITED(status)) {
+                panic_shutdown("Proces stały zakończony", pid, WEXITSTATUS(status), 0);
+            } else {
+                panic_shutdown("Proces stały zakończony (inne)", pid, status, 0);
+            }
+        }
+    }
 }
 
 /* ============================================
@@ -392,12 +503,20 @@ static void petla_glowna(void) {
     int ostatni_raport = 0;
     
     while (!g_zamykanie) {
-        /* Sprawdź czy czas symulacji minął */
+        /* Sprawdź czy czas symulacji minął — PRZED reapem, żeby uniknąć fałszywego panic */
         int czas_uplynal = (int)czas_symulacji(czas_startu);
         
         if (czas_uplynal >= g_czas_symulacji) {
             loguj("Czas symulacji (%d sek) upłynął", g_czas_symulacji);
+            g_shm->koniec_dnia = 1;
+            g_shm->faza_dnia = FAZA_CLOSING;
             break;
+        }
+
+        /* Monitoruj dzieci — po sprawdzeniu czasu */
+        reap_children_and_check();
+        if (g_shm != NULL && g_shm->panic && !g_shm->koniec_dnia && g_shm->faza_dnia == FAZA_OPEN) {
+            panic_shutdown("PANIC (zgłoszone przez proces potomny)", g_shm->panic_pid, g_shm->panic_sig, 1);
         }
         
         /* Raport co 30 sekund */

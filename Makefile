@@ -10,7 +10,7 @@ LDFLAGS =
 HEADERS = config.h types.h ipc.h utils.h
 
 # Programy do zbudowania
-PROGRAMS = main kasjer bramka pracownik1 pracownik2 generator klient wyciag
+PROGRAMS = main kasjer bramka pracownik1 pracownik2 generator klient wyciag sprzatacz
 
 # Moduły wspólne (kompilowane do .o)
 COMMON_OBJ = ipc.o utils.o
@@ -53,6 +53,9 @@ klient: klient.o $(COMMON_OBJ)
 wyciag: wyciag.o $(COMMON_OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+sprzatacz: sprzatacz.o $(COMMON_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
 # ============================================
 # PLIKI OBIEKTOWE
 # ============================================
@@ -79,6 +82,9 @@ klient.o: klient.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 wyciag.o: wyciag.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+sprzatacz.o: sprzatacz.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 ipc.o: ipc.c ipc.h config.h types.h

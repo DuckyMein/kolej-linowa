@@ -5,7 +5,6 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <poll.h>
-
 #include "config.h"
 #include "types.h"
 #include "ipc.h"
@@ -21,16 +20,35 @@
  */
 
 static volatile sig_atomic_t g_koniec = 0;
+static volatile sig_atomic_t g_child_event = 0;
 
 static void handler_sigterm(int sig) {
     (void)sig;
     g_koniec = 1;
 }
 
-/* SIGCHLD - ignorujemy, zbierzemy na końcu przez waitpid */
+/* SIGCHLD - ustawiamy flagę, reaping w pętli */
 static void handler_sigchld(int sig) {
     (void)sig;
-    /* Nic nie robimy - waitpid na końcu zbierze wszystkie dzieci */
+    g_child_event = 1;
+}
+
+static void reap_children_and_maybe_panic(void) {
+    if (!g_child_event) return;
+    g_child_event = 0;
+
+    int status;
+    pid_t pid;
+    while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+        /* jeśli klient zginął sygnałem w OPEN → PANIC */
+        if (WIFSIGNALED(status) && g_shm && g_shm->faza_dnia == FAZA_OPEN) {
+            g_shm->panic = 1;
+            g_shm->panic_pid = pid;
+            g_shm->panic_sig = WTERMSIG(status);
+            if (g_shm->pid_main > 0) kill(g_shm->pid_main, SIGTERM);
+            g_koniec = 1;
+        }
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -73,6 +91,7 @@ int main(int argc, char *argv[]) {
     
     /* Główna pętla generowania - TYLKO gdy FAZA_OPEN */
     while (!g_koniec && g_shm->faza_dnia == FAZA_OPEN) {
+        reap_children_and_maybe_panic();
         /* Sprawdź czas */
         if (czy_koniec_symulacji(czas_startu, czas_symulacji)) {
             break;
@@ -156,15 +175,22 @@ int main(int argc, char *argv[]) {
     
     loguj("GENERATOR: Kończę generowanie (wygenerowano %d klientów)", id_klienta);
     
-    /* WAŻNE: Czekaj BLOKUJĄCO na zakończenie WSZYSTKICH dzieci (klientów) */
-    loguj("GENERATOR: Czekam na zakończenie wszystkich klientów...");
     int status;
     pid_t child_pid;
-    while ((child_pid = waitpid(-1, &status, 0)) > 0) {
-        /* Klient się zakończył */
+    if (g_shm && g_shm->panic) {
+        /* PANIC: nie czekaj, killpg zakończy klientów */
+        while ((child_pid = waitpid(-1, &status, WNOHANG)) > 0) {
+            (void)child_pid;
+        }
+        loguj("GENERATOR: Kończę (panic)");
+    } else {
+        /* Normalny shutdown: czekaj na wszystkich klientów */
+        loguj("GENERATOR: Czekam na zakończenie wszystkich klientów...");
+        while ((child_pid = waitpid(-1, &status, 0)) > 0) {
+            (void)child_pid;
+        }
+        loguj("GENERATOR: Wszyscy klienci zakończyli pracę");
     }
-    
-    loguj("GENERATOR: Wszyscy klienci zakończyli pracę");
     detach_ipc();
     
     return EXIT_SUCCESS;

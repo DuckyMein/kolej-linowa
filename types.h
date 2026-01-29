@@ -123,7 +123,12 @@ typedef struct {
     FazaDnia faza_dnia;             // OPEN / CLOSING / DRAINING
     time_t czas_konca_dnia;         // kiedy kończy się dzień (absolutny timestamp)
     int aktywni_klienci;            // ile procesów klienta żyje (do drenowania)
-    
+
+    /* PANIC: awaryjne zamykanie po śmierci procesu */
+    int panic;                      // 0=OK, 1=panic shutdown
+    pid_t panic_pid;                // PID, który wywołał panic (jeśli znany)
+    int panic_sig;                  // sygnał (jeśli znany)
+
     /* Liczniki bieżące */
     int osoby_na_terenie;           // aktualnie na terenie stacji
     int osoby_na_gorze;             // aktualnie na górze

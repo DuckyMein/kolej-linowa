@@ -127,10 +127,9 @@ static void bezpieczne_zakonczenie(void) {
             break;
             
         case STAN_W_KRZESLE:
-            /* W krzesełku - liczniki obsługuje wyciąg */
-            MUTEX_SHM_LOCK();
-            g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
-            MUTEX_SHM_UNLOCK();
+            /* W krzesełku: osoby_w_krzesle przenosi WYCIĄG przy ARRIVE.
+             * Nie dekrementuj tutaj, bo łatwo o podwójny dekrement (sygnał/EINTR).
+             */
             break;
             
         default:
@@ -367,14 +366,17 @@ int main(int argc, char *argv[]) {
             break;
         }
         
-        /* BOARD - wsiedliśmy, zwalniamy peron */
+        /* BOARD - od tego momentu jesteśmy "w krzesełku".
+         * Ustaw stan PRZED zwolnieniem peronu: jeśli dostaniemy sygnał w środku,
+         * SEM_UNDO odda sloty peronu automatycznie przy wyjściu procesu.
+         */
+        g_stan = STAN_W_KRZESLE;
         sem_signal_n_undo(SEM_PERON, g_waga_peronu);
         MUTEX_SHM_LOCK();
         g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
         g_shm->osoby_w_krzesle += g_klient.rozmiar_grupy;
         MUTEX_SHM_UNLOCK();
         g_waga_peronu = 0;
-        g_stan = STAN_W_KRZESLE;
         
         /* Czekaj na ARRIVE od wyciągu */
         int got_arrive = 0;
@@ -384,10 +386,9 @@ int main(int argc, char *argv[]) {
                 if (odp.typ == WYCIAG_ODP_ARRIVE) {
                     got_arrive = 1;
                 } else if (odp.typ == WYCIAG_ODP_KONIEC) {
-                    /* Wyciąg się zatrzymał - ewakuacja */
-                    MUTEX_SHM_LOCK();
-                    g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
-                    MUTEX_SHM_UNLOCK();
+                    /* Wyciąg się zatrzymał - ewakuacja.
+                     * Nie dotykamy osoby_w_krzesle: wyciąg sam domyka liczniki przy shutdown.
+                     */
                     g_stan = STAN_KASA;
                     goto koniec_petli;
                 }
@@ -397,10 +398,7 @@ int main(int argc, char *argv[]) {
         }
         
         if (!got_arrive) {
-            /* Przerwane - liczymy że wyciąg odkręci liczniki */
-            MUTEX_SHM_LOCK();
-            g_shm->osoby_w_krzesle -= g_klient.rozmiar_grupy;
-            MUTEX_SHM_UNLOCK();
+            /* Przerwane sygnałem - nie ruszaj osoby_w_krzesle (może być już przeniesione). */
             break;
         }
         
