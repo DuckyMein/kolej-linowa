@@ -175,22 +175,13 @@ int main(int argc, char *argv[]) {
     
     loguj("GENERATOR: Kończę generowanie (wygenerowano %d klientów)", id_klienta);
     
+    /* WNOHANG: nie blokuj - klienci dostaną PDEATHSIG (SIGTERM) gdy generator wyjdzie */
     int status;
     pid_t child_pid;
-    if (g_shm && g_shm->panic) {
-        /* PANIC: nie czekaj, killpg zakończy klientów */
-        while ((child_pid = waitpid(-1, &status, WNOHANG)) > 0) {
-            (void)child_pid;
-        }
-        loguj("GENERATOR: Kończę (panic)");
-    } else {
-        /* Normalny shutdown: czekaj na wszystkich klientów */
-        loguj("GENERATOR: Czekam na zakończenie wszystkich klientów...");
-        while ((child_pid = waitpid(-1, &status, 0)) > 0) {
-            (void)child_pid;
-        }
-        loguj("GENERATOR: Wszyscy klienci zakończyli pracę");
+    while ((child_pid = waitpid(-1, &status, WNOHANG)) > 0) {
+        (void)child_pid;
     }
+    loguj("GENERATOR: Kończę");
     detach_ipc();
     
     return EXIT_SUCCESS;

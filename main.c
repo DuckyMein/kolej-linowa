@@ -76,6 +76,17 @@ static void awaryjny_cleanup(void) {
         fprintf(stderr, "\n[AWARYJNE ZAMKNIĘCIE] Sprzątanie zasobów IPC...\n");
     }
     
+    /* Zabij całą grupę procesów */
+    if (g_pgid > 1) {
+        kill(-g_pgid, SIGKILL);
+    }
+
+    /* Zabij sprzątacza (żeby nie blokował waitpid) */
+    if (g_pid_sprzatacz > 0) {
+        kill(g_pid_sprzatacz, SIGKILL);
+        g_pid_sprzatacz = -1;
+    }
+
     /* Zabij wszystkie procesy potomne */
     if (g_shm != NULL) {
         if (g_shm->pid_kasjer > 0) kill(g_shm->pid_kasjer, SIGKILL);
@@ -88,8 +99,9 @@ static void awaryjny_cleanup(void) {
         if (g_shm->pid_generator > 0) kill(g_shm->pid_generator, SIGKILL);
     }
     
-    /* Czekaj aż WSZYSTKIE procesy potomne się zamkną */
-    while (waitpid(-1, NULL, 0) > 0);
+    /* Zbierz zombie (WNOHANG - nie blokuj) */
+    poll(NULL, 0, 200);
+    while (waitpid(-1, NULL, WNOHANG) > 0);
     
     /* Wyczyść IPC */
     if (g_ipc_zainicjalizowane) {
@@ -593,24 +605,33 @@ static void procedura_konca_dnia(void) {
     g_shm->faza_dnia = FAZA_DRAINING;
     MUTEX_SHM_UNLOCK();
     
-    /* Czekaj na zakończenie GENERATORA
-     * Generator czeka BLOKUJĄCO na wszystkie swoje dzieci (klienci),
-     * więc gdy generator się zakończy, wszyscy klienci już wyszli */
+    /* Czekaj na zakończenie GENERATORA (z timeout)
+     * Generator robi WNOHANG i wychodzi szybko.
+     * Klienci dostaną PDEATHSIG po śmierci generatora. */
     if (g_shm->pid_generator > 0) {
-        loguj("  Czekam na generator (PID %d) i jego klientów...", g_shm->pid_generator);
+        loguj("  Czekam na generator (PID %d)...", g_shm->pid_generator);
+        int timeout_ms = 3000;  /* 3 sekundy max */
+        pid_t ret = 0;
         int status;
-        pid_t ret;
-        while ((ret = waitpid(g_shm->pid_generator, &status, 0)) == -1) {
-            if (errno == EINTR) continue; /* Przerwane sygnałem - kontynuuj czekanie */
-            break; /* Inny błąd */
+        while (timeout_ms > 0) {
+            ret = waitpid(g_shm->pid_generator, &status, WNOHANG);
+            if (ret > 0 || (ret == -1 && errno != EINTR)) break;
+            poll(NULL, 0, 100);
+            timeout_ms -= 100;
         }
         if (ret > 0) {
             loguj("  Generator zakończył pracę");
+        } else {
+            loguj("  Generator nie zakończył się w czasie - wymuszam");
+            kill(g_shm->pid_generator, SIGKILL);
+            waitpid(g_shm->pid_generator, NULL, WNOHANG);
         }
         g_shm->pid_generator = 0;
     }
     
-    loguj("Wszyscy klienci opuścili stację");
+    /* Daj chwilę klientom na zakończenie (PDEATHSIG + EINTR) */
+    loguj("  Czekam na klientów (max 2s)...");
+    poll(NULL, 0, 2000);
     
     /* ==========================================
      * FAZA 3: SHUTDOWN
@@ -628,6 +649,19 @@ static void procedura_konca_dnia(void) {
 }
 
 static void zakoncz_procesy_potomne(void) {
+    /* Najpierw zabij sprzątacza - on czeka na śmierć main, więc blokuje waitpid(-1) */
+    if (g_pid_sprzatacz > 0) {
+        kill(g_pid_sprzatacz, SIGKILL);
+        waitpid(g_pid_sprzatacz, NULL, 0);
+        g_pid_sprzatacz = -1;
+        loguj("Sprzątacz zakończony (normalne zamknięcie)");
+    }
+
+    /* Wyślij SIGTERM do CAŁEJ grupy (łapie też ewentualnych orphan klientów) */
+    if (g_pgid > 1) {
+        kill(-g_pgid, SIGTERM);
+    }
+
     /* Wyślij SIGTERM do wszystkich procesów stałych */
     if (g_shm->pid_kasjer > 0) {
         kill(g_shm->pid_kasjer, SIGTERM);
@@ -650,20 +684,24 @@ static void zakoncz_procesy_potomne(void) {
         kill(g_shm->pid_generator, SIGTERM);
     }
     
-    /* Czekaj na zakończenie WSZYSTKICH dzieci (blokujące, bez timeout) */
+    /* Czekaj na zakończenie dzieci z timeout */
     loguj("Oczekiwanie na zakończenie procesów potomnych...");
     
-    while (1) {
-        pid_t pid = waitpid(-1, NULL, 0);  /* BLOKUJĄCE */
-        if (pid == -1) {
-            if (errno == ECHILD) {
-                /* Brak więcej dzieci - WSZYSTKIE zamknięte */
-                break;
-            }
-            /* Inny błąd - przerwane sygnałem, kontynuuj */
-            if (errno == EINTR) continue;
-            break;
+    int wait_ms = 3000;  /* 3 sekundy max */
+    while (wait_ms > 0) {
+        pid_t pid = waitpid(-1, NULL, WNOHANG);
+        if (pid == -1 && errno == ECHILD) break;  /* brak dzieci */
+        if (pid <= 0) {
+            poll(NULL, 0, 100);
+            wait_ms -= 100;
         }
+    }
+    
+    /* Jeśli ktoś jeszcze żyje - SIGKILL */
+    if (wait_ms <= 0 && g_pgid > 1) {
+        loguj("Wymuszam SIGKILL na pozostałych procesach");
+        kill(-g_pgid, SIGKILL);
+        while (waitpid(-1, NULL, WNOHANG) > 0);
     }
     
     loguj("Wszystkie procesy potomne zakończone");
