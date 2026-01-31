@@ -3,6 +3,7 @@
 #include <string.h>
 #include <errno.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -87,9 +88,18 @@ int czy_rodzic_zyje(void) {
  * FUNKCJE POMOCNICZE (prywatne)
  * ============================================ */
 
+static void ensure_ftok_file(void) {
+    int fd = open(FTOK_FILE, O_CREAT | O_RDWR, 0644);
+    if (fd == -1) {
+        blad_krytyczny("open FTOK_FILE");
+    }
+    close(fd);
+}
+
 static key_t generuj_klucz(int offset) {
     if (g_klucz_bazowy == -1) {
-        g_klucz_bazowy = ftok(".", IPC_KEY_BASE);
+        ensure_ftok_file();
+        g_klucz_bazowy = ftok(FTOK_FILE, IPC_KEY_BASE);
         if (g_klucz_bazowy == -1) {
             blad_krytyczny("ftok");
         }
@@ -105,7 +115,8 @@ int init_ipc(int N) {
     loguj("Inicjalizacja IPC (N=%d)...", N);
     
     /* 1. Generuj klucz bazowy */
-    g_klucz_bazowy = ftok(".", IPC_KEY_BASE);
+    ensure_ftok_file();
+    g_klucz_bazowy = ftok(FTOK_FILE, IPC_KEY_BASE);
     if (g_klucz_bazowy == -1) {
         blad_ostrzezenie("ftok");
         return -1;
@@ -339,6 +350,46 @@ void cleanup_ipc(void) {
     
     loguj("Czyszczenie IPC zakończone");
 }
+/* ============================================
+ * AWARYJNE CZYSZCZENIE IPC PO KLUCZACH
+ * (bez attach/init) - używane przez sprzatacz
+ * ============================================ */
+void cleanup_ipc_by_keys(void) {
+    ensure_ftok_file();
+    key_t base = ftok(FTOK_FILE, IPC_KEY_BASE);
+    if (base == -1) return;
+
+    int shmid = shmget(base + IPC_KEY_SHM, 1, 0);
+    if (shmid != -1) shmctl(shmid, IPC_RMID, NULL);
+
+    int semid = semget(base + IPC_KEY_SEM, 1, 0);
+    if (semid != -1) semctl(semid, 0, IPC_RMID);
+
+    int mqid;
+
+    mqid = msgget(base + IPC_KEY_MQ_KASA, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_KASA_ODP, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_BRAMKA, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_BRAMKA_ODP, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_PRAC, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_WYCIAG_REQ, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_WYCIAG_ODP, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+}
+
+
 
 /* ============================================
  * DOŁĄCZANIE DO IPC (procesy potomne)
@@ -346,7 +397,8 @@ void cleanup_ipc(void) {
 
 int attach_ipc(void) {
     /* Generuj klucz bazowy */
-    g_klucz_bazowy = ftok(".", IPC_KEY_BASE);
+    ensure_ftok_file();
+    g_klucz_bazowy = ftok(FTOK_FILE, IPC_KEY_BASE);
     if (g_klucz_bazowy == -1) {
         blad_ostrzezenie("ftok (attach)");
         return -1;

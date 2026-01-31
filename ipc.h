@@ -65,6 +65,12 @@ int init_ipc(int N);
  */
 void cleanup_ipc(void);
 
+/*
+ * Awaryjne czyszczenie IPC po kluczach (bez attach/init).
+ * Używane przez sprzatacz oraz przy starcie gdy wykryjemy crash.
+ */
+void cleanup_ipc_by_keys(void);
+
 /* ============================================
  * DOŁĄCZANIE DO IPC (procesy potomne)
  * ============================================ */

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -40,6 +41,8 @@ static int g_cleanup_wykonany = 0;                 /* czy cleanup już był */
 static volatile sig_atomic_t g_child_event = 0;    /* flaga: jest SIGCHLD do obsłużenia */
 static pid_t g_pgid = -1;                          /* PGID grupy symulacji */
 static pid_t g_pid_sprzatacz = -1;                 /* PID strażnika czyszczącego IPC */
+static int g_owner_fd = -1;                        /* fd pliku blokady właściciela */
+static int g_raport_wygenerowany = 0;              /* czy raport już zapisany */
 
 /* ============================================
  * DEKLARACJE FUNKCJI
@@ -63,6 +66,8 @@ static void procedura_konca_dnia(void);
 static void generuj_raport_koncowy(void);
 static void petla_glowna(void);
 static void awaryjny_cleanup(void);
+static void owner_lock_setup_and_maybe_cleanup(void);
+static void owner_lock_mark_clean(void);
 
 /* ============================================
  * CLEANUP PRZY WYJŚCIU (atexit)
@@ -76,16 +81,8 @@ static void awaryjny_cleanup(void) {
         fprintf(stderr, "\n[AWARYJNE ZAMKNIĘCIE] Sprzątanie zasobów IPC...\n");
     }
     
-    /* Zabij całą grupę procesów */
-    if (g_pgid > 1) {
-        kill(-g_pgid, SIGKILL);
-    }
-
-    /* Zabij sprzątacza (żeby nie blokował waitpid) */
-    if (g_pid_sprzatacz > 0) {
-        kill(g_pid_sprzatacz, SIGKILL);
-        g_pid_sprzatacz = -1;
-    }
+        /* Sprzątacz jest od tego, by posprzątać po śmierci main (PDEATHSIG).
+     * Nie zabijamy go tutaj, bo to może uniemożliwić cleanup po crashu. */
 
     /* Zabij wszystkie procesy potomne */
     if (g_shm != NULL) {
@@ -108,6 +105,80 @@ static void awaryjny_cleanup(void) {
         cleanup_ipc();
     }
 }
+/* ============================================
+ * OWNER LOCK (twarda gwarancja po zabiciu sprzątacza)
+ *
+ * Mechanizm:
+ * - LOCK_EX na OWNER_LOCK_FILE → nie uruchomisz 2 instancji równolegle
+ * - W pliku trzymamy znacznik DIRTY=1/0
+ * - Jeśli poprzednia instancja padła (DIRTY=1), na starcie sprzątamy IPC po kluczach
+ * ============================================ */
+static int read_dirty_flag(int fd) {
+    char buf[128];
+    lseek(fd, 0, SEEK_SET);
+    ssize_t n = read(fd, buf, sizeof(buf)-1);
+    if (n <= 0) return 0;
+    buf[n] = '\0';
+    return (strstr(buf, "DIRTY=1") != NULL);
+}
+
+static void owner_lock_write_state(int dirty) {
+    if (g_owner_fd < 0) return;
+    char buf[256];
+    int len = snprintf(buf, sizeof(buf),
+                       "DIRTY=%d\nPID_MAIN=%d\nPGID=%d\nPID_SPRZATACZ=%d\n",
+                       dirty, (int)getpid(), (int)g_pgid, (int)g_pid_sprzatacz);
+    ftruncate(g_owner_fd, 0);
+    lseek(g_owner_fd, 0, SEEK_SET);
+    (void)write(g_owner_fd, buf, (size_t)len);
+    fsync(g_owner_fd);
+}
+
+static void owner_lock_setup_and_maybe_cleanup(void) {
+    /* FTOK_FILE musi istnieć, bo klucze IPC od tego zależą */
+    int fd_ftok = open(FTOK_FILE, O_CREAT | O_RDWR, 0644);
+    if (fd_ftok != -1) close(fd_ftok);
+
+    g_owner_fd = open(OWNER_LOCK_FILE, O_CREAT | O_RDWR, 0644);
+    if (g_owner_fd == -1) {
+        blad_krytyczny("open OWNER_LOCK_FILE");
+    }
+
+    /* lock całego pliku */
+    struct flock fl;
+    memset(&fl, 0, sizeof(fl));
+    fl.l_type = F_WRLCK;
+    fl.l_whence = SEEK_SET;
+    fl.l_start = 0;
+    fl.l_len = 0;
+
+    if (fcntl(g_owner_fd, F_SETLK, &fl) == -1) {
+        if (errno == EACCES || errno == EAGAIN) {
+            fprintf(stderr, "BŁĄD: Druga instancja symulacji już działa (lock: %s).\n", OWNER_LOCK_FILE);
+            exit(EXIT_FAILURE);
+        }
+        blad_krytyczny("fcntl lock OWNER_LOCK_FILE");
+    }
+
+    /* Jeśli poprzedni run padł, posprzątaj IPC zanim utworzysz nowe */
+    if (read_dirty_flag(g_owner_fd)) {
+        fprintf(stderr, "[START] Wykryto nieczyste zakończenie (DIRTY=1) - czyszczę IPC po kluczach...\n");
+        cleanup_ipc_by_keys();
+    }
+
+    /* Zaznacz że jesteśmy w trakcie działania */
+    owner_lock_write_state(1);
+}
+
+static void owner_lock_mark_clean(void) {
+    owner_lock_write_state(0);
+    if (g_owner_fd >= 0) {
+        close(g_owner_fd);
+        g_owner_fd = -1;
+    }
+}
+
+
 
 /* ============================================
  * MAIN
@@ -138,6 +209,9 @@ int main(int argc, char *argv[]) {
     
     /* 4. Instalacja handlerów sygnałów */
     instaluj_handlery_sygnalow();
+
+    /* 4a. Owner lock + ewentualny cleanup po crashu */
+    owner_lock_setup_and_maybe_cleanup();
     
     /* 5. Inicjalizacja IPC */
     loguj("Inicjalizacja zasobów IPC...");
@@ -180,6 +254,7 @@ int main(int argc, char *argv[]) {
     loguj("Czyszczenie zasobów...");
     g_cleanup_wykonany = 1;
     cleanup_ipc();
+    owner_lock_mark_clean();
     g_ipc_zainicjalizowane = 0;
     
     printf("\n==============================================\n");
@@ -338,6 +413,7 @@ static int pid_jest_procesem_stalym(pid_t pid) {
     if (pid == g_shm->pid_pracownik1) return 1;
     if (pid == g_shm->pid_pracownik2) return 1;
     if (pid == g_shm->pid_wyciag) return 1;
+    if (pid == g_pid_sprzatacz) return 1;
 
     for (int i = 0; i < LICZBA_BRAMEK1; i++) {
         if (pid == g_shm->pid_bramki1[i]) return 1;
@@ -649,17 +725,14 @@ static void procedura_konca_dnia(void) {
 }
 
 static void zakoncz_procesy_potomne(void) {
-    /* Najpierw zabij sprzątacza - on czeka na śmierć main, więc blokuje waitpid(-1) */
-    if (g_pid_sprzatacz > 0) {
-        kill(g_pid_sprzatacz, SIGKILL);
-        waitpid(g_pid_sprzatacz, NULL, 0);
-        g_pid_sprzatacz = -1;
-        loguj("Sprzątacz zakończony (normalne zamknięcie)");
-    }
-
     /* Wyślij SIGTERM do CAŁEJ grupy (łapie też ewentualnych orphan klientów) */
     if (g_pgid > 1) {
         kill(-g_pgid, SIGTERM);
+    }
+
+    /* Sprzątacz: zakończ go (bez cleanup, bo main żyje) aby nie blokował waitpid */
+    if (g_pid_sprzatacz > 0) {
+        kill(g_pid_sprzatacz, SIGTERM);
     }
 
     /* Wyślij SIGTERM do wszystkich procesów stałych */
@@ -687,7 +760,7 @@ static void zakoncz_procesy_potomne(void) {
     /* Czekaj na zakończenie dzieci z timeout */
     loguj("Oczekiwanie na zakończenie procesów potomnych...");
     
-    int wait_ms = 3000;  /* 3 sekundy max */
+    int wait_ms = 8000;  /* 8 sekund max */
     while (wait_ms > 0) {
         pid_t pid = waitpid(-1, NULL, WNOHANG);
         if (pid == -1 && errno == ECHILD) break;  /* brak dzieci */
@@ -697,21 +770,42 @@ static void zakoncz_procesy_potomne(void) {
         }
     }
     
-    /* Jeśli ktoś jeszcze żyje - SIGKILL */
-    if (wait_ms <= 0 && g_pgid > 1) {
-        loguj("Wymuszam SIGKILL na pozostałych procesach");
-        kill(-g_pgid, SIGKILL);
-        while (waitpid(-1, NULL, WNOHANG) > 0);
+    /* Jeśli ktoś jeszcze żyje - wymuś zamknięcie przez sprzątacza
+ * (zapewnia cleanup IPC nawet jeśli main utknął). */
+if (wait_ms <= 0) {
+    loguj("Timeout: procesy potomne nie zakończyły się - wymuszam shutdown");
+    /* raport best-effort zanim ubijemy wszystko */
+    generuj_raport_koncowy();
+    fflush(NULL);
+
+    if (g_pid_sprzatacz > 0) {
+        /* SIGUSR1 = FORCE: zabij grupę i wyczyść IPC nawet gdy main żyje */
+        kill(g_pid_sprzatacz, SIGUSR1);
+    } else {
+        /* brak sprzątacza → best-effort: sprzątnij IPC po kluczach */
+        cleanup_ipc_by_keys();
     }
-    
-    loguj("Wszystkie procesy potomne zakończone");
+    _exit(EXIT_FAILURE);
 }
+
+/* Grzecznie zakończ sprzątacza (bez czyszczenia IPC, bo main żyje) */
+if (g_pid_sprzatacz > 0) {
+    kill(g_pid_sprzatacz, SIGTERM);
+    waitpid(g_pid_sprzatacz, NULL, 0);
+    g_pid_sprzatacz = -1;
+}
+
+loguj("Wszystkie procesy potomne zakończone");
+}
+
 
 /* ============================================
  * RAPORT KOŃCOWY
  * ============================================ */
 
 static void generuj_raport_koncowy(void) {
+    if (g_raport_wygenerowany) return;
+    g_raport_wygenerowany = 1;
     loguj("Generowanie raportu końcowego...");
     
     /* Otwórz plik raportu */

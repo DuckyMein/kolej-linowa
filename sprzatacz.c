@@ -11,6 +11,7 @@
 #include <poll.h>
 
 #include "config.h"
+#include "ipc.h"
 
 /*
  * KOLEJ KRZESEŁKOWA - SPRZĄTACZ IPC (GUARDIAN)
@@ -23,40 +24,12 @@
  */
 
 static volatile sig_atomic_t g_sig = 0;
+static volatile sig_atomic_t g_force = 0;
 static int g_pgid = -1;
 
 static void on_signal(int sig) {
+    if (sig == SIGUSR1) g_force = 1;
     g_sig = sig;
-}
-
-static void try_remove_sem(key_t base) {
-    int semid = semget(base + IPC_KEY_SEM, 1, 0);
-    if (semid != -1) semctl(semid, 0, IPC_RMID);
-}
-
-static void try_remove_shm(key_t base) {
-    int shmid = shmget(base + IPC_KEY_SHM, 1, 0);
-    if (shmid != -1) shmctl(shmid, IPC_RMID, NULL);
-}
-
-static void try_remove_mq(key_t base, int offset) {
-    int mqid = msgget(base + offset, 0);
-    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
-}
-
-static void cleanup_ipc_by_keys(void) {
-    key_t base = ftok(".", IPC_KEY_BASE);
-    if (base == -1) return;
-
-    try_remove_shm(base);
-    try_remove_sem(base);
-    try_remove_mq(base, IPC_KEY_MQ_KASA);
-    try_remove_mq(base, IPC_KEY_MQ_KASA_ODP);
-    try_remove_mq(base, IPC_KEY_MQ_BRAMKA);
-    try_remove_mq(base, IPC_KEY_MQ_BRAMKA_ODP);
-    try_remove_mq(base, IPC_KEY_MQ_PRAC);
-    try_remove_mq(base, IPC_KEY_MQ_WYCIAG_REQ);
-    try_remove_mq(base, IPC_KEY_MQ_WYCIAG_ODP);
 }
 
 int main(int argc, char *argv[]) {
@@ -75,6 +48,7 @@ int main(int argc, char *argv[]) {
     sigemptyset(&sa.sa_mask);
     sigaction(SIGTERM, &sa, NULL);
     sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGUSR1, &sa, NULL);
 
     /* gdy main umrze (nawet SIGKILL) → dostaniemy SIGTERM */
     prctl(PR_SET_PDEATHSIG, SIGTERM);
@@ -84,6 +58,15 @@ int main(int argc, char *argv[]) {
 
     /* Czekamy na sygnał */
     while (!g_sig) pause();
+
+    /*
+     * Normalny shutdown: main żyje i prosi sprzątacza o wyjście.
+     * Wtedy NIE zabijamy grupy i NIE czyścimy IPC.
+     * Sprzątanie uruchamiamy tylko gdy main umarł (ppid==1) lub gdy wymuszono (SIGUSR1).
+     */
+    if (!g_force && getppid() != 1) {
+        return 0;
+    }
 
     /* Zabij całą grupę symulacji */
     if (g_pgid > 1) {

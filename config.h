@@ -6,6 +6,12 @@
  * Plik zawiera wszystkie stałe i parametry systemu
  */
 
+
+/* ============================================
+ * STAŁE DLA FTOK / LOCK (odporność na crash)
+ * ============================================ */
+#define FTOK_FILE          "/tmp/kolej_krzeselkowa_ipc.ftok"
+#define OWNER_LOCK_FILE    "/tmp/kolej_krzeselkowa_owner.lock"
 /* ============================================
  * LIMITY SYSTEMOWE
  * ============================================ */
