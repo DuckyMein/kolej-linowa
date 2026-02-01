@@ -424,6 +424,20 @@ int attach_ipc(void) {
         g_shm = NULL;
         return -1;
     }
+
+    /* Upewnij się, że proces jest w grupie procesu MAIN.
+     * To jest kluczowe: sprzątacz zabija całą grupę (kill(-pgid,...)).
+     * Jeśli jakiś proces (np. wyciąg/klient) wyląduje w innym PGID, zostanie "persistent" po SIGKILL main.
+     */
+    if (g_shm != NULL && g_shm->pid_main > 1) {
+        if (setpgid(0, g_shm->pid_main) == -1) {
+            /* EPERM oznacza zwykle inną sesję/grupę; ignorujemy, bo nie możemy tego naprawić tutaj. */
+            if (errno != EPERM) {
+                /* nie logujemy w hot-path */
+            }
+        }
+    }
+
     
     /* Pobierz kolejki komunikatów */
     g_mq_kasa = msgget(generuj_klucz(IPC_KEY_MQ_KASA), 0);
