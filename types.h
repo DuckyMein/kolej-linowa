@@ -159,6 +159,9 @@ typedef struct {
     pid_t pid_pracownik1;
     pid_t pid_pracownik2;
     pid_t pid_wyciag;               // proces wyciągu
+
+    /* AWARIA: który pracownik zainicjował STOP (do SIGUSR2 / wznowienia) */
+    pid_t pid_awaria_inicjator;
     
 } SharedMemory;
 

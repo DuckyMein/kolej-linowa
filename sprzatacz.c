@@ -22,7 +22,7 @@
  *
  * Problemy, które ta wersja rozwiązuje:
  * - getppid()==1 jest zawodne (race) -> używamy kill(parent_pid,0) + weryfikacja /proc/<pid>/exe
- * - część procesów może nie być w PGID -> dodatkowy kill po nazwie binarki (/proc/*/exe)
+ * - część procesów może nie być w PGID -> dodatkowy kill po nazwie binarki (/proc/<pid>/exe)
  */
 
 static volatile sig_atomic_t g_sig = 0;

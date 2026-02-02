@@ -12,16 +12,20 @@
 
 /*
  * KOLEJ KRZESEŁKOWA - PRACOWNIK 2 (Stacja górna)
- * 
- * Odpowiedzialności:
- * 1. Obsługa wysiadania ze krzesełek
- * 2. Kierowanie do wyjść (2 bramki górne - dummy)
- * 3. Obsługa awarii (STOP/START)
- * 4. Komunikacja z Pracownikiem1
+ *
+ * Wymaganie z zadania (awaria):
+ * - SIGUSR1: pracownik zatrzymuje kolej
+ * - SIGUSR2: tylko pracownik, który zatrzymał, może wznowić (po handshake)
  */
 
+#define MY_MTYPE    2
+#define OTHER_MTYPE 1
+
 static volatile sig_atomic_t g_koniec = 0;
-static volatile sig_atomic_t g_awaria = 0;
+static volatile sig_atomic_t g_stop_req = 0;
+static volatile sig_atomic_t g_start_req = 0;
+
+static int g_jest_inicjatorem = 0;
 
 static void handler_sigterm(int sig) {
     (void)sig;
@@ -30,88 +34,203 @@ static void handler_sigterm(int sig) {
 
 static void handler_sigusr1(int sig) {
     (void)sig;
-    g_awaria = 1;
+    g_stop_req = 1;
 }
 
 static void handler_sigusr2(int sig) {
     (void)sig;
-    g_awaria = 0;
+    g_start_req = 1;
+}
+
+static int czekaj_na_gotowy(int timeout_ms) {
+    int waited = 0;
+    while (!g_koniec) {
+        MsgPracownicy msg;
+        int r = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), MY_MTYPE);
+        if (r >= 0) {
+            if (msg.typ_komunikatu == MSG_TYP_GOTOWY) {
+                return 0;
+            }
+            if (msg.typ_komunikatu == MSG_TYP_STOP) {
+                MUTEX_SHM_LOCK();
+                g_shm->awaria = 1;
+                g_shm->kolej_aktywna = 0;
+                MUTEX_SHM_UNLOCK();
+
+                MsgPracownicy odp;
+                odp.mtype = OTHER_MTYPE;
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
+                continue;
+            }
+            if (msg.typ_komunikatu == MSG_TYP_START) {
+                MsgPracownicy odp;
+                odp.mtype = OTHER_MTYPE;
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
+                continue;
+            }
+        }
+
+        if (timeout_ms >= 0 && waited >= timeout_ms) {
+            return -1;
+        }
+        poll(NULL, 0, 20);
+        waited += 20;
+    }
+    return -1;
+}
+
+static void wykonaj_stop_inicjator(void) {
+    int jestem_wlascicielem = 0;
+
+    MUTEX_SHM_LOCK();
+    if (!g_shm->awaria) {
+        g_shm->awaria = 1;
+        g_shm->kolej_aktywna = 0;
+        g_shm->stats.liczba_zatrzyman++;
+        g_shm->pid_awaria_inicjator = getpid();
+        jestem_wlascicielem = 1;
+    } else if (g_shm->pid_awaria_inicjator == getpid()) {
+        jestem_wlascicielem = 1;
+    }
+    MUTEX_SHM_UNLOCK();
+
+    if (!jestem_wlascicielem) {
+        return;
+    }
+
+    g_jest_inicjatorem = 1;
+    loguj("PRACOWNIK2: STOP (inicjator) - kolej zatrzymana");
+
+    MsgPracownicy msg;
+    msg.mtype = OTHER_MTYPE;
+    msg.typ_komunikatu = MSG_TYP_STOP;
+    msg.nadawca = getpid();
+    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
+
+    if (czekaj_na_gotowy(2000) == 0) {
+        loguj("PRACOWNIK2: Drugi pracownik GOTOWY (STOP)");
+    } else {
+        loguj("PRACOWNIK2: Brak GOTOWY od P1 (STOP) - kontynuuję (timeout)");
+    }
+}
+
+static void wykonaj_start_inicjator(void) {
+    MUTEX_SHM_LOCK();
+    int moja_awaria = (g_shm->pid_awaria_inicjator == getpid());
+    MUTEX_SHM_UNLOCK();
+
+    if (!moja_awaria) {
+        loguj("PRACOWNIK2: Ignoruję START - nie jestem inicjatorem");
+        return;
+    }
+
+    loguj("PRACOWNIK2: START (inicjator) - proszę P1 o gotowość");
+
+    MsgPracownicy msg;
+    msg.mtype = OTHER_MTYPE;
+    msg.typ_komunikatu = MSG_TYP_START;
+    msg.nadawca = getpid();
+    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
+
+    if (czekaj_na_gotowy(2000) == 0) {
+        loguj("PRACOWNIK2: P1 GOTOWY (START)");
+    } else {
+        loguj("PRACOWNIK2: Brak GOTOWY od P1 (START) - kontynuuję (timeout)");
+    }
+
+    MUTEX_SHM_LOCK();
+    g_shm->awaria = 0;
+    g_shm->kolej_aktywna = 1;
+    g_shm->pid_awaria_inicjator = 0;
+    MUTEX_SHM_UNLOCK();
+
+    odblokuj_czekajacych();
+
+    g_jest_inicjatorem = 0;
+    loguj("PRACOWNIK2: Kolej wznowiona");
 }
 
 int main(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
-    
-    /* Ustaw aby zginąć gdy rodzic (main) umrze */
+
     ustaw_smierc_z_rodzicem();
-    
-    /* Obsługa sygnałów - sigaction BEZ SA_RESTART */
+
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_flags = 0;
     sigemptyset(&sa.sa_mask);
-    
+
     sa.sa_handler = handler_sigterm;
     sigaction(SIGTERM, &sa, NULL);
     sigaction(SIGINT, &sa, NULL);
-    
+
     sa.sa_handler = handler_sigusr1;
     sigaction(SIGUSR1, &sa, NULL);
-    
+
     sa.sa_handler = handler_sigusr2;
     sigaction(SIGUSR2, &sa, NULL);
-    
-    /* Dołącz do IPC */
+
     if (attach_ipc() != 0) {
         loguj("PRACOWNIK2: Błąd dołączania do IPC");
         return EXIT_FAILURE;
     }
-    
-    loguj("PRACOWNIK2: Rozpoczynam pracę na stacji górnej (2 bramki dummy)");
-    
-    /* Główna pętla - blokujące msg_recv */
+
+    loguj("PRACOWNIK2: Rozpoczynam pracę");
+
     while (!g_koniec) {
-        /* Odbierz komunikat BLOKUJĄCO (mtype=2 = do P2) */
+        if (g_stop_req) {
+            g_stop_req = 0;
+            wykonaj_stop_inicjator();
+        }
+        if (g_start_req) {
+            g_start_req = 0;
+            wykonaj_start_inicjator();
+        }
+
         MsgPracownicy msg;
-        int ret = msg_recv(g_mq_prac, &msg, sizeof(msg), 2);
-        
-        if (ret < 0 || g_koniec) {
-            /* Przerwane sygnałem lub koniec - wyjdź */
+        int ret = msg_recv(g_mq_prac, &msg, sizeof(msg), MY_MTYPE);
+        if (ret < 0) {
+            continue; /* EINTR -> obsłuż flagi */
+        }
+        if (g_koniec) {
             break;
         }
-        
+
         switch (msg.typ_komunikatu) {
-            case MSG_TYP_STOP:
-                loguj("PRACOWNIK2: Otrzymano STOP");
-                g_awaria = 1;
-                
-                /* Potwierdź gotowość */
+            case MSG_TYP_STOP: {
+                loguj("PRACOWNIK2: Otrzymano STOP (od P1) - potwierdzam GOTOWY");
+                MUTEX_SHM_LOCK();
+                g_shm->awaria = 1;
+                g_shm->kolej_aktywna = 0;
+                MUTEX_SHM_UNLOCK();
+
                 MsgPracownicy odp;
-                odp.mtype = 1; /* do P1 */
+                odp.mtype = OTHER_MTYPE;
                 odp.typ_komunikatu = MSG_TYP_GOTOWY;
                 odp.nadawca = getpid();
-                msg_send(g_mq_prac, &odp, sizeof(odp));
-                
-                /* Sygnalizuj gotowość przez semafor */
-                sem_signal_ipc(SEM_GOTOWY_P2);
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
                 break;
-                
-            case MSG_TYP_START:
-                loguj("PRACOWNIK2: Otrzymano START - wznawianie");
-                g_awaria = 0;
+            }
+            case MSG_TYP_START: {
+                loguj("PRACOWNIK2: Otrzymano START (od P1) - potwierdzam GOTOWY");
+                MsgPracownicy odp;
+                odp.mtype = OTHER_MTYPE;
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
                 break;
-                
+            }
             case MSG_TYP_GOTOWY:
-                loguj("PRACOWNIK2: P1 gotowy");
                 break;
         }
-        
-        /* BRAMKI GÓRNE (dummy) - zawsze przepuszczają */
-        /* Klienci po prostu przechodzą, logowanie w klient.c */
     }
-    
+
     loguj("PRACOWNIK2: Kończę pracę");
     detach_ipc();
-    
     return EXIT_SUCCESS;
 }

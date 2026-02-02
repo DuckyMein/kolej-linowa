@@ -329,55 +329,45 @@ static void handler_sigterm(int sig) {
 
 static void handler_sigusr1(int sig) {
     (void)sig;
-    g_awaria = 1;
-    loguj("!!! SYGNAŁ SIGUSR1 - AWARIA (STOP) !!!");
-    if (g_shm != NULL) {
-        g_shm->awaria = 1;
-        g_shm->kolej_aktywna = 0;
-        g_shm->stats.liczba_zatrzyman++;
+    loguj("SYGNAŁ SIGUSR1 - AWARIA (STOP) -> przekazuję do pracownika");
+
+    if (g_shm == NULL) {
+        return;
     }
-    
-    /* Rozgłoś STOP do pracowników */
-    MsgPracownicy msg;
-    msg.mtype = 1;  /* do Pracownika1 */
-    msg.typ_komunikatu = MSG_TYP_STOP;
-    msg.nadawca = getpid();
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-    
-    msg.mtype = 2;  /* do Pracownika2 */
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
+
+    /* Jeśli awaria już aktywna, nie dubluj */
+    if (g_shm->awaria) {
+        return;
+    }
+
+    /* Wymaganie: zatrzymuje PRACOWNIK (nie main). Domyślnie P1, fallback P2. */
+    pid_t target = (g_shm->pid_pracownik1 > 0) ? g_shm->pid_pracownik1 : g_shm->pid_pracownik2;
+    if (target > 0) {
+        kill(target, SIGUSR1);
+    }
 }
 
 static void handler_sigusr2(int sig) {
     (void)sig;
-    loguj("SYGNAŁ SIGUSR2 - WZNOWIENIE (START)");
-    
-    if (!g_awaria) {
-        loguj("Ignoruję SIGUSR2 - nie było awarii");
+    loguj("SYGNAŁ SIGUSR2 - WZNOWIENIE (START) -> przekazuję do inicjatora");
+
+    if (g_shm == NULL) {
         return;
     }
-    
-    /* Najpierw ustaw flagi */
-    g_awaria = 0;
-    if (g_shm != NULL) {
-        g_shm->awaria = 0;
-        g_shm->kolej_aktywna = 1;
+
+    if (!g_shm->awaria) {
+        return;
     }
-    
-    /* Odblokuj wszystkich czekających na semaforze */
-    odblokuj_czekajacych();
-    
-    /* Wysyłamy sygnał START do pracowników */
-    MsgPracownicy msg;
-    msg.mtype = 1;
-    msg.typ_komunikatu = MSG_TYP_START;
-    msg.nadawca = getpid();
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-    
-    msg.mtype = 2;
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-    
-    loguj("Kolej wznowiona");
+
+    /* Wymaganie: wznawia pracownik, który zatrzymał */
+    pid_t target = g_shm->pid_awaria_inicjator;
+    if (target <= 0) {
+        target = (g_shm->pid_pracownik1 > 0) ? g_shm->pid_pracownik1 : g_shm->pid_pracownik2;
+    }
+
+    if (target > 0) {
+        kill(target, SIGUSR2);
+    }
 }
 
 static void handler_sigchld(int sig) {
