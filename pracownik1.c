@@ -44,23 +44,6 @@ static void handler_sigusr2(int sig) {
     g_start_req = 1;
 }
 
-static void wyslij_do_innego(int typ) {
-    MsgPracownicy msg;
-    msg.mtype = OTHER_MTYPE;
-    msg.typ_komunikatu = typ;
-    msg.nadawca = getpid();
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-}
-
-static void wyslij_gotowy_do_inicjatora(void) {
-    MsgPracownicy msg;
-    msg.mtype = OTHER_MTYPE; /* dla P1: inicjator zawsze "drugi" albo P2; w obsłudze STOP/START z MQ niżej ustawimy poprawnie */
-    msg.typ_komunikatu = MSG_TYP_GOTOWY;
-    msg.nadawca = getpid();
-    /* Ten helper nie jest używany bezpośrednio w tej wersji */
-    msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
-}
-
 static int czekaj_na_gotowy(int timeout_ms) {
     int waited = 0;
     while (!g_koniec) {
