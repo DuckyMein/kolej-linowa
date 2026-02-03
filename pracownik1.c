@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <string.h>
 #include <poll.h>
+#include <errno.h>
 
 #include "config.h"
 #include "types.h"
@@ -44,9 +45,30 @@ static void handler_sigusr2(int sig) {
     g_start_req = 1;
 }
 
-static int czekaj_na_gotowy(int timeout_ms) {
+/*
+ * Czeka na komunikat GOTOWY od drugiego pracownika.
+ *
+ * Zgodnie z wymaganiem projektu: wznowienie (START) może nastąpić dopiero po
+ * otrzymaniu GOTOWY od drugiego pracownika.
+ *
+ * timeout_ms >= 0: maksymalny czas oczekiwania
+ * timeout_ms < 0: czekaj bez limitu, ale przerwij gdy:
+ *   - proces ma się kończyć (SIGTERM/SIGINT)
+ *   - system wychodzi z FAZA_OPEN (CLOSING/DRAINING) lub PANIC
+ */
+static int czekaj_na_gotowy(int timeout_ms, int wymagaj_open) {
     int waited = 0;
     while (!g_koniec) {
+        if (wymagaj_open) {
+            MUTEX_SHM_LOCK();
+            int faza = g_shm->faza_dnia;
+            int panic = g_shm->panic;
+            MUTEX_SHM_UNLOCK();
+            if (panic || faza != FAZA_OPEN) {
+                return -2;
+            }
+        }
+
         MsgPracownicy msg;
         int r = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), MY_MTYPE);
         if (r >= 0) {
@@ -120,7 +142,7 @@ static void wykonaj_stop_inicjator(void) {
     msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
 
     /* Czekaj na GOTOWY (max 2s, żeby nie zablokować na wieczność) */
-    if (czekaj_na_gotowy(2000) == 0) {
+    if (czekaj_na_gotowy(2000, 0) == 0) {
         loguj("PRACOWNIK1: Drugi pracownik GOTOWY (STOP)");
     } else {
         loguj("PRACOWNIK1: Brak GOTOWY od P2 (STOP) - kontynuuję (timeout)");
@@ -138,6 +160,23 @@ static void wykonaj_start_inicjator(void) {
         return;
     }
 
+    /* Jeśli dzień się zamyka / panic - nie wznawiamy */
+    MUTEX_SHM_LOCK();
+    int faza = g_shm->faza_dnia;
+    int panic = g_shm->panic;
+    pid_t pid_p2 = g_shm->pid_pracownik2;
+    MUTEX_SHM_UNLOCK();
+
+    if (panic || faza != FAZA_OPEN) {
+        loguj("PRACOWNIK1: START zignorowany - nie FAZA_OPEN / PANIC");
+        return;
+    }
+
+    if (pid_p2 > 0 && kill(pid_p2, 0) < 0 && errno == ESRCH) {
+        loguj("PRACOWNIK1: Nie wznawiam - pracownik2 nie żyje (brak GOTOWY)");
+        return;
+    }
+
     loguj("PRACOWNIK1: START (inicjator) - proszę P2 o gotowość");
 
     /* Poproś P2 o gotowość do wznowienia */
@@ -147,10 +186,16 @@ static void wykonaj_start_inicjator(void) {
     msg.nadawca = getpid();
     msg_send_nowait(g_mq_prac, &msg, sizeof(msg));
 
-    if (czekaj_na_gotowy(2000) == 0) {
+    /* Wymaganie: bez GOTOWY nie wznawiamy */
+    int r = czekaj_na_gotowy(-1, 1);
+    if (r == 0) {
         loguj("PRACOWNIK1: P2 GOTOWY (START)");
+    } else if (r == -2) {
+        loguj("PRACOWNIK1: START przerwany - koniec dnia lub PANIC (nie wznawiam)");
+        return;
     } else {
-        loguj("PRACOWNIK1: Brak GOTOWY od P2 (START) - kontynuuję (timeout)");
+        loguj("PRACOWNIK1: START przerwany - nie otrzymałem GOTOWY (nie wznawiam)");
+        return;
     }
 
     /* Wznów kolej */
