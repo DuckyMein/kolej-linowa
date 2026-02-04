@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <poll.h>
+#include <fcntl.h>
 #include "config.h"
 #include "types.h"
 #include "ipc.h"
@@ -49,6 +50,19 @@ static void reap_children_and_maybe_panic(void) {
             g_koniec = 1;
         }
     }
+}
+
+static void przekieruj_stdio_do_pliku(const char *sciezka) {
+    if (sciezka == NULL || sciezka[0] == '\0') return;
+    int fd = open(sciezka, O_CREAT | O_WRONLY | O_APPEND, 0644);
+    if (fd < 0) return;
+    (void)dup2(fd, STDOUT_FILENO);
+    (void)dup2(fd, STDERR_FILENO);
+    if (fd > STDERR_FILENO) close(fd);
+}
+
+static const char* nazwa_typu_klienta(int typ) {
+    return (typ == TYP_ROWERZYSTA) ? "ROWER" : "PIESZY";
 }
 
 int main(int argc, char *argv[]) {
@@ -147,6 +161,8 @@ int main(int argc, char *argv[]) {
         
         if (pid == 0) {
             /* Proces potomny - exec klienta */
+            przekieruj_stdio_do_pliku("output/klienci.log");
+
             char arg_id[16], arg_wiek[8], arg_typ[4], arg_vip[4];
             char arg_dzieci[4], arg_wd1[8], arg_wd2[8];
             
@@ -168,6 +184,18 @@ int main(int argc, char *argv[]) {
             execv(PATH_KLIENT, argv_klient);
             perror("execv klient");
             _exit(EXIT_FAILURE);
+        }
+
+        /* Proces rodzica: loguj parametry nowego klienta */
+        if (pid > 0) {
+            if (liczba_dzieci == 0) {
+                loguj("GENERATOR: utworzono klienta id=%d pid=%d wiek=%d typ=%s vip=%d dzieci=0",
+                      id_klienta, (int)pid, wiek, nazwa_typu_klienta(typ), vip);
+            } else {
+                loguj("GENERATOR: utworzono klienta id=%d pid=%d wiek=%d typ=%s vip=%d dzieci=%d (wiek:%d,%d)",
+                      id_klienta, (int)pid, wiek, nazwa_typu_klienta(typ), vip,
+                      liczba_dzieci, wiek_dzieci[0], wiek_dzieci[1]);
+            }
         }
         
         /* Proces rodzica kontynuuje */

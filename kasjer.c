@@ -76,6 +76,12 @@ int main(int argc, char *argv[]) {
             msg_send(g_mq_kasa_odp, &odp, sizeof(odp));  /* BLOKUJĄCE - gwarantuje dostarczenie */
             continue;
         }
+
+        /* Log wejścia klienta do kasy */
+        loguj("KASJER: klient id=%d pid=%d wiek=%d typ=%s vip=%d dzieci=%d (%d,%d)",
+              msg.id_klienta, (int)msg.pid_klienta, msg.wiek,
+              (msg.typ == TYP_ROWERZYSTA) ? "ROWER" : "PIESZY",
+              msg.vip, msg.liczba_dzieci, msg.wiek_dzieci[0], msg.wiek_dzieci[1]);
         
         /* Domyślna odpowiedź */
         odp.mtype = msg.pid_klienta;
@@ -104,10 +110,25 @@ int main(int argc, char *argv[]) {
             msg_send(g_mq_kasa_odp, &odp, sizeof(odp));
             continue;
         }
+
+        {
+            char kwota[32];
+            formatuj_kwote(cena, kwota);
+            loguj("KASJER: SPRZEDAŻ id_klienta=%d pid=%d -> karnet=%d typ=%s cena=%s vip=%d",
+                  msg.id_klienta, (int)msg.pid_klienta, id, nazwa_karnetu(typ), kwota, msg.vip);
+        }
         
         odp.sukces = 1;
         odp.id_karnetu = id;
         odp.typ_karnetu = typ;
+
+        /* Log sprzedaży */
+        {
+            char kwota[32];
+            formatuj_kwote(cena, kwota);
+            loguj("KASJER: sprzedano karnet id_karnetu=%d typ=%s cena=%s dla klienta id=%d (pid=%d)",
+                  id, nazwa_karnetu(typ), kwota, msg.id_klienta, (int)msg.pid_klienta);
+        }
         
         /* Karnety dla dzieci */
         for (int i = 0; i < msg.liczba_dzieci; i++) {

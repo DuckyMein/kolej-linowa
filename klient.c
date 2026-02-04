@@ -28,6 +28,10 @@ static volatile sig_atomic_t g_koniec = 0;
 static Klient g_klient;
 static int g_waga_peronu = 0;  /* ile slotów peronu zajmujemy */
 
+static const char* nazwa_typu_klienta(int typ) {
+    return (typ == TYP_ROWERZYSTA) ? "ROWER" : "PIESZY";
+}
+
 typedef enum {
     STAN_KASA,
     STAN_PRZED_BRAMKA1,
@@ -177,6 +181,11 @@ int main(int argc, char *argv[]) {
     if (attach_ipc() != 0) {
         return EXIT_FAILURE;
     }
+
+    loguj("KLIENT %d: start pid=%d wiek=%d typ=%s vip=%d dzieci=%d (%d,%d) rozmiar_grupy=%d",
+          g_klient.id, (int)g_klient.pid, g_klient.wiek, nazwa_typu_klienta(g_klient.typ),
+          g_klient.vip, g_klient.liczba_dzieci, g_klient.wiek_dzieci[0], g_klient.wiek_dzieci[1],
+          g_klient.rozmiar_grupy);
     
     /* WAŻNE: Zarejestruj cleanup PRZED inkrementacją licznika */
     atexit(bezpieczne_zakonczenie);
@@ -219,14 +228,25 @@ int main(int argc, char *argv[]) {
     }
     
     g_klient.id_karnetu = odp_kasa.id_karnetu;
+
+    {
+        Karnet *k = pobierz_karnet(g_klient.id_karnetu);
+        if (k != NULL) {
+            loguj("KLIENT %d: kupił karnet id_karnetu=%d typ=%s czas_waznosci=%ds vip=%d",
+                  g_klient.id, g_klient.id_karnetu, nazwa_karnetu(k->typ),
+                  k->czas_waznosci_sek, k->vip);
+        } else {
+            loguj("KLIENT %d: kupił karnet id_karnetu=%d",
+                  g_klient.id, g_klient.id_karnetu);
+        }
+    }
     
     /* ========================================
      * PĘTLA GŁÓWNA
      * ======================================== */
-    int przejazdy = 0;
+    int przejazdy = 0; /* liczba ZAKOŃCZONYCH przejazdów (ARRIVE) */
     
     while (!g_koniec) {
-        przejazdy++;
         
         /* ========================================
          * BRAMKA1 (wejście na teren)
@@ -244,7 +264,11 @@ int main(int argc, char *argv[]) {
         msg_bramka.pid_klienta = g_klient.pid;
         msg_bramka.id_karnetu = g_klient.id_karnetu;
         msg_bramka.rozmiar_grupy = g_klient.rozmiar_grupy;
-        msg_bramka.numer_bramki = losuj_zakres(1, LICZBA_BRAMEK1);
+        int nr_bramki1 = losuj_zakres(1, LICZBA_BRAMEK1);
+        msg_bramka.numer_bramki = nr_bramki1;
+
+        loguj("KLIENT %d: id_karnetu=%d -> BRAMKA1 nr=%d (vip=%d, grupa=%d)",
+              g_klient.id, g_klient.id_karnetu, nr_bramki1, g_klient.vip, g_klient.rozmiar_grupy);
         
         /* Nie blokuj się na zapchanej kolejce - backoff + szybkie wyjście w CLOSING */
         if (wyslij_z_backoff(g_mq_bramka, &msg_bramka, sizeof(msg_bramka)) < 0) break;
@@ -254,11 +278,14 @@ int main(int argc, char *argv[]) {
         ret = msg_recv(g_mq_bramka_odp, &odp_bramka, sizeof(odp_bramka), g_klient.pid);
         
         if (ret < 0 || !odp_bramka.sukces) {
+            loguj("KLIENT %d: BRAMKA1 odmówiła (nr=%d) - kończę", g_klient.id, nr_bramki1);
             break;
         }
         
         g_stan = STAN_NA_TERENIE;
         g_wpuszczony_na_teren = 1;
+
+        loguj("KLIENT %d: BRAMKA1 OK (nr=%d) - jestem na terenie", g_klient.id, nr_bramki1);
         
         /* ========================================
          * BRAMKA2 -> PERON -> WYCIĄG
@@ -288,6 +315,9 @@ int main(int argc, char *argv[]) {
             snprintf(buf, sizeof(buf), "KLIENT %d (przed peronem)", g_klient.id);
             czekaj_na_wznowienie(buf);
         }
+
+        loguj("KLIENT %d: czekam na peron (sloty=%d, bramka2=%d)",
+              g_klient.id, g_waga_peronu, nr_bramki2);
         
         /* Czekaj na miejsce na peronie (semafor slotów) */
         if (sem_wait_n_undo(SEM_PERON, g_waga_peronu) != 0) {
@@ -365,6 +395,9 @@ int main(int argc, char *argv[]) {
             g_waga_peronu = 0;
             break;
         }
+
+        loguj("KLIENT %d: BOARD - wsiadam na krzesełko (sloty=%d)",
+              g_klient.id, req.waga_slotow);
         
         /* BOARD - od tego momentu jesteśmy "w krzesełku".
          * Ustaw stan PRZED zwolnieniem peronu: jeśli dostaniemy sygnał w środku,
@@ -401,6 +434,9 @@ int main(int argc, char *argv[]) {
             /* Przerwane sygnałem - nie ruszaj osoby_w_krzesle (może być już przeniesione). */
             break;
         }
+
+        przejazdy++;
+        loguj("KLIENT %d: ARRIVE - jestem na górze (przejazd=%d)", g_klient.id, przejazdy);
         
         /* ARRIVE - jesteśmy na górze (wyciąg już zaktualizował liczniki) */
         g_stan = STAN_NA_GORZE;
@@ -426,7 +462,10 @@ int main(int argc, char *argv[]) {
         }
         
         int czas_trasy = pobierz_czas_trasy(trasa);
+        loguj("KLIENT %d: zjazd trasą %s (czas=%ds)", g_klient.id, nazwa_trasy(trasa), czas_trasy);
         symuluj_czas_ms(czas_trasy * 1000);
+
+        loguj("KLIENT %d: wróciłem na dół po trasie %s", g_klient.id, nazwa_trasy(trasa));
         
         MUTEX_SHM_LOCK();
         g_shm->osoby_na_gorze -= g_klient.rozmiar_grupy;
@@ -449,5 +488,6 @@ int main(int argc, char *argv[]) {
     }
     
 koniec_petli:
+    loguj("KLIENT %d: koniec (przejazdy=%d)", g_klient.id, przejazdy);
     return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
 }

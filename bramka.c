@@ -86,6 +86,8 @@ int main(int argc, char *argv[]) {
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
             odp.sukces = 0;
             msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: ODRZUT - nieważny karnet id=%d (pid=%d)",
+                  g_numer_bramki, msg.id_karnetu, (int)msg.pid_klienta);
             continue;
         }
         
@@ -94,6 +96,8 @@ int main(int argc, char *argv[]) {
             /* Semafor przerwany - odmów */
             odp.sukces = 0;
             msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: ODRZUT - brak miejsca na terenie (pid=%d grupa=%d)",
+                  g_numer_bramki, (int)msg.pid_klienta, msg.rozmiar_grupy);
             continue;
         }
         
@@ -103,6 +107,8 @@ int main(int argc, char *argv[]) {
             sem_signal_n(SEM_TEREN, msg.rozmiar_grupy); /* Zwróć semafor */
             odp.sukces = 0;
             msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: ODRZUT - karnet wygasł po oczekiwaniu id=%d (pid=%d)",
+                  g_numer_bramki, msg.id_karnetu, (int)msg.pid_klienta);
             continue;
         }
         
@@ -128,6 +134,10 @@ int main(int argc, char *argv[]) {
         
         /* Zaloguj przejście do SHM (nie do stderr) */
         dodaj_log(msg.id_karnetu, LOG_BRAMKA1, g_numer_bramki);
+
+        loguj("BRAMKA%d: OK - pid=%d karnet=%d grupa=%d vip=%d",
+              g_numer_bramki, (int)msg.pid_klienta, msg.id_karnetu, msg.rozmiar_grupy,
+              (msg.mtype == MSG_TYP_VIP) ? 1 : 0);
         
         /* Wyślij potwierdzenie */
         odp.sukces = 1;

@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <signal.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <errno.h>
@@ -60,7 +61,7 @@ static void reap_children_and_check(void);
 static void panic_shutdown(const char *powod, pid_t pid, int kod, int przez_sygnal);
 
 static int uruchom_procesy_stale(void);
-static pid_t fork_exec(const char *program, char *const argv[]);
+static pid_t fork_exec(const char *program, char *const argv[], const char *log_path);
 static void zakoncz_procesy_potomne(void);
 static void procedura_konca_dnia(void);
 static void generuj_raport_koncowy(void);
@@ -68,6 +69,7 @@ static void petla_glowna(void);
 static void awaryjny_cleanup(void);
 static void owner_lock_setup_and_maybe_cleanup(void);
 static void owner_lock_mark_clean(void);
+static void przygotuj_pliki_logow(void);
 
 /* ============================================
  * CLEANUP PRZY WYJŚCIU (atexit)
@@ -227,6 +229,9 @@ int main(int argc, char *argv[]) {
     g_shm->aktywni_klienci = 0;
     loguj("Czas końca dnia: %ld (za %d sekund)", 
           (long)g_shm->czas_konca_dnia, g_czas_symulacji);
+
+    /* 5aa. Przygotuj pliki logów live (podział na terminale) */
+    przygotuj_pliki_logow();
     
     /* 5b. Uruchom strażnika: posprząta IPC nawet po SIGKILL main */
     start_sprzatacz();
@@ -387,7 +392,7 @@ static void start_sprzatacz(void) {
     snprintf(arg_pgid, sizeof(arg_pgid), "%d", (int)g_pgid);
     char *argv_s[] = {PATH_SPRZATACZ, arg_pgid, NULL};
 
-    g_pid_sprzatacz = fork_exec(PATH_SPRZATACZ, argv_s);
+    g_pid_sprzatacz = fork_exec(PATH_SPRZATACZ, argv_s, "output/sprzatacz.log");
     if (g_pid_sprzatacz == -1) {
         loguj("UWAGA: nie udało się uruchomić sprzątacza IPC (%s)", PATH_SPRZATACZ);
     } else {
@@ -481,7 +486,32 @@ static void reap_children_and_check(void) {
  * URUCHAMIANIE PROCESÓW
  * ============================================ */
 
-static pid_t fork_exec(const char *program, char *const argv[]) {
+static void przygotuj_pliki_logow(void) {
+    /* Upewnij się że katalog output istnieje (dla logów live) */
+    if (mkdir("output", 0755) == -1 && errno != EEXIST) {
+        blad_ostrzezenie("mkdir output");
+        return;
+    }
+
+    /* Wyzeruj pliki na start (czytelny demo-output) */
+    const char *pliki[] = {
+        "output/generator.log",
+        "output/kasa.log",
+        "output/bramki.log",
+        "output/wyciag.log",
+        "output/klienci.log",
+        "output/pracownicy.log",
+        "output/sprzatacz.log",
+        NULL
+    };
+
+    for (int i = 0; pliki[i] != NULL; i++) {
+        int fd = open(pliki[i], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+        if (fd >= 0) close(fd);
+    }
+}
+
+static pid_t fork_exec(const char *program, char *const argv[], const char *log_path) {
     pid_t pid = fork();
     
     if (pid == -1) {
@@ -491,6 +521,16 @@ static pid_t fork_exec(const char *program, char *const argv[]) {
     
     if (pid == 0) {
         /* Proces potomny */
+
+        if (log_path != NULL && log_path[0] != '\0') {
+            int fd = open(log_path, O_CREAT | O_WRONLY | O_APPEND, 0644);
+            if (fd >= 0) {
+                (void)dup2(fd, STDOUT_FILENO);
+                (void)dup2(fd, STDERR_FILENO);
+                if (fd > STDERR_FILENO) close(fd);
+            }
+        }
+
         execv(program, argv);
         /* Jeśli exec się nie udał */
         perror("execv");
@@ -507,7 +547,7 @@ static int uruchom_procesy_stale(void) {
     
     /* Kasjer */
     char *argv_kasjer[] = {PATH_KASJER, NULL};
-    g_shm->pid_kasjer = fork_exec(PATH_KASJER, argv_kasjer);
+    g_shm->pid_kasjer = fork_exec(PATH_KASJER, argv_kasjer, "output/kasa.log");
     if (g_shm->pid_kasjer == -1) {
         loguj("BŁĄD: Nie udało się uruchomić kasjera");
         /* Kontynuuj bez kasjera dla testów */
@@ -517,7 +557,7 @@ static int uruchom_procesy_stale(void) {
     
     /* Pracownik1 */
     char *argv_p1[] = {PATH_PRACOWNIK1, NULL};
-    g_shm->pid_pracownik1 = fork_exec(PATH_PRACOWNIK1, argv_p1);
+    g_shm->pid_pracownik1 = fork_exec(PATH_PRACOWNIK1, argv_p1, "output/pracownicy.log");
     if (g_shm->pid_pracownik1 == -1) {
         loguj("BŁĄD: Nie udało się uruchomić pracownika1");
     } else {
@@ -526,7 +566,7 @@ static int uruchom_procesy_stale(void) {
     
     /* Pracownik2 */
     char *argv_p2[] = {PATH_PRACOWNIK2, NULL};
-    g_shm->pid_pracownik2 = fork_exec(PATH_PRACOWNIK2, argv_p2);
+    g_shm->pid_pracownik2 = fork_exec(PATH_PRACOWNIK2, argv_p2, "output/pracownicy.log");
     if (g_shm->pid_pracownik2 == -1) {
         loguj("BŁĄD: Nie udało się uruchomić pracownika2");
     } else {
@@ -535,7 +575,7 @@ static int uruchom_procesy_stale(void) {
     
     /* Wyciąg */
     char *argv_wyciag[] = {PATH_WYCIAG, NULL};
-    g_shm->pid_wyciag = fork_exec(PATH_WYCIAG, argv_wyciag);
+    g_shm->pid_wyciag = fork_exec(PATH_WYCIAG, argv_wyciag, "output/wyciag.log");
     if (g_shm->pid_wyciag == -1) {
         loguj("BŁĄD: Nie udało się uruchomić wyciągu");
     } else {
@@ -548,7 +588,7 @@ static int uruchom_procesy_stale(void) {
         snprintf(arg_numer, sizeof(arg_numer), "%d", i + 1);
         char *argv_bramka[] = {PATH_BRAMKA, arg_numer, NULL};
         
-        g_shm->pid_bramki1[i] = fork_exec(PATH_BRAMKA, argv_bramka);
+        g_shm->pid_bramki1[i] = fork_exec(PATH_BRAMKA, argv_bramka, "output/bramki.log");
         if (g_shm->pid_bramki1[i] == -1) {
             loguj("BŁĄD: Nie udało się uruchomić bramki %d", i + 1);
         } else {
@@ -561,7 +601,7 @@ static int uruchom_procesy_stale(void) {
     snprintf(arg_czas, sizeof(arg_czas), "%d", g_czas_symulacji);
     char *argv_gen[] = {PATH_GENERATOR, arg_czas, NULL};
     
-    g_shm->pid_generator = fork_exec(PATH_GENERATOR, argv_gen);
+    g_shm->pid_generator = fork_exec(PATH_GENERATOR, argv_gen, "output/generator.log");
     if (g_shm->pid_generator == -1) {
         loguj("BŁĄD: Nie udało się uruchomić generatora");
     } else {
