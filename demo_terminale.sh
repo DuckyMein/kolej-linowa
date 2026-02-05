@@ -2,11 +2,40 @@
 set -euo pipefail
 
 # Demo: uruchamia symulację i (best-effort) odpala 4 okna terminala z tail -F.
-# Działa tylko gdy masz środowisko graficzne + terminal (gnome-terminal/konsole/xfce4-terminal/xterm).
+# Wymaga GUI + terminal emulator (gnome-terminal/konsole/xfce4-terminal/xterm).
+# Jeśli nie ma GUI (WSL2/SSH) i jest tmux, uruchomi ./demo_tmux.sh.
 
 cd "$(dirname "$0")"
 
 mkdir -p output
+
+# Argumenty do main (jeśli nie podasz, weź sensowne demo)
+ARGS=("$@")
+if [ ${#ARGS[@]} -eq 0 ]; then
+  ARGS=(20 30)
+fi
+
+# Wybierz emulator terminala (linux GUI)
+TERM_CMD=""
+if command -v gnome-terminal >/dev/null 2>&1; then
+  TERM_CMD="gnome-terminal"
+elif command -v konsole >/dev/null 2>&1; then
+  TERM_CMD="konsole"
+elif command -v xfce4-terminal >/dev/null 2>&1; then
+  TERM_CMD="xfce4-terminal"
+elif command -v xterm >/dev/null 2>&1; then
+  TERM_CMD="xterm"
+fi
+
+HAS_GUI=0
+if [ -n "$TERM_CMD" ] && { [ -n "${DISPLAY:-}" ] || [ -n "${WAYLAND_DISPLAY:-}" ]; }; then
+  HAS_GUI=1
+fi
+
+# Fallback: WSL2/SSH -> tmux
+if [ "$HAS_GUI" -eq 0 ] && command -v tmux >/dev/null 2>&1 && [ -x "./demo_tmux.sh" ]; then
+  exec ./demo_tmux.sh "${ARGS[@]}"
+fi
 
 # Wyzeruj logi na start
 : > output/main.log
@@ -18,27 +47,9 @@ mkdir -p output
 : > output/klienci.log
 : > output/sprzatacz.log
 
-# Argumenty do main (jeśli nie podasz, weź sensowne demo)
-ARGS=("$@")
-if [ ${#ARGS[@]} -eq 0 ]; then
-  ARGS=(20 30)
-fi
-
 # Uruchom main w tle i loguj do pliku
 ./main "${ARGS[@]}" > output/main.log 2>&1 &
 MAIN_PID=$!
-
-# Wybierz emulator terminala
-TERM_CMD=""
-if command -v gnome-terminal >/dev/null 2>&1; then
-  TERM_CMD="gnome-terminal"
-elif command -v konsole >/dev/null 2>&1; then
-  TERM_CMD="konsole"
-elif command -v xfce4-terminal >/dev/null 2>&1; then
-  TERM_CMD="xfce4-terminal"
-elif command -v xterm >/dev/null 2>&1; then
-  TERM_CMD="xterm"
-fi
 
 open_tail() {
   local title="$1"; shift
@@ -60,7 +71,7 @@ open_tail() {
   esac
 }
 
-if [ -n "$TERM_CMD" ] && [ -n "${DISPLAY:-}" ]; then
+if [ "$HAS_GUI" -eq 1 ]; then
   open_tail "A: MAIN + awarie" output/main.log output/pracownicy.log output/sprzatacz.log || true
   open_tail "B: GENERATOR" output/generator.log || true
   open_tail "C: WEJŚCIE (kasa + bramki)" output/kasa.log output/bramki.log || true
@@ -74,6 +85,8 @@ else
   echo "  tail -F output/generator.log"
   echo "  tail -F output/kasa.log output/bramki.log"
   echo "  tail -F output/wyciag.log output/klienci.log"
+  echo
+  echo "Tip (WSL2/SSH): zainstaluj tmux i uruchom: ./demo_tmux.sh ${ARGS[*]}"
 fi
 
 wait "$MAIN_PID" || true
