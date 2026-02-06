@@ -110,6 +110,78 @@ static int czekaj_na_gotowy(int timeout_ms, int wymagaj_open) {
     return -1;
 }
 
+
+/* ============================================
+ * OBSŁUGA PERONU (bramki2)
+ * Klient wysyła MsgPeron, pracownik1 odsyła MsgPeronOdp.
+ * Jeśli pracownik1 jest wstrzymany (SIGSTOP), klienci nie dostaną odpowiedzi
+ * i nie przejdą dalej na peron.
+ * ============================================ */
+static int obsluz_peron(void) {
+    int handled = 0;
+    while (!g_koniec) {
+        MsgPeron req;
+        int r = msg_recv_nowait(g_mq_peron, &req, sizeof(req), 0);
+        if (r < 0) break;
+
+        /* Jeśli system zamyka się / panic, odmawiaj żeby klienci mogli się ewakuować */
+        MUTEX_SHM_LOCK();
+        int faza = g_shm->faza_dnia;
+        int panic = g_shm->panic;
+        int awaria = g_shm->awaria;
+        MUTEX_SHM_UNLOCK();
+
+        MsgPeronOdp odp;
+        odp.mtype = req.pid_klienta;
+        odp.sukces = (faza == FAZA_OPEN && !panic && !awaria) ? 1 : 0;
+
+        msg_send_nowait(g_mq_peron_odp, &odp, sizeof(odp));
+        handled++;
+    }
+    return handled;
+}
+
+/* Obsługa wiadomości pracowników bez blokowania (żeby nie zagłodzić peronu) */
+static int obsluz_prac_messages(void) {
+    int handled = 0;
+    while (!g_koniec) {
+        MsgPracownicy msg;
+        int ret = msg_recv_nowait(g_mq_prac, &msg, sizeof(msg), MY_MTYPE);
+        if (ret < 0) break;
+
+        switch (msg.typ_komunikatu) {
+            case MSG_TYP_STOP: {
+                loguj("PRACOWNIK1: Otrzymano STOP (od P2) - potwierdzam GOTOWY");
+                MUTEX_SHM_LOCK();
+                g_shm->awaria = 1;
+                g_shm->kolej_aktywna = 0;
+                MUTEX_SHM_UNLOCK();
+
+                MsgPracownicy odp;
+                odp.mtype = OTHER_MTYPE;
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
+                break;
+            }
+            case MSG_TYP_START: {
+                loguj("PRACOWNIK1: Otrzymano START (od P2) - potwierdzam GOTOWY");
+                MsgPracownicy odp;
+                odp.mtype = OTHER_MTYPE;
+                odp.typ_komunikatu = MSG_TYP_GOTOWY;
+                odp.nadawca = getpid();
+                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
+                break;
+            }
+            case MSG_TYP_GOTOWY:
+                /* GOTOWY dla inicjatora odbieramy w czekaj_na_gotowy() */
+                break;
+        }
+        handled++;
+    }
+    return handled;
+}
+
 static void wykonaj_stop_inicjator(void) {
     /* Zgłoś awarię w SHM (tylko pierwszy inicjator ją "posiada") */
     int jestem_wlascicielem = 0;
@@ -253,49 +325,16 @@ int main(int argc, char *argv[]) {
             g_start_req = 0;
             wykonaj_start_inicjator();
         }
+        /* Obsługa PERONU (bramki2) + komunikacji pracowników bez blokowania */
+        int handled = 0;
+        handled += obsluz_peron();
+        handled += obsluz_prac_messages();
 
-        /* Obsługa komunikacji pracowników (STOP/START/GOTOWY)
-         * Tu pracownik może być "drugim" (nie inicjatorem). */
-        MsgPracownicy msg;
-        int ret = msg_recv(g_mq_prac, &msg, sizeof(msg), MY_MTYPE);
-
-        if (ret < 0) {
-            /* Przerwane sygnałem -> wróć do początku pętli i obsłuż flagi */
-            continue;
+        if (!handled) {
+            /* Mały sleep żeby nie kręcić CPU */
+            poll(NULL, 0, 20);
         }
 
-        if (g_koniec) {
-            break;
-        }
-
-        switch (msg.typ_komunikatu) {
-            case MSG_TYP_STOP: {
-                loguj("PRACOWNIK1: Otrzymano STOP (od P2) - potwierdzam GOTOWY");
-                MUTEX_SHM_LOCK();
-                g_shm->awaria = 1;
-                g_shm->kolej_aktywna = 0;
-                MUTEX_SHM_UNLOCK();
-
-                MsgPracownicy odp;
-                odp.mtype = OTHER_MTYPE;
-                odp.typ_komunikatu = MSG_TYP_GOTOWY;
-                odp.nadawca = getpid();
-                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
-                break;
-            }
-            case MSG_TYP_START: {
-                loguj("PRACOWNIK1: Otrzymano START (od P2) - potwierdzam GOTOWY");
-                MsgPracownicy odp;
-                odp.mtype = OTHER_MTYPE;
-                odp.typ_komunikatu = MSG_TYP_GOTOWY;
-                odp.nadawca = getpid();
-                msg_send_nowait(g_mq_prac, &odp, sizeof(odp));
-                break;
-            }
-            case MSG_TYP_GOTOWY:
-                /* GOTOWY dla inicjatora odbieramy w czekaj_na_gotowy(), ale jeśli wpadnie tu, zignoruj */
-                break;
-        }
     }
 
     loguj("PRACOWNIK1: Kończę pracę");

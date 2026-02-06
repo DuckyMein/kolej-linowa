@@ -30,6 +30,8 @@ extern int g_mq_bramka_odp;     // kolejka odpowiedzi z bramek (NOWA)
 extern int g_mq_prac;           // kolejka pracowników
 extern int g_mq_wyciag_req;     // kolejka peron->wyciąg
 extern int g_mq_wyciag_odp;     // odpowiedzi wyciągu
+extern int g_mq_peron;          // kolejka klient->pracownik1 (peron)
+extern int g_mq_peron_odp;      // kolejka odpowiedzi peron
 
 /* ============================================
  * OCHRONA PROCESÓW POTOMNYCH

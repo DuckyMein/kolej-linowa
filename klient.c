@@ -319,6 +319,65 @@ int main(int argc, char *argv[]) {
         loguj("KLIENT %d: czekam na peron (sloty=%d, bramka2=%d)",
               g_klient.id, g_waga_peronu, nr_bramki2);
         
+
+        /* PROSI_P1_PERON: Pracownik1 kontroluje wejście na peron (bramki2).
+         * Jeśli pracownik1 jest wstrzymany (SIGSTOP), nie odpowie i klienci nie przejdą dalej. */
+        MsgPeron msg_peron;
+        msg_peron.mtype = MSG_TYP_NORMALNY;
+        msg_peron.pid_klienta = g_klient.pid;
+        msg_peron.id_karnetu = g_klient.id_karnetu;
+        msg_peron.miejsca = g_waga_peronu;
+        msg_peron.numer_bramki2 = nr_bramki2;
+
+        loguj("KLIENT %d: prosi PRACOWNIK1 o wejście na peron (bramka2=%d sloty=%d)",
+              g_klient.id, nr_bramki2, g_waga_peronu);
+
+        if (wyslij_z_backoff(g_mq_peron, &msg_peron, sizeof(msg_peron)) < 0) {
+            break;
+        }
+
+        /* Czekaj na odpowiedź od pracownika1.
+         * Używamy pętli NOWAIT + poll, żeby móc szybko wyjść w CLOSING/PANIC. */
+        MsgPeronOdp odp_peron;
+        int got_peron = 0;
+        while (!g_koniec && !got_peron) {
+            int r = msg_recv_nowait(g_mq_peron_odp, &odp_peron, sizeof(odp_peron), (long)g_klient.pid);
+            if (r >= 0) {
+                if (!odp_peron.sukces) {
+                    loguj("KLIENT %d: PRACOWNIK1 odmówił wejścia na peron", g_klient.id);
+                    goto koniec_petli;
+                }
+                got_peron = 1;
+                break;
+            }
+
+            /* jeśli pracownik1 umarł, nie czekaj bez końca */
+            pid_t pid_p1 = 0;
+            int faza = FAZA_OPEN;
+            int panic = 0;
+            MUTEX_SHM_LOCK();
+            pid_p1 = g_shm->pid_pracownik1;
+            faza = g_shm->faza_dnia;
+            panic = g_shm->panic;
+            MUTEX_SHM_UNLOCK();
+
+            if (panic || faza != FAZA_OPEN) {
+                goto koniec_petli;
+            }
+            if (pid_p1 > 0 && kill(pid_p1, 0) < 0 && errno == ESRCH) {
+                loguj("KLIENT %d: PRACOWNIK1 nie żyje - rezygnuję", g_klient.id);
+                goto koniec_petli;
+            }
+
+            poll(NULL, 0, 20);
+        }
+
+        if (!got_peron) {
+            goto koniec_petli;
+        }
+
+        loguj("KLIENT %d: PRACOWNIK1 pozwolił wejść na peron", g_klient.id);
+
         /* Czekaj na miejsce na peronie (semafor slotów) */
         if (sem_wait_n_undo(SEM_PERON, g_waga_peronu) != 0) {
             /* Przerwane - muszę się ewakuować */

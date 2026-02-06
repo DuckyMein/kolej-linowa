@@ -31,6 +31,8 @@ int g_mq_bramka_odp = -1;  /* NOWA - osobna kolejka odpowiedzi bramek */
 int g_mq_prac = -1;
 int g_mq_wyciag_req = -1;  /* kolejka peron->wyciąg */
 int g_mq_wyciag_odp = -1;  /* odpowiedzi wyciągu */
+int g_mq_peron = -1;      /* kolejka klient->pracownik1 */
+int g_mq_peron_odp = -1;  /* odpowiedzi pracownik1->klient */
 
 /* Klucz bazowy (ustawiany przy init) */
 static key_t g_klucz_bazowy = -1;
@@ -277,6 +279,29 @@ int init_ipc(int N) {
         blad_ostrzezenie("msgget wyciag_odp");
         return -1;
     }
+
+    /* Peron (klient -> pracownik1) */
+    g_mq_peron = msgget(generuj_klucz(IPC_KEY_MQ_PERON), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    if (g_mq_peron == -1 && errno == EEXIST) {
+        g_mq_peron = msgget(generuj_klucz(IPC_KEY_MQ_PERON), IPC_PERMS);
+        if (g_mq_peron != -1) msgctl(g_mq_peron, IPC_RMID, NULL);
+        g_mq_peron = msgget(generuj_klucz(IPC_KEY_MQ_PERON), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    }
+    if (g_mq_peron == -1) {
+        blad_ostrzezenie("msgget peron");
+        return -1;
+    }
+
+    g_mq_peron_odp = msgget(generuj_klucz(IPC_KEY_MQ_PERON_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    if (g_mq_peron_odp == -1 && errno == EEXIST) {
+        g_mq_peron_odp = msgget(generuj_klucz(IPC_KEY_MQ_PERON_ODP), IPC_PERMS);
+        if (g_mq_peron_odp != -1) msgctl(g_mq_peron_odp, IPC_RMID, NULL);
+        g_mq_peron_odp = msgget(generuj_klucz(IPC_KEY_MQ_PERON_ODP), IPC_CREAT | IPC_EXCL | IPC_PERMS);
+    }
+    if (g_mq_peron_odp == -1) {
+        blad_ostrzezenie("msgget peron_odp");
+        return -1;
+    }
     
     loguj("Kolejki komunikatów utworzone");
     
@@ -346,6 +371,15 @@ void cleanup_ipc(void) {
         msgctl(g_mq_wyciag_odp, IPC_RMID, NULL);
         g_mq_wyciag_odp = -1;
     }
+
+    if (g_mq_peron != -1) {
+        msgctl(g_mq_peron, IPC_RMID, NULL);
+        g_mq_peron = -1;
+    }
+    if (g_mq_peron_odp != -1) {
+        msgctl(g_mq_peron_odp, IPC_RMID, NULL);
+        g_mq_peron_odp = -1;
+    }
     loguj("Kolejki komunikatów usunięte");
     
     loguj("Czyszczenie IPC zakończone");
@@ -386,6 +420,11 @@ void cleanup_ipc_by_keys(void) {
     if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
 
     mqid = msgget(base + IPC_KEY_MQ_WYCIAG_ODP, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+
+    mqid = msgget(base + IPC_KEY_MQ_PERON, 0);
+    if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
+    mqid = msgget(base + IPC_KEY_MQ_PERON_ODP, 0);
     if (mqid != -1) msgctl(mqid, IPC_RMID, NULL);
 }
 
@@ -447,6 +486,8 @@ int attach_ipc(void) {
     g_mq_prac = msgget(generuj_klucz(IPC_KEY_MQ_PRAC), 0);
     g_mq_wyciag_req = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_REQ), 0);
     g_mq_wyciag_odp = msgget(generuj_klucz(IPC_KEY_MQ_WYCIAG_ODP), 0);
+    g_mq_peron = msgget(generuj_klucz(IPC_KEY_MQ_PERON), 0);
+    g_mq_peron_odp = msgget(generuj_klucz(IPC_KEY_MQ_PERON_ODP), 0);
     
     if (g_mq_kasa == -1 || g_mq_kasa_odp == -1 || 
         g_mq_bramka == -1 || g_mq_bramka_odp == -1 || g_mq_prac == -1 ||

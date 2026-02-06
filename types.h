@@ -229,6 +229,12 @@ typedef struct {
     int numer_bramki2;          // przez którą bramkę2 wchodzi (1-3)
 } MsgPeron;
 
+/* Odpowiedź pracownika1 dla klienta (peron) */
+typedef struct {
+    long mtype;                 // = pid_klienta
+    int sukces;                 // 0=odmowa, 1=OK
+} MsgPeronOdp;
+
 /* ============================================
  * WYCIĄG - TYPY ODPOWIEDZI
  * ============================================ */

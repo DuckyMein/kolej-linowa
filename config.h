@@ -134,6 +134,8 @@
 #define IPC_KEY_MQ_PRAC     6       // kolejka pracowników
 #define IPC_KEY_MQ_WYCIAG_REQ 7     // kolejka peron->wyciąg
 #define IPC_KEY_MQ_WYCIAG_ODP 8     // odpowiedzi wyciągu
+#define IPC_KEY_MQ_PERON     9       // kolejka klient->pracownik1 (bramki2/peron)
+#define IPC_KEY_MQ_PERON_ODP 10      // odpowiedzi pracownik1->klient (peron)
 
 /* ============================================
  * ŚCIEŻKI DO PLIKÓW WYKONYWALNYCH
