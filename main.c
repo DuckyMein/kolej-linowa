@@ -702,42 +702,45 @@ static void procedura_konca_dnia(void) {
     
     /* ==========================================
      * FAZA 2: DRAINING (drenowanie)
-     * - Generator przestał generować i czeka na swoje dzieci
-     * - Czekamy aż generator się zakończy (= wszyscy klienci skończyli)
+     * Zgodnie z wymaganiami:
+     * - po osiągnięciu Tk bramki przestają akceptować karnety
+     * - wszystkie osoby, które weszły na peron, mają zostać przetransportowane na górę
+     * - następnie po 3 sekundach kolej ma zostać wyłączona
+     *
+     * Realizacja:
+     * - ustawiamy FAZA_DRAINING
+     * - wyciąg sam dokończy przewóz (kolejka requestów + krzesełka) i po opróżnieniu
+     *   odczeka 3s i zakończy się.
+     * - tutaj czekamy na zakończenie procesu wyciągu.
      * ========================================== */
-    loguj("FAZA 2: DRAINING - czekamy na zakończenie klientów");
+    loguj("FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)");
     
     MUTEX_SHM_LOCK();
     g_shm->faza_dnia = FAZA_DRAINING;
     MUTEX_SHM_UNLOCK();
     
-    /* Czekaj na zakończenie GENERATORA (z timeout)
-     * Generator robi WNOHANG i wychodzi szybko.
-     * Klienci dostaną PDEATHSIG po śmierci generatora. */
-    if (g_shm->pid_generator > 0) {
-        loguj("  Czekam na generator (PID %d)...", g_shm->pid_generator);
-        int timeout_ms = 3000;  /* 3 sekundy max */
+    /* Czekaj na zakończenie WYCIĄGU (z timeout).
+     * Wyciąg kończy się dopiero gdy przewiezie wszystkich z peronu + odczeka 3s. */
+    if (g_shm->pid_wyciag > 0) {
+        loguj("  Czekam na wyciąg (PID %d)...", g_shm->pid_wyciag);
+        int timeout_ms = 60000; /* 60s na drenowanie + 3s (duży zapas) */
         pid_t ret = 0;
         int status;
         while (timeout_ms > 0) {
-            ret = waitpid(g_shm->pid_generator, &status, WNOHANG);
+            ret = waitpid(g_shm->pid_wyciag, &status, WNOHANG);
             if (ret > 0 || (ret == -1 && errno != EINTR)) break;
             poll(NULL, 0, 100);
             timeout_ms -= 100;
         }
         if (ret > 0) {
-            loguj("  Generator zakończył pracę");
+            loguj("  Wyciąg zakończył drenowanie i wyłączył się");
         } else {
-            loguj("  Generator nie zakończył się w czasie - wymuszam");
-            kill(g_shm->pid_generator, SIGKILL);
-            waitpid(g_shm->pid_generator, NULL, WNOHANG);
+            loguj("  Wyciąg nie zakończył się w czasie - wymuszam");
+            kill(g_shm->pid_wyciag, SIGKILL);
+            waitpid(g_shm->pid_wyciag, NULL, WNOHANG);
         }
-        g_shm->pid_generator = 0;
+        g_shm->pid_wyciag = 0;
     }
-    
-    /* Daj chwilę klientom na zakończenie (PDEATHSIG + EINTR) */
-    loguj("  Czekam na klientów (max 2s)...");
-    poll(NULL, 0, 2000);
     
     /* ==========================================
      * FAZA 3: SHUTDOWN

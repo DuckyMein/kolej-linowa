@@ -194,11 +194,15 @@ typedef struct {
  * KOMUNIKATY - KOLEJKA BRAMKA1
  * ============================================ */
 typedef struct {
-    long mtype;                 // MSG_TYP_VIP (priorytet) lub MSG_TYP_NORMALNY
+    /* mtype = numer bramki (1..LICZBA_BRAMEK1)
+     * Dzięki temu możemy zasymulować 4 niezależne bramki oraz bramkę VIP-only.
+     */
+    long mtype;
     pid_t pid_klienta;          // PID procesu klienta
     int id_karnetu;             // ID karnetu do sprawdzenia
     int rozmiar_grupy;          // ile miejsc zajmuje (1-3)
     int numer_bramki;           // do której bramki (1-4)
+    int vip;                    // czy VIP: 0/1 (do bramki VIP-only)
 } MsgBramka1;
 
 /* ============================================

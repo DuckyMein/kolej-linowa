@@ -64,8 +64,10 @@ int main(int argc, char *argv[]) {
         MsgBramka1 msg;
         MsgBramkaOdp odp;
         
-        /* Odbierz zgłoszenie BLOKUJĄCO (mtype=0 = pierwsza dostępna wiadomość) */
-        int ret = msg_recv(g_mq_bramka, &msg, sizeof(msg), 0);
+        /* Odbierz zgłoszenie BLOKUJĄCO.
+         * mtype = numer bramki, więc każda instancja bramki ma swój "strumień".
+         */
+        int ret = msg_recv(g_mq_bramka, &msg, sizeof(msg), (long)g_numer_bramki);
         
         if (ret < 0 || g_koniec) {
             /* Przerwane sygnałem lub koniec - wyjdź */
@@ -79,9 +81,19 @@ int main(int argc, char *argv[]) {
             czekaj_na_wznowienie(buf);
         }
         
+        /* Bramki: bramka #1 jest VIP-only */
+        odp.mtype = msg.pid_klienta;
+        if (g_numer_bramki == 1 && !msg.vip) {
+            odp.sukces = 0;
+            msg_send(g_mq_bramka_odp, &odp, sizeof(odp));
+            loguj("BRAMKA%d: ODRZUT - bramka VIP-only (pid=%d karnet=%d)",
+                  g_numer_bramki, (int)msg.pid_klienta, msg.id_karnetu);
+            continue;
+        }
+
         /* CHECK #1: Czy karnet ważny? (karnet jest ucięty do końca dnia) */
         Karnet *karnet = pobierz_karnet(msg.id_karnetu);
-        odp.mtype = msg.pid_klienta;
+        /* odp.mtype ustawiony wyżej */
         
         if (karnet == NULL || !czy_karnet_wazny(karnet, time(NULL))) {
             odp.sukces = 0;
@@ -137,7 +149,7 @@ int main(int argc, char *argv[]) {
 
         loguj("BRAMKA%d: OK - pid=%d karnet=%d grupa=%d vip=%d",
               g_numer_bramki, (int)msg.pid_klienta, msg.id_karnetu, msg.rozmiar_grupy,
-              (msg.mtype == MSG_TYP_VIP) ? 1 : 0);
+              msg.vip);
         
         /* Wyślij potwierdzenie */
         odp.sukces = 1;

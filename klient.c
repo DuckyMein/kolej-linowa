@@ -202,6 +202,17 @@ int main(int argc, char *argv[]) {
     if (g_shm->faza_dnia != FAZA_OPEN) {
         return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
     }
+
+    /* Nie wszyscy przychodzący muszą korzystać z kolei.
+     * Symulacja: część osób odchodzi bez kupowania karnetu. */
+    if (PROC_NIE_KORZYSTA > 0) {
+        int r = rand() % 100;
+        if (r < PROC_NIE_KORZYSTA) {
+            loguj("KLIENT %d: odchodzi - dziś nie korzysta z kolei (los=%d < %d%%)",
+                  g_klient.id, r, PROC_NIE_KORZYSTA);
+            return EXIT_SUCCESS;
+        }
+    }
     
     MsgKasa msg_kasa;
     msg_kasa.mtype = g_klient.vip ? MSG_TYP_VIP : MSG_TYP_NORMALNY;
@@ -260,11 +271,15 @@ int main(int argc, char *argv[]) {
         }
         
         MsgBramka1 msg_bramka;
-        msg_bramka.mtype = g_klient.vip ? MSG_TYP_VIP : MSG_TYP_NORMALNY;
         msg_bramka.pid_klienta = g_klient.pid;
         msg_bramka.id_karnetu = g_klient.id_karnetu;
         msg_bramka.rozmiar_grupy = g_klient.rozmiar_grupy;
-        int nr_bramki1 = losuj_zakres(1, LICZBA_BRAMEK1);
+
+        /* VIP wchodzi "bez kolejki" przez dedykowaną bramkę 1 (VIP-only).
+         * Zwykli klienci losują bramkę 2..N. */
+        int nr_bramki1 = g_klient.vip ? 1 : losuj_zakres(2, LICZBA_BRAMEK1);
+        msg_bramka.mtype = nr_bramki1;      /* routing do konkretnej bramki */
+        msg_bramka.vip = g_klient.vip;
         msg_bramka.numer_bramki = nr_bramki1;
 
         loguj("KLIENT %d: id_karnetu=%d -> BRAMKA1 nr=%d (vip=%d, grupa=%d)",
@@ -294,12 +309,14 @@ int main(int argc, char *argv[]) {
         int nr_bramki2 = losuj_zakres(1, LICZBA_BRAMEK2);
         dodaj_log(g_klient.id_karnetu, LOG_BRAMKA2, nr_bramki2);
         
-        /* Oblicz wagę slotów peronu: pieszy=1/os, rower=2/os (dziecko rowerzysty też jest rowerzystą) */
-        g_waga_peronu = g_klient.rozmiar_grupy * (g_klient.typ == TYP_ROWERZYSTA ? 2 : 1);
+        /* Waga peronu = liczba slotów krzesełka.
+         * oblicz_miejsca_krzeselko() już uwzględnia: pieszy=1, rower=2, dziecko=+1.
+         */
+        g_waga_peronu = g_klient.rozmiar_grupy;
         
         /* Sprawdź czy w ogóle zmieścimy się na krzesełko (max 4 sloty) */
         if (g_waga_peronu > PERON_SLOTY) {
-            /* Grupa za duża - nie wejdziemy (np. rowerzysta + 2 dzieci = 6 > 4) */
+            /* Grupa za duża - nie wejdziemy (np. pieszy + 4 dzieci = 5 > 4) */
             sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
             MUTEX_SHM_LOCK();
             g_shm->osoby_na_terenie -= g_klient.rozmiar_grupy;

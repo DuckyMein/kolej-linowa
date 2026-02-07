@@ -25,7 +25,10 @@
 #define N_LIMIT_TERENU      100     // max osób na terenie dolnej stacji
 #define LICZBA_BRAMEK1      4       // bramki wejściowe (do terenu)
 #define LICZBA_BRAMEK2      3       // bramki peronowe
-#define LICZBA_RZEDOW       18      // rzędów krzesełek
+#define LICZBA_RZEDOW       72      // rzędów krzesełek (72 szt.)
+
+/* Szansa, że wygenerowany klient "nie korzysta" z kolei (przychodzi i odchodzi) */
+#define PROC_NIE_KORZYSTA   10      // %
 #define KRZESLA_W_RZEDZIE   4       // miejsc w jednym rzędzie
 #define LICZBA_WYJSC_GORA   2       // wyjścia ze stacji górnej
 
@@ -40,8 +43,8 @@
 #define CZAS_WJAZDU         0       // DEPRECATED - nieużywane
 
 /* ============================================
- * WYCIĄG (MODEL RING 18 RZĘDÓW)
- * Czas przejazdu = 9 * INTERWAL_KRZESELKA_MS
+ * WYCIĄG (MODEL RING LICZBA_RZEDOW)
+ * Czas przejazdu = (LICZBA_RZEDOW/2) * INTERWAL_KRZESELKA_MS
  * ============================================ */
 #define INTERWAL_KRZESELKA_MS 200   // co ile podjeżdża krzesełko (ms)
 #define KURS_ROWEROWY_CO      3     // co który kurs gwarantuje rower

@@ -13,26 +13,26 @@
 #include "utils.h"
 
 /*
- * KOLEJ KRZESEŁKOWA - PROCES WYCIĄGU (MODEL RING 18 RZĘDÓW)
+ * KOLEJ KRZESEŁKOWA - PROCES WYCIĄGU (MODEL RING LICZBA_RZEDOW)
  * 
  * Model fizyczny:
- * - 18 rzędów krzesełek w obiegu (ring buffer)
+ * - LICZBA_RZEDOW rzędów krzesełek w obiegu (ring buffer)
  * - Pozycja 0 = stacja dolna (załadunek pasażerów)
- * - Pozycja 9 = stacja górna (wyładunek pasażerów)  
- * - Pozycje 1-8 = jazda w górę (z pasażerami)
- * - Pozycje 10-17 = jazda w dół (puste krzesełka wracają)
+ * - Pozycja (LICZBA_RZEDOW/2) = stacja górna (wyładunek pasażerów)
+ * - Pozycje 1..(POZYCJA_GORNA-1) = jazda w górę (z pasażerami)
+ * - Pozycje (POZYCJA_GORNA+1)..(LICZBA_RZEDOW-1) = jazda w dół (puste krzesełka wracają)
  * - Każdy rząd ma 4 miejsca (KRZESLA_W_RZEDZIE slotów)
  * 
  * Co INTERWAL_KRZESELKA_MS:
- * 1. Rząd na pozycji 9 wysadza pasażerów (ARRIVE)
+ * 1. Rząd na pozycji (LICZBA_RZEDOW/2) wysadza pasażerów (ARRIVE)
  * 2. Rząd na pozycji 0 przyjmuje nowych z peronu (BOARD)
  * 3. Ring przesuwa się o 1 pozycję
  * 
- * Czas przejazdu = 9 ticków = 9 * INTERWAL_KRZESELKA_MS
+ * Czas przejazdu = (LICZBA_RZEDOW/2) ticków
  */
 
 #define POZYCJA_DOLNA       0   /* załadunek */
-#define POZYCJA_GORNA       9   /* wyładunek */
+#define POZYCJA_GORNA       (LICZBA_RZEDOW/2)   /* wyładunek */
 #define MAX_PASAZEROW_RZAD  4   /* max grup w jednym rzędzie */
 
 static volatile sig_atomic_t g_stop = 0;
@@ -55,11 +55,11 @@ typedef struct {
     int zajete_sloty;       /* suma wag slotów */
 } Rzad;
 
-/* Ring 18 rzędów */
+/* Ring LICZBA_RZEDOW rzędów */
 static Rzad g_ring[LICZBA_RZEDOW];
 static int g_head = 0;  /* indeks rzędu na pozycji 0 (dolna stacja) */
 
-/* Pobiera rząd na danej pozycji logicznej (0=dolna, 9=górna) */
+/* Pobiera rząd na danej pozycji logicznej (0=dolna, POZYCJA_GORNA=górna) */
 static Rzad* rzad_na_pozycji(int pozycja) {
     int idx = (g_head + pozycja) % LICZBA_RZEDOW;
     return &g_ring[idx];
@@ -224,7 +224,7 @@ int main(void) {
         
         /* === TICK: symulacja ruchu wyciągu === */
         
-        /* 1. Wysadź pasażerów na górnej stacji (pozycja 9) */
+        /* 1. Wysadź pasażerów na górnej stacji */
         Rzad *rzad_gora = rzad_na_pozycji(POZYCJA_GORNA);
         if (rzad_gora->liczba_pasazerow > 0) {
             wysadz_pasazerow(rzad_gora);
@@ -241,13 +241,15 @@ int main(void) {
         
         /* Sprawdź koniec dnia */
         if (g_shm && g_shm->koniec_dnia) {
-            /* Nie przyjmuj nowych, ale dokończ transport */
+            /* Koniec dnia: NIE ewakuujemy osób z peronu.
+             * Zgodnie z wymaganiami: osoby, które weszły na peron, mają zostać dowiezione na górę.
+             * Gdy już nikogo nie ma w kolejce i w krzesełkach, czekamy jeszcze 3 sekundy
+             * i dopiero wyłączamy kolej.
+             */
             if (g_kolejka_n == 0 && wszystkie_rzedy_puste()) {
+                loguj("WYCIAG: Drenowanie zakończone - wyłączam za 3s");
+                poll(NULL, 0, 3000);
                 break;
-            }
-            /* Ewakuuj kolejkę jeśli już DRAINING */
-            if (g_shm->faza_dnia == FAZA_DRAINING && g_kolejka_n > 0) {
-                ewakuuj_kolejke();
             }
         }
         
@@ -258,7 +260,7 @@ int main(void) {
     /* Koniec - ewakuuj wszystkich */
     ewakuuj_kolejke();
     
-    /* Wysadź wszystkich pozostałych w krzesełkach (wszystkie 18 pozycji dla pewności) */
+    /* Wysadź wszystkich pozostałych w krzesełkach (wszystkie pozycje dla pewności) */
     for (int i = 0; i < LICZBA_RZEDOW; i++) {
         if (g_ring[i].liczba_pasazerow > 0) {
             wysadz_pasazerow(&g_ring[i]);
