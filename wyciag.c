@@ -246,7 +246,19 @@ int main(void) {
              * Gdy już nikogo nie ma w kolejce i w krzesełkach, czekamy jeszcze 3 sekundy
              * i dopiero wyłączamy kolej.
              */
-            if (g_kolejka_n == 0 && wszystkie_rzedy_puste()) {
+            /*
+             * Nie kończ zbyt wcześnie: oprócz braku osób w kolejce i na krzesełkach
+             * czekamy też aż nikt nie będzie już na peronie ani na terenie dolnej stacji.
+             * To pozwala "dokończyć cykl" osobom, które przeszły BRAMKA1 przed zamknięciem
+             * i dopiero w CLOSING/DRAINING doszły do peronu.
+             */
+            int na_peronie = 0, na_terenie = 0;
+            MUTEX_SHM_LOCK();
+            na_peronie = g_shm->osoby_na_peronie;
+            na_terenie = g_shm->osoby_na_terenie;
+            MUTEX_SHM_UNLOCK();
+
+            if (g_kolejka_n == 0 && wszystkie_rzedy_puste() && na_peronie == 0 && na_terenie == 0) {
                 loguj("WYCIAG: Drenowanie zakończone - wyłączam za 3s");
                 poll(NULL, 0, 3000);
                 break;

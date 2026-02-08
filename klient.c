@@ -63,7 +63,7 @@ static void symuluj_czas_ms(int ms) {
  * - stosuje exponential backoff (zmniejsza 100% CPU przy tysiącach procesów)
  * - w CLOSING/DRAINING lub po koniec_dnia wraca, żeby klient mógł szybko wyjść
  */
-static int wyslij_z_backoff(int mq_id, void *msg, size_t size) {
+static int wyslij_z_backoff(int mq_id, void *msg, size_t size, int allow_in_closing) {
     int delay_ms = 1;
     const int max_delay_ms = 200;
 
@@ -72,8 +72,13 @@ static int wyslij_z_backoff(int mq_id, void *msg, size_t size) {
         if (r == 0) return 0;
         if (r == -2) return -2; /* IPC usunięte */
 
-        /* Jeżeli dzień się kończy, nie próbuj już "przepchać" wiadomości */
-        if (g_shm != NULL) {
+        /*
+         * Jeżeli dzień się kończy:
+         * - dla KASA/BRAMKA1 wychodzimy szybko (nie chcemy blokować nowych wejść),
+         * - ale dla etapów "wewnętrznych" (PERON/WYCIĄG) możemy dalej próbować,
+         *   żeby osoby już na terenie dokończyły przejazd.
+         */
+        if (!allow_in_closing && g_shm != NULL) {
             if (g_shm->koniec_dnia || g_shm->faza_dnia != FAZA_OPEN) {
                 return -1;
             }
@@ -226,7 +231,7 @@ int main(int argc, char *argv[]) {
     msg_kasa.wiek_dzieci[1] = g_klient.wiek_dzieci[1];
     
     /* Nie blokuj się na zapchanej kolejce - backoff + szybkie wyjście w CLOSING */
-    if (wyslij_z_backoff(g_mq_kasa, &msg_kasa, sizeof(msg_kasa)) < 0) {
+    if (wyslij_z_backoff(g_mq_kasa, &msg_kasa, sizeof(msg_kasa), 0) < 0) {
         return EXIT_SUCCESS;  /* atexit() zrobi cleanup */
     }
     
@@ -286,7 +291,7 @@ int main(int argc, char *argv[]) {
               g_klient.id, g_klient.id_karnetu, nr_bramki1, g_klient.vip, g_klient.rozmiar_grupy);
         
         /* Nie blokuj się na zapchanej kolejce - backoff + szybkie wyjście w CLOSING */
-        if (wyslij_z_backoff(g_mq_bramka, &msg_bramka, sizeof(msg_bramka)) < 0) break;
+        if (wyslij_z_backoff(g_mq_bramka, &msg_bramka, sizeof(msg_bramka), 0) < 0) break;
         
         /* Czekaj na bramkę BLOKUJĄCO - osobna kolejka odpowiedzi */
         MsgBramkaOdp odp_bramka;
@@ -349,7 +354,7 @@ int main(int argc, char *argv[]) {
         loguj("KLIENT %d: prosi PRACOWNIK1 o wejście na peron (bramka2=%d sloty=%d)",
               g_klient.id, nr_bramki2, g_waga_peronu);
 
-        if (wyslij_z_backoff(g_mq_peron, &msg_peron, sizeof(msg_peron)) < 0) {
+        if (wyslij_z_backoff(g_mq_peron, &msg_peron, sizeof(msg_peron), 1) < 0) {
             break;
         }
 
@@ -370,15 +375,13 @@ int main(int argc, char *argv[]) {
 
             /* jeśli pracownik1 umarł, nie czekaj bez końca */
             pid_t pid_p1 = 0;
-            int faza = FAZA_OPEN;
             int panic = 0;
             MUTEX_SHM_LOCK();
             pid_p1 = g_shm->pid_pracownik1;
-            faza = g_shm->faza_dnia;
             panic = g_shm->panic;
             MUTEX_SHM_UNLOCK();
 
-            if (panic || faza != FAZA_OPEN) {
+            if (panic) {
                 goto koniec_petli;
             }
             if (pid_p1 > 0 && kill(pid_p1, 0) < 0 && errno == ESRCH) {
@@ -426,7 +429,7 @@ int main(int argc, char *argv[]) {
         req.rozmiar_grupy = g_klient.rozmiar_grupy;
         req.waga_slotow = g_waga_peronu;
         
-        if (wyslij_z_backoff(g_mq_wyciag_req, &req, sizeof(req)) != 0) {
+        if (wyslij_z_backoff(g_mq_wyciag_req, &req, sizeof(req), 1) != 0) {
             /* Nie udało się wysłać - ewakuacja */
             sem_signal_n_undo(SEM_PERON, g_waga_peronu);
             MUTEX_SHM_LOCK();

@@ -124,16 +124,24 @@ static int obsluz_peron(void) {
         int r = msg_recv_nowait(g_mq_peron, &req, sizeof(req), 0);
         if (r < 0) break;
 
-        /* Jeśli system zamyka się / panic, odmawiaj żeby klienci mogli się ewakuować */
+        /*
+         * Peron (bramki2) w końcówce dnia:
+         * - Po FAZA_CLOSING NIE wpuszczamy nowych osób przez BRAMKA1.
+         * - Ale osoby, które JUŻ są na terenie dolnej stacji (przeszły BRAMKA1),
+         *   mają dokończyć cykl: wejść na peron, wsiąść, dojechać i zjechać.
+         * Dlatego w CLOSING/DRAINING nadal potwierdzamy peron, o ile nie ma PANIC/awarii.
+         *
+         * Uwaga: to jest rozszerzenie względem "po Tk bramki przestają działać" –
+         * bramka1 nadal odmawia, ale peron nie blokuje osób już wpuszczonych na teren.
+         */
         MUTEX_SHM_LOCK();
-        int faza = g_shm->faza_dnia;
         int panic = g_shm->panic;
         int awaria = g_shm->awaria;
         MUTEX_SHM_UNLOCK();
 
         MsgPeronOdp odp;
         odp.mtype = req.pid_klienta;
-        odp.sukces = (faza == FAZA_OPEN && !panic && !awaria) ? 1 : 0;
+        odp.sukces = (!panic && !awaria) ? 1 : 0;
 
         msg_send_nowait(g_mq_peron_odp, &odp, sizeof(odp));
         handled++;
