@@ -1,0 +1,56 @@
+[02:04:22][PID 120103] Start symulacji: N=180, czas=40 sekund
+[02:04:22][PID 120103] Handlery sygnałów zainstalowane
+[02:04:22][PID 120103] Inicjalizacja zasobów IPC...
+[02:04:22][PID 120103] Inicjalizacja IPC (N=180)...
+[02:04:22][PID 120103] Klucz bazowy: 0x4b308a86
+[02:04:22][PID 120103] Semafory utworzone (id=25)
+[02:04:23][PID 120103] Pamięć współdzielona utworzona (id=25, size=64000152)
+[02:04:23][PID 120103] Kolejki komunikatów utworzone
+[02:04:23][PID 120103] Inicjalizacja IPC zakończona pomyślnie
+[02:04:23][PID 120103] Czas końca dnia: 1770599103 (za 40 sekund)
+[02:04:23][PID 120103] Sprzątacz IPC uruchomiony (PID=120104, PGID=120103)
+[02:04:23][PID 120103] Uruchamianie procesów stałych...
+[02:04:23][PID 120103] Kasjer uruchomiony (PID=120105)
+[02:04:23][PID 120103] Pracownik1 uruchomiony (PID=120106)
+[02:04:23][PID 120103] Pracownik2 uruchomiony (PID=120107)
+[02:04:23][PID 120103] Wyciąg uruchomiony (PID=120108)
+[02:04:23][PID 120103] Bramka 1 uruchomiona (PID=120109)
+[02:04:23][PID 120103] Bramka 2 uruchomiona (PID=120110)
+[02:04:23][PID 120103] Bramka 3 uruchomiona (PID=120111)
+[02:04:23][PID 120103] Bramka 4 uruchomiona (PID=120112)
+[02:04:23][PID 120103] Generator uruchomiony (PID=120113)
+[02:04:23][PID 120103] Wszystkie procesy stałe uruchomione
+[02:04:23][PID 120103] === SYMULACJA ROZPOCZĘTA ===
+[02:04:53][PID 120103] Status: czas=30/40, teren=180, góra=877, klienci=1631, przychód=57605.00 zł
+[02:05:03][PID 120103] Czas symulacji (40 sek) upłynął
+[02:05:03][PID 120103] === KONIEC DNIA - ZAMYKANIE ===
+[02:05:03][PID 120103] === PROCEDURA KOŃCA DNIA ===
+[02:05:03][PID 120103] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[02:05:03][PID 120103]   faza_dnia = CLOSING
+[02:05:03][PID 120103]   czas_konca_dnia = 1770599103
+[02:05:03][PID 120103]   aktywni_klienci = 1000
+[02:05:03][PID 120103] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[02:05:03][PID 120103]   Czekam na wyciąg (PID 120108)...
+[02:05:11][PID 120103]   Wyciąg zakończył drenowanie i wyłączył się
+[02:05:11][PID 120103] FAZA 3: SHUTDOWN - zamykanie procesów
+[02:05:11][PID 120103]   Kolej zatrzymana
+[02:05:11][PID 120103] Oczekiwanie na zakończenie procesów potomnych...
+[02:05:11][PID 120103] Wszystkie procesy potomne zakończone
+[02:05:11][PID 120103] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[02:05:11][PID 120103] Generowanie raportu końcowego...
+[02:05:11][PID 120103] Raport zapisany do: output/raport_dzienny.txt
+[02:05:11][PID 120103] Log przejść zapisany do: output/log_przejsc.txt (24444 wpisów)
+[02:05:11][PID 120103] Czyszczenie zasobów...
+[02:05:11][PID 120103] Czyszczenie zasobów IPC...
+[02:05:11][PID 120103] Pamięć współdzielona usunięta
+[02:05:11][PID 120103] Semafory usunięte
+[02:05:11][PID 120103] Kolejki komunikatów usunięte
+[02:05:11][PID 120103] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

@@ -1,0 +1,14 @@
+TEST2: limit N i VIP
+N=6, CZAS=10
+
+[LIMIT N] Odrzuty z powodu limitu terenu (powinny się pojawić przy małym N):
+count=0
+
+[VIP] Dedykowana BRAMKA1 (VIP-only):
+vip_ok_count=29
+Przykład:
+[02:03:26][PID 116345] BRAMKA1: OK - pid=116421 karnet=102 grupa=1 vip=1
+
+[NIE KORZYSTA] Klienci, którzy rezygnują (case-insensitive):
+count=148
+(brak w tym uruchomieniu – zależy od losowania PROC_NIE_KORZYSTA)

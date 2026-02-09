@@ -1,0 +1,1936 @@
+[02:03:26][PID 116345] BRAMKA1: Rozpoczynam pracę
+[02:03:26][PID 116346] BRAMKA2: Rozpoczynam pracę
+[02:03:26][PID 116347] BRAMKA3: Rozpoczynam pracę
+[02:03:26][PID 116348] BRAMKA4: Rozpoczynam pracę
+[02:03:26][PID 116346] BRAMKA2: OK - pid=116357 karnet=6 grupa=1 vip=0
+[02:03:26][PID 116346] BRAMKA2: OK - pid=116352 karnet=2 grupa=2 vip=0
+[02:03:26][PID 116346] BRAMKA2: OK - pid=116350 karnet=1 grupa=1 vip=0
+[02:03:26][PID 116348] BRAMKA4: OK - pid=116353 karnet=3 grupa=2 vip=0
+[02:03:26][PID 116346] BRAMKA2: OK - pid=116364 karnet=15 grupa=1 vip=0
+[02:03:26][PID 116347] BRAMKA3: OK - pid=116355 karnet=4 grupa=2 vip=0
+[02:03:26][PID 116345] BRAMKA1: OK - pid=116421 karnet=102 grupa=1 vip=1
+[02:03:26][PID 116348] BRAMKA4: OK - pid=116361 karnet=10 grupa=2 vip=0
+[02:03:26][PID 116346] BRAMKA2: OK - pid=116385 karnet=18 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116369 karnet=14 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=116536 karnet=205 grupa=1 vip=1
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116356 karnet=5 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116381 karnet=17 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116371 karnet=12 grupa=3 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116380 karnet=21 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116359 karnet=7 grupa=4 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116363 karnet=20 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116390 karnet=25 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116383 karnet=23 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116392 karnet=28 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116389 karnet=24 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116370 karnet=11 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116396 karnet=29 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116391 karnet=32 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116366 karnet=37 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116382 karnet=19 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116409 karnet=57 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116398 karnet=34 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116402 karnet=43 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=116746 karnet=471 grupa=2 vip=1
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116377 karnet=49 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116379 karnet=44 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=116930 karnet=453 grupa=1 vip=1
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116405 karnet=55 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116401 karnet=59 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=116700 karnet=585 grupa=1 vip=1
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116365 karnet=36 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=117058 karnet=699 grupa=3 vip=1
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116394 karnet=35 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116375 karnet=38 grupa=4 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=117098 karnet=738 grupa=2 vip=1
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116412 karnet=51 grupa=4 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116397 karnet=45 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116367 karnet=60 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116360 karnet=30 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116404 karnet=46 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116378 karnet=16 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116386 karnet=47 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116358 karnet=58 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116411 karnet=50 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116395 karnet=33 grupa=1 vip=0
+[02:03:27][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116351 karnet=48 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116393 karnet=26 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116403 karnet=67 grupa=3 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116354 karnet=65 grupa=3 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116399 karnet=41 grupa=3 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116416 karnet=71 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116408 karnet=64 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116413 karnet=69 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116424 karnet=78 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116428 karnet=77 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116423 karnet=72 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116431 karnet=79 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116432 karnet=83 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116440 karnet=87 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116429 karnet=89 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116439 karnet=85 grupa=3 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116419 karnet=74 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116445 karnet=94 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116441 karnet=103 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116434 karnet=90 grupa=3 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116437 karnet=93 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116448 karnet=105 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116407 karnet=61 grupa=4 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116447 karnet=97 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116415 karnet=70 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116420 karnet=76 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116450 karnet=111 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116446 karnet=98 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116451 karnet=114 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116433 karnet=82 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116362 karnet=31 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116457 karnet=116 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116417 karnet=73 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116425 karnet=100 grupa=2 vip=0
+[02:03:27][PID 116348] [02:03:27][PID 116347] BRAMKA4: OK - pid=116464 karnet=122 grupa=2 vip=0[02:03:27][PID 116346] 
+BRAMKA3: OK - pid=116418 karnet=104 grupa=1 vip=0BRAMKA2: OK - pid=116435 karnet=88 grupa=1 vip=0
+
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116468 karnet=126 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116484 karnet=143 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116452 karnet=112 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116493 karnet=155 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116442 karnet=110 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116497 karnet=156 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116453 karnet=113 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116499 karnet=158 grupa=1 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116511 karnet=165 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116430 karnet=80 grupa=3 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116438 karnet=84 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116455 karnet=117 grupa=3 vip=0
+[02:03:27][PID 116346] [02:03:27][PID 116347] BRAMKA2: OK - pid=116443 karnet=95 grupa=2 vip=0
+BRAMKA3: OK - pid=116476 karnet=132 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116422 karnet=75 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116467 karnet=130 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116410 karnet=54 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116479 karnet=137 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116482 karnet=141 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116426 karnet=101 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116483 karnet=142 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116487 karnet=147 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116427 karnet=107 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116449 karnet=109 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116454 karnet=115 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116486 karnet=146 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116462 karnet=120 grupa=1 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116494 karnet=151 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116463 karnet=123 grupa=2 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116492 karnet=157 grupa=2 vip=0
+[02:03:27][PID 116346] [02:03:27][PID 116347] BRAMKA3: OK - pid=116513 karnet=162 grupa=1 vip=0BRAMKA2: OK - pid=116466 karnet=124 grupa=1 vip=0
+
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116512 karnet=167 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116469 karnet=127 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116465 karnet=128 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116460 karnet=121 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116471 karnet=131 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116475 karnet=133 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116473 karnet=135 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116478 karnet=136 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116480 karnet=138 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116481 karnet=139 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116458 karnet=125 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116470 karnet=140 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116477 karnet=144 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116472 karnet=145 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116489 karnet=148 grupa=1 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116490 karnet=150 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116488 karnet=149 grupa=2 vip=0
+[02:03:27][PID 116348] BRAMKA4: OK - pid=116525 karnet=175 grupa=4 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116533 karnet=182 grupa=4 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116528 karnet=191 grupa=2 vip=0
+[02:03:27][PID 116346] BRAMKA2: OK - pid=116496 karnet=152 grupa=3 vip=0
+[02:03:27][PID 116347] BRAMKA3: OK - pid=116540 karnet=192 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116501 karnet=160 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116505 karnet=161 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116526 karnet=179 grupa=4 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116504 karnet=159 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116552 karnet=208 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116518 karnet=166 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116516 karnet=164 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116543 karnet=190 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116564 karnet=215 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116566 karnet=218 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116572 karnet=220 grupa=2 vip=0
+[02:03:28][PID 116345] BRAMKA1: OK - pid=117267 karnet=967 grupa=2 vip=1
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116519 karnet=172 grupa=4 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116529 karnet=185 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116522 karnet=169 grupa=4 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116532 karnet=186 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116534 karnet=202 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116510 karnet=163 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116537 karnet=199 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116535 karnet=187 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116520 karnet=168 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116612 karnet=253 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116539 karnet=189 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116515 karnet=178 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116557 karnet=229 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116530 karnet=200 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116542 karnet=195 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116584 karnet=232 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116545 karnet=196 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116531 karnet=198 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116592 karnet=234 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116541 karnet=204 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116544 karnet=201 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116556 karnet=212 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116561 karnet=213 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116555 karnet=211 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116548 karnet=210 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116565 karnet=216 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116546 karnet=193 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116570 karnet=221 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116558 karnet=214 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116563 karnet=219 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116576 karnet=222 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116503 karnet=207 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116500 karnet=197 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116559 karnet=225 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116574 karnet=224 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116508 karnet=206 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116577 karnet=226 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116581 karnet=230 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116575 karnet=227 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116632 karnet=249 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116571 karnet=228 grupa=1 vip=0
+[02:03:28][PID 116346] [02:03:28][PID 116348] BRAMKA2: OK - pid=116605 karnet=238 grupa=1 vip=0
+BRAMKA4: OK - pid=116610 karnet=242 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116587 karnet=250 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116567 karnet=247 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116624 karnet=245 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116645 karnet=252 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116627 karnet=263 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116594 karnet=251 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116657 karnet=266 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116589 karnet=236 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116625 karnet=243 grupa=3 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116596 karnet=254 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116598 karnet=256 grupa=2 vip=0
+[02:03:28][PID 116347] [02:03:28][PID 116346] BRAMKA3: OK - pid=116578 karnet=233 grupa=1 vip=0BRAMKA2: OK - pid=116569 karnet=271 grupa=3 vip=0
+
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116651 karnet=275 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116626 karnet=255 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116635 karnet=260 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116658 karnet=265 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116590 karnet=237 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116622 karnet=268 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116655 karnet=264 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116550 karnet=194 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116641 karnet=276 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116582 karnet=281 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116647 karnet=282 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116652 karnet=270 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116619 karnet=285 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116630 karnet=294 grupa=3 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116631 karnet=299 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116593 karnet=239 grupa=4 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116659 karnet=305 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116601 karnet=286 grupa=4 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116621 karnet=259 grupa=2 vip=0
+[02:03:28][PID 116347] [02:03:28][PID 116346] [02:03:28][PID 116348] BRAMKA3: OK - pid=116661 karnet=291 grupa=1 vip=0BRAMKA2: OK - pid=116604 karnet=297 grupa=1 vip=0BRAMKA4: OK - pid=116649 karnet=261 grupa=2 vip=0
+
+
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116634 karnet=258 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116586 karnet=284 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116656 karnet=300 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116663 karnet=262 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116633 karnet=309 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116583 karnet=231 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116600 karnet=292 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116591 karnet=235 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116642 karnet=293 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116644 karnet=296 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116650 karnet=269 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116676 karnet=318 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116506 karnet=303 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116640 karnet=267 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116554 karnet=274 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116653 karnet=277 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116681 karnet=329 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116679 karnet=336 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116597 karnet=278 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116646 karnet=283 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116699 karnet=335 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116696 karnet=345 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116648 karnet=279 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116693 karnet=350 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116615 karnet=280 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116662 karnet=311 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116639 karnet=289 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116744 karnet=354 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116562 karnet=304 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116727 karnet=365 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116617 karnet=302 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116616 karnet=290 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116734 karnet=355 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116709 karnet=369 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116638 karnet=298 grupa=2 vip=0
+[02:03:28][PID 116345] BRAMKA1: OK - pid=117526 karnet=1234 grupa=3 vip=1
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116764 karnet=372 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116710 karnet=371 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116669 karnet=317 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116671 karnet=319 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116682 karnet=323 grupa=1 vip=0
+[02:03:28][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116677 karnet=325 grupa=1 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116667 karnet=326 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116665 karnet=313 grupa=4 vip=0
+[02:03:28][PID 116346] [02:03:28][PID 116348] BRAMKA2: OK - pid=116748 karnet=374 grupa=3 vip=0BRAMKA4: OK - pid=116687 karnet=327 grupa=3 vip=0
+
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116654 karnet=306 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116900 karnet=377 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116666 karnet=316 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116664 karnet=322 grupa=1 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116741 karnet=386 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116801 karnet=392 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116668 karnet=324 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116763 karnet=389 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116618 karnet=308 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116793 karnet=391 grupa=2 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116809 karnet=407 grupa=1 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116707 karnet=343 grupa=3 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116956 karnet=425 grupa=2 vip=0
+[02:03:28][PID 116348] BRAMKA4: OK - pid=116684 karnet=331 grupa=4 vip=0
+[02:03:28][PID 116346] BRAMKA2: OK - pid=116926 karnet=426 grupa=2 vip=0
+[02:03:28][PID 116347] BRAMKA3: OK - pid=116683 karnet=337 grupa=4 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116675 karnet=334 grupa=1 vip=0
+[02:03:29][PID 116346] [02:03:29][PID 116347] BRAMKA3: OK - pid=116686 karnet=346 grupa=2 vip=0BRAMKA2: OK - pid=116704 karnet=429 grupa=3 vip=0
+
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116672 karnet=321 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116873 karnet=447 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116712 karnet=340 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116729 karnet=359 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116812 karnet=440 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116694 karnet=342 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116692 karnet=348 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116738 karnet=465 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116740 karnet=358 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116724 karnet=439 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116882 karnet=455 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116846 karnet=495 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116769 karnet=443 grupa=2 vip=0
+[02:03:29][PID 116346] [02:03:29][PID 116345] BRAMKA2: OK - pid=116830 karnet=444 grupa=1 vip=0
+BRAMKA1: OK - pid=117458 karnet=1164 grupa=1 vip=1
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116847 karnet=479 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116708 karnet=351 grupa=3 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116715 karnet=510 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116918 karnet=452 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116752 karnet=356 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116772 karnet=367 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116725 karnet=364 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116660 karnet=368 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116705 karnet=360 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116813 karnet=376 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116891 karnet=379 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116859 karnet=504 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116885 karnet=380 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116674 karnet=353 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116896 karnet=516 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116936 karnet=381 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116902 karnet=524 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116905 karnet=457 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116743 karnet=363 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116718 karnet=382 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116906 karnet=506 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116768 karnet=366 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116795 karnet=396 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116883 karnet=454 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116670 karnet=320 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116934 karnet=489 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116799 karnet=397 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116689 karnet=347 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116829 karnet=564 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116908 karnet=383 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116910 karnet=393 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116637 karnet=312 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116777 karnet=573 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116864 karnet=398 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116636 karnet=310 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116917 karnet=529 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116719 karnet=385 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116695 karnet=370 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116976 karnet=569 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116833 karnet=395 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116787 karnet=373 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116765 karnet=594 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116916 karnet=424 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116825 karnet=378 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116789 karnet=576 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116957 karnet=558 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116778 karnet=593 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117028 karnet=559 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116811 karnet=390 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116766 karnet=384 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116755 karnet=388 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116759 karnet=405 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116894 karnet=410 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116851 karnet=532 grupa=4 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116790 karnet=434 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116788 karnet=399 grupa=4 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117050 karnet=617 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116955 karnet=431 grupa=4 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116733 karnet=612 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117025 karnet=553 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116808 karnet=418 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116854 karnet=414 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116803 karnet=394 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117078 karnet=607 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116702 karnet=446 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116804 karnet=441 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116958 karnet=461 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116893 karnet=422 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116783 karnet=421 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116914 karnet=413 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116843 karnet=502 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116739 karnet=449 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116737 karnet=635 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116680 karnet=451 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117082 karnet=625 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116860 karnet=411 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116757 karnet=468 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116990 karnet=587 grupa=3 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116817 karnet=466 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116721 karnet=639 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116823 karnet=486 grupa=3 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116940 karnet=589 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116960 karnet=613 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116869 karnet=458 grupa=4 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116711 karnet=463 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116938 karnet=622 grupa=3 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116928 karnet=485 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117080 karnet=610 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116925 karnet=415 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116842 karnet=409 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116805 karnet=435 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116880 karnet=513 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116904 karnet=450 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116840 karnet=462 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116849 karnet=412 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116714 karnet=500 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116874 karnet=469 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116826 karnet=490 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116786 karnet=448 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116797 karnet=437 grupa=3 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116780 karnet=427 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116776 karnet=481 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116886 karnet=473 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116785 karnet=408 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116816 karnet=475 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116850 karnet=456 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116866 karnet=528 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116775 karnet=497 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116889 karnet=464 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116815 karnet=474 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116950 karnet=483 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116774 karnet=521 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116841 karnet=519 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116697 karnet=518 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116872 karnet=598 grupa=4 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116698 karnet=467 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116802 karnet=538 grupa=4 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116929 karnet=492 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117009 karnet=480 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116690 karnet=403 grupa=3 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116943 karnet=511 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116965 karnet=514 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117094 karnet=567 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116784 karnet=535 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116870 karnet=508 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116907 karnet=544 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117000 karnet=595 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117012 karnet=616 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116691 karnet=546 grupa=3 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116806 karnet=551 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116717 karnet=545 grupa=2 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=117024 karnet=582 grupa=2 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116832 karnet=402 grupa=1 vip=0
+[02:03:29][PID 116346] BRAMKA2: OK - pid=116703 karnet=560 grupa=1 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116952 karnet=550 grupa=2 vip=0
+[02:03:29][PID 116348] BRAMKA4: OK - pid=116922 karnet=561 grupa=1 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116953 karnet=522 grupa=3 vip=0
+[02:03:29][PID 116347] BRAMKA3: OK - pid=116996 karnet=548 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117045 karnet=640 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116963 karnet=541 grupa=3 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116871 karnet=493 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117075 karnet=615 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116898 karnet=470 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116919 karnet=515 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116779 karnet=543 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116820 karnet=557 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116792 karnet=477 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116909 karnet=406 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116822 karnet=484 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116819 karnet=509 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116845 karnet=525 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116993 karnet=586 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116937 karnet=583 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116861 karnet=482 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117051 karnet=652 grupa=3 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116722 karnet=436 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117044 karnet=570 grupa=4 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116985 karnet=651 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116835 karnet=590 grupa=4 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116995 karnet=491 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116981 karnet=549 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117017 karnet=562 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117034 karnet=650 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117005 karnet=527 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116911 karnet=501 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116974 karnet=602 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117049 karnet=577 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116716 karnet=581 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116824 karnet=445 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116923 karnet=517 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117011 karnet=655 grupa=3 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117008 karnet=657 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116884 karnet=565 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116947 karnet=619 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117079 karnet=605 grupa=1 vip=0
+[02:03:30][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116962 karnet=663 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117074 karnet=628 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117002 karnet=666 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116887 karnet=512 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116800 karnet=603 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116980 karnet=667 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117004 karnet=578 grupa=3 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116831 karnet=606 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116945 karnet=681 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116836 karnet=630 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117032 karnet=683 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117035 karnet=608 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117007 karnet=632 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117014 karnet=684 grupa=3 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117054 karnet=637 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116971 karnet=488 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116944 karnet=476 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116969 karnet=688 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117086 karnet=694 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116745 karnet=526 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117041 karnet=633 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117052 karnet=575 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116998 karnet=638 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117027 karnet=618 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116997 karnet=629 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116966 karnet=634 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117076 karnet=563 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117069 karnet=642 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117088 karnet=647 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117056 karnet=706 grupa=4 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117059 karnet=649 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117029 karnet=554 grupa=4 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116760 karnet=730 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116761 karnet=648 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117062 karnet=552 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117089 karnet=660 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116949 karnet=626 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116821 karnet=725 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116967 karnet=662 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117087 karnet=597 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116810 karnet=735 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117068 karnet=664 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116961 karnet=530 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116731 karnet=740 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116762 karnet=568 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117023 karnet=669 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117085 karnet=636 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117110 karnet=752 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117003 karnet=668 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117083 karnet=671 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116857 karnet=614 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116868 karnet=755 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116848 karnet=757 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117109 karnet=754 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117065 karnet=687 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116685 karnet=601 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116973 karnet=690 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117066 karnet=698 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117105 karnet=756 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117053 karnet=645 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116935 karnet=769 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117064 karnet=702 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116992 karnet=646 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116964 karnet=775 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117063 karnet=703 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117067 karnet=624 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117120 karnet=779 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117039 karnet=654 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117119 karnet=778 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117072 karnet=711 grupa=3 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116984 karnet=787 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116892 karnet=658 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116942 karnet=715 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117038 karnet=659 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117122 karnet=790 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116987 karnet=705 grupa=1 vip=0
+[02:03:30][PID 116346] [02:03:30][PID 116347] BRAMKA2: OK - pid=117124 karnet=793 grupa=2 vip=0
+BRAMKA3: OK - pid=116858 karnet=661 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117070 karnet=716 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117026 karnet=803 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117033 karnet=670 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116988 karnet=718 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117013 karnet=799 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117090 karnet=672 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116770 karnet=723 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116941 karnet=766 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116982 karnet=675 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117131 karnet=805 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116977 karnet=719 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116791 karnet=727 grupa=1 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116838 karnet=728 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117081 karnet=678 grupa=3 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116828 karnet=782 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116736 karnet=734 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116862 karnet=785 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117091 karnet=676 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116852 karnet=739 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117130 karnet=815 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117020 karnet=673 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117099 karnet=741 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116991 karnet=682 grupa=2 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116946 karnet=810 grupa=3 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=116924 karnet=826 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116978 karnet=693 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117101 karnet=742 grupa=3 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117100 karnet=745 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117132 karnet=819 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117015 karnet=691 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117097 karnet=746 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116979 karnet=695 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117030 karnet=833 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=116890 karnet=747 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=116970 karnet=692 grupa=1 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117046 karnet=696 grupa=1 vip=0
+[02:03:30][PID 116346] BRAMKA2: OK - pid=117138 karnet=835 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117103 karnet=749 grupa=2 vip=0
+[02:03:30][PID 116347] BRAMKA3: OK - pid=117016 karnet=697 grupa=2 vip=0
+[02:03:30][PID 116348] BRAMKA4: OK - pid=117106 karnet=751 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116939 karnet=704 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116837 karnet=753 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117073 karnet=709 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116751 karnet=759 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117048 karnet=710 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116895 karnet=762 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117006 karnet=713 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116881 karnet=760 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116876 karnet=761 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116773 karnet=714 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116927 karnet=764 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117060 karnet=720 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117116 karnet=768 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117061 karnet=721 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117112 karnet=770 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116749 karnet=780 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116972 karnet=717 grupa=2 vip=0
+[02:03:31][PID 116348] [02:03:31][PID 116347] BRAMKA3: OK - pid=116781 karnet=722 grupa=2 vip=0BRAMKA4: OK - pid=116865 karnet=789 grupa=2 vip=0
+
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116782 karnet=724 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117123 karnet=786 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116798 karnet=731 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116899 karnet=791 grupa=3 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116827 karnet=729 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117095 karnet=733 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116678 karnet=732 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117125 karnet=802 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116888 karnet=801 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116767 karnet=737 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116758 karnet=736 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116732 karnet=804 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117104 karnet=750 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117037 karnet=808 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117102 karnet=748 grupa=1 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=117526 karnet=1234 grupa=3 vip=1
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117115 karnet=773 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117139 karnet=830 grupa=4 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117111 karnet=758 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116879 karnet=763 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117128 karnet=797 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116959 karnet=765 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117134 karnet=814 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117118 karnet=776 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116948 karnet=824 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116814 karnet=777 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116878 karnet=788 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117126 karnet=796 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117040 karnet=828 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116920 karnet=795 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116901 karnet=823 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117055 karnet=829 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117127 karnet=798 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117144 karnet=837 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116951 karnet=800 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117031 karnet=807 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117142 karnet=841 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117113 karnet=767 grupa=2 vip=0
+[02:03:31][PID 116348] [02:03:31][PID 116347] BRAMKA4: OK - pid=117129 karnet=806 grupa=2 vip=0BRAMKA3: OK - pid=117117 karnet=771 grupa=2 vip=0
+
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116754 karnet=781 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117121 karnet=784 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117021 karnet=809 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116723 karnet=794 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117047 karnet=812 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116975 karnet=822 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=116932 karnet=813 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117135 karnet=816 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116921 karnet=827 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117036 karnet=845 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117137 karnet=821 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117148 karnet=846 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117140 karnet=834 grupa=1 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=116421 karnet=102 grupa=1 vip=1
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117019 karnet=843 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117141 karnet=836 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117136 karnet=825 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117149 karnet=844 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=116818 karnet=818 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117155 karnet=857 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117157 karnet=858 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117164 karnet=863 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117163 karnet=862 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117176 karnet=874 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117171 karnet=872 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117174 karnet=876 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117185 karnet=883 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117225 karnet=929 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117374 karnet=1082 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117437 karnet=1143 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117508 karnet=1213 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117390 karnet=1102 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117307 karnet=1007 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117433 karnet=1140 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117198 karnet=898 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117193 karnet=893 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117265 karnet=964 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117391 karnet=1099 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117196 karnet=900 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117207 karnet=909 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117201 karnet=905 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117205 karnet=906 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117211 karnet=913 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117213 karnet=918 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117318 karnet=1012 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117143 karnet=838 grupa=4 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117146 karnet=842 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117151 karnet=848 grupa=4 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117092 karnet=847 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117319 karnet=1015 grupa=4 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117077 karnet=853 grupa=2 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117153 karnet=852 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117230 karnet=926 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117152 karnet=851 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117150 karnet=854 grupa=2 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=116746 karnet=471 grupa=2 vip=1
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117219 karnet=921 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117162 karnet=861 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117154 karnet=856 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117217 karnet=924 grupa=1 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=116930 karnet=453 grupa=1 vip=1
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117232 karnet=934 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117161 karnet=864 grupa=1 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117159 karnet=859 grupa=2 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=116700 karnet=585 grupa=1 vip=1
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117175 karnet=873 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117160 karnet=860 grupa=1 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117177 karnet=875 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117221 karnet=930 grupa=2 vip=0
+[02:03:31][PID 116346] [02:03:31][PID 116347] BRAMKA3: OK - pid=117229 karnet=933 grupa=1 vip=0BRAMKA2: OK - pid=117186 karnet=886 grupa=1 vip=0
+
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117166 karnet=865 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117234 karnet=938 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117182 karnet=882 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117233 karnet=935 grupa=1 vip=0
+[02:03:31][PID 116345] BRAMKA1: OK - pid=117058 karnet=699 grupa=3 vip=1
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117169 karnet=866 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117189 karnet=889 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117235 karnet=941 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117167 karnet=868 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117188 karnet=892 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117238 karnet=940 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117170 karnet=869 grupa=1 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117420 karnet=1125 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117246 karnet=945 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117172 karnet=870 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117197 karnet=896 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117245 karnet=947 grupa=2 vip=0
+[02:03:31][PID 116348] [02:03:31][PID 116346] BRAMKA4: OK - pid=117168 karnet=871 grupa=1 vip=0BRAMKA2: OK - pid=117192 karnet=890 grupa=1 vip=0
+
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117248 karnet=949 grupa=1 vip=0
+[02:03:31][PID 116346] [02:03:31][PID 116348] BRAMKA2: OK - pid=117190 karnet=894 grupa=2 vip=0
+BRAMKA4: OK - pid=117179 karnet=878 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117255 karnet=955 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117194 karnet=895 grupa=2 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117181 karnet=879 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117263 karnet=963 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117494 karnet=1201 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117206 karnet=907 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117180 karnet=877 grupa=1 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117266 karnet=971 grupa=2 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117208 karnet=910 grupa=2 vip=0
+[02:03:31][PID 116347] BRAMKA3: OK - pid=117268 karnet=972 grupa=1 vip=0
+[02:03:31][PID 116346] BRAMKA2: OK - pid=117209 karnet=911 grupa=1 vip=0
+[02:03:31][PID 116348] BRAMKA4: OK - pid=117184 karnet=880 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117273 karnet=974 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117215 karnet=914 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117187 karnet=884 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117275 karnet=979 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117216 karnet=917 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117283 karnet=982 grupa=2 vip=0
+[02:03:32][PID 116346] [02:03:32][PID 116347] BRAMKA2: OK - pid=117220 karnet=920 grupa=1 vip=0
+BRAMKA3: OK - pid=117280 karnet=983 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117286 karnet=989 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117291 karnet=992 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117294 karnet=991 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117183 karnet=887 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117293 karnet=994 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117241 karnet=946 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117227 karnet=931 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117305 karnet=999 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117462 karnet=1169 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117239 karnet=939 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117308 karnet=1008 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117200 karnet=899 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117236 karnet=942 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117309 karnet=1004 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117312 karnet=1006 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117256 karnet=958 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117334 karnet=1033 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117202 karnet=901 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117244 karnet=944 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117340 karnet=1040 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117247 karnet=948 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117341 karnet=1042 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117253 karnet=952 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117346 karnet=1047 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117260 karnet=959 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117339 karnet=1045 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117344 karnet=1043 grupa=1 vip=0
+[02:03:32][PID 116347] [02:03:32][PID 116346] BRAMKA3: OK - pid=117350 karnet=1048 grupa=2 vip=0
+BRAMKA2: OK - pid=117257 karnet=960 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117261 karnet=961 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117259 karnet=957 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117264 karnet=965 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117304 karnet=1000 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117306 karnet=1001 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117426 karnet=1131 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117269 karnet=966 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117276 karnet=977 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117277 karnet=978 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117288 karnet=986 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117204 karnet=902 grupa=4 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117210 karnet=912 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117212 karnet=915 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117362 karnet=1071 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117359 karnet=1073 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117218 karnet=916 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117287 karnet=987 grupa=3 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117298 karnet=995 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117416 karnet=1124 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117222 karnet=919 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117301 karnet=997 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117313 karnet=1009 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117424 karnet=1128 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117438 karnet=1145 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117311 karnet=1005 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117423 karnet=1127 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117523 karnet=1228 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117203 karnet=908 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117320 karnet=1019 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=116390 karnet=25 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117224 karnet=922 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117327 karnet=1025 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117226 karnet=925 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117360 karnet=1063 grupa=3 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117316 karnet=1011 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117364 karnet=1066 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117228 karnet=927 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117223 karnet=936 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117317 karnet=1013 grupa=2 vip=0
+[02:03:32][PID 116345] BRAMKA1: OK - pid=117688 karnet=1403 grupa=2 vip=1
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117237 karnet=937 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117324 karnet=1020 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117243 karnet=943 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117315 karnet=1010 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117252 karnet=954 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117329 karnet=1027 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117363 karnet=1067 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117361 karnet=1070 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117251 karnet=950 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117379 karnet=1087 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117323 karnet=1022 grupa=4 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117258 karnet=956 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117384 karnet=1094 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117330 karnet=1032 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117302 karnet=998 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117332 karnet=1030 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117419 karnet=1132 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117274 karnet=976 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117345 karnet=1044 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117271 karnet=973 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117338 karnet=1041 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117336 karnet=1034 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117351 karnet=1052 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117354 karnet=1055 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117348 karnet=1051 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117347 karnet=1050 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117381 karnet=1091 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117397 karnet=1106 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117396 karnet=1105 grupa=1 vip=0
+[02:03:32][PID 116345] BRAMKA1: OK - pid=117526 karnet=1234 grupa=3 vip=1
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117400 karnet=1108 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117392 karnet=1103 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117355 karnet=1058 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=116394 karnet=35 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117270 karnet=968 grupa=4 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117522 karnet=1229 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117527 karnet=1236 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117278 karnet=981 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117519 karnet=1227 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117285 karnet=985 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117531 karnet=1238 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117366 karnet=1074 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117281 karnet=980 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=116404 karnet=46 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117368 karnet=1079 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117284 karnet=984 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=116386 karnet=47 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117375 karnet=1083 grupa=2 vip=0
+[02:03:32][PID 116348] [02:03:32][PID 116347] BRAMKA4: OK - pid=117292 karnet=990 grupa=1 vip=0
+BRAMKA3: OK - pid=117405 karnet=1114 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117370 karnet=1081 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117295 karnet=993 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117404 karnet=1115 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117300 karnet=996 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117410 karnet=1117 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117376 karnet=1086 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117303 karnet=1002 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117414 karnet=1122 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117377 karnet=1084 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117310 karnet=1003 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117429 karnet=1134 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117383 karnet=1089 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117314 karnet=1014 grupa=1 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117321 karnet=1018 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117428 karnet=1137 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117365 karnet=1076 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117325 karnet=1021 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117432 karnet=1139 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117380 karnet=1088 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117333 karnet=1031 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117439 karnet=1144 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117501 karnet=1205 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117382 karnet=1090 grupa=2 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117386 karnet=1095 grupa=1 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=116413 karnet=69 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117442 karnet=1151 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117389 karnet=1096 grupa=2 vip=0
+[02:03:32][PID 116348] BRAMKA4: OK - pid=117337 karnet=1035 grupa=3 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117445 karnet=1153 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117448 karnet=1157 grupa=1 vip=0
+[02:03:32][PID 116346] BRAMKA2: OK - pid=117395 karnet=1104 grupa=2 vip=0
+[02:03:32][PID 116347] BRAMKA3: OK - pid=117452 karnet=1160 grupa=1 vip=0
+[02:03:33][PID 116346] [02:03:33][PID 116347] BRAMKA2: OK - pid=117394 karnet=1101 grupa=1 vip=0
+BRAMKA3: OK - pid=117453 karnet=1161 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117454 karnet=1162 grupa=1 vip=0
+[02:03:33][PID 116346] [02:03:33][PID 116347] BRAMKA2: OK - pid=117406 karnet=1113 grupa=2 vip=0BRAMKA3: OK - pid=117459 karnet=1165 grupa=1 vip=0
+
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117463 karnet=1171 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117326 karnet=1028 grupa=3 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117502 karnet=1206 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117464 karnet=1170 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117461 karnet=1168 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117335 karnet=1038 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117467 karnet=1173 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117342 karnet=1046 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117529 karnet=1239 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117472 karnet=1177 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117349 karnet=1053 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117403 karnet=1112 grupa=1 vip=0
+[02:03:33][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117470 karnet=1174 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117358 karnet=1061 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117474 karnet=1179 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117411 karnet=1118 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117412 karnet=1120 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117481 karnet=1183 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117352 karnet=1056 grupa=3 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117409 karnet=1119 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117483 karnet=1185 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117343 karnet=1060 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117413 karnet=1121 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116490 karnet=150 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117353 karnet=1062 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117431 karnet=1135 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117425 karnet=1133 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=116356 karnet=5 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117369 karnet=1075 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117367 karnet=1077 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117373 karnet=1085 grupa=1 vip=0
+[02:03:33][PID 116346] [02:03:33][PID 116348] BRAMKA2: OK - pid=117436 karnet=1147 grupa=3 vip=0
+BRAMKA4: OK - pid=117371 karnet=1080 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117440 karnet=1146 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117385 karnet=1093 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117387 karnet=1098 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117393 karnet=1100 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117399 karnet=1107 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117504 karnet=1207 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117489 karnet=1196 grupa=4 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117488 karnet=1193 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116439 karnet=85 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117505 karnet=1212 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117443 karnet=1156 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117450 karnet=1159 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117510 karnet=1214 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117514 karnet=1216 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117460 karnet=1166 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117512 karnet=1217 grupa=3 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117473 karnet=1178 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117475 karnet=1180 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117518 karnet=1230 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117485 karnet=1189 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117479 karnet=1182 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117521 karnet=1226 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117487 karnet=1191 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117532 karnet=1242 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117491 karnet=1194 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117538 karnet=1247 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=116412 karnet=51 grupa=4 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116492 karnet=157 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117539 karnet=1249 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117525 karnet=1232 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117484 karnet=1188 grupa=2 vip=0
+[02:03:33][PID 116348] [02:03:33][PID 116347] BRAMKA3: OK - pid=117542 karnet=1254 grupa=2 vip=0
+BRAMKA4: OK - pid=117528 karnet=1233 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117486 karnet=1190 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117524 karnet=1231 grupa=1 vip=0
+[02:03:33][PID 116347] [02:03:33][PID 116346] BRAMKA2: OK - pid=117497 karnet=1203 grupa=1 vip=0BRAMKA3: OK - pid=117543 karnet=1257 grupa=1 vip=0
+
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117530 karnet=1237 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117402 karnet=1110 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117499 karnet=1204 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117506 karnet=1209 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117500 karnet=1208 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117509 karnet=1211 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117401 karnet=1111 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117545 karnet=1256 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117398 karnet=1109 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116577 karnet=226 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117408 karnet=1116 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116651 karnet=275 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117415 karnet=1123 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117513 karnet=1222 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116626 karnet=255 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117520 karnet=1225 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117422 karnet=1126 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117549 karnet=1260 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117536 karnet=1248 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117427 karnet=1129 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117551 karnet=1261 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117430 karnet=1138 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117534 karnet=1244 grupa=3 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117552 karnet=1262 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117441 karnet=1150 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116381 karnet=17 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117540 karnet=1251 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117435 karnet=1141 grupa=3 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117544 karnet=1258 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116601 karnet=286 grupa=4 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117446 karnet=1155 grupa=2 vip=0
+[02:03:33][PID 116346] [02:03:33][PID 116347] BRAMKA2: OK - pid=116544 karnet=201 grupa=2 vip=0
+BRAMKA3: OK - pid=116425 karnet=100 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117444 karnet=1152 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117455 karnet=1163 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116645 karnet=252 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116676 karnet=318 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117449 karnet=1158 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116378 karnet=16 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116640 karnet=267 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117465 karnet=1172 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116416 karnet=71 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117555 karnet=1263 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117557 karnet=1266 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117548 karnet=1259 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117559 karnet=1267 grupa=1 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=117561 karnet=1269 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116649 karnet=261 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116663 karnet=262 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116633 karnet=309 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116497 karnet=156 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117556 karnet=1264 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=117560 karnet=1268 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117468 karnet=1175 grupa=3 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116764 karnet=372 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117476 karnet=1181 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116512 karnet=167 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117480 karnet=1186 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117482 karnet=1184 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117490 karnet=1192 grupa=1 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116473 karnet=135 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=116438 karnet=84 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117492 karnet=1200 grupa=2 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117493 karnet=1199 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117496 karnet=1202 grupa=1 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117507 karnet=1210 grupa=2 vip=0
+[02:03:33][PID 116345] BRAMKA1: OK - pid=117688 karnet=1403 grupa=2 vip=1
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117511 karnet=1215 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116665 karnet=313 grupa=4 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116480 karnet=138 grupa=2 vip=0
+[02:03:33][PID 116346] BRAMKA2: OK - pid=116525 karnet=175 grupa=4 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117517 karnet=1219 grupa=3 vip=0[02:03:33][PID 116346] 
+BRAMKA2: OK - pid=116707 karnet=343 grupa=3 vip=0
+[02:03:33][PID 116348] BRAMKA4: OK - pid=117515 karnet=1221 grupa=2 vip=0
+[02:03:33][PID 116347] BRAMKA3: OK - pid=116684 karnet=331 grupa=4 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117533 karnet=1243 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116704 karnet=429 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117537 karnet=1250 grupa=1 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116926 karnet=426 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117567 karnet=1276 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116361 karnet=10 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117563 karnet=1272 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116572 karnet=220 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117564 karnet=1271 grupa=1 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116545 karnet=196 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117570 karnet=1278 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116531 karnet=198 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117571 karnet=1279 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117541 karnet=1252 grupa=2 vip=0
+[02:03:34][PID 116347] [02:03:34][PID 116348] BRAMKA3: OK - pid=116530 karnet=200 grupa=2 vip=0BRAMKA4: OK - pid=117546 karnet=1255 grupa=2 vip=0
+
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116622 karnet=268 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116542 karnet=195 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116500 karnet=197 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116610 karnet=242 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117573 karnet=1283 grupa=1 vip=0
+[02:03:34][PID 116345] BRAMKA1: OK - pid=117526 karnet=1234 grupa=3 vip=1
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117578 karnet=1285 grupa=3 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117576 karnet=1288 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116519 karnet=172 grupa=4 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116759 karnet=405 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116593 karnet=239 grupa=4 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116358 karnet=58 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116752 karnet=356 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116433 karnet=82 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116790 karnet=434 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116600 karnet=292 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117581 karnet=1292 grupa=1 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116362 karnet=31 grupa=2 vip=0[02:03:34][PID 116346] 
+BRAMKA2: OK - pid=116859 karnet=504 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116648 karnet=279 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117579 karnet=1289 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116391 karnet=32 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117558 karnet=1265 grupa=1 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117584 karnet=1291 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116637 karnet=312 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117562 karnet=1270 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116636 karnet=310 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116410 karnet=54 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116719 karnet=385 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116669 karnet=317 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116460 karnet=121 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116618 karnet=308 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116352 karnet=2 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116353 karnet=3 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117566 karnet=1274 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117565 karnet=1275 grupa=1 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117585 karnet=1294 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117568 karnet=1277 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117569 karnet=1280 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116625 karnet=243 grupa=3 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117583 karnet=1297 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116543 karnet=190 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116566 karnet=218 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116851 karnet=532 grupa=4 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116535 karnet=187 grupa=3 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116681 karnet=329 grupa=3 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116874 karnet=469 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116788 karnet=399 grupa=4 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116363 karnet=20 grupa=2 vip=0
+[02:03:34][PID 116345] BRAMKA1: OK - pid=117191 karnet=891 grupa=2 vip=1
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117078 karnet=607 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116743 karnet=363 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116883 karnet=454 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116428 karnet=77 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116908 karnet=383 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116430 karnet=80 grupa=3 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116630 karnet=294 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117572 karnet=1281 grupa=3 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116866 karnet=528 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117575 karnet=1284 grupa=1 vip=0
+[02:03:34][PID 116348] [02:03:34][PID 116346] BRAMKA4: OK - pid=117577 karnet=1287 grupa=1 vip=0
+BRAMKA2: OK - pid=116631 karnet=299 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117587 karnet=1300 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116658 karnet=265 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116447 karnet=97 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117580 karnet=1293 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117582 karnet=1296 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116464 karnet=122 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116805 karnet=435 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116653 karnet=277 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116442 karnet=110 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117589 karnet=1303 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117586 karnet=1298 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116403 karnet=67 grupa=3 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117590 karnet=1305 grupa=3 vip=0
+[02:03:34][PID 116347] [02:03:34][PID 116346] BRAMKA3: OK - pid=117592 karnet=1309 grupa=1 vip=0BRAMKA2: OK - pid=117591 karnet=1308 grupa=1 vip=0
+
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116955 karnet=431 grupa=4 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116889 karnet=464 grupa=2 vip=0
+[02:03:34][PID 116347] [02:03:34][PID 116348] BRAMKA3: OK - pid=116472 karnet=145 grupa=2 vip=0BRAMKA4: OK - pid=116550 karnet=194 grupa=2 vip=0
+
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116702 karnet=446 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116431 karnet=79 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116958 karnet=461 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116621 karnet=259 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116904 karnet=450 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116840 karnet=462 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116714 karnet=500 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116841 karnet=519 grupa=3 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117588 karnet=1301 grupa=3 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116463 karnet=123 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117593 karnet=1307 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117045 karnet=640 grupa=3 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116350 karnet=1 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117596 karnet=1310 grupa=1 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116683 karnet=337 grupa=4 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=117599 karnet=1316 grupa=2 vip=0
+[02:03:34][PID 116348] [02:03:34][PID 116346] BRAMKA4: OK - pid=116687 karnet=327 grupa=3 vip=0BRAMKA2: OK - pid=117600 karnet=1317 grupa=1 vip=0
+
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117598 karnet=1313 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116364 karnet=15 grupa=1 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116870 karnet=508 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117601 karnet=1315 grupa=1 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116779 karnet=543 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116369 karnet=14 grupa=1 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116717 karnet=545 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116909 karnet=406 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116722 karnet=436 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117024 karnet=582 grupa=2 vip=0
+[02:03:34][PID 116346] BRAMKA2: OK - pid=116380 karnet=21 grupa=2 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=116813 karnet=376 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=116793 karnet=391 grupa=2 vip=0
+[02:03:34][PID 116348] BRAMKA4: OK - pid=117595 karnet=1311 grupa=1 vip=0
+[02:03:34][PID 116347] BRAMKA3: OK - pid=117608 karnet=1323 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117594 karnet=1312 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116366 karnet=37 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117597 karnet=1314 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116365 karnet=36 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117603 karnet=1318 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116835 karnet=590 grupa=4 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117610 karnet=1324 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117617 karnet=1328 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117616 karnet=1330 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116864 karnet=398 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116552 karnet=208 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116411 karnet=50 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116405 karnet=55 grupa=2 vip=0
+[02:03:35][PID 116348] [02:03:35][PID 116347] BRAMKA4: OK - pid=116769 karnet=443 grupa=2 vip=0BRAMKA3: OK - pid=116351 karnet=48 grupa=1 vip=0
+
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117620 karnet=1333 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117612 karnet=1325 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116674 karnet=353 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117625 karnet=1338 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117613 karnet=1327 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117604 karnet=1319 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117605 karnet=1320 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117606 karnet=1321 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116655 karnet=264 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116657 karnet=266 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116432 karnet=83 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116440 karnet=87 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117607 karnet=1322 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117627 karnet=1340 grupa=1 vip=0
+[02:03:35][PID 116346] [02:03:35][PID 116347] BRAMKA2: OK - pid=116894 karnet=410 grupa=2 vip=0BRAMKA3: OK - pid=116445 karnet=94 grupa=1 vip=0
+
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116829 karnet=564 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116395 karnet=33 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116398 karnet=34 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117631 karnet=1346 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116393 karnet=26 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117615 karnet=1331 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117632 karnet=1347 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117622 karnet=1335 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117618 karnet=1332 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117636 karnet=1350 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117623 karnet=1336 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117624 karnet=1337 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117007 karnet=632 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117638 karnet=1351 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116408 karnet=64 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116441 karnet=103 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116811 karnet=390 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117635 karnet=1353 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116745 karnet=526 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117621 karnet=1334 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117626 karnet=1339 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116434 karnet=90 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116990 karnet=587 grupa=3 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117629 karnet=1341 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117630 karnet=1345 grupa=2 vip=0
+[02:03:35][PID 116348] [02:03:35][PID 116347] BRAMKA4: OK - pid=117628 karnet=1343 grupa=2 vip=0
+BRAMKA3: OK - pid=116817 karnet=466 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117637 karnet=1349 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116739 karnet=449 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116420 karnet=76 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117634 karnet=1352 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117633 karnet=1348 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116415 karnet=70 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116468 karnet=126 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116446 karnet=98 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116418 karnet=104 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117640 karnet=1357 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116451 karnet=114 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117644 karnet=1358 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117643 karnet=1360 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117105 karnet=756 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117645 karnet=1362 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117642 karnet=1359 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116693 karnet=350 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117639 karnet=1354 grupa=3 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116453 karnet=113 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116597 karnet=278 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116797 karnet=437 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117647 karnet=1366 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117651 karnet=1368 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117646 karnet=1363 grupa=2 vip=0[02:03:35][PID 116346] 
+BRAMKA2: OK - pid=117124 karnet=793 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116617 karnet=302 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117650 karnet=1364 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116816 karnet=475 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116988 karnet=718 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117653 karnet=1367 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116482 karnet=141 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117654 karnet=1370 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116476 karnet=132 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116487 karnet=147 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117660 karnet=1372 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117657 karnet=1371 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116443 karnet=95 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116427 karnet=107 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117661 karnet=1375 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116639 karnet=289 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117662 karnet=1377 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116449 karnet=109 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116477 karnet=144 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116638 karnet=298 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117030 karnet=833 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116540 karnet=192 grupa=1 vip=0
+[02:03:35][PID 116345] BRAMKA1: OK - pid=117526 karnet=1234 grupa=3 vip=1
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117655 karnet=1369 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117663 karnet=1378 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117664 karnet=1380 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116712 karnet=340 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117658 karnet=1373 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117671 karnet=1385 grupa=3 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117006 karnet=713 grupa=2 vip=0
+[02:03:35][PID 116347] [02:03:35][PID 116348] BRAMKA3: OK - pid=116838 karnet=728 grupa=2 vip=0
+BRAMKA4: OK - pid=117060 karnet=720 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116513 karnet=162 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117684 karnet=1400 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117665 karnet=1381 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117683 karnet=1402 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117666 karnet=1383 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117685 karnet=1404 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116465 karnet=128 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117687 karnet=1405 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117669 karnet=1384 grupa=2 vip=0
+[02:03:35][PID 116345] BRAMKA1: OK - pid=117919 karnet=1672 grupa=1 vip=1
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117676 karnet=1393 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117138 karnet=835 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116516 karnet=164 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117686 karnet=1406 grupa=3 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116564 karnet=215 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117691 karnet=1408 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117673 karnet=1388 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116478 karnet=136 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116724 karnet=439 grupa=2 vip=0
+[02:03:35][PID 116345] BRAMKA1: OK - pid=116421 karnet=102 grupa=1 vip=1
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116972 karnet=717 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116654 karnet=306 grupa=3 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116962 karnet=663 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=116558 karnet=214 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117051 karnet=652 grupa=3 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117692 karnet=1415 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116539 karnet=189 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=116946 karnet=810 grupa=3 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117674 karnet=1392 grupa=1 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117699 karnet=1419 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117037 karnet=808 grupa=2 vip=0[02:03:35][PID 116348] 
+BRAMKA4: OK - pid=117694 karnet=1418 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117678 karnet=1396 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116718 karnet=382 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117675 karnet=1391 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116768 karnet=366 grupa=2 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117679 karnet=1397 grupa=1 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=116561 karnet=213 grupa=1 vip=0
+[02:03:35][PID 116347] BRAMKA3: OK - pid=117680 karnet=1398 grupa=2 vip=0
+[02:03:35][PID 116346] BRAMKA2: OK - pid=117128 karnet=797 grupa=2 vip=0
+[02:03:35][PID 116348] BRAMKA4: OK - pid=117698 karnet=1422 grupa=3 vip=0
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - karnet wygasł po oczekiwaniu id=1399 (pid=117677)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - karnet wygasł po oczekiwaniu id=777 (pid=116814)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=148 (pid=116489)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - karnet wygasł po oczekiwaniu id=224 (pid=116574)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1416 (pid=117695)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=160 (pid=116501)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=529 (pid=116917)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1417 (pid=117697)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=710 (pid=117048)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=249 (pid=116632)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1421 (pid=117700)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=247 (pid=116567)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1401 (pid=117681)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1430 (pid=117703)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1409 (pid=117689)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1431 (pid=117706)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1410 (pid=117690)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1425 (pid=117701)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1412 (pid=117682)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=841 (pid=117142)BRAMKA4: ODRZUT - nieważny karnet id=1436 (pid=117709)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=168 (pid=116520)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=253 (pid=116612)BRAMKA4: ODRZUT - nieważny karnet id=844 (pid=117149)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1434 (pid=117708)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=736 (pid=116758)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=281 (pid=116582)[02:03:36][PID 116346] [02:03:36][PID 116347] 
+BRAMKA2: ODRZUT - nieważny karnet id=1435 (pid=117704)BRAMKA3: ODRZUT - nieważny karnet id=211 (pid=116555)
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1446 (pid=117715)[02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1438 (pid=117705)BRAMKA3: ODRZUT - nieważny karnet id=219 (pid=116563)
+
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=597 (pid=117087)[02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1439 (pid=117707)BRAMKA3: ODRZUT - nieważny karnet id=1414 (pid=117693)
+
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=752 (pid=117110)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=1420 (pid=117696)BRAMKA4: ODRZUT - nieważny karnet id=918 (pid=117213)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=271 (pid=116569)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=206 (pid=116508)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1452 (pid=117721)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=821 (pid=117137)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1427 (pid=117702)[02:03:36][PID 116348] 
+BRAMKA4: ODRZUT - nieważny karnet id=622 (pid=116938)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=618 (pid=117027)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=813 (pid=116932)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=1440 (pid=117710)BRAMKA4: ODRZUT - nieważny karnet id=778 (pid=117119)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=256 (pid=116598)
+[02:03:36][PID 116348] [02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1455 (pid=117724)BRAMKA3: ODRZUT - nieważny karnet id=233 (pid=116578)BRAMKA2: ODRZUT - nieważny karnet id=735 (pid=116810)
+
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1456 (pid=117728)[02:03:36][PID 116347] [02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1099 (pid=117391)BRAMKA3: ODRZUT - nieważny karnet id=836 (pid=117141)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1458 (pid=117727)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=486 (pid=116823)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=825 (pid=117136)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1459 (pid=117729)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=706 (pid=117056)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=601 (pid=116685)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1461 (pid=117734)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=282 (pid=116647)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=296 (pid=116644)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=673 (pid=117020)BRAMKA2: ODRZUT - nieważny karnet id=1447 (pid=117718)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1441 (pid=117711)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=322 (pid=116664)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1448 (pid=117722)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1442 (pid=117714)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=386 (pid=116741)BRAMKA2: ODRZUT - nieważny karnet id=1450 (pid=117719)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1443 (pid=117712)
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1467 (pid=117737)BRAMKA3: ODRZUT - nieważny karnet id=1444 (pid=117713)BRAMKA2: ODRZUT - nieważny karnet id=274 (pid=116554)
+
+
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=971 (pid=117266)[02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=451 (pid=116680)
+BRAMKA2: ODRZUT - nieważny karnet id=1457 (pid=117726)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1473 (pid=117741)
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=297 (pid=116604)BRAMKA2: ODRZUT - nieważny karnet id=490 (pid=116826)[02:03:36][PID 116348] 
+
+BRAMKA4: ODRZUT - nieważny karnet id=1479 (pid=117745)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=291 (pid=116661)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=859 (pid=117159)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=440 (pid=116812)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=909 (pid=117207)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=369 (pid=116709)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=931 (pid=117227)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=838 (pid=117143)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=672 (pid=117090)
+[02:03:36][PID 116347] [02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=1449 (pid=117720)BRAMKA4: ODRZUT - nieważny karnet id=1492 (pid=117757)BRAMKA2: ODRZUT - nieważny karnet id=319 (pid=116671)
+
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1451 (pid=117723)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=452 (pid=116918)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1460 (pid=117730)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1015 (pid=117319)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=651 (pid=116985)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1462 (pid=117732)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=851 (pid=117152)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=380 (pid=116885)BRAMKA2: ODRZUT - nieważny karnet id=1125 (pid=117420)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=354 (pid=116744)
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1499 (pid=117763)BRAMKA2: ODRZUT - nieważny karnet id=894 (pid=117190)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=304 (pid=116562)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=407 (pid=116809)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=371 (pid=116710)BRAMKA4: ODRZUT - nieważny karnet id=524 (pid=116902)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1468 (pid=117738)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=323 (pid=116682)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1503 (pid=117770)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=751 (pid=117106)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=325 (pid=116677)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1504 (pid=117766)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1469 (pid=117739)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=941 (pid=117235)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1507 (pid=117767)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1472 (pid=117744)BRAMKA3: ODRZUT - nieważny karnet id=1463 (pid=117733)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1509 (pid=117771)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1476 (pid=117746)BRAMKA3: ODRZUT - nieważny karnet id=316 (pid=116666)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1510 (pid=117769)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1478 (pid=117743)BRAMKA3: ODRZUT - nieważny karnet id=392 (pid=116801)
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=917 (pid=117216)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1464 (pid=117735)
+BRAMKA4: ODRZUT - nieważny karnet id=347 (pid=116689)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=992 (pid=117291)BRAMKA3: ODRZUT - nieważny karnet id=1470 (pid=117740)[02:03:36][PID 116348] 
+
+BRAMKA4: ODRZUT - nieważny karnet id=902 (pid=117204)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1475 (pid=117742)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=495 (pid=116846)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=395 (pid=116833)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=989 (pid=117286)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=444 (pid=116830)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=916 (pid=117218)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=479 (pid=116847)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=342 (pid=116694)[02:03:36][PID 116348] 
+BRAMKA4: ODRZUT - nieważny karnet id=370 (pid=116695)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1481 (pid=117748)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=358 (pid=116740)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1515 (pid=117777)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1485 (pid=117750)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=348 (pid=116692)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=1488 (pid=117754)BRAMKA4: ODRZUT - nieważny karnet id=908 (pid=117203)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=465 (pid=116738)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=553 (pid=117025)BRAMKA2: ODRZUT - nieważny karnet id=1490 (pid=117751)
+[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=586 (pid=116993)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=857 (pid=117155)BRAMKA2: ODRZUT - nieważny karnet id=1491 (pid=117752)[02:03:36][PID 116347] 
+
+BRAMKA3: ODRZUT - nieważny karnet id=525 (pid=116845)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1493 (pid=117753)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1519 (pid=117782)BRAMKA3: ODRZUT - nieważny karnet id=789 (pid=116865)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=570 (pid=117044)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1520 (pid=117784)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1482 (pid=117749)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1496 (pid=117759)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1526 (pid=117790)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1489 (pid=117755)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1497 (pid=117760)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=954 (pid=117252)BRAMKA3: ODRZUT - nieważny karnet id=1494 (pid=117758)[02:03:36][PID 116346] 
+
+BRAMKA2: ODRZUT - nieważny karnet id=1498 (pid=117761)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1087 (pid=117379)BRAMKA3: ODRZUT - nieważny karnet id=1495 (pid=117756)[02:03:36][PID 116346] 
+
+BRAMKA2: ODRZUT - nieważny karnet id=830 (pid=117139)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1012 (pid=117318)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=758 (pid=117111)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=786 (pid=117123)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1533 (pid=117796)BRAMKA2: ODRZUT - nieważny karnet id=1502 (pid=117765)
+[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=368 (pid=116660)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=1508 (pid=117768)BRAMKA4: ODRZUT - nieważny karnet id=485 (pid=116928)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1042 (pid=117341)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=966 (pid=117269)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1058 (pid=117355)
+[02:03:36][PID 116347] [02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=1500 (pid=117764)BRAMKA2: ODRZUT - nieważny karnet id=798 (pid=117127)BRAMKA4: ODRZUT - nieważny karnet id=861 (pid=117162)
+
+
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=1501 (pid=117762)BRAMKA2: ODRZUT - nieważny karnet id=559 (pid=117028)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=427 (pid=116780)
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=501 (pid=116911)BRAMKA2: ODRZUT - nieważny karnet id=919 (pid=117222)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=473 (pid=116886)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1513 (pid=117776)BRAMKA3: ODRZUT - nieważny karnet id=489 (pid=116934)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=456 (pid=116850)
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=977 (pid=117276)BRAMKA2: ODRZUT - nieważny karnet id=1516 (pid=117778)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=474 (pid=116815)
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1128 (pid=117424)BRAMKA3: ODRZUT - nieważny karnet id=1071 (pid=117362)
+
+[02:03:36][PID 116347] [02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=594 (pid=116765)BRAMKA2: ODRZUT - nieważny karnet id=418 (pid=116808)BRAMKA4: ODRZUT - nieważny karnet id=1551 (pid=117810)
+
+
+[02:03:36][PID 116346] [02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1013 (pid=117317)BRAMKA3: ODRZUT - nieważny karnet id=424 (pid=116916)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1552 (pid=117812)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=767 (pid=117113)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=874 (pid=117176)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=938 (pid=117234)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=576 (pid=116789)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1521 (pid=117783)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=719 (pid=116977)BRAMKA3: ODRZUT - nieważny karnet id=1512 (pid=117773)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1524 (pid=117788)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1083 (pid=117375)BRAMKA3: ODRZUT - nieważny karnet id=1514 (pid=117775)[02:03:36][PID 116346] 
+
+BRAMKA2: ODRZUT - nieważny karnet id=1070 (pid=117361)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=47 (pid=116386)BRAMKA3: ODRZUT - nieważny karnet id=1517 (pid=117780)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1528 (pid=117793)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=1518 (pid=117779)BRAMKA4: ODRZUT - nieważny karnet id=1558 (pid=117817)
+[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1530 (pid=117792)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=388 (pid=116755)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1562 (pid=117820)BRAMKA2: ODRZUT - nieważny karnet id=1532 (pid=117794)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=612 (pid=116733)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=956 (pid=117258)BRAMKA4: ODRZUT - nieważny karnet id=1570 (pid=117826)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1522 (pid=117785)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=589 (pid=116940)BRAMKA4: ODRZUT - nieważny karnet id=595 (pid=117000)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1523 (pid=117786)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=402 (pid=116832)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1525 (pid=117787)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1540 (pid=117806)[02:03:36][PID 116348] 
+BRAMKA4: ODRZUT - nieważny karnet id=749 (pid=117103)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=422 (pid=116893)
+[02:03:36][PID 116346] [02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1578 (pid=117838)BRAMKA2: ODRZUT - nieważny karnet id=1534 (pid=117798)BRAMKA3: ODRZUT - nieważny karnet id=1143 (pid=117437)
+
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=509 (pid=116819)[02:03:36][PID 116347] 
+[02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=421 (pid=116783)BRAMKA2: ODRZUT - nieważny karnet id=1537 (pid=117801)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=905 (pid=117201)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1543 (pid=117804)
+[02:03:36][PID 116347] [02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=946 (pid=117241)BRAMKA2: ODRZUT - nieważny karnet id=1546 (pid=117800)
+
+BRAMKA3: ODRZUT - nieważny karnet id=1527 (pid=117791)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=610 (pid=117080)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1531 (pid=117795)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=482 (pid=116861)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=513 (pid=116880)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=906 (pid=117205)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=1592 (pid=117847)BRAMKA2: ODRZUT - nieważny karnet id=35 (pid=116394)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=755 (pid=116868)
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=491 (pid=116995)BRAMKA2: ODRZUT - nieważny karnet id=856 (pid=117154)
+
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1594 (pid=117849)BRAMKA3: ODRZUT - nieważny karnet id=613 (pid=116960)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=481 (pid=116776)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1596 (pid=117850)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1548 (pid=117808)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=1535 (pid=117799)BRAMKA4: ODRZUT - nieważny karnet id=602 (pid=116974)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1555 (pid=117813)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1538 (pid=117803)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=603 (pid=116800)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1091 (pid=117381)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=978 (pid=117277)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1086 (pid=117376)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=448 (pid=116786)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1156 (pid=117443)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=921 (pid=117219)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1559 (pid=117816)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=987 (pid=117287)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=661 (pid=116858)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1560 (pid=117815)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1601 (pid=117854)
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=1238 (pid=117531)BRAMKA2: ODRZUT - nieważny karnet id=1561 (pid=117819)
+
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1602 (pid=117856)BRAMKA3: ODRZUT - nieważny karnet id=1549 (pid=117809)
+
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1563 (pid=117822)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1604 (pid=117855)BRAMKA3: ODRZUT - nieważny karnet id=1554 (pid=117811)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=945 (pid=117246)
+
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1605 (pid=117857)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1557 (pid=117814)[02:03:36][PID 116346] 
+BRAMKA2: ODRZUT - nieważny karnet id=1089 (pid=117383)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=638 (pid=116998)
+[02:03:36][PID 116347] [02:03:36][PID 116346] BRAMKA3: ODRZUT - nieważny karnet id=511 (pid=116943)BRAMKA2: ODRZUT - nieważny karnet id=1569 (pid=117825)
+
+[02:03:36][PID 116348] [02:03:36][PID 116346] BRAMKA4: ODRZUT - nieważny karnet id=846 (pid=117148)[02:03:36][PID 116347] BRAMKA2: ODRZUT - nieważny karnet id=1568 (pid=117824)BRAMKA3: ODRZUT - nieważny karnet id=1565 (pid=117823)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1137 (pid=117428)
+
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1571 (pid=117827)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=544 (pid=116907)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=616 (pid=117012)
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA2: ODRZUT - nieważny karnet id=879 (pid=117181)
+BRAMKA4: ODRZUT - nieważny karnet id=634 (pid=116966)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=691 (pid=117015)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1573 (pid=117828)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1574 (pid=117831)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1575 (pid=117829)
+[02:03:36][PID 116347] [02:03:36][PID 116348] BRAMKA3: ODRZUT - nieważny karnet id=615 (pid=117075)BRAMKA4: ODRZUT - nieważny karnet id=157 (pid=116492)
+
+[02:03:36][PID 116346] [02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1204 (pid=117499)[02:03:36][PID 116347] 
+BRAMKA3: ODRZUT - nieważny karnet id=1577 (pid=117834)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1581 (pid=117835)[02:03:36][PID 116348] 
+BRAMKA4: ODRZUT - nieważny karnet id=568 (pid=116762)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=982 (pid=117283)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1610 (pid=117867)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1206 (pid=117502)
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1051 (pid=117348)BRAMKA3: ODRZUT - nieważny karnet id=887 (pid=117183)
+
+[02:03:36][PID 116348] [02:03:36][PID 116347] BRAMKA4: ODRZUT - nieważny karnet id=1626 (pid=117880)BRAMKA3: ODRZUT - nieważny karnet id=1587 (pid=117841)
+
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=791 (pid=116899)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1589 (pid=117845)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1591 (pid=117846)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1590 (pid=117844)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1593 (pid=117848)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=577 (pid=117049)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=804 (pid=116732)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=445 (pid=116824)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=605 (pid=117079)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1196 (pid=117489)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=85 (pid=116439)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=630 (pid=116836)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1217 (pid=117512)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1606 (pid=117860)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1607 (pid=117861)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1230 (pid=117518)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=488 (pid=116971)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1191 (pid=117487)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=629 (pid=116997)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1233 (pid=117528)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=730 (pid=116760)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=626 (pid=116949)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=725 (pid=116821)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=950 (pid=117251)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1612 (pid=117865)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1613 (pid=117868)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=636 (pid=117085)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1094 (pid=117384)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1032 (pid=117330)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=757 (pid=116848)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1262 (pid=117552)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=690 (pid=116973)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1618 (pid=117872)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1616 (pid=117870)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=702 (pid=117064)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1615 (pid=117869)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1619 (pid=117876)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1624 (pid=117879)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1627 (pid=117881)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=646 (pid=116992)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1258 (pid=117544)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=779 (pid=117120)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=853 (pid=117077)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=201 (pid=116544)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=659 (pid=117038)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=968 (pid=117270)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=16 (pid=116378)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=71 (pid=116416)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=261 (pid=116649)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=865 (pid=117166)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=46 (pid=116404)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1628 (pid=117882)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1630 (pid=117884)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=675 (pid=116982)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=739 (pid=116852)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=84 (pid=116438)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1638 (pid=117888)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1639 (pid=117889)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1641 (pid=117890)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1642 (pid=117891)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1646 (pid=117896)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1643 (pid=117893)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1649 (pid=117895)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1076 (pid=117365)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=742 (pid=117101)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=692 (pid=116970)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=709 (pid=117073)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=721 (pid=117061)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=780 (pid=116749)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=200 (pid=116530)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1654 (pid=117903)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1657 (pid=117907)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=195 (pid=116542)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1653 (pid=117901)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1662 (pid=117910)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=242 (pid=116610)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=172 (pid=116519)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1047 (pid=117346)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=765 (pid=116959)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=823 (pid=116901)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=32 (pid=116391)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1666 (pid=117913)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1667 (pid=117914)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1668 (pid=117915)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=312 (pid=116637)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=310 (pid=116636)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=784 (pid=117121)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1669 (pid=117917)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1678 (pid=117923)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=863 (pid=117164)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=187 (pid=116535)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1680 (pid=117927)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1684 (pid=117930)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1679 (pid=117925)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=1691 (pid=117936)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=80 (pid=116430)
+[02:03:36][PID 116347] BRAMKA3: ODRZUT - nieważny karnet id=255 (pid=116626)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1103 (pid=117392)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=100 (pid=116425)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=981 (pid=117278)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1079 (pid=117368)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1629 (pid=117883)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=678 (pid=117081)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=167 (pid=116512)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=826 (pid=116924)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=745 (pid=117100)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=819 (pid=117132)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=746 (pid=117097)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=343 (pid=116707)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=220 (pid=116572)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1278 (pid=117570)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1658 (pid=117906)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1652 (pid=117902)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1661 (pid=117911)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1665 (pid=117909)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=733 (pid=117095)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1075 (pid=117369)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=356 (pid=116752)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=292 (pid=116600)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=814 (pid=117134)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=504 (pid=116859)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=796 (pid=117126)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=2 (pid=116352)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1670 (pid=117920)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1671 (pid=117918)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1673 (pid=117921)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1674 (pid=117922)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=845 (pid=117036)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1277 (pid=117568)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=25 (pid=116390)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=818 (pid=116818)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1254 (pid=117542)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=329 (pid=116681)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=937 (pid=117237)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=898 (pid=117198)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1681 (pid=117928)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1683 (pid=117931)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1688 (pid=117938)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1682 (pid=117929)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1687 (pid=117932)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1692 (pid=117933)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=1695 (pid=117937)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=454 (pid=116883)
+[02:03:36][PID 116348] BRAMKA4: ODRZUT - nieważny karnet id=893 (pid=117193)
+BRAMKA2: ODRZUT - nieważny karnet id=1576 (pid=117830)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1201 (pid=117494)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=704 (pid=116939)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=493 (pid=116871)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1582 (pid=117836)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1583 (pid=117837)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=759 (pid=116751)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=470 (pid=116898)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1038 (pid=117335)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=477 (pid=116792)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1584 (pid=117839)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1586 (pid=117840)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1588 (pid=117843)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=999 (pid=117305)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=549 (pid=116981)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1040 (pid=117340)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=527 (pid=117005)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=750 (pid=117104)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=581 (pid=116716)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=517 (pid=116923)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=565 (pid=116884)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=619 (pid=116947)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=763 (pid=116879)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1100 (pid=117393)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=628 (pid=117074)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=666 (pid=117002)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1214 (pid=117510)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=683 (pid=117032)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=684 (pid=117014)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1598 (pid=117852)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1599 (pid=117853)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1603 (pid=117859)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1600 (pid=117858)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=781 (pid=116754)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1182 (pid=117479)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=688 (pid=116969)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=694 (pid=117086)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1145 (pid=117438)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=822 (pid=116975)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1228 (pid=117523)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=563 (pid=117076)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=642 (pid=117069)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1111 (pid=117401)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1109 (pid=117398)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1213 (pid=117508)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=226 (pid=116577)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=664 (pid=117068)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1608 (pid=117862)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1609 (pid=117863)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1614 (pid=117866)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=614 (pid=116857)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=754 (pid=117109)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1617 (pid=117871)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1622 (pid=117878)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1623 (pid=117877)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=624 (pid=117067)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=267 (pid=116640)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=262 (pid=116663)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1632 (pid=117885)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1635 (pid=117887)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1636 (pid=117886)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=805 (pid=117131)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=785 (pid=116862)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1644 (pid=117894)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1648 (pid=117897)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1650 (pid=117899)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1651 (pid=117900)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=313 (pid=116665)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=695 (pid=116979)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=426 (pid=116926)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=196 (pid=116545)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1656 (pid=117904)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1659 (pid=117912)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1660 (pid=117905)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=732 (pid=116678)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1121 (pid=117413)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=801 (pid=116888)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=405 (pid=116759)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=239 (pid=116593)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=58 (pid=116358)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1001 (pid=117306)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=776 (pid=117118)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=54 (pid=116410)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=385 (pid=116719)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=794 (pid=116723)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1675 (pid=117924)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=816 (pid=117135)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=827 (pid=116921)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1297 (pid=117583)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=872 (pid=117171)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=469 (pid=116874)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=399 (pid=116788)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=20 (pid=116363)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1685 (pid=117934)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=1689 (pid=117935)
+[02:03:36][PID 116346] BRAMKA2: ODRZUT - nieważny karnet id=77 (pid=116428)
+[02:03:39][PID 116346] BRAMKA2: Kończę pracę
+[02:03:39][PID 116348] BRAMKA4: Kończę pracę
+[02:03:39][PID 116345] BRAMKA1: Kończę pracę
+[02:03:39][PID 116347] BRAMKA3: Kończę pracę

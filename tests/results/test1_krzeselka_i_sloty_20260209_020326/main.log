@@ -1,0 +1,55 @@
+[02:03:10][PID 114557] Start symulacji: N=120, czas=10 sekund
+[02:03:10][PID 114557] Handlery sygnałów zainstalowane
+[02:03:10][PID 114557] Inicjalizacja zasobów IPC...
+[02:03:10][PID 114557] Inicjalizacja IPC (N=120)...
+[02:03:10][PID 114557] Klucz bazowy: 0x4b308a86
+[02:03:10][PID 114557] Semafory utworzone (id=22)
+[02:03:10][PID 114557] Pamięć współdzielona utworzona (id=22, size=64000152)
+[02:03:10][PID 114557] Kolejki komunikatów utworzone
+[02:03:10][PID 114557] Inicjalizacja IPC zakończona pomyślnie
+[02:03:10][PID 114557] Czas końca dnia: 1770599000 (za 10 sekund)
+[02:03:10][PID 114557] Sprzątacz IPC uruchomiony (PID=114558, PGID=114557)
+[02:03:10][PID 114557] Uruchamianie procesów stałych...
+[02:03:10][PID 114557] Kasjer uruchomiony (PID=114559)
+[02:03:10][PID 114557] Pracownik1 uruchomiony (PID=114560)
+[02:03:10][PID 114557] Pracownik2 uruchomiony (PID=114561)
+[02:03:10][PID 114557] Wyciąg uruchomiony (PID=114562)
+[02:03:10][PID 114557] Bramka 1 uruchomiona (PID=114563)
+[02:03:10][PID 114557] Bramka 2 uruchomiona (PID=114564)
+[02:03:10][PID 114557] Bramka 3 uruchomiona (PID=114565)
+[02:03:10][PID 114557] Bramka 4 uruchomiona (PID=114566)
+[02:03:10][PID 114557] Generator uruchomiony (PID=114567)
+[02:03:10][PID 114557] Wszystkie procesy stałe uruchomione
+[02:03:10][PID 114557] === SYMULACJA ROZPOCZĘTA ===
+[02:03:20][PID 114557] Czas symulacji (10 sek) upłynął
+[02:03:20][PID 114557] === KONIEC DNIA - ZAMYKANIE ===
+[02:03:20][PID 114557] === PROCEDURA KOŃCA DNIA ===
+[02:03:20][PID 114557] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[02:03:20][PID 114557]   faza_dnia = CLOSING
+[02:03:20][PID 114557]   czas_konca_dnia = 1770599000
+[02:03:20][PID 114557]   aktywni_klienci = 817
+[02:03:20][PID 114557] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[02:03:20][PID 114557]   Czekam na wyciąg (PID 114562)...
+[02:03:26][PID 114557]   Wyciąg zakończył drenowanie i wyłączył się
+[02:03:26][PID 114557] FAZA 3: SHUTDOWN - zamykanie procesów
+[02:03:26][PID 114557]   Kolej zatrzymana
+[02:03:26][PID 114557] Oczekiwanie na zakończenie procesów potomnych...
+[02:03:26][PID 114557] Wszystkie procesy potomne zakończone
+[02:03:26][PID 114557] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[02:03:26][PID 114557] Generowanie raportu końcowego...
+[02:03:26][PID 114557] Raport zapisany do: output/raport_dzienny.txt
+[02:03:26][PID 114557] Log przejść zapisany do: output/log_przejsc.txt (6378 wpisów)
+[02:03:26][PID 114557] Czyszczenie zasobów...
+[02:03:26][PID 114557] Czyszczenie zasobów IPC...
+[02:03:26][PID 114557] Pamięć współdzielona usunięta
+[02:03:26][PID 114557] Semafory usunięte
+[02:03:26][PID 114557] Kolejki komunikatów usunięte
+[02:03:26][PID 114557] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

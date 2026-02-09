@@ -1,0 +1,12 @@
+[02:03:41][PID 117976] PRACOWNIK1: Rozpoczynam pracę
+[02:03:41][PID 117977] PRACOWNIK2: Rozpoczynam pracę
+[02:03:43][PID 117976] PRACOWNIK1: STOP (inicjator) - kolej zatrzymana
+[02:03:43][PID 117977] PRACOWNIK2: Otrzymano STOP (od P1) - potwierdzam GOTOWY
+[02:03:43][PID 117976] PRACOWNIK1: Drugi pracownik GOTOWY (STOP)
+[02:03:45][PID 117976] PRACOWNIK1: START (inicjator) - proszę P2 o gotowość
+[02:03:45][PID 117977] PRACOWNIK2: Otrzymano START (od P1) - potwierdzam GOTOWY
+[02:03:45][PID 117976] PRACOWNIK1: P2 GOTOWY (START)
+[02:03:45][PID 117976] Odblokowuję 4 czekających procesów
+[02:03:45][PID 117976] PRACOWNIK1: Kolej wznowiona
+[02:04:22][PID 117976] PRACOWNIK1: Kończę pracę
+[02:04:22][PID 117977] PRACOWNIK2: Kończę pracę

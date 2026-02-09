@@ -1,0 +1,33 @@
+TEST1(HARD): krzesełka i sloty
+N=120, CZAS=10
+
+[WYCIAG] Start:
+[02:03:10][PID 114562] WYCIAG: Start (INTERWAL=10ms, PRZEJAZD=360ms, RZEDOW=72, SLOTY/RZAD=4)
+Parsed: RZEDOW=72, SLOTY/RZAD=4
+OK: parametry wyciągu zgodne (72/4).
+
+[STAT - HARD] Zdarzenia z klienci.log (wystąpienia wzorca):
+BOARD events:  2126
+ARRIVE events: 2126
+OK: BOARD == ARRIVE (spójne przejazdy).
+
+[CHECK] Max rozmiar_grupy (sloty) z klienci.log:
+max_rozmiar_grupy=4
+OK: max_rozmiar_grupy <= 4.
+
+[RAPORT] Liczba przejazdów z raportu: 2126
+OK: raport == BOARD == ARRIVE.
+
+[SAMPLE] BOARD (5 przykładów):
+[02:03:10][PID 114569] KLIENT 2: BOARD - wsiadam na krzesełko (sloty=1)
+[02:03:10][PID 114572] KLIENT 5: BOARD - wsiadam na krzesełko (sloty=1)
+[02:03:10][PID 114638] KLIENT 71: BOARD - wsiadam na krzesełko (sloty=2)
+[02:03:10][PID 114624] KLIENT 57: BOARD - wsiadam na krzesełko (sloty=1)
+[02:03:10][PID 114582] KLIENT 15: BOARD - wsiadam na krzesełko (sloty=1)
+
+[SAMPLE] ARRIVE (5 przykładów):
+[02:03:10][PID 114569] KLIENT 2: ARRIVE - jestem na górze (przejazd=1)
+[02:03:10][PID 114624] KLIENT 57: ARRIVE - jestem na górze (przejazd=1)
+[02:03:10][PID 114572] KLIENT 5: ARRIVE - jestem na górze (przejazd=1)
+[02:03:10][PID 114638] [02:03:10][PID 114637] KLIENT 71: ARRIVE - jestem na górze (przejazd=1)KLIENT 70: BOARD - wsiadam na krzesełko (sloty=2)
+[02:03:10][PID 114582] KLIENT 15: ARRIVE - jestem na górze (przejazd=1)

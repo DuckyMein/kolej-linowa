@@ -1,0 +1,13 @@
+TEST3: awaria STOP/START
+N=120, CZAS=35
+
+[PRACOWNICY] Szukamy STOP/START/GOTOWY:
+[02:03:43][PID 117976] PRACOWNIK1: STOP (inicjator) - kolej zatrzymana
+[02:03:43][PID 117977] PRACOWNIK2: Otrzymano STOP (od P1) - potwierdzam GOTOWY
+[02:03:43][PID 117976] PRACOWNIK1: Drugi pracownik GOTOWY (STOP)
+[02:03:45][PID 117976] PRACOWNIK1: START (inicjator) - proszę P2 o gotowość
+[02:03:45][PID 117977] PRACOWNIK2: Otrzymano START (od P1) - potwierdzam GOTOWY
+[02:03:45][PID 117976] PRACOWNIK1: P2 GOTOWY (START)
+
+[WYCIAG] Potwierdzenie zatrzymania/wznowienia (jeśli loguje):
+[02:03:43][PID 117978] WYCIAG: Awaria - czekam na wznowienie (pozycja 1)

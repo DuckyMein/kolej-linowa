@@ -1,0 +1,13 @@
+TEST4: koniec dnia CLOSING/DRAINING/SHUTDOWN
+N=180, CZAS=40
+
+[MAIN] Fazy dnia (fragment):
+[02:05:03][PID 120103] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[02:05:03][PID 120103]   faza_dnia = CLOSING
+[02:05:03][PID 120103]   czas_konca_dnia = 1770599103
+[02:05:03][PID 120103] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[02:05:11][PID 120103] FAZA 3: SHUTDOWN - zamykanie procesów
+
+[WYCIAG] Drenowanie + 3 sekundy (fragment):
+[02:04:23][PID 120108] WYCIAG: Start (INTERWAL=10ms, PRZEJAZD=360ms, RZEDOW=72, SLOTY/RZAD=4)
+[02:05:08][PID 120108] WYCIAG: Drenowanie zakończone - wyłączam za 3s
