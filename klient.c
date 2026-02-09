@@ -5,6 +5,7 @@
 #include <errno.h>
 #include <string.h>
 #include <poll.h>
+#include <pthread.h>
 
 #include "config.h"
 #include "types.h"
@@ -27,6 +28,147 @@
 static volatile sig_atomic_t g_koniec = 0;
 static Klient g_klient;
 static int g_waga_peronu = 0;  /* ile slotów peronu zajmujemy */
+
+/* ============================================
+ * DZIECI JAKO WĄTKI (pthread) – "realne" dzieci zawsze z opiekunem
+ * 
+ * Założenie: IPC (kasa/bramki/peron/wyciąg) obsługuje tylko wątek główny (opiekun).
+ * Wątki dzieci są "towarzyszące": synchronizują się na etapach (condvar) i nie wchodzą
+ * w IPC, dzięki czemu nie zaburzają logiki symulacji.
+ * ============================================ */
+
+typedef enum {
+    DZ_ETAP_START = 0,
+    DZ_ETAP_BRAMKA1,
+    DZ_ETAP_PERON,
+    DZ_ETAP_BOARD,
+    DZ_ETAP_ARRIVE,
+    DZ_ETAP_KONIEC
+} DzieciEtap;
+
+typedef struct {
+    pthread_mutex_t mtx;
+    pthread_cond_t  cv;
+    int uruchomione;
+    int stop;
+    DzieciEtap etap;
+    DzieciEtap ack[2];        /* ostatni etap potwierdzony przez dziecko */
+    int liczba_watkow;        /* 0..2 */
+} DzieciSync;
+
+static DzieciSync g_dzieci = {0};
+static pthread_t g_tid_dzieci[2];
+
+static void loguj_dzieci_etap(const char *etap_txt) {
+    if (g_dzieci.liczba_watkow <= 0) return;
+    for (int i = 0; i < g_dzieci.liczba_watkow; i++) {
+        loguj("DZIECKO %d: razem z opiekunem -> %s", i + 1, etap_txt);
+    }
+}
+
+static void dzieci_set_etap(DzieciEtap e, const char *etap_txt) {
+    if (!g_dzieci.uruchomione) return;
+
+    pthread_mutex_lock(&g_dzieci.mtx);
+    g_dzieci.etap = e;
+    pthread_cond_broadcast(&g_dzieci.cv);
+    pthread_mutex_unlock(&g_dzieci.mtx);
+
+    if (etap_txt != NULL) {
+        /* Logujemy z wątku głównego, żeby nie mieszać linii (loguj() ma kilka fprintf). */
+        loguj_dzieci_etap(etap_txt);
+    }
+}
+
+static void *watek_dziecka(void *arg) {
+    long idx = (long)arg;
+
+    /* Wątki dzieci nie powinny obsługiwać sygnałów sterujących – zostawiamy to wątkowi głównemu. */
+    sigset_t set;
+    sigemptyset(&set);
+    sigaddset(&set, SIGTERM);
+    sigaddset(&set, SIGINT);
+    sigaddset(&set, SIGUSR1);
+    sigaddset(&set, SIGUSR2);
+    pthread_sigmask(SIG_BLOCK, &set, NULL);
+
+    DzieciEtap last = DZ_ETAP_START;
+
+    while (1) {
+        pthread_mutex_lock(&g_dzieci.mtx);
+
+        while (!g_dzieci.stop && g_dzieci.etap == last) {
+            pthread_cond_wait(&g_dzieci.cv, &g_dzieci.mtx);
+        }
+        if (g_dzieci.stop) {
+            pthread_mutex_unlock(&g_dzieci.mtx);
+            break;
+        }
+
+        last = g_dzieci.etap;
+        if (idx >= 0 && idx < 2) {
+            g_dzieci.ack[idx] = last;
+        }
+        pthread_cond_broadcast(&g_dzieci.cv);
+        pthread_mutex_unlock(&g_dzieci.mtx);
+
+        if (last == DZ_ETAP_KONIEC) break;
+    }
+
+    pthread_exit(NULL);
+    return NULL;
+}
+
+static void dzieci_init(void) {
+    int n = g_klient.liczba_dzieci;
+    if (n <= 0) return;
+    if (n > 2) n = 2;
+
+    if (pthread_mutex_init(&g_dzieci.mtx, NULL) != 0) {
+        return;
+    }
+    if (pthread_cond_init(&g_dzieci.cv, NULL) != 0) {
+        pthread_mutex_destroy(&g_dzieci.mtx);
+        return;
+    }
+
+    g_dzieci.uruchomione = 1;
+    g_dzieci.stop = 0;
+    g_dzieci.etap = DZ_ETAP_START;
+    g_dzieci.ack[0] = DZ_ETAP_START;
+    g_dzieci.ack[1] = DZ_ETAP_START;
+    g_dzieci.liczba_watkow = n;
+
+    for (int i = 0; i < n; i++) {
+        if (pthread_create(&g_tid_dzieci[i], NULL, watek_dziecka, (void *)(long)i) != 0) {
+            /* Best-effort: jeśli nie udało się uruchomić wątku, po prostu zmniejszamy liczbę wątków. */
+            g_dzieci.liczba_watkow = i;
+            break;
+        }
+    }
+
+    dzieci_set_etap(DZ_ETAP_START, "START");
+}
+
+static void dzieci_stop_join(void) {
+    if (!g_dzieci.uruchomione) return;
+
+    pthread_mutex_lock(&g_dzieci.mtx);
+    g_dzieci.stop = 1;
+    pthread_cond_broadcast(&g_dzieci.cv);
+    pthread_mutex_unlock(&g_dzieci.mtx);
+
+    for (int i = 0; i < g_dzieci.liczba_watkow; i++) {
+        pthread_join(g_tid_dzieci[i], NULL);
+    }
+
+    pthread_cond_destroy(&g_dzieci.cv);
+    pthread_mutex_destroy(&g_dzieci.mtx);
+
+    g_dzieci.uruchomione = 0;
+    g_dzieci.liczba_watkow = 0;
+}
+
 
 static const char* nazwa_typu_klienta(int typ) {
     return (typ == TYP_ROWERZYSTA) ? "ROWER" : "PIESZY";
@@ -195,6 +337,8 @@ int main(int argc, char *argv[]) {
     /* WAŻNE: Zarejestruj cleanup PRZED inkrementacją licznika */
     atexit(bezpieczne_zakonczenie);
     
+    atexit(dzieci_stop_join);
+    dzieci_init();
     /* ATOMOWY inkrement - BEZ mutexa (unika thundering herd) */
     __sync_fetch_and_add(&g_shm->aktywni_klienci, 1);
     
@@ -215,6 +359,7 @@ int main(int argc, char *argv[]) {
         if (r < PROC_NIE_KORZYSTA) {
             loguj("KLIENT %d: odchodzi - dziś nie korzysta z kolei (los=%d < %d%%)",
                   g_klient.id, r, PROC_NIE_KORZYSTA);
+            dzieci_set_etap(DZ_ETAP_KONIEC, "ODCHODZI");
             return EXIT_SUCCESS;
         }
     }
@@ -287,6 +432,7 @@ int main(int argc, char *argv[]) {
         msg_bramka.vip = g_klient.vip;
         msg_bramka.numer_bramki = nr_bramki1;
 
+        dzieci_set_etap(DZ_ETAP_BRAMKA1, "BRAMKA1");
         loguj("KLIENT %d: id_karnetu=%d -> BRAMKA1 nr=%d (vip=%d, grupa=%d)",
               g_klient.id, g_klient.id_karnetu, nr_bramki1, g_klient.vip, g_klient.rozmiar_grupy);
         
@@ -567,6 +713,7 @@ int main(int argc, char *argv[]) {
     }
     
 koniec_petli:
+    dzieci_set_etap(DZ_ETAP_KONIEC, "KONIEC");
     loguj("KLIENT %d: koniec (przejazdy=%d)", g_klient.id, przejazdy);
     return EXIT_SUCCESS;  /* atexit() wywoła bezpieczne_zakonczenie() */
 }

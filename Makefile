@@ -3,8 +3,8 @@
 # ============================================
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g -pedantic
-LDFLAGS = 
+CFLAGS = -Wall -Wextra -g -pedantic -pthread
+LDFLAGS = -pthread
 
 # Pliki nagłówkowe (zależności)
 HEADERS = config.h types.h ipc.h utils.h
