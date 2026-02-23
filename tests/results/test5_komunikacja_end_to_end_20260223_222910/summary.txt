@@ -1,0 +1,65 @@
+# test5_komunikacja_end_to_end
+
+Cel: pokazać łańcuch komunikacji IPC (klient → kasa → bramka → peron → wyciąg) na jednym przykładzie.
+
+Wybrany klient (z logów): id=16 pid=476305
+
+## Snapshot MONITOR (w trakcie działania)
+```
+KOLEJ KRZESEŁKOWA - MONITOR
+------------------------------------------------------------
+Faza dnia: OPEN   awaria=0   panic=0
+Czas do konca dnia: 25 s   (start=1771882122, koniec=1771882147)
+------------------------------------------------------------
+Liczniki: teren=20  peron=0  w_krzesle=3  gora=43  aktywni_klienci=669
+Statystyki: wygenerowani=663  przejazdy=26  przychod=23088.75 zl
+------------------------------------------------------------
+Semafory: TEREN=0  PERON=1  BARIERA_AWARIA=0
+------------------------------------------------------------
+MQ: kasa=4/16384  kasa_odp=0/16384  bramka=620/16384  bramka_odp=0/16384
+MQ: peron=0/16384  peron_odp=4/16384  wyciag_req=0/16384  wyciag_odp=4/16384  prac=0/16384
+------------------------------------------------------------
+PIDy: main=476277  gen=476288  kasjer=476280  wyciag=476283
+PIDy: P1=476281  P2=476282  bramki: 476284 476285 476286 476287
+```
+
+## Dowody w logach (ten sam pid w wielu procesach)
+
+### klient (output/klienci.log)
+[22:28:42][PID 476305] KLIENT 16: start pid=476305 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:28:42][PID 476305] KLIENT 16: kupił karnet id_karnetu=7 typ=Dzienny czas_waznosci=86400s vip=0
+[22:28:42][PID 476305] KLIENT 16: id_karnetu=7 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:28:42][PID 476305] KLIENT 16: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:28:42][PID 476305] KLIENT 16: czekam na peron (sloty=1, bramka2=1)
+[22:28:42][PID 476305] KLIENT 16: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:28:42][PID 476305] KLIENT 16: PRACOWNIK1 pozwolił wejść na peron
+[22:28:42][PID 476305] KLIENT 16: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:28:42][PID 476305] KLIENT 16: BOARD - wsiadam na krzesełko (sloty=1)
+[22:28:42][PID 476305] KLIENT 16: ARRIVE - jestem na górze (przejazd=1)
+[22:28:42][PID 476305] KLIENT 16: zjazd trasą T4 (piesza) (czas=4s)
+[22:28:46][PID 476305] KLIENT 16: wróciłem na dół po trasie T4 (piesza)
+[22:28:46][PID 476305] KLIENT 16: id_karnetu=7 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:07][PID 476305] KLIENT 16: koniec (przejazdy=1)
+
+### kasa (output/kasa.log)
+[22:28:42][PID 476280] KASJER: klient id=16 pid=476305 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:28:42][PID 476280] KASJER: SPRZEDAŻ id_klienta=16 pid=476305 -> karnet=7 typ=Dzienny cena=75.00 zł vip=0
+[22:28:42][PID 476280] KASJER: sprzedano karnet id_karnetu=7 typ=Dzienny cena=75.00 zł dla klienta id=16 (pid=476305)
+
+### bramki (output/bramki.log)
+[22:28:42][PID 476286] BRAMKA3: OK - pid=476305 karnet=7 grupa=1 vip=0
+
+### main (output/main.log)
+[22:28:42][PID 476277] Kasjer uruchomiony (PID=476280)
+[22:28:42][PID 476277] Wyciąg uruchomiony (PID=476283)
+[22:28:42][PID 476277] Bramka 1 uruchomiona (PID=476284)
+[22:28:42][PID 476277] Bramka 2 uruchomiona (PID=476285)
+[22:28:42][PID 476277] Bramka 3 uruchomiona (PID=476286)
+[22:28:42][PID 476277] Bramka 4 uruchomiona (PID=476287)
+[22:28:42][PID 476277] Generator uruchomiony (PID=476288)
+[22:28:42][PID 476277] Wszystkie procesy stałe uruchomione
+[22:29:10][PID 476277] Wszystkie procesy potomne zakończone
+
+## Interpretacja (do prezentacji)
+- Ten sam pid widoczny w logach kasy i bramek oznacza, że komunikaty MQ zostały odebrane i obsłużone.
+- Klient loguje przejścia przez etapy (kasa → bramka → peron → BOARD/ARRIVE), co domyka ścieżkę end-to-end.

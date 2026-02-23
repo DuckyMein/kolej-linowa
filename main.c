@@ -36,6 +36,9 @@ static volatile sig_atomic_t g_zamykanie = 0;      /* flaga zamykania */
 static volatile sig_atomic_t g_awaria = 0;         /* flaga awarii (STOP) */
 static int g_N = N_LIMIT_TERENU;                   /* limit osób */
 static int g_czas_symulacji = CZAS_SYMULACJI;      /* czas symulacji */
+static int g_limit_utworzonych = MAX_WYG_KLIENTOW; /* limit łączny generowania (0=bez limitu) */
+static int g_limit_aktywnych = MAX_KLIENTOW;       /* limit aktywnych klientów (0=bez limitu) */
+static int g_kasjer_ticket_mask = KASJER_TICKET_MASK_DEFAULT; /* maska typów karnetów sprzedawanych przez kasjera */
 static int g_ipc_zainicjalizowane = 0;             /* czy IPC zostało utworzone */
 static int g_cleanup_wykonany = 0;                 /* czy cleanup już był */
 
@@ -197,8 +200,52 @@ int main(int argc, char *argv[]) {
     if (waliduj_argumenty(argc, argv, &g_N, &g_czas_symulacji) != 0) {
         return EXIT_FAILURE;
     }
+
+    /* 2a. Opcjonalne limity generatora:
+     * argv[3] = limit łączny utworzonych klientów (0 = bez limitu)
+     * argv[4] = limit aktywnych klientów jednocześnie (0 = bez limitu)
+     * argv[5] = dozwolone typy karnetów (maska 0..31 lub lista, np. "jednorazowy" / "jednorazowy,tk1" / "wszystkie")
+     */
+    if (argc >= 4) {
+        int v = waliduj_liczbe(argv[3], 0, 10000000);
+        if (v < 0) {
+            fprintf(stderr, "Użycie: %s [N] [czas_symulacji] [limit_utworzonych] [limit_aktywnych]\n", argv[0]);
+            return EXIT_FAILURE;
+        }
+        g_limit_utworzonych = v;
+    }
+    if (argc >= 5) {
+        int v = waliduj_liczbe(argv[4], 0, 10000000);
+        if (v < 0) {
+            fprintf(stderr, "Użycie: %s [N] [czas_symulacji] [limit_utworzonych] [limit_aktywnych] [karnety_mask]\n", argv[0]);
+            return EXIT_FAILURE;
+        }
+        g_limit_aktywnych = v;
+    }
+
+    if (argc >= 6) {
+        int m = parse_ticket_mask(argv[5]);
+        if (m < 0) {
+            fprintf(stderr, "Użycie: %s [N] [czas_symulacji] [limit_utworzonych] [limit_aktywnych] [karnety_mask]\n", argv[0]);
+            fprintf(stderr, "  karnety_mask: 1 | 31 | jednorazowy | jednorazowy,tk1,dzienny | wszystkie\n");
+            return EXIT_FAILURE;
+        }
+        if (m != 0) g_kasjer_ticket_mask = m; /* 0 traktujemy jako domyślne */
+    } else {
+        /* Opcjonalnie można ustawić maskę przez ENV (przydaje się w skryptach) */
+        const char *env = getenv("KASJER_TICKETS");
+        if (env && *env) {
+            int m = parse_ticket_mask(env);
+            if (m >= 0 && m != 0) g_kasjer_ticket_mask = m;
+        }
+    }
     
-    loguj("Start symulacji: N=%d, czas=%d sekund", g_N, g_czas_symulacji);
+    {
+        char desc[128];
+        format_ticket_mask(g_kasjer_ticket_mask, desc, sizeof(desc));
+        loguj("Start symulacji: N=%d, czas=%d sekund, limit_utworzonych=%d, limit_aktywnych=%d, karnety_mask=%d [%s]",
+              g_N, g_czas_symulacji, g_limit_utworzonych, g_limit_aktywnych, g_kasjer_ticket_mask, desc);
+    }
     
     /* 3. Inicjalizacja losowania */
     inicjalizuj_losowanie();
@@ -522,18 +569,32 @@ static pid_t fork_exec(const char *program, char *const argv[], const char *log_
     if (pid == 0) {
         /* Proces potomny */
 
+
+        /* stdout wyciszamy, żeby przypadkowe printf/perror nie mieszały logów */
+        {
+            int fd_null = open("/dev/null", O_WRONLY);
+            if (fd_null >= 0) {
+                (void)dup2(fd_null, STDOUT_FILENO);
+                if (fd_null > STDOUT_FILENO) close(fd_null);
+            }
+        }
+
+        /* loguj() pisze na stderr -> tylko stderr kierujemy do pliku logu */
         if (log_path != NULL && log_path[0] != '\0') {
             int fd = open(log_path, O_CREAT | O_WRONLY | O_APPEND, 0644);
             if (fd >= 0) {
-                (void)dup2(fd, STDOUT_FILENO);
                 (void)dup2(fd, STDERR_FILENO);
                 if (fd > STDERR_FILENO) close(fd);
             }
         }
 
+        /* unbuffered stdio: minimalizuje ryzyko przeplatania logów przy fprintf/perror */
+        setvbuf(stdout, NULL, _IONBF, 0);
+        setvbuf(stderr, NULL, _IONBF, 0);
+
         execv(program, argv);
         /* Jeśli exec się nie udał */
-        perror("execv");
+        dprintf(STDERR_FILENO, "execv: %s\n", strerror(errno));
         _exit(EXIT_FAILURE);
     }
     
@@ -545,8 +606,10 @@ static int uruchom_procesy_stale(void) {
     char arg_klucz[32];
     snprintf(arg_klucz, sizeof(arg_klucz), "%d", g_N);
     
-    /* Kasjer */
-    char *argv_kasjer[] = {PATH_KASJER, NULL};
+    /* Kasjer (opcjonalnie: maska dozwolonych typów karnetów) */
+    char arg_karnety_mask[16];
+    snprintf(arg_karnety_mask, sizeof(arg_karnety_mask), "%d", g_kasjer_ticket_mask);
+    char *argv_kasjer[] = {PATH_KASJER, arg_karnety_mask, NULL};
     g_shm->pid_kasjer = fork_exec(PATH_KASJER, argv_kasjer, "output/kasa.log");
     if (g_shm->pid_kasjer == -1) {
         loguj("BŁĄD: Nie udało się uruchomić kasjera");
@@ -599,7 +662,11 @@ static int uruchom_procesy_stale(void) {
     /* Generator klientów */
     char arg_czas[16];
     snprintf(arg_czas, sizeof(arg_czas), "%d", g_czas_symulacji);
-    char *argv_gen[] = {PATH_GENERATOR, arg_czas, NULL};
+    char arg_limit_utw[16];
+    char arg_limit_akt[16];
+    snprintf(arg_limit_utw, sizeof(arg_limit_utw), "%d", g_limit_utworzonych);
+    snprintf(arg_limit_akt, sizeof(arg_limit_akt), "%d", g_limit_aktywnych);
+    char *argv_gen[] = {PATH_GENERATOR, arg_czas, arg_limit_utw, arg_limit_akt, NULL};
     
     g_shm->pid_generator = fork_exec(PATH_GENERATOR, argv_gen, "output/generator.log");
     if (g_shm->pid_generator == -1) {
@@ -617,15 +684,34 @@ static int uruchom_procesy_stale(void) {
  * ============================================ */
 
 static void petla_glowna(void) {
+    /* Używamy czasu absolutnego końca dnia (czas_konca_dnia), bo jest
+     * współdzielony i jednoznaczny. Dzięki temu unikamy "od razu CLOSING"
+     * przy ewentualnych problemach z czas_startu / starym SHM. */
     time_t czas_startu = g_shm->czas_startu;
+    time_t czas_konca  = g_shm->czas_konca_dnia;
     int ostatni_raport = 0;
+
+    time_t now = time(NULL);
+    if (czas_startu <= 0 || czas_startu > now) {
+        czas_startu = now;
+        MUTEX_SHM_LOCK();
+        g_shm->czas_startu = czas_startu;
+        MUTEX_SHM_UNLOCK();
+    }
+    if (czas_konca <= czas_startu) {
+        czas_konca = czas_startu + g_czas_symulacji;
+        MUTEX_SHM_LOCK();
+        g_shm->czas_konca_dnia = czas_konca;
+        MUTEX_SHM_UNLOCK();
+    }
     
     while (!g_zamykanie) {
         /* Sprawdź czy czas symulacji minął — PRZED reapem, żeby uniknąć fałszywego panic */
-        int czas_uplynal = (int)czas_symulacji(czas_startu);
-        
-        if (czas_uplynal >= g_czas_symulacji) {
-            loguj("Czas symulacji (%d sek) upłynął", g_czas_symulacji);
+        now = time(NULL);
+        int czas_uplynal = (int)(now - czas_startu);
+
+        if (now >= czas_konca || czas_uplynal >= g_czas_symulacji) {
+            loguj("Czas symulacji (%d sek) upłynął (elapsed=%d)", g_czas_symulacji, czas_uplynal);
             g_shm->koniec_dnia = 1;
             g_shm->faza_dnia = FAZA_CLOSING;
             break;

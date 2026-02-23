@@ -16,12 +16,13 @@
  * KOLEJ KRZESEŁKOWA - PROCES WYCIĄGU (MODEL RING LICZBA_RZEDOW)
  * 
  * Model fizyczny:
- * - LICZBA_RZEDOW rzędów krzesełek w obiegu (ring buffer)
+ * - LICZBA_RZEDOW rzędów w obiegu (ring buffer)
+ *   (1 rząd = 4 krzesełka obok siebie = KRZESLA_W_RZEDZIE slotów)
  * - Pozycja 0 = stacja dolna (załadunek pasażerów)
  * - Pozycja (LICZBA_RZEDOW/2) = stacja górna (wyładunek pasażerów)
  * - Pozycje 1..(POZYCJA_GORNA-1) = jazda w górę (z pasażerami)
  * - Pozycje (POZYCJA_GORNA+1)..(LICZBA_RZEDOW-1) = jazda w dół (puste krzesełka wracają)
- * - Każdy rząd ma 4 miejsca (KRZESLA_W_RZEDZIE slotów)
+ * - Każdy rząd ma KRZESLA_W_RZEDZIE miejsc (slotów)
  * 
  * Co INTERWAL_KRZESELKA_MS:
  * 1. Rząd na pozycji (LICZBA_RZEDOW/2) wysadza pasażerów (ARRIVE)
@@ -162,6 +163,18 @@ static void zaladuj_pasazerow(Rzad *rzad) {
                 
                 /* Wyślij BOARD */
                 wyslij_odp(g_kolejka[i].pid_klienta, WYCIAG_ODP_BOARD);
+
+                /*
+                 * Liczniki SHM aktualizuje WYCIĄG (jedno źródło prawdy):
+                 * - peron -> krzesełko w momencie BOARD
+                 * - krzesełko -> góra w momencie ARRIVE
+                 * Dzięki temu w DRAINING nie zobaczysz "ujemnych" wartości
+                 * przez wyścig BOARD/ARRIVE pomiędzy procesami.
+                 */
+                MUTEX_SHM_LOCK();
+                g_shm->osoby_na_peronie -= p->rozmiar_grupy;
+                g_shm->osoby_w_krzesle += p->rozmiar_grupy;
+                MUTEX_SHM_UNLOCK();
                 
                 /* Usuń z kolejki (swap z ostatnim) */
                 g_kolejka[i] = g_kolejka[g_kolejka_n - 1];
@@ -252,14 +265,16 @@ int main(void) {
              * To pozwala "dokończyć cykl" osobom, które przeszły BRAMKA1 przed zamknięciem
              * i dopiero w CLOSING/DRAINING doszły do peronu.
              */
-            int na_peronie = 0, na_terenie = 0;
+            int na_peronie = 0, na_terenie = 0, w_krzesle = 0;
             MUTEX_SHM_LOCK();
             na_peronie = g_shm->osoby_na_peronie;
             na_terenie = g_shm->osoby_na_terenie;
+            w_krzesle = g_shm->osoby_w_krzesle;
             MUTEX_SHM_UNLOCK();
 
             if (g_kolejka_n == 0 && wszystkie_rzedy_puste() && na_peronie == 0 && na_terenie == 0) {
-                loguj("WYCIAG: Drenowanie zakończone - wyłączam za 3s");
+                loguj("WYCIAG: Drenowanie zakończone (w_krzesle=%d, kolejka=%d, peron=%d, teren=%d) - wyłączam za 3s",
+                      w_krzesle, g_kolejka_n, na_peronie, na_terenie);
                 poll(NULL, 0, 3000);
                 break;
             }

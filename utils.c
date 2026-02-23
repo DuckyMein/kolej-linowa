@@ -5,6 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <sys/file.h>
 #include "utils.h"
 #include "ipc.h"  /* dla g_shm->czas_konca_dnia */
 
@@ -17,31 +18,73 @@
  * ============================================ */
 
 void blad_krytyczny(const char *msg) {
-    fprintf(stderr, "[PID %d] BŁĄD KRYTYCZNY: ", getpid());
-    perror(msg);
+    loguj("BŁĄD KRYTYCZNY: %s: %s", msg, strerror(errno));
     exit(EXIT_FAILURE);
 }
 
 void blad_ostrzezenie(const char *msg) {
-    fprintf(stderr, "[PID %d] OSTRZEŻENIE: ", getpid());
-    perror(msg);
+    loguj("OSTRZEŻENIE: %s: %s", msg, strerror(errno));
 }
 
 void loguj(const char *format, ...) {
+    /*
+     * Uwaga: wiele procesów loguje do tych samych plików (stdout/stderr są
+     * przekierowane w main.c do output/<nazwa>.log). Żeby nie mieszać
+     * wpisów, cały wiersz składamy do bufora i zapisujemy pod lockiem.
+     */
+    char buf[1024];
+
     time_t teraz = time(NULL);
-    struct tm *tm_info = localtime(&teraz);
+    struct tm tm_info;
+    localtime_r(&teraz, &tm_info);
+
     char czas_buf[20];
-    
-    strftime(czas_buf, sizeof(czas_buf), "%H:%M:%S", tm_info);
-    
-    fprintf(stderr, "[%s][PID %d] ", czas_buf, getpid());
-    
+    strftime(czas_buf, sizeof(czas_buf), "%H:%M:%S", &tm_info);
+
+    int n = snprintf(buf, sizeof(buf), "[%s][PID %d] ", czas_buf, (int)getpid());
+    if (n < 0) return;
+
+    size_t off = (size_t)n;
+    if (off >= sizeof(buf)) off = sizeof(buf) - 1;
+
     va_list args;
     va_start(args, format);
-    vfprintf(stderr, format, args);
+    int m = vsnprintf(buf + off, sizeof(buf) - off, format, args);
     va_end(args);
-    
-    fprintf(stderr, "\n");
+    if (m < 0) return;
+
+    size_t len = off + (size_t)m;
+    if (len >= sizeof(buf)) len = sizeof(buf) - 1;
+
+    /* Dopilnuj newline */
+    if (len == 0 || buf[len - 1] != "\n"[0]) {
+        if (len < sizeof(buf) - 1) {
+            buf[len++] = "\n"[0];
+        } else {
+            buf[sizeof(buf) - 1] = "\n"[0];
+            len = sizeof(buf);
+        }
+    }
+
+    int locked = (flock(STDERR_FILENO, LOCK_EX) == 0);
+
+    /* write() best-effort z obsługą EINTR */
+    size_t pos = 0;
+    while (pos < len) {
+        ssize_t w = write(STDERR_FILENO, buf + pos, len - pos);
+        if (w < 0) {
+            if (errno == EINTR) continue;
+            break;
+        }
+        pos += (size_t)w;
+    }
+
+    if (locked) (void)flock(STDERR_FILENO, LOCK_UN);
+}
+
+void loguj_errno(const char *prefix) {
+    int e = errno;
+    loguj("%s: %s", prefix, strerror(e));
 }
 
 /* ============================================
@@ -82,10 +125,10 @@ int waliduj_argumenty(int argc, char *argv[], int *N, int *czas_symulacji) {
     *czas_symulacji = CZAS_SYMULACJI;
     
     if (argc >= 2) {
-        *N = waliduj_liczbe(argv[1], 1, 1000);
+         *N = waliduj_liczbe(argv[1], 1, N_LIMIT_TERENU_MAX);
         if (*N < 0) {
             fprintf(stderr, "Użycie: %s [N] [czas_symulacji]\n", argv[0]);
-            fprintf(stderr, "  N - limit osób na terenie stacji (1-1000, domyślnie %d)\n", N_LIMIT_TERENU);
+            fprintf(stderr, "  N - limit osób na terenie stacji (1-%d, domyślnie %d)\n", N_LIMIT_TERENU_MAX, N_LIMIT_TERENU);
             fprintf(stderr, "  czas_symulacji - czas w sekundach (1-3600, domyślnie %d)\n", CZAS_SYMULACJI);
             return -1;
         }
@@ -134,6 +177,136 @@ TypKarnetu losuj_typ_karnetu(void) {
     if (los < 75) return KARNET_TK2;
     if (los < 85) return KARNET_TK3;
     return KARNET_DZIENNY;
+}
+
+static int mask_has_type(int mask, TypKarnetu typ) {
+    switch (typ) {
+        case KARNET_JEDNORAZOWY: return (mask & TICKET_MASK_JEDNORAZOWY) != 0;
+        case KARNET_TK1:         return (mask & TICKET_MASK_TK1) != 0;
+        case KARNET_TK2:         return (mask & TICKET_MASK_TK2) != 0;
+        case KARNET_TK3:         return (mask & TICKET_MASK_TK3) != 0;
+        case KARNET_DZIENNY:     return (mask & TICKET_MASK_DZIENNY) != 0;
+        default:                 return 0;
+    }
+}
+
+TypKarnetu losuj_typ_karnetu_mask(int mask) {
+    if (mask == 0) mask = KASJER_TICKET_MASK_DEFAULT;
+    if (mask == 0) mask = TICKET_MASK_ALL;
+
+    /* Wagi jak w losuj_typ_karnetu(): 40/20/15/10/15 */
+    struct { TypKarnetu typ; int w; } items[] = {
+        {KARNET_JEDNORAZOWY, 40},
+        {KARNET_TK1,         20},
+        {KARNET_TK2,         15},
+        {KARNET_TK3,         10},
+        {KARNET_DZIENNY,     15},
+    };
+
+    int sum = 0;
+    for (size_t i = 0; i < sizeof(items)/sizeof(items[0]); i++) {
+        if (mask_has_type(mask, items[i].typ)) sum += items[i].w;
+    }
+
+    if (sum <= 0) {
+        /* Jeśli ktoś podał maskę=0 lub błędną, wróć do pełnej puli */
+        mask = TICKET_MASK_ALL;
+        sum = 0;
+        for (size_t i = 0; i < sizeof(items)/sizeof(items[0]); i++) sum += items[i].w;
+    }
+
+    int los = rand() % sum;
+    int acc = 0;
+    for (size_t i = 0; i < sizeof(items)/sizeof(items[0]); i++) {
+        if (!mask_has_type(mask, items[i].typ)) continue;
+        acc += items[i].w;
+        if (los < acc) return items[i].typ;
+    }
+
+    /* Awaryjnie */
+    return KARNET_JEDNORAZOWY;
+}
+
+static void str_to_lower(char *s) {
+    for (; s && *s; s++) {
+        if (*s >= 'A' && *s <= 'Z') *s = (char)(*s - 'A' + 'a');
+    }
+}
+
+static char *trim(char *s) {
+    while (s && (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r')) s++;
+    if (!s) return s;
+    char *end = s + strlen(s);
+    while (end > s && (end[-1] == ' ' || end[-1] == '\t' || end[-1] == '\n' || end[-1] == '\r')) end--;
+    *end = '\0';
+    return s;
+}
+
+int parse_ticket_mask(const char *s) {
+    if (s == NULL) return -1;
+
+    /* jeśli liczba */
+    if (*s >= '0' && *s <= '9') {
+        int v = waliduj_liczbe(s, 0, 31);
+        return v;
+    }
+
+    char buf[128];
+    snprintf(buf, sizeof(buf), "%s", s);
+    str_to_lower(buf);
+
+    int mask = 0;
+    char *save = NULL;
+    for (char *tok = strtok_r(buf, ",;|+", &save); tok != NULL; tok = strtok_r(NULL, ",;|+", &save)) {
+        tok = trim(tok);
+        if (*tok == '\0') continue;
+
+        if (strcmp(tok, "all") == 0 || strcmp(tok, "wszystkie") == 0 || strcmp(tok, "pelne") == 0) {
+            mask |= TICKET_MASK_ALL;
+            continue;
+        }
+        if (strcmp(tok, "jednorazowy") == 0 || strcmp(tok, "jednorazowe") == 0 || strcmp(tok, "single") == 0) {
+            mask |= TICKET_MASK_JEDNORAZOWY;
+            continue;
+        }
+        if (strcmp(tok, "tk1") == 0) { mask |= TICKET_MASK_TK1; continue; }
+        if (strcmp(tok, "tk2") == 0) { mask |= TICKET_MASK_TK2; continue; }
+        if (strcmp(tok, "tk3") == 0) { mask |= TICKET_MASK_TK3; continue; }
+        if (strcmp(tok, "dzienny") == 0 || strcmp(tok, "day") == 0) { mask |= TICKET_MASK_DZIENNY; continue; }
+
+        /* nieznany token */
+        return -1;
+    }
+
+    if (mask < 0 || mask > 31) return -1;
+    return mask;
+}
+
+void format_ticket_mask(int mask, char *buf, size_t buflen) {
+    if (!buf || buflen == 0) return;
+    buf[0] = '\0';
+    int first = 1;
+
+    struct { int bit; const char *name; } items[] = {
+        {TICKET_MASK_JEDNORAZOWY, "Jednorazowy"},
+        {TICKET_MASK_TK1,         "TK1"},
+        {TICKET_MASK_TK2,         "TK2"},
+        {TICKET_MASK_TK3,         "TK3"},
+        {TICKET_MASK_DZIENNY,     "Dzienny"},
+    };
+
+    for (size_t i = 0; i < sizeof(items)/sizeof(items[0]); i++) {
+        if (mask & items[i].bit) {
+            char tmp[64];
+            snprintf(tmp, sizeof(tmp), "%s%s", first ? "" : ",", items[i].name);
+            strncat(buf, tmp, buflen - strlen(buf) - 1);
+            first = 0;
+        }
+    }
+
+    if (first) {
+        snprintf(buf, buflen, "(brak)");
+    }
 }
 
 Trasa losuj_trase_rower(void) {

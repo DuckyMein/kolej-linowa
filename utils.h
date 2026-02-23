@@ -20,13 +20,13 @@
  * ============================================ */
 
 /* 
- * Wyświetla błąd z perror() i kończy program
+ * Loguje błąd wraz z errno i kończy program
  * Używać gdy błąd jest krytyczny
  */
 void blad_krytyczny(const char *msg);
 
 /*
- * Wyświetla ostrzeżenie z perror() ale kontynuuje
+ * Loguje ostrzeżenie wraz z errno i kontynuuje
  * Używać gdy błąd nie jest krytyczny
  */
 void blad_ostrzezenie(const char *msg);
@@ -36,6 +36,11 @@ void blad_ostrzezenie(const char *msg);
  * Format: [CZAS] [PID] komunikat
  */
 void loguj(const char *format, ...);
+
+/*
+ * Loguje prefix + strerror(errno) jako jedna linia (bez mieszania logów).
+ */
+void loguj_errno(const char *prefix);
 
 /* ============================================
  * WALIDACJA DANYCH
@@ -78,6 +83,25 @@ int losuj_procent(int procent);
  * Losuje typ karnetu według prawdopodobieństw
  */
 TypKarnetu losuj_typ_karnetu(void);
+
+/*
+ * Losuje typ karnetu spośród dozwolonych (maska bitowa TICKET_MASK_*).
+ * Jeśli maska=0 → używa KASJER_TICKET_MASK_DEFAULT.
+ */
+TypKarnetu losuj_typ_karnetu_mask(int mask);
+
+/*
+ * Parsuje maskę typów karnetów.
+ * - liczba 0..31 (np. "31")
+ * - lista: "jednorazowy,tk1,tk2,tk3,dzienny" / "all" / "wszystkie"
+ * Zwraca: maskę 0..31 lub -1 przy błędzie.
+ */
+int parse_ticket_mask(const char *s);
+
+/*
+ * Formatuje maskę do czytelnej listy (np. "Jednorazowy,TK1,Dzienny").
+ */
+void format_ticket_mask(int mask, char *buf, size_t buflen);
 
 /*
  * Losuje trasę dla rowerzysty (T1-T3)

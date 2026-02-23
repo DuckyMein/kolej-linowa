@@ -1,0 +1,58 @@
+[22:26:52][PID 425012] Start symulacji: N=120, czas=35 sekund, limit_utworzonych=21000, limit_aktywnych=60000, karnety_mask=31 [Jednorazowy,TK1,TK2,TK3,Dzienny]
+[22:26:52][PID 425012] Handlery sygnałów zainstalowane
+[22:26:52][PID 425012] Inicjalizacja zasobów IPC...
+[22:26:52][PID 425012] Inicjalizacja IPC (N=120)...
+[22:26:52][PID 425012] Klucz bazowy: 0x4b300b6b
+[22:26:52][PID 425012] Semafory utworzone (id=25)
+[22:26:52][PID 425012] Pamięć współdzielona utworzona (id=25, size=64000152)
+[22:26:52][PID 425012] Kolejki komunikatów utworzone
+[22:26:52][PID 425012] Inicjalizacja IPC zakończona pomyślnie
+[22:26:52][PID 425012] Czas końca dnia: 1771882047 (za 35 sekund)
+[22:26:52][PID 425012] Sprzątacz IPC uruchomiony (PID=425014, PGID=425012)
+[22:26:52][PID 425012] Uruchamianie procesów stałych...
+[22:26:52][PID 425012] Kasjer uruchomiony (PID=425015)
+[22:26:52][PID 425012] Pracownik1 uruchomiony (PID=425016)
+[22:26:52][PID 425012] Pracownik2 uruchomiony (PID=425017)
+[22:26:52][PID 425012] Wyciąg uruchomiony (PID=425018)
+[22:26:52][PID 425012] Bramka 1 uruchomiona (PID=425019)
+[22:26:52][PID 425012] Bramka 2 uruchomiona (PID=425020)
+[22:26:52][PID 425012] Bramka 3 uruchomiona (PID=425021)
+[22:26:52][PID 425012] Bramka 4 uruchomiona (PID=425022)
+[22:26:52][PID 425012] Generator uruchomiony (PID=425023)
+[22:26:52][PID 425012] Wszystkie procesy stałe uruchomione
+[22:26:52][PID 425012] === SYMULACJA ROZPOCZĘTA ===
+[22:26:54][PID 425012] SYGNAŁ SIGUSR1 - AWARIA (STOP) -> przekazuję do pracownika
+[22:26:56][PID 425012] SYGNAŁ SIGUSR2 - WZNOWIENIE (START) -> przekazuję do inicjatora
+[22:27:22][PID 425012] Status: czas=30/35, teren=120, góra=901, klienci=17555, przychód=593621.25 zł
+[22:27:27][PID 425012] Czas symulacji (35 sek) upłynął (elapsed=35)
+[22:27:27][PID 425012] === KONIEC DNIA - ZAMYKANIE ===
+[22:27:27][PID 425012] === PROCEDURA KOŃCA DNIA ===
+[22:27:27][PID 425012] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[22:27:27][PID 425012]   faza_dnia = CLOSING
+[22:27:27][PID 425012]   czas_konca_dnia = 1771882047
+[22:27:27][PID 425012]   aktywni_klienci = 14958
+[22:27:27][PID 425012] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[22:27:27][PID 425012]   Czekam na wyciąg (PID 425018)...
+[22:27:44][PID 425012]   Wyciąg zakończył drenowanie i wyłączył się
+[22:27:44][PID 425012] FAZA 3: SHUTDOWN - zamykanie procesów
+[22:27:44][PID 425012]   Kolej zatrzymana
+[22:27:44][PID 425012] Oczekiwanie na zakończenie procesów potomnych...
+[22:27:44][PID 425012] Wszystkie procesy potomne zakończone
+[22:27:44][PID 425012] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[22:27:44][PID 425012] Generowanie raportu końcowego...
+[22:27:44][PID 425012] Raport zapisany do: output/raport_dzienny.txt
+[22:27:45][PID 425012] Log przejść zapisany do: output/log_przejsc.txt (20802 wpisów)
+[22:27:45][PID 425012] Czyszczenie zasobów...
+[22:27:45][PID 425012] Czyszczenie zasobów IPC...
+[22:27:45][PID 425012] Pamięć współdzielona usunięta
+[22:27:45][PID 425012] Semafory usunięte
+[22:27:45][PID 425012] Kolejki komunikatów usunięte
+[22:27:45][PID 425012] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

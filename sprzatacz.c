@@ -54,22 +54,50 @@ static int readlink_exe(pid_t pid, char *buf, size_t buflen) {
 
 static int pid_is_our_program(pid_t pid, const char *name) {
     char exe[512];
-    if (readlink_exe(pid, exe, sizeof(exe)) != 0) return 0;
+    /* W niektórych środowiskach (/proc hidepid, uprawnienia, WSL2 edge-case)
+     * readlink("/proc/<pid>/exe") może się nie udać nawet dla własnego procesu.
+     * To NIE powinno powodować fałszywego "crash" i ubijania całej symulacji.
+     *
+     * Zwracamy:
+     *  1  - to nasz program
+     *  0  - to na pewno nie nasz program
+     * -1  - nie udało się ustalić (traktuj jako "nie wiem")
+     */
+    if (readlink_exe(pid, exe, sizeof(exe)) != 0) return -1;
     const char *bn = base_name(exe);
-    return (strcmp(bn, name) == 0);
+    return (strcmp(bn, name) == 0) ? 1 : 0;
 }
 
 /* Czy "rodzic" nadal żyje i jest tym samym main-em? */
 static int parent_alive_and_is_main(void) {
     if (g_parent_pid <= 1) return 0;
 
+    /* Szybka ścieżka: getppid() zmieniony = rodzic umarł (reparented do init/subreaper) */
+    if (getppid() != g_parent_pid) return 0;
+
     /* kill(pid,0) == -1 ESRCH => nie żyje */
     if (kill(g_parent_pid, 0) == -1) {
         if (errno == ESRCH) return 0;
     }
 
-    /* jeżeli PID został zre-użyty, /proc/<pid>/exe nie będzie "main" */
-    if (!pid_is_our_program(g_parent_pid, "main")) return 0;
+    /* Jeśli PID został zre-użyty, /proc/<pid>/exe nie będzie "main".
+     * Ale gdy nie mamy dostępu do /proc/<pid>/exe:
+     *
+     * KLUCZOWA ZMIANA: jeśli readlink zwraca -1, to MOŻE być zombie
+     * (po SIGKILL: /proc/<pid>/exe staje się niedostępny).
+     * Jeśli dostaliśmy sygnał (PDEATHSIG/SIGTERM) i nie możemy
+     * zweryfikować exe → bezpieczniej zakładać że rodzic NIE żyje.
+     * Fałszywy cleanup jest lepszy niż brak cleanup po crashu.
+     */
+    int is_main = pid_is_our_program(g_parent_pid, "main");
+    if (is_main == 0) return 0;   /* na pewno nie "main" */
+    if (is_main == -1) {
+        /* Nie udało się odczytać /proc/<pid>/exe.
+         * Jeśli mamy sygnał (g_sig != 0) → prawdopodobnie crash/zombie → sprzątamy.
+         * Jeśli nie mamy sygnału (race-check na starcie) → zakładamy że żyje. */
+        if (g_sig != 0) return 0;  /* dostaliśmy sygnał + readlink fail → crash */
+        return 1;                  /* brak sygnału + readlink fail → ostrożnie */
+    }
 
     return 1;
 }
@@ -145,6 +173,12 @@ int main(int argc, char *argv[]) {
     }
 
     while (!g_sig) pause();
+
+    /*
+     * Po obudzeniu: krótka pauza żeby zombie rodzica mógł zostać zebrany.
+     * Bez tego kill(parent_pid, 0) widzi zombie i myśli że żyje.
+     */
+    poll(NULL, 0, 200);
 
     /*
      * Normalny shutdown: main żyje i wysłał SIGTERM -> wychodzimy bez sprzątania.

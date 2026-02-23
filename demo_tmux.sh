@@ -66,6 +66,11 @@ tmux send-keys -t "$SESSION:0.1" "$CMD_B" C-m
 tmux send-keys -t "$SESSION:0.2" "$CMD_C" C-m
 tmux send-keys -t "$SESSION:0.3" "$CMD_D" C-m
 
+# Dodatkowe okno: MONITOR (dashboard na żywo)
+if [ -x "./monitor" ]; then
+  tmux new-window -t "$SESSION" -n "monitor" "cd '$PWD'; ./monitor --interval-ms 400"
+fi
+
 cat <<MSG
 [demo_tmux.sh] Start. MAIN_PID=$MAIN_PID  (session: $SESSION)
 - Zmiana panelu: Ctrl+b, potem strzałki.

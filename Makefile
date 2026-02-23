@@ -10,7 +10,7 @@ LDFLAGS = -pthread
 HEADERS = config.h types.h ipc.h utils.h
 
 # Programy do zbudowania
-PROGRAMS = main kasjer bramka pracownik1 pracownik2 generator klient wyciag sprzatacz
+PROGRAMS = main kasjer bramka pracownik1 pracownik2 generator klient wyciag sprzatacz monitor
 
 # Moduły wspólne (kompilowane do .o)
 COMMON_OBJ = ipc.o utils.o
@@ -21,9 +21,12 @@ COMMON_OBJ = ipc.o utils.o
 
 all: $(PROGRAMS)
 	@echo "=== Kompilacja zakończona ==="
-	@echo "Uruchom: ./main [N] [czas_symulacji]"
+	@echo "Uruchom: ./main [N] [czas_symulacji] [limit_utworzonych] [limit_aktywnych] [karnety_mask]"
 	@echo "  N - limit osób na terenie (domyślnie 100)"
-	@echo "  czas - czas symulacji w sekundach (domyślnie 300)"
+	@echo "  czas_symulacji - czas symulacji w sekundach (domyślnie 300)"
+	@echo "  limit_utworzonych - limit łączny wygenerowanych klientów (0=bez limitu, domyślnie 5000)"
+	@echo "  limit_aktywnych - limit aktywnych klientów jednocześnie (0=bez limitu, domyślnie 100)"
+	@echo "  karnety_mask - dozwolone typy karnetów (np. 1 | 31 | jednorazowy,tk1 | wszystkie)"
 
 # ============================================
 # PROGRAMY WYKONYWALNE
@@ -56,6 +59,9 @@ wyciag: wyciag.o $(COMMON_OBJ)
 sprzatacz: sprzatacz.o $(COMMON_OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+monitor: monitor.o $(COMMON_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
 # ============================================
 # PLIKI OBIEKTOWE
 # ============================================
@@ -85,6 +91,9 @@ wyciag.o: wyciag.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 sprzatacz.o: sprzatacz.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+monitor.o: monitor.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 ipc.o: ipc.c ipc.h config.h types.h

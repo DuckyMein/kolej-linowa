@@ -1,0 +1,34 @@
+# test8_crash_main_sprzatacz_cleanup
+
+Cel: crash-safe cleanup: po SIGKILL main sprzątacz usuwa SysV IPC (SHM/SEM/MQ).
+
+FTOK_FILE: /tmp/kolej_krzeselkowa_ipc.ftok
+Sprzątacz PID: 527898
+
+## Klucze (base + offset)
+```
+SEM 0x4b300b6b
+SHM 0x4b300b6c
+MQ_KASA 0x4b300b6d
+MQ_KASA_ODP 0x4b300b6e
+MQ_BRAMKA 0x4b300b6f
+MQ_BRAMKA_ODP 0x4b300b70
+MQ_PRAC 0x4b300b71
+MQ_WYCIAG_REQ 0x4b300b72
+MQ_WYCIAG_ODP 0x4b300b73
+MQ_PERON 0x4b300b74
+MQ_PERON_ODP 0x4b300b75
+```
+
+## ipcs PRZED crashem
+OK: znaleziono obiekt(y) IPC po kluczach (found_before=1).
+
+## ipcs PO crashu
+OK: sprzątacz sam wyczyścił IPC (idealne zachowanie).
+
+## Procesy (best-effort)
+OK: brak procesów symulacji na liście.
+
+## Interpretacja (do prezentacji)
+- Pokazuje mechanizm crash-safe cleanup: sprzątacz (PDEATHSIG) + fallback (SIGUSR1/ipcrm).
+- Sprzątacz samodzielnie wyczyścił IPC po SIGKILL main.

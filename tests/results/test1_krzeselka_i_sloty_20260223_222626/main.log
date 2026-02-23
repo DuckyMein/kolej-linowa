@@ -1,0 +1,55 @@
+[22:25:58][PID 378158] Start symulacji: N=120, czas=10 sekund, limit_utworzonych=21000, limit_aktywnych=60000, karnety_mask=31 [Jednorazowy,TK1,TK2,TK3,Dzienny]
+[22:25:58][PID 378158] Handlery sygnałów zainstalowane
+[22:25:58][PID 378158] Inicjalizacja zasobów IPC...
+[22:25:58][PID 378158] Inicjalizacja IPC (N=120)...
+[22:25:58][PID 378158] Klucz bazowy: 0x4b300b6b
+[22:25:58][PID 378158] Semafory utworzone (id=23)
+[22:25:58][PID 378158] Pamięć współdzielona utworzona (id=23, size=64000152)
+[22:25:58][PID 378158] Kolejki komunikatów utworzone
+[22:25:58][PID 378158] Inicjalizacja IPC zakończona pomyślnie
+[22:25:58][PID 378158] Czas końca dnia: 1771881968 (za 10 sekund)
+[22:25:58][PID 378158] Sprzątacz IPC uruchomiony (PID=378160, PGID=378158)
+[22:25:58][PID 378158] Uruchamianie procesów stałych...
+[22:25:58][PID 378158] Kasjer uruchomiony (PID=378161)
+[22:25:58][PID 378158] Pracownik1 uruchomiony (PID=378162)
+[22:25:58][PID 378158] Pracownik2 uruchomiony (PID=378163)
+[22:25:58][PID 378158] Wyciąg uruchomiony (PID=378164)
+[22:25:58][PID 378158] Bramka 1 uruchomiona (PID=378165)
+[22:25:58][PID 378158] Bramka 2 uruchomiona (PID=378166)
+[22:25:58][PID 378158] Bramka 3 uruchomiona (PID=378167)
+[22:25:58][PID 378158] Bramka 4 uruchomiona (PID=378168)
+[22:25:58][PID 378158] Generator uruchomiony (PID=378169)
+[22:25:58][PID 378158] Wszystkie procesy stałe uruchomione
+[22:25:58][PID 378158] === SYMULACJA ROZPOCZĘTA ===
+[22:26:08][PID 378158] Czas symulacji (10 sek) upłynął (elapsed=10)
+[22:26:08][PID 378158] === KONIEC DNIA - ZAMYKANIE ===
+[22:26:08][PID 378158] === PROCEDURA KOŃCA DNIA ===
+[22:26:08][PID 378158] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[22:26:08][PID 378158]   faza_dnia = CLOSING
+[22:26:08][PID 378158]   czas_konca_dnia = 1771881968
+[22:26:08][PID 378158]   aktywni_klienci = 13943
+[22:26:08][PID 378158] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[22:26:08][PID 378158]   Czekam na wyciąg (PID 378164)...
+[22:26:25][PID 378158]   Wyciąg zakończył drenowanie i wyłączył się
+[22:26:25][PID 378158] FAZA 3: SHUTDOWN - zamykanie procesów
+[22:26:25][PID 378158]   Kolej zatrzymana
+[22:26:25][PID 378158] Oczekiwanie na zakończenie procesów potomnych...
+[22:26:26][PID 378158] Wszystkie procesy potomne zakończone
+[22:26:26][PID 378158] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[22:26:26][PID 378158] Generowanie raportu końcowego...
+[22:26:26][PID 378158] Raport zapisany do: output/raport_dzienny.txt
+[22:26:26][PID 378158] Log przejść zapisany do: output/log_przejsc.txt (6492 wpisów)
+[22:26:26][PID 378158] Czyszczenie zasobów...
+[22:26:26][PID 378158] Czyszczenie zasobów IPC...
+[22:26:26][PID 378158] Pamięć współdzielona usunięta
+[22:26:26][PID 378158] Semafory usunięte
+[22:26:26][PID 378158] Kolejki komunikatów usunięte
+[22:26:26][PID 378158] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

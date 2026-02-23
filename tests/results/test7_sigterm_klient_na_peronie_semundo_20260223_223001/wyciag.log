@@ -1,0 +1,3 @@
+[22:29:55][PID 527555] WYCIAG: Start (INTERWAL=1ms, PRZEJAZD=9ms, RZEDOW=18, SLOTY/RZAD=4)
+[22:29:58][PID 527555] WYCIAG: Drenowanie zakończone (w_krzesle=0, kolejka=0, peron=0, teren=0) - wyłączam za 3s
+[22:30:01][PID 527555] WYCIAG: Kończę pracę

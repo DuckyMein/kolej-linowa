@@ -16,19 +16,28 @@
  * LIMITY SYSTEMOWE
  * ============================================ */
 #define MAX_KLIENTOW        60000     // max procesów klientów jednocześnie
+/* Maksymalna liczba klientów, których generator utworzy łącznie (0 = bez limitu) */
+#define MAX_WYG_KLIENTOW    21000
 #define MAX_KARNETOW        999999 // max karnetów w pamięci
 #define MAX_LOGOW           999999   // max wpisów w logu przejść
 
 /* ============================================
  * INFRASTRUKTURA KOLEI
  * ============================================ */
-#define N_LIMIT_TERENU      100     // max osób na terenie dolnej stacji
+#define N_LIMIT_TERENU      100     // domyślny limit osób na terenie dolnej stacji
+#define N_LIMIT_TERENU_MAX  20000   // max N z CLI (<=32767, bo limit SEMVMX)
 #define LICZBA_BRAMEK1      4       // bramki wejściowe (do terenu)
 #define LICZBA_BRAMEK2      3       // bramki peronowe
-#define LICZBA_RZEDOW       72      // rzędów krzesełek (72 szt.)
+/*
+ * Model wyciągu:
+ * - 1 "rząd" = 4 krzesełka obok siebie (czyli 4 sloty)
+ * - jest 18 rzędów w obiegu -> 18 * 4 = 72 krzesełka (sloty)
+ * - w danym momencie w górę jedzie połowa rzędów -> 9 rzędów -> 9 * 4 = 36 slotów
+ */
+#define LICZBA_RZEDOW       18      // liczba rzędów w ringu wyciągu
 
 /* Szansa, że wygenerowany klient "nie korzysta" z kolei (przychodzi i odchodzi) */
-#define PROC_NIE_KORZYSTA   10      // %
+#define PROC_NIE_KORZYSTA   0      // %
 #define KRZESLA_W_RZEDZIE   4       // miejsc w jednym rzędzie
 #define LICZBA_WYJSC_GORA   2       // wyjścia ze stacji górnej
 
@@ -46,7 +55,7 @@
  * WYCIĄG (MODEL RING LICZBA_RZEDOW)
  * Czas przejazdu = (LICZBA_RZEDOW/2) * INTERWAL_KRZESELKA_MS
  * ============================================ */
-#define INTERWAL_KRZESELKA_MS 200   // co ile podjeżdża krzesełko (ms)
+#define INTERWAL_KRZESELKA_MS 1   // co ile podjeżdża krzesełko (ms)
 #define KURS_ROWEROWY_CO      3     // co który kurs gwarantuje rower
 #define PERON_SLOTY           4     // max slotów na peronie (pieszy=1, rower=2)
 
@@ -61,9 +70,9 @@
  * PRAWDOPODOBIEŃSTWA (w procentach)
  * ============================================ */
 #define PROC_VIP            1       // 1% klientów to VIP
-#define PROC_ROWERZYSTA     50      // 50% klientów to rowerzyści
-#define PROC_DZIECKO        20      // 20% dorosłych ma dziecko
-#define PROC_DRUGIE_DZIECKO 30      // 30% z dzieci ma drugie dziecko
+#define PROC_ROWERZYSTA     0      // 50% klientów to rowerzyści
+#define PROC_DZIECKO        0      // 20% dorosłych ma dziecko
+#define PROC_DRUGIE_DZIECKO 0      // 30% z dzieci ma drugie dziecko
 
 /* ============================================
  * CENY KARNETÓW (w groszach dla uniknięcia float)
@@ -84,18 +93,39 @@
 #define WAZNOSC_DZIENNY     86400   // 24h (praktycznie do końca dnia)
 
 /* ============================================
+ * DOZWOLONE TYPY KARNETÓW (MASKA BITOWA)
+ * bit0=jednorazowy, bit1=TK1, bit2=TK2, bit3=TK3, bit4=dzienny
+ *
+ * Użycie:
+ * - 1  -> tylko jednorazowe
+ * - 31 -> wszystkie typy (domyślnie)
+ *
+ * Maska jest przekazywana do kasjera jako argument (patrz: main.c/kasjer.c)
+ * ============================================ */
+#define TICKET_MASK_JEDNORAZOWY (1<<0)
+#define TICKET_MASK_TK1         (1<<1)
+#define TICKET_MASK_TK2         (1<<2)
+#define TICKET_MASK_TK3         (1<<3)
+#define TICKET_MASK_DZIENNY     (1<<4)
+
+#define TICKET_MASK_ALL (TICKET_MASK_JEDNORAZOWY | TICKET_MASK_TK1 | TICKET_MASK_TK2 | TICKET_MASK_TK3 | TICKET_MASK_DZIENNY)
+
+/* Domyślnie kasjer sprzedaje wszystkie typy karnetów */
+#define KASJER_TICKET_MASK_DEFAULT TICKET_MASK_ALL
+
+/* ============================================
  * ZNIŻKI
  * ============================================ */
 #define WIEK_ZNIZKA_DZIECKO 10      // <10 lat = zniżka
 #define WIEK_ZNIZKA_SENIOR  65      // >=65 lat = zniżka
-#define WIEK_WYMAGA_OPIEKI  8       // <8 lat = wymaga opiekuna
+#define WIEK_WYMAGA_OPIEKI  0       // <8 lat = wymaga opiekuna
 #define ZNIZKA_PROCENT      25      // 25% zniżki
 
 /* ============================================
  * WIEK KLIENTÓW
  * ============================================ */
-#define WIEK_MIN            4       // minimalny wiek
-#define WIEK_MAX            80      // maksymalny wiek
+#define WIEK_MIN            1       // minimalny wiek
+#define WIEK_MAX            100      // maksymalny wiek
 #define WIEK_DOROSLY_MIN    18      // minimalny wiek dorosłego
 
 /* ============================================

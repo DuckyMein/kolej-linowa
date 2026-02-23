@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stddef.h>
 #include <errno.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -54,6 +55,10 @@ union semun {
 void ustaw_smierc_z_rodzicem(void) {
     /* Zapisz PID rodzica */
     g_parent_pid = getppid();
+
+    /* Unbuffered stdio: mniejsze ryzyko przeplatania wpisów przy fprintf/perror */
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
     
     /* Ustaw aby dostać SIGTERM gdy rodzic umrze */
     if (prctl(PR_SET_PDEATHSIG, SIGTERM) == -1) {
@@ -468,11 +473,23 @@ int attach_ipc(void) {
      * To jest kluczowe: sprzątacz zabija całą grupę (kill(-pgid,...)).
      * Jeśli jakiś proces (np. wyciąg/klient) wyląduje w innym PGID, zostanie "persistent" po SIGKILL main.
      */
-    if (g_shm != NULL && g_shm->pid_main > 1) {
-        if (setpgid(0, g_shm->pid_main) == -1) {
-            /* EPERM oznacza zwykle inną sesję/grupę; ignorujemy, bo nie możemy tego naprawić tutaj. */
-            if (errno != EPERM) {
-                /* nie logujemy w hot-path */
+    if (g_shm != NULL) {
+        /* UWAGA: w systemie może wisieć stary segment SHM (np. po crashu / innej wersji).
+         * Wtedy rozmiar segmentu może być mniejszy niż sizeof(SharedMemory).
+         * Odczyt pól z końca struktury (np. pid_main) może wtedy skończyć się SIGSEGV.
+         * Zabezpieczamy się, sprawdzając faktyczny rozmiar segmentu.
+         */
+        struct shmid_ds ds;
+        size_t need = offsetof(SharedMemory, pid_main) + sizeof(pid_t);
+
+        if (shmctl(g_shm_id, IPC_STAT, &ds) == 0 && (size_t)ds.shm_segsz >= need) {
+            if (g_shm->pid_main > 1) {
+                if (setpgid(0, g_shm->pid_main) == -1) {
+                    /* EPERM oznacza zwykle inną sesję/grupę; ignorujemy, bo nie możemy tego naprawić tutaj. */
+                    if (errno != EPERM) {
+                        /* nie logujemy w hot-path */
+                    }
+                }
             }
         }
     }

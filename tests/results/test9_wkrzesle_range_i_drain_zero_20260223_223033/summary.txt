@@ -1,0 +1,18 @@
+# test9_wkrzesle_range_i_drain_zero
+
+Cel: (1) w_krzesle nigdy nie spada poniżej 0 ani nie przekracza limitu, (2) po DRAINING jest 0.
+
+Limit z config.h: MAX_WKRZESLE=36 (= (LICZBA_RZEDOW/2)*KRZESLA_W_RZEDZIE)
+Zaobserwowane: min=0 max=4
+
+## Wynik
+OK: w_krzesle w całym biegu mieściło się w [0..36].
+
+## Dowód drenowania do zera
+```
+[22:30:30][PID 528243] WYCIAG: Drenowanie zakończone (w_krzesle=0, kolejka=0, peron=0, teren=0) - wyłączam za 3s
+```
+
+## Interpretacja (do prezentacji)
+- w_krzesle to liczba zajętych miejsc na odcinku w górę, liczona w slotach (waga_slotow).
+- DRAINING kończy się dopiero gdy kolejka i ring są puste → w_krzesle=0.

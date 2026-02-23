@@ -52,12 +52,23 @@ static void reap_children_and_maybe_panic(void) {
     }
 }
 
+
 static void przekieruj_stdio_do_pliku(const char *sciezka) {
     if (sciezka == NULL || sciezka[0] == '\0') return;
+
+    /* stdout wyciszamy, żeby przypadkowe printf nie mieszały logów */
+    int fd_null = open("/dev/null", O_WRONLY);
+    if (fd_null >= 0) {
+        (void)dup2(fd_null, STDOUT_FILENO);
+        if (fd_null > STDOUT_FILENO) close(fd_null);
+    }
+
+    /* stderr kierujemy do pliku logu (loguj() pisze na stderr) */
     int fd = open(sciezka, O_CREAT | O_WRONLY | O_APPEND, 0644);
     if (fd < 0) return;
-    (void)dup2(fd, STDOUT_FILENO);
     (void)dup2(fd, STDERR_FILENO);
+    setvbuf(stdout, NULL, _IONBF, 0);
+    setvbuf(stderr, NULL, _IONBF, 0);
     if (fd > STDERR_FILENO) close(fd);
 }
 
@@ -67,10 +78,22 @@ static const char* nazwa_typu_klienta(int typ) {
 
 int main(int argc, char *argv[]) {
     int czas_symulacji = CZAS_SYMULACJI;
+    int limit_utworzonych = MAX_WYG_KLIENTOW; /* 0 = bez limitu */
+    int limit_aktywnych = MAX_KLIENTOW;       /* 0 = bez limitu */
     
     if (argc >= 2) {
         czas_symulacji = waliduj_liczbe(argv[1], 1, 3600);
         if (czas_symulacji < 0) czas_symulacji = CZAS_SYMULACJI;
+    }
+
+    /* Opcjonalne limity: [2]=łączna liczba utworzonych klientów, [3]=limit aktywnych jednocześnie */
+    if (argc >= 3) {
+        int v = waliduj_liczbe(argv[2], 0, 10000000);
+        if (v >= 0) limit_utworzonych = v;
+    }
+    if (argc >= 4) {
+        int v = waliduj_liczbe(argv[3], 0, 10000000);
+        if (v >= 0) limit_aktywnych = v;
     }
     
     /* Ustaw aby zginąć gdy rodzic (main) umrze */
@@ -98,10 +121,13 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    loguj("GENERATOR: Rozpoczynam generowanie klientów (czas=%d sek)", czas_symulacji);
+    loguj("GENERATOR: Start (czas=%d sek, limit_utworzonych=%d, limit_aktywnych=%d)",
+          czas_symulacji, limit_utworzonych, limit_aktywnych);
     
     time_t czas_startu = g_shm->czas_startu;
     int id_klienta = 0;
+    int wygenerowano = 0;
+    int limit_zalogowany = 0;
     
     /* Główna pętla generowania - TYLKO gdy FAZA_OPEN */
     while (!g_koniec && g_shm->faza_dnia == FAZA_OPEN) {
@@ -117,9 +143,20 @@ int main(int argc, char *argv[]) {
             continue;
         }
         
-        /* LIMIT AKTYWNYCH KLIENTÓW - nie forkuj gdy za dużo */
-        if (g_shm->aktywni_klienci >= MAX_KLIENTOW) {
+        /* LIMIT AKTYWNYCH KLIENTÓW - nie forkuj gdy za dużo (0 = brak limitu) */
+        if (limit_aktywnych > 0 && g_shm->aktywni_klienci >= limit_aktywnych) {
             poll(NULL, 0, 100);  /* Czekaj 100ms */
+            continue;
+        }
+
+        /* LIMIT ŁĄCZNY UTWORZONYCH - po osiągnięciu nie twórz nowych (0 = brak limitu) */
+        if (limit_utworzonych > 0 && wygenerowano >= limit_utworzonych) {
+            if (!limit_zalogowany) {
+                loguj("GENERATOR: Osiągnięto limit_utworzonych=%d – wstrzymuję generowanie", limit_utworzonych);
+                limit_zalogowany = 1;
+            }
+            reap_children_and_maybe_panic();
+            poll(NULL, 0, 200);
             continue;
         }
         
@@ -130,7 +167,7 @@ int main(int argc, char *argv[]) {
         if (g_koniec || g_shm->faza_dnia != FAZA_OPEN) break;
         
         /* Generuj parametry klienta */
-        id_klienta++;
+        int next_id = id_klienta + 1;
         int wiek = losuj_zakres(WIEK_MIN, WIEK_MAX);
         int typ = losuj_procent(PROC_ROWERZYSTA) ? TYP_ROWERZYSTA : TYP_PIESZY;
         int vip = losuj_procent(PROC_VIP);
@@ -166,7 +203,7 @@ int main(int argc, char *argv[]) {
             char arg_id[16], arg_wiek[8], arg_typ[4], arg_vip[4];
             char arg_dzieci[4], arg_wd1[8], arg_wd2[8];
             
-            snprintf(arg_id, sizeof(arg_id), "%d", id_klienta);
+            snprintf(arg_id, sizeof(arg_id), "%d", next_id);
             snprintf(arg_wiek, sizeof(arg_wiek), "%d", wiek);
             snprintf(arg_typ, sizeof(arg_typ), "%d", typ);
             snprintf(arg_vip, sizeof(arg_vip), "%d", vip);
@@ -182,12 +219,14 @@ int main(int argc, char *argv[]) {
             };
             
             execv(PATH_KLIENT, argv_klient);
-            perror("execv klient");
+            dprintf(STDERR_FILENO, "execv klient: %s\n", strerror(errno));
             _exit(EXIT_FAILURE);
         }
 
         /* Proces rodzica: loguj parametry nowego klienta */
         if (pid > 0) {
+            id_klienta = next_id;
+            wygenerowano++;
             if (liczba_dzieci == 0) {
                 loguj("GENERATOR: utworzono klienta id=%d pid=%d wiek=%d typ=%s vip=%d dzieci=0",
                       id_klienta, (int)pid, wiek, nazwa_typu_klienta(typ), vip);
@@ -201,7 +240,7 @@ int main(int argc, char *argv[]) {
         /* Proces rodzica kontynuuje */
     }
     
-    loguj("GENERATOR: Kończę generowanie (wygenerowano %d klientów)", id_klienta);
+    loguj("GENERATOR: Kończę generowanie (utworzono=%d, ostatnie_id=%d)", wygenerowano, id_klienta);
     
     /* WNOHANG: nie blokuj - klienci dostaną PDEATHSIG (SIGTERM) gdy generator wyjdzie */
     int status;

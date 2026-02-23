@@ -51,10 +51,10 @@ fi
   echo "[WYCIAG] Start:"
   echo "${start_line:-BRAK}"
   echo "Parsed: RZEDOW=${rzedow:-?}, SLOTY/RZAD=${sloty:-?}"
-  if [[ "${rzedow:-}" == "72" && "${sloty:-}" == "4" ]]; then
-    echo "OK: parametry wyciągu zgodne (72/4)."
+  if [[ "${rzedow:-}" == "18" && "${sloty:-}" == "4" ]]; then
+    echo "OK: parametry wyciągu zgodne (18 rzędów / 4 krzesełka na rząd)."
   else
-    echo "NIEOK: parametry wyciągu niezgodne (oczekiwano 72/4)."
+    echo "NIEOK: parametry wyciągu niezgodne (oczekiwano 18/4)."
   fi
 
   echo
@@ -98,4 +98,23 @@ fi
 
 } > "$OUTDIR/summary.txt"
 
+fail=0
+if [[ "${rzedow:-}" != "18" || "${sloty:-}" != "4" ]]; then
+  echo "[FAIL] Parametry wyciągu niezgodne (oczekiwano 18/4, mam ${rzedow:-?}/${sloty:-?})" >&2
+  fail=1
+fi
+if [[ "$board_cnt" -le 0 ]]; then
+  echo "[FAIL] Brak zdarzeń BOARD (board_cnt=$board_cnt)" >&2
+  fail=1
+fi
+if [[ "$board_cnt" -ne "$arrive_cnt" ]]; then
+  echo "[FAIL] BOARD($board_cnt) != ARRIVE($arrive_cnt)" >&2
+  fail=1
+fi
+if [[ "$max_group" == "?" || "$max_group" -gt 4 ]]; then
+  echo "[FAIL] max_rozmiar_grupy=$max_group (oczekiwano <= 4)" >&2
+  fail=1
+fi
+
 print_hint_screenshots "$OUTDIR"
+exit "$fail"

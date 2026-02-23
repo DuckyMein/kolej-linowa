@@ -1,0 +1,56 @@
+[22:29:10][PID 501862] Start symulacji: N=30, czas=35 sekund, limit_utworzonych=21000, limit_aktywnych=60000, karnety_mask=31 [Jednorazowy,TK1,TK2,TK3,Dzienny]
+[22:29:10][PID 501862] Handlery sygnałów zainstalowane
+[22:29:10][PID 501862] Inicjalizacja zasobów IPC...
+[22:29:10][PID 501862] Inicjalizacja IPC (N=30)...
+[22:29:10][PID 501862] Klucz bazowy: 0x4b300b6b
+[22:29:10][PID 501862] Semafory utworzone (id=28)
+[22:29:10][PID 501862] Pamięć współdzielona utworzona (id=28, size=64000152)
+[22:29:10][PID 501862] Kolejki komunikatów utworzone
+[22:29:10][PID 501862] Inicjalizacja IPC zakończona pomyślnie
+[22:29:10][PID 501862] Czas końca dnia: 1771882185 (za 35 sekund)
+[22:29:10][PID 501862] Sprzątacz IPC uruchomiony (PID=501864, PGID=501862)
+[22:29:10][PID 501862] Uruchamianie procesów stałych...
+[22:29:10][PID 501862] Kasjer uruchomiony (PID=501865)
+[22:29:10][PID 501862] Pracownik1 uruchomiony (PID=501866)
+[22:29:10][PID 501862] Pracownik2 uruchomiony (PID=501867)
+[22:29:10][PID 501862] Wyciąg uruchomiony (PID=501868)
+[22:29:10][PID 501862] Bramka 1 uruchomiona (PID=501869)
+[22:29:10][PID 501862] Bramka 2 uruchomiona (PID=501870)
+[22:29:10][PID 501862] Bramka 3 uruchomiona (PID=501871)
+[22:29:10][PID 501862] Bramka 4 uruchomiona (PID=501872)
+[22:29:10][PID 501862] Generator uruchomiony (PID=501873)
+[22:29:10][PID 501862] Wszystkie procesy stałe uruchomione
+[22:29:10][PID 501862] === SYMULACJA ROZPOCZĘTA ===
+[22:29:40][PID 501862] Status: czas=30/35, teren=30, góra=4, klienci=4322, przychód=138275.00 zł
+[22:29:45][PID 501862] Czas symulacji (35 sek) upłynął (elapsed=35)
+[22:29:45][PID 501862] === KONIEC DNIA - ZAMYKANIE ===
+[22:29:45][PID 501862] === PROCEDURA KOŃCA DNIA ===
+[22:29:45][PID 501862] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[22:29:45][PID 501862]   faza_dnia = CLOSING
+[22:29:45][PID 501862]   czas_konca_dnia = 1771882185
+[22:29:45][PID 501862]   aktywni_klienci = 5961
+[22:29:45][PID 501862] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[22:29:45][PID 501862]   Czekam na wyciąg (PID 501868)...
+[22:29:55][PID 501862]   Wyciąg zakończył drenowanie i wyłączył się
+[22:29:55][PID 501862] FAZA 3: SHUTDOWN - zamykanie procesów
+[22:29:55][PID 501862]   Kolej zatrzymana
+[22:29:55][PID 501862] Oczekiwanie na zakończenie procesów potomnych...
+[22:29:55][PID 501862] Wszystkie procesy potomne zakończone
+[22:29:55][PID 501862] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[22:29:55][PID 501862] Generowanie raportu końcowego...
+[22:29:55][PID 501862] Raport zapisany do: output/raport_dzienny.txt
+[22:29:55][PID 501862] Log przejść zapisany do: output/log_przejsc.txt (60 wpisów)
+[22:29:55][PID 501862] Czyszczenie zasobów...
+[22:29:55][PID 501862] Czyszczenie zasobów IPC...
+[22:29:55][PID 501862] Pamięć współdzielona usunięta
+[22:29:55][PID 501862] Semafory usunięte
+[22:29:55][PID 501862] Kolejki komunikatów usunięte
+[22:29:55][PID 501862] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

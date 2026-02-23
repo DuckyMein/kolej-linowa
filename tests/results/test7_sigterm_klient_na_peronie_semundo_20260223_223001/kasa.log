@@ -1,0 +1,536 @@
+[22:29:55][PID 527552] KASJER: Rozpoczynam pracę (dozwolone_typy mask=31 [Jednorazowy,TK1,TK2,TK3,Dzienny])
+[22:29:55][PID 527552] KASJER: klient id=4 pid=527564 wiek=46 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=4 pid=527564 -> karnet=1 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=1 typ=TK3 (120min) cena=50.00 zł dla klienta id=4 (pid=527564)
+[22:29:55][PID 527552] KASJER: klient id=1 pid=527561 wiek=54 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=1 pid=527561 -> karnet=2 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=2 typ=Jednorazowy cena=5.00 zł dla klienta id=1 (pid=527561)
+[22:29:55][PID 527552] KASJER: klient id=6 pid=527566 wiek=34 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=6 pid=527566 -> karnet=3 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=3 typ=TK2 (60min) cena=35.00 zł dla klienta id=6 (pid=527566)
+[22:29:55][PID 527552] KASJER: klient id=15 pid=527575 wiek=72 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=15 pid=527575 -> karnet=4 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=4 typ=Jednorazowy cena=3.75 zł dla klienta id=15 (pid=527575)
+[22:29:55][PID 527552] KASJER: klient id=7 pid=527567 wiek=60 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=7 pid=527567 -> karnet=5 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=5 typ=TK2 (60min) cena=35.00 zł dla klienta id=7 (pid=527567)
+[22:29:55][PID 527552] KASJER: klient id=8 pid=527568 wiek=78 typ=ROWER vip=0 dzieci=1 (6,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=8 pid=527568 -> karnet=6 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=6 typ=TK2 (60min) cena=26.25 zł dla klienta id=8 (pid=527568)
+[22:29:55][PID 527552] KASJER: klient id=17 pid=527577 wiek=56 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=17 pid=527577 -> karnet=8 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=8 typ=TK3 (120min) cena=50.00 zł dla klienta id=17 (pid=527577)
+[22:29:55][PID 527552] KASJER: klient id=18 pid=527578 wiek=10 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=18 pid=527578 -> karnet=9 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=9 typ=TK1 (30min) cena=20.00 zł dla klienta id=18 (pid=527578)
+[22:29:55][PID 527552] KASJER: klient id=19 pid=527579 wiek=91 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=19 pid=527579 -> karnet=10 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=10 typ=Jednorazowy cena=3.75 zł dla klienta id=19 (pid=527579)
+[22:29:55][PID 527552] KASJER: klient id=2 pid=527562 wiek=65 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=2 pid=527562 -> karnet=11 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=11 typ=Jednorazowy cena=3.75 zł dla klienta id=2 (pid=527562)
+[22:29:55][PID 527552] KASJER: klient id=29 pid=527592 wiek=63 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=29 pid=527592 -> karnet=12 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=12 typ=Jednorazowy cena=5.00 zł dla klienta id=29 (pid=527592)
+[22:29:55][PID 527552] KASJER: klient id=22 pid=527582 wiek=100 typ=PIESZY vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=22 pid=527582 -> karnet=13 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=13 typ=TK1 (30min) cena=15.00 zł dla klienta id=22 (pid=527582)
+[22:29:55][PID 527552] KASJER: klient id=23 pid=527583 wiek=51 typ=PIESZY vip=0 dzieci=1 (6,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=23 pid=527583 -> karnet=15 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=15 typ=Dzienny cena=100.00 zł dla klienta id=23 (pid=527583)
+[22:29:55][PID 527552] KASJER: klient id=24 pid=527584 wiek=73 typ=ROWER vip=0 dzieci=1 (6,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=24 pid=527584 -> karnet=17 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=17 typ=Jednorazowy cena=3.75 zł dla klienta id=24 (pid=527584)
+[22:29:55][PID 527552] KASJER: klient id=28 pid=527590 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=28 pid=527590 -> karnet=19 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=19 typ=TK1 (30min) cena=15.00 zł dla klienta id=28 (pid=527590)
+[22:29:55][PID 527552] KASJER: klient id=31 pid=527597 wiek=22 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=31 pid=527597 -> karnet=20 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=20 typ=TK2 (60min) cena=35.00 zł dla klienta id=31 (pid=527597)
+[22:29:55][PID 527552] KASJER: klient id=33 pid=527599 wiek=65 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=33 pid=527599 -> karnet=21 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=21 typ=TK3 (120min) cena=37.50 zł dla klienta id=33 (pid=527599)
+[22:29:55][PID 527552] KASJER: klient id=41 pid=527607 wiek=93 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=41 pid=527607 -> karnet=22 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=22 typ=Jednorazowy cena=3.75 zł dla klienta id=41 (pid=527607)
+[22:29:55][PID 527552] KASJER: klient id=40 pid=527606 wiek=86 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=40 pid=527606 -> karnet=23 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=23 typ=Jednorazowy cena=3.75 zł dla klienta id=40 (pid=527606)
+[22:29:55][PID 527552] KASJER: klient id=30 pid=527595 wiek=19 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=30 pid=527595 -> karnet=24 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=24 typ=TK2 (60min) cena=35.00 zł dla klienta id=30 (pid=527595)
+[22:29:55][PID 527552] KASJER: klient id=32 pid=527598 wiek=55 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=32 pid=527598 -> karnet=25 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=25 typ=TK1 (30min) cena=20.00 zł dla klienta id=32 (pid=527598)
+[22:29:55][PID 527552] KASJER: klient id=43 pid=527609 wiek=67 typ=PIESZY vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=43 pid=527609 -> karnet=26 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=26 typ=Jednorazowy cena=3.75 zł dla klienta id=43 (pid=527609)
+[22:29:55][PID 527552] KASJER: klient id=46 pid=527612 wiek=96 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=46 pid=527612 -> karnet=28 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=28 typ=Dzienny cena=75.00 zł dla klienta id=46 (pid=527612)
+[22:29:55][PID 527552] KASJER: klient id=45 pid=527611 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=45 pid=527611 -> karnet=29 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=29 typ=TK2 (60min) cena=35.00 zł dla klienta id=45 (pid=527611)
+[22:29:55][PID 527552] KASJER: klient id=58 pid=527624 wiek=37 typ=ROWER vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=58 pid=527624 -> karnet=30 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=30 typ=Jednorazowy cena=5.00 zł dla klienta id=58 (pid=527624)
+[22:29:55][PID 527552] KASJER: klient id=44 pid=527610 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=44 pid=527610 -> karnet=32 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=32 typ=TK2 (60min) cena=26.25 zł dla klienta id=44 (pid=527610)
+[22:29:55][PID 527552] KASJER: klient id=61 pid=527628 wiek=100 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=61 pid=527628 -> karnet=33 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=33 typ=Jednorazowy cena=3.75 zł dla klienta id=61 (pid=527628)
+[22:29:55][PID 527552] KASJER: klient id=77 pid=527645 wiek=88 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=77 pid=527645 -> karnet=34 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=34 typ=Dzienny cena=75.00 zł dla klienta id=77 (pid=527645)
+[22:29:55][PID 527552] KASJER: klient id=78 pid=527646 wiek=68 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=78 pid=527646 -> karnet=35 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=35 typ=TK1 (30min) cena=15.00 zł dla klienta id=78 (pid=527646)
+[22:29:55][PID 527552] KASJER: klient id=85 pid=527653 wiek=31 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=85 pid=527653 -> karnet=36 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=36 typ=Jednorazowy cena=5.00 zł dla klienta id=85 (pid=527653)
+[22:29:55][PID 527552] KASJER: klient id=60 pid=527627 wiek=34 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=60 pid=527627 -> karnet=37 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=37 typ=Jednorazowy cena=5.00 zł dla klienta id=60 (pid=527627)
+[22:29:55][PID 527552] KASJER: klient id=86 pid=527654 wiek=98 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=86 pid=527654 -> karnet=38 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=38 typ=Jednorazowy cena=3.75 zł dla klienta id=86 (pid=527654)
+[22:29:55][PID 527552] KASJER: klient id=47 pid=527613 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=47 pid=527613 -> karnet=39 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=39 typ=TK2 (60min) cena=26.25 zł dla klienta id=47 (pid=527613)
+[22:29:55][PID 527552] KASJER: klient id=54 pid=527620 wiek=26 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=54 pid=527620 -> karnet=40 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=40 typ=TK3 (120min) cena=50.00 zł dla klienta id=54 (pid=527620)
+[22:29:55][PID 527552] KASJER: klient id=74 pid=527641 wiek=56 typ=ROWER vip=0 dzieci=1 (6,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=74 pid=527641 -> karnet=41 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=41 typ=TK1 (30min) cena=20.00 zł dla klienta id=74 (pid=527641)
+[22:29:55][PID 527552] KASJER: klient id=48 pid=527614 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=48 pid=527614 -> karnet=43 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=43 typ=Jednorazowy cena=5.00 zł dla klienta id=48 (pid=527614)
+[22:29:55][PID 527552] KASJER: klient id=71 pid=527638 wiek=49 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=71 pid=527638 -> karnet=44 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=44 typ=TK1 (30min) cena=20.00 zł dla klienta id=71 (pid=527638)
+[22:29:55][PID 527552] KASJER: klient id=37 pid=527603 wiek=43 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=37 pid=527603 -> karnet=45 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=45 typ=Dzienny cena=100.00 zł dla klienta id=37 (pid=527603)
+[22:29:55][PID 527552] KASJER: klient id=62 pid=527629 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=62 pid=527629 -> karnet=46 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=46 typ=Dzienny cena=75.00 zł dla klienta id=62 (pid=527629)
+[22:29:55][PID 527552] KASJER: klient id=63 pid=527630 wiek=43 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=63 pid=527630 -> karnet=47 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=47 typ=TK2 (60min) cena=35.00 zł dla klienta id=63 (pid=527630)
+[22:29:55][PID 527552] KASJER: klient id=81 pid=527649 wiek=100 typ=PIESZY vip=0 dzieci=1 (1,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=81 pid=527649 -> karnet=48 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=48 typ=TK1 (30min) cena=15.00 zł dla klienta id=81 (pid=527649)
+[22:29:55][PID 527552] KASJER: klient id=73 pid=527640 wiek=90 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=73 pid=527640 -> karnet=50 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=50 typ=Dzienny cena=75.00 zł dla klienta id=73 (pid=527640)
+[22:29:55][PID 527552] KASJER: klient id=53 pid=527619 wiek=97 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=53 pid=527619 -> karnet=51 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=51 typ=Jednorazowy cena=3.75 zł dla klienta id=53 (pid=527619)
+[22:29:55][PID 527552] KASJER: klient id=72 pid=527639 wiek=10 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=72 pid=527639 -> karnet=52 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=52 typ=Dzienny cena=100.00 zł dla klienta id=72 (pid=527639)
+[22:29:55][PID 527552] KASJER: klient id=9 pid=527569 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=9 pid=527569 -> karnet=53 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=53 typ=Dzienny cena=75.00 zł dla klienta id=9 (pid=527569)
+[22:29:55][PID 527552] KASJER: klient id=75 pid=527643 wiek=49 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=75 pid=527643 -> karnet=54 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=54 typ=Dzienny cena=100.00 zł dla klienta id=75 (pid=527643)
+[22:29:55][PID 527552] KASJER: klient id=51 pid=527617 wiek=50 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=51 pid=527617 -> karnet=55 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=55 typ=TK1 (30min) cena=20.00 zł dla klienta id=51 (pid=527617)
+[22:29:55][PID 527552] KASJER: klient id=83 pid=527651 wiek=78 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=83 pid=527651 -> karnet=56 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=56 typ=TK3 (120min) cena=37.50 zł dla klienta id=83 (pid=527651)
+[22:29:55][PID 527552] KASJER: klient id=50 pid=527616 wiek=38 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=50 pid=527616 -> karnet=57 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=57 typ=Jednorazowy cena=5.00 zł dla klienta id=50 (pid=527616)
+[22:29:55][PID 527552] KASJER: klient id=39 pid=527605 wiek=71 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=39 pid=527605 -> karnet=58 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=58 typ=Jednorazowy cena=3.75 zł dla klienta id=39 (pid=527605)
+[22:29:55][PID 527552] KASJER: klient id=82 pid=527650 wiek=48 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=82 pid=527650 -> karnet=59 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=59 typ=Dzienny cena=100.00 zł dla klienta id=82 (pid=527650)
+[22:29:55][PID 527552] KASJER: klient id=52 pid=527618 wiek=90 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=52 pid=527618 -> karnet=60 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=60 typ=Jednorazowy cena=3.75 zł dla klienta id=52 (pid=527618)
+[22:29:55][PID 527552] KASJER: klient id=84 pid=527652 wiek=70 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=84 pid=527652 -> karnet=61 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=61 typ=Jednorazowy cena=3.75 zł dla klienta id=84 (pid=527652)
+[22:29:55][PID 527552] KASJER: klient id=79 pid=527647 wiek=10 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=79 pid=527647 -> karnet=62 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=62 typ=TK1 (30min) cena=20.00 zł dla klienta id=79 (pid=527647)
+[22:29:55][PID 527552] KASJER: klient id=35 pid=527601 wiek=47 typ=PIESZY vip=0 dzieci=1 (1,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=35 pid=527601 -> karnet=63 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=63 typ=Jednorazowy cena=5.00 zł dla klienta id=35 (pid=527601)
+[22:29:55][PID 527552] KASJER: klient id=12 pid=527572 wiek=27 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=12 pid=527572 -> karnet=65 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=65 typ=Jednorazowy cena=5.00 zł dla klienta id=12 (pid=527572)
+[22:29:55][PID 527552] KASJER: klient id=65 pid=527632 wiek=88 typ=ROWER vip=0 dzieci=1 (5,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=65 pid=527632 -> karnet=66 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=66 typ=Jednorazowy cena=3.75 zł dla klienta id=65 (pid=527632)
+[22:29:55][PID 527552] KASJER: klient id=64 pid=527631 wiek=66 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=64 pid=527631 -> karnet=68 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=68 typ=TK2 (60min) cena=26.25 zł dla klienta id=64 (pid=527631)
+[22:29:55][PID 527552] KASJER: klient id=68 pid=527635 wiek=27 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=68 pid=527635 -> karnet=69 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=69 typ=Jednorazowy cena=5.00 zł dla klienta id=68 (pid=527635)
+[22:29:55][PID 527552] KASJER: klient id=76 pid=527644 wiek=31 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=76 pid=527644 -> karnet=70 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=70 typ=TK1 (30min) cena=20.00 zł dla klienta id=76 (pid=527644)
+[22:29:55][PID 527552] KASJER: klient id=56 pid=527622 wiek=12 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=56 pid=527622 -> karnet=71 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=71 typ=Jednorazowy cena=5.00 zł dla klienta id=56 (pid=527622)
+[22:29:55][PID 527552] KASJER: klient id=80 pid=527648 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=80 pid=527648 -> karnet=72 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=72 typ=Jednorazowy cena=3.75 zł dla klienta id=80 (pid=527648)
+[22:29:55][PID 527552] KASJER: klient id=16 pid=527576 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=16 pid=527576 -> karnet=73 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=73 typ=TK1 (30min) cena=20.00 zł dla klienta id=16 (pid=527576)
+[22:29:55][PID 527552] KASJER: klient id=27 pid=527589 wiek=31 typ=PIESZY vip=0 dzieci=2 (1,6)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=27 pid=527589 -> karnet=74 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=74 typ=TK3 (120min) cena=50.00 zł dla klienta id=27 (pid=527589)
+[22:29:55][PID 527552] KASJER: klient id=10 pid=527570 wiek=85 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=10 pid=527570 -> karnet=77 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=77 typ=TK1 (30min) cena=15.00 zł dla klienta id=10 (pid=527570)
+[22:29:55][PID 527552] KASJER: klient id=13 pid=527573 wiek=96 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=13 pid=527573 -> karnet=78 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=78 typ=TK1 (30min) cena=15.00 zł dla klienta id=13 (pid=527573)
+[22:29:55][PID 527552] KASJER: klient id=66 pid=527633 wiek=95 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=66 pid=527633 -> karnet=79 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=79 typ=Jednorazowy cena=3.75 zł dla klienta id=66 (pid=527633)
+[22:29:55][PID 527552] KASJER: klient id=34 pid=527600 wiek=71 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=34 pid=527600 -> karnet=80 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=80 typ=TK1 (30min) cena=15.00 zł dla klienta id=34 (pid=527600)
+[22:29:55][PID 527552] KASJER: klient id=20 pid=527580 wiek=65 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=20 pid=527580 -> karnet=81 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=81 typ=TK1 (30min) cena=15.00 zł dla klienta id=20 (pid=527580)
+[22:29:55][PID 527552] KASJER: klient id=21 pid=527581 wiek=33 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=21 pid=527581 -> karnet=82 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=82 typ=TK2 (60min) cena=35.00 zł dla klienta id=21 (pid=527581)
+[22:29:55][PID 527552] KASJER: klient id=70 pid=527637 wiek=88 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=70 pid=527637 -> karnet=83 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=83 typ=TK2 (60min) cena=26.25 zł dla klienta id=70 (pid=527637)
+[22:29:55][PID 527552] KASJER: klient id=14 pid=527574 wiek=91 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=14 pid=527574 -> karnet=84 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=84 typ=TK1 (30min) cena=15.00 zł dla klienta id=14 (pid=527574)
+[22:29:55][PID 527552] KASJER: klient id=57 pid=527623 wiek=71 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=57 pid=527623 -> karnet=85 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=85 typ=TK1 (30min) cena=15.00 zł dla klienta id=57 (pid=527623)
+[22:29:55][PID 527552] KASJER: klient id=38 pid=527604 wiek=46 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=38 pid=527604 -> karnet=86 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=86 typ=Jednorazowy cena=5.00 zł dla klienta id=38 (pid=527604)
+[22:29:55][PID 527552] KASJER: klient id=49 pid=527615 wiek=15 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=49 pid=527615 -> karnet=87 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=87 typ=Jednorazowy cena=5.00 zł dla klienta id=49 (pid=527615)
+[22:29:55][PID 527552] KASJER: klient id=90 pid=527664 wiek=47 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=90 pid=527664 -> karnet=88 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=88 typ=TK1 (30min) cena=20.00 zł dla klienta id=90 (pid=527664)
+[22:29:55][PID 527552] KASJER: klient id=92 pid=527666 wiek=25 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=92 pid=527666 -> karnet=89 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=89 typ=Jednorazowy cena=5.00 zł dla klienta id=92 (pid=527666)
+[22:29:55][PID 527552] KASJER: klient id=25 pid=527587 wiek=83 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=25 pid=527587 -> karnet=90 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=90 typ=TK1 (30min) cena=15.00 zł dla klienta id=25 (pid=527587)
+[22:29:55][PID 527552] KASJER: klient id=94 pid=527668 wiek=36 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=94 pid=527668 -> karnet=91 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=91 typ=TK3 (120min) cena=50.00 zł dla klienta id=94 (pid=527668)
+[22:29:55][PID 527552] KASJER: klient id=96 pid=527670 wiek=18 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=96 pid=527670 -> karnet=92 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=92 typ=Jednorazowy cena=5.00 zł dla klienta id=96 (pid=527670)
+[22:29:55][PID 527552] KASJER: klient id=100 pid=527674 wiek=27 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=100 pid=527674 -> karnet=93 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=93 typ=Jednorazowy cena=5.00 zł dla klienta id=100 (pid=527674)
+[22:29:55][PID 527552] KASJER: klient id=98 pid=527672 wiek=20 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=98 pid=527672 -> karnet=94 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=94 typ=TK3 (120min) cena=50.00 zł dla klienta id=98 (pid=527672)
+[22:29:55][PID 527552] KASJER: klient id=97 pid=527671 wiek=78 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=97 pid=527671 -> karnet=95 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=95 typ=TK1 (30min) cena=15.00 zł dla klienta id=97 (pid=527671)
+[22:29:55][PID 527552] KASJER: klient id=99 pid=527673 wiek=58 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=99 pid=527673 -> karnet=96 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=96 typ=Dzienny cena=100.00 zł dla klienta id=99 (pid=527673)
+[22:29:55][PID 527552] KASJER: klient id=59 pid=527625 wiek=55 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=59 pid=527625 -> karnet=97 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=97 typ=Jednorazowy cena=5.00 zł dla klienta id=59 (pid=527625)
+[22:29:55][PID 527552] KASJER: klient id=101 pid=527675 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=101 pid=527675 -> karnet=98 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=98 typ=Jednorazowy cena=5.00 zł dla klienta id=101 (pid=527675)
+[22:29:55][PID 527552] KASJER: klient id=93 pid=527667 wiek=51 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=93 pid=527667 -> karnet=99 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=99 typ=Jednorazowy cena=5.00 zł dla klienta id=93 (pid=527667)
+[22:29:55][PID 527552] KASJER: klient id=102 pid=527676 wiek=3 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=104 pid=527678 wiek=92 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=104 pid=527678 -> karnet=100 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=100 typ=TK3 (120min) cena=37.50 zł dla klienta id=104 (pid=527678)
+[22:29:55][PID 527552] KASJER: klient id=103 pid=527677 wiek=15 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=103 pid=527677 -> karnet=101 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=101 typ=Jednorazowy cena=5.00 zł dla klienta id=103 (pid=527677)
+[22:29:55][PID 527552] KASJER: klient id=105 pid=527679 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=105 pid=527679 -> karnet=102 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=102 typ=TK3 (120min) cena=37.50 zł dla klienta id=105 (pid=527679)
+[22:29:55][PID 527552] KASJER: klient id=106 pid=527680 wiek=47 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=106 pid=527680 -> karnet=103 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=103 typ=TK1 (30min) cena=20.00 zł dla klienta id=106 (pid=527680)
+[22:29:55][PID 527552] KASJER: klient id=108 pid=527682 wiek=42 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=108 pid=527682 -> karnet=104 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=104 typ=Jednorazowy cena=5.00 zł dla klienta id=108 (pid=527682)
+[22:29:55][PID 527552] KASJER: klient id=107 pid=527681 wiek=21 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=107 pid=527681 -> karnet=105 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=105 typ=Jednorazowy cena=5.00 zł dla klienta id=107 (pid=527681)
+[22:29:55][PID 527552] KASJER: klient id=109 pid=527683 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=109 pid=527683 -> karnet=106 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=106 typ=Jednorazowy cena=3.75 zł dla klienta id=109 (pid=527683)
+[22:29:55][PID 527552] KASJER: klient id=111 pid=527685 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=111 pid=527685 -> karnet=107 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=107 typ=Jednorazowy cena=5.00 zł dla klienta id=111 (pid=527685)
+[22:29:55][PID 527552] KASJER: klient id=113 pid=527687 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=113 pid=527687 -> karnet=108 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=108 typ=Jednorazowy cena=3.75 zł dla klienta id=113 (pid=527687)
+[22:29:55][PID 527552] KASJER: klient id=112 pid=527686 wiek=56 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=112 pid=527686 -> karnet=109 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=109 typ=Dzienny cena=100.00 zł dla klienta id=112 (pid=527686)
+[22:29:55][PID 527552] KASJER: klient id=115 pid=527689 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=115 pid=527689 -> karnet=110 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=110 typ=Dzienny cena=75.00 zł dla klienta id=115 (pid=527689)
+[22:29:55][PID 527552] KASJER: klient id=116 pid=527690 wiek=22 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=116 pid=527690 -> karnet=111 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=111 typ=TK2 (60min) cena=35.00 zł dla klienta id=116 (pid=527690)
+[22:29:55][PID 527552] KASJER: klient id=114 pid=527688 wiek=1 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=118 pid=527692 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=119 pid=527693 wiek=57 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=119 pid=527693 -> karnet=112 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=112 typ=TK3 (120min) cena=50.00 zł dla klienta id=119 (pid=527693)
+[22:29:55][PID 527552] KASJER: klient id=120 pid=527694 wiek=41 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=120 pid=527694 -> karnet=113 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=113 typ=TK1 (30min) cena=20.00 zł dla klienta id=120 (pid=527694)
+[22:29:55][PID 527552] KASJER: klient id=122 pid=527696 wiek=68 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=122 pid=527696 -> karnet=114 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=114 typ=TK1 (30min) cena=15.00 zł dla klienta id=122 (pid=527696)
+[22:29:55][PID 527552] KASJER: klient id=121 pid=527695 wiek=100 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=121 pid=527695 -> karnet=115 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=115 typ=Jednorazowy cena=3.75 zł dla klienta id=121 (pid=527695)
+[22:29:55][PID 527552] KASJER: klient id=125 pid=527699 wiek=98 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=125 pid=527699 -> karnet=116 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=116 typ=Jednorazowy cena=3.75 zł dla klienta id=125 (pid=527699)
+[22:29:55][PID 527552] KASJER: klient id=123 pid=527697 wiek=13 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=123 pid=527697 -> karnet=117 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=117 typ=Jednorazowy cena=5.00 zł dla klienta id=123 (pid=527697)
+[22:29:55][PID 527552] KASJER: klient id=124 pid=527698 wiek=51 typ=PIESZY vip=0 dzieci=2 (1,6)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=124 pid=527698 -> karnet=118 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=118 typ=Jednorazowy cena=5.00 zł dla klienta id=124 (pid=527698)
+[22:29:55][PID 527552] KASJER: klient id=11 pid=527571 wiek=48 typ=PIESZY vip=0 dzieci=1 (7,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=11 pid=527571 -> karnet=121 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=121 typ=Jednorazowy cena=5.00 zł dla klienta id=11 (pid=527571)
+[22:29:55][PID 527552] KASJER: klient id=88 pid=527662 wiek=8 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=88 pid=527662 -> karnet=123 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=123 typ=TK1 (30min) cena=15.00 zł dla klienta id=88 (pid=527662)
+[22:29:55][PID 527552] KASJER: klient id=128 pid=527704 wiek=77 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=128 pid=527704 -> karnet=124 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=124 typ=Jednorazowy cena=3.75 zł dla klienta id=128 (pid=527704)
+[22:29:55][PID 527552] KASJER: klient id=129 pid=527705 wiek=12 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=129 pid=527705 -> karnet=125 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=125 typ=Jednorazowy cena=5.00 zł dla klienta id=129 (pid=527705)
+[22:29:55][PID 527552] KASJER: klient id=130 pid=527708 wiek=77 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=130 pid=527708 -> karnet=126 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=126 typ=Jednorazowy cena=3.75 zł dla klienta id=130 (pid=527708)
+[22:29:55][PID 527552] KASJER: klient id=126 pid=527700 wiek=77 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=126 pid=527700 -> karnet=127 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=127 typ=Jednorazowy cena=3.75 zł dla klienta id=126 (pid=527700)
+[22:29:55][PID 527552] KASJER: klient id=134 pid=527712 wiek=4 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=133 pid=527711 wiek=33 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=133 pid=527711 -> karnet=128 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=128 typ=TK1 (30min) cena=20.00 zł dla klienta id=133 (pid=527711)
+[22:29:55][PID 527552] KASJER: klient id=136 pid=527714 wiek=76 typ=ROWER vip=0 dzieci=1 (3,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=136 pid=527714 -> karnet=129 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=129 typ=Jednorazowy cena=3.75 zł dla klienta id=136 (pid=527714)
+[22:29:55][PID 527552] KASJER: klient id=138 pid=527716 wiek=84 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=138 pid=527716 -> karnet=131 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=131 typ=Jednorazowy cena=3.75 zł dla klienta id=138 (pid=527716)
+[22:29:55][PID 527552] KASJER: klient id=132 pid=527710 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=132 pid=527710 -> karnet=132 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=132 typ=Jednorazowy cena=5.00 zł dla klienta id=132 (pid=527710)
+[22:29:55][PID 527552] KASJER: klient id=131 pid=527709 wiek=92 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=131 pid=527709 -> karnet=133 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=133 typ=TK2 (60min) cena=26.25 zł dla klienta id=131 (pid=527709)
+[22:29:55][PID 527552] KASJER: klient id=135 pid=527713 wiek=37 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=135 pid=527713 -> karnet=134 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=134 typ=TK3 (120min) cena=50.00 zł dla klienta id=135 (pid=527713)
+[22:29:55][PID 527552] KASJER: klient id=137 pid=527715 wiek=72 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=137 pid=527715 -> karnet=135 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=135 typ=Jednorazowy cena=3.75 zł dla klienta id=137 (pid=527715)
+[22:29:55][PID 527552] KASJER: klient id=140 pid=527719 wiek=57 typ=PIESZY vip=0 dzieci=1 (4,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=140 pid=527719 -> karnet=136 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=136 typ=Dzienny cena=100.00 zł dla klienta id=140 (pid=527719)
+[22:29:55][PID 527552] KASJER: klient id=139 pid=527717 wiek=87 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=139 pid=527717 -> karnet=138 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=138 typ=TK1 (30min) cena=15.00 zł dla klienta id=139 (pid=527717)
+[22:29:55][PID 527552] KASJER: klient id=141 pid=527720 wiek=75 typ=PIESZY vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=141 pid=527720 -> karnet=139 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=139 typ=Jednorazowy cena=3.75 zł dla klienta id=141 (pid=527720)
+[22:29:55][PID 527552] KASJER: klient id=144 pid=527724 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=144 pid=527724 -> karnet=141 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=141 typ=Jednorazowy cena=3.75 zł dla klienta id=144 (pid=527724)
+[22:29:55][PID 527552] KASJER: klient id=143 pid=527722 wiek=32 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=143 pid=527722 -> karnet=142 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=142 typ=TK2 (60min) cena=35.00 zł dla klienta id=143 (pid=527722)
+[22:29:55][PID 527552] KASJER: klient id=148 pid=527729 wiek=69 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=148 pid=527729 -> karnet=143 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=143 typ=Jednorazowy cena=3.75 zł dla klienta id=148 (pid=527729)
+[22:29:55][PID 527552] KASJER: klient id=145 pid=527725 wiek=11 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=145 pid=527725 -> karnet=144 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=144 typ=Jednorazowy cena=5.00 zł dla klienta id=145 (pid=527725)
+[22:29:55][PID 527552] KASJER: klient id=36 pid=527602 wiek=36 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=36 pid=527602 -> karnet=145 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=145 typ=Jednorazowy cena=5.00 zł dla klienta id=36 (pid=527602)
+[22:29:55][PID 527552] KASJER: klient id=147 pid=527728 wiek=47 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=147 pid=527728 -> karnet=146 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=146 typ=Jednorazowy cena=5.00 zł dla klienta id=147 (pid=527728)
+[22:29:55][PID 527552] KASJER: klient id=151 pid=527732 wiek=93 typ=ROWER vip=0 dzieci=1 (4,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=151 pid=527732 -> karnet=147 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=147 typ=TK2 (60min) cena=26.25 zł dla klienta id=151 (pid=527732)
+[22:29:55][PID 527552] KASJER: klient id=154 pid=527735 wiek=5 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=127 pid=527703 wiek=77 typ=PIESZY vip=0 dzieci=1 (7,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=127 pid=527703 -> karnet=149 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=149 typ=Dzienny cena=75.00 zł dla klienta id=127 (pid=527703)
+[22:29:55][PID 527552] KASJER: klient id=158 pid=527741 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=158 pid=527741 -> karnet=151 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=151 typ=TK1 (30min) cena=15.00 zł dla klienta id=158 (pid=527741)
+[22:29:55][PID 527552] KASJER: klient id=153 pid=527734 wiek=87 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=153 pid=527734 -> karnet=152 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=152 typ=Jednorazowy cena=3.75 zł dla klienta id=153 (pid=527734)
+[22:29:55][PID 527552] KASJER: klient id=149 pid=527730 wiek=70 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=149 pid=527730 -> karnet=153 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=153 typ=Dzienny cena=75.00 zł dla klienta id=149 (pid=527730)
+[22:29:55][PID 527552] KASJER: klient id=160 pid=527743 wiek=83 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=160 pid=527743 -> karnet=154 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=154 typ=TK2 (60min) cena=26.25 zł dla klienta id=160 (pid=527743)
+[22:29:55][PID 527552] KASJER: klient id=159 pid=527742 wiek=88 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=159 pid=527742 -> karnet=155 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=155 typ=Jednorazowy cena=3.75 zł dla klienta id=159 (pid=527742)
+[22:29:55][PID 527552] KASJER: klient id=162 pid=527745 wiek=64 typ=ROWER vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=162 pid=527745 -> karnet=156 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=156 typ=Jednorazowy cena=5.00 zł dla klienta id=162 (pid=527745)
+[22:29:55][PID 527552] KASJER: klient id=155 pid=527737 wiek=54 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=155 pid=527737 -> karnet=158 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=158 typ=Jednorazowy cena=5.00 zł dla klienta id=155 (pid=527737)
+[22:29:55][PID 527552] KASJER: klient id=152 pid=527733 wiek=3 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=163 pid=527746 wiek=91 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=163 pid=527746 -> karnet=159 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=159 typ=TK3 (120min) cena=37.50 zł dla klienta id=163 (pid=527746)
+[22:29:55][PID 527552] KASJER: klient id=165 pid=527749 wiek=17 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=165 pid=527749 -> karnet=160 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=160 typ=Jednorazowy cena=5.00 zł dla klienta id=165 (pid=527749)
+[22:29:55][PID 527552] KASJER: klient id=156 pid=527738 wiek=28 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=156 pid=527738 -> karnet=161 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=161 typ=TK1 (30min) cena=20.00 zł dla klienta id=156 (pid=527738)
+[22:29:55][PID 527552] KASJER: klient id=166 pid=527750 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=166 pid=527750 -> karnet=162 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=162 typ=TK1 (30min) cena=15.00 zł dla klienta id=166 (pid=527750)
+[22:29:55][PID 527552] KASJER: klient id=169 pid=527753 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=164 pid=527748 wiek=16 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=164 pid=527748 -> karnet=163 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=163 typ=Dzienny cena=100.00 zł dla klienta id=164 (pid=527748)
+[22:29:55][PID 527552] KASJER: klient id=170 pid=527754 wiek=98 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=170 pid=527754 -> karnet=164 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=164 typ=Jednorazowy cena=3.75 zł dla klienta id=170 (pid=527754)
+[22:29:55][PID 527552] KASJER: klient id=172 pid=527756 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=172 pid=527756 -> karnet=165 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=165 typ=Dzienny cena=75.00 zł dla klienta id=172 (pid=527756)
+[22:29:55][PID 527552] KASJER: klient id=174 pid=527758 wiek=46 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=174 pid=527758 -> karnet=166 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=166 typ=Jednorazowy cena=5.00 zł dla klienta id=174 (pid=527758)
+[22:29:55][PID 527552] KASJER: klient id=178 pid=527762 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=178 pid=527762 -> karnet=167 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=167 typ=Dzienny cena=75.00 zł dla klienta id=178 (pid=527762)
+[22:29:55][PID 527552] KASJER: klient id=193 pid=527777 wiek=86 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=193 pid=527777 -> karnet=168 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=168 typ=Jednorazowy cena=3.75 zł dla klienta id=193 (pid=527777)
+[22:29:55][PID 527552] KASJER: klient id=176 pid=527760 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=176 pid=527760 -> karnet=169 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=169 typ=TK3 (120min) cena=37.50 zł dla klienta id=176 (pid=527760)
+[22:29:55][PID 527552] KASJER: klient id=157 pid=527740 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=157 pid=527740 -> karnet=170 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=170 typ=TK2 (60min) cena=26.25 zł dla klienta id=157 (pid=527740)
+[22:29:55][PID 527552] KASJER: klient id=205 pid=527789 wiek=28 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=205 pid=527789 -> karnet=171 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=171 typ=TK2 (60min) cena=35.00 zł dla klienta id=205 (pid=527789)
+[22:29:55][PID 527552] KASJER: klient id=179 pid=527763 wiek=2 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=204 pid=527788 wiek=71 typ=PIESZY vip=0 dzieci=1 (3,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=204 pid=527788 -> karnet=172 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=172 typ=TK2 (60min) cena=26.25 zł dla klienta id=204 (pid=527788)
+[22:29:55][PID 527552] KASJER: klient id=196 pid=527780 wiek=21 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=196 pid=527780 -> karnet=174 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=174 typ=Jednorazowy cena=5.00 zł dla klienta id=196 (pid=527780)
+[22:29:55][PID 527552] KASJER: klient id=207 pid=527791 wiek=18 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=207 pid=527791 -> karnet=175 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=175 typ=TK2 (60min) cena=35.00 zł dla klienta id=207 (pid=527791)
+[22:29:55][PID 527552] KASJER: klient id=197 pid=527781 wiek=16 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=197 pid=527781 -> karnet=176 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=176 typ=Dzienny cena=100.00 zł dla klienta id=197 (pid=527781)
+[22:29:55][PID 527552] KASJER: klient id=203 pid=527787 wiek=55 typ=ROWER vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=203 pid=527787 -> karnet=177 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=177 typ=Jednorazowy cena=5.00 zł dla klienta id=203 (pid=527787)
+[22:29:55][PID 527552] KASJER: klient id=187 pid=527771 wiek=57 typ=PIESZY vip=0 dzieci=1 (2,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=187 pid=527771 -> karnet=179 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=179 typ=TK1 (30min) cena=20.00 zł dla klienta id=187 (pid=527771)
+[22:29:55][PID 527552] KASJER: klient id=190 pid=527774 wiek=62 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=190 pid=527774 -> karnet=181 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=181 typ=TK2 (60min) cena=35.00 zł dla klienta id=190 (pid=527774)
+[22:29:55][PID 527552] KASJER: klient id=198 pid=527782 wiek=79 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=198 pid=527782 -> karnet=182 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=182 typ=TK2 (60min) cena=26.25 zł dla klienta id=198 (pid=527782)
+[22:29:55][PID 527552] KASJER: klient id=201 pid=527785 wiek=63 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=201 pid=527785 -> karnet=183 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=183 typ=TK3 (120min) cena=50.00 zł dla klienta id=201 (pid=527785)
+[22:29:55][PID 527552] KASJER: klient id=200 pid=527784 wiek=1 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: klient id=195 pid=527779 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=195 pid=527779 -> karnet=184 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=184 typ=TK1 (30min) cena=15.00 zł dla klienta id=195 (pid=527779)
+[22:29:55][PID 527552] KASJER: klient id=192 pid=527776 wiek=15 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=192 pid=527776 -> karnet=185 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=185 typ=Jednorazowy cena=5.00 zł dla klienta id=192 (pid=527776)
+[22:29:55][PID 527552] KASJER: klient id=180 pid=527764 wiek=77 typ=ROWER vip=0 dzieci=1 (4,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=180 pid=527764 -> karnet=186 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=186 typ=Jednorazowy cena=3.75 zł dla klienta id=180 (pid=527764)
+[22:29:55][PID 527552] KASJER: klient id=191 pid=527775 wiek=78 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=191 pid=527775 -> karnet=188 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=188 typ=Jednorazowy cena=3.75 zł dla klienta id=191 (pid=527775)
+[22:29:55][PID 527552] KASJER: klient id=168 pid=527752 wiek=40 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=168 pid=527752 -> karnet=189 typ=TK1 (30min) cena=20.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=189 typ=TK1 (30min) cena=20.00 zł dla klienta id=168 (pid=527752)
+[22:29:55][PID 527552] KASJER: klient id=202 pid=527786 wiek=96 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=202 pid=527786 -> karnet=190 typ=TK1 (30min) cena=15.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=190 typ=TK1 (30min) cena=15.00 zł dla klienta id=202 (pid=527786)
+[22:29:55][PID 527552] KASJER: klient id=189 pid=527773 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=189 pid=527773 -> karnet=191 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=191 typ=Dzienny cena=75.00 zł dla klienta id=189 (pid=527773)
+[22:29:55][PID 527552] KASJER: klient id=173 pid=527757 wiek=75 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=173 pid=527757 -> karnet=192 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=192 typ=Jednorazowy cena=3.75 zł dla klienta id=173 (pid=527757)
+[22:29:55][PID 527552] KASJER: klient id=182 pid=527766 wiek=34 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=182 pid=527766 -> karnet=193 typ=Dzienny cena=100.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=193 typ=Dzienny cena=100.00 zł dla klienta id=182 (pid=527766)
+[22:29:55][PID 527552] KASJER: klient id=183 pid=527767 wiek=44 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=183 pid=527767 -> karnet=194 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=194 typ=TK2 (60min) cena=35.00 zł dla klienta id=183 (pid=527767)
+[22:29:55][PID 527552] KASJER: klient id=184 pid=527768 wiek=83 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=184 pid=527768 -> karnet=195 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=195 typ=Dzienny cena=75.00 zł dla klienta id=184 (pid=527768)
+[22:29:55][PID 527552] KASJER: klient id=185 pid=527769 wiek=80 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=185 pid=527769 -> karnet=196 typ=Dzienny cena=75.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=196 typ=Dzienny cena=75.00 zł dla klienta id=185 (pid=527769)
+[22:29:55][PID 527552] KASJER: klient id=188 pid=527772 wiek=41 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=188 pid=527772 -> karnet=197 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=197 typ=Jednorazowy cena=5.00 zł dla klienta id=188 (pid=527772)
+[22:29:55][PID 527552] KASJER: klient id=181 pid=527765 wiek=30 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=181 pid=527765 -> karnet=198 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=198 typ=TK3 (120min) cena=50.00 zł dla klienta id=181 (pid=527765)
+[22:29:55][PID 527552] KASJER: klient id=186 pid=527770 wiek=72 typ=PIESZY vip=0 dzieci=2 (5,2)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=186 pid=527770 -> karnet=199 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=199 typ=Jednorazowy cena=3.75 zł dla klienta id=186 (pid=527770)
+[22:29:55][PID 527552] KASJER: klient id=171 pid=527755 wiek=98 typ=PIESZY vip=1 dzieci=0 (0,0)
+[22:29:55][PID 527552] KASJER: SPRZEDAŻ id_klienta=171 pid=527755 -> karnet=202 typ=TK1 (30min) cena=15.00 zł vip=1
+[22:29:55][PID 527552] KASJER: sprzedano karnet id_karnetu=202 typ=TK1 (30min) cena=15.00 zł dla klienta id=171 (pid=527755)
+[22:30:01][PID 527552] KASJER: Kończę pracę

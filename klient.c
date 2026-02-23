@@ -557,6 +557,7 @@ int main(int argc, char *argv[]) {
         }
         
         g_stan = STAN_NA_PERONIE;
+        loguj("KLIENT %d: NA_PERONIE (sloty=%d) - czekam na BOARD", g_klient.id, g_waga_peronu);
         
         /* Zwolnij teren (ale jeszcze trzymamy peron) */
         sem_signal_n(SEM_TEREN, g_klient.rozmiar_grupy);
@@ -630,10 +631,7 @@ int main(int argc, char *argv[]) {
          */
         g_stan = STAN_W_KRZESLE;
         sem_signal_n_undo(SEM_PERON, g_waga_peronu);
-        MUTEX_SHM_LOCK();
-        g_shm->osoby_na_peronie -= g_klient.rozmiar_grupy;
-        g_shm->osoby_w_krzesle += g_klient.rozmiar_grupy;
-        MUTEX_SHM_UNLOCK();
+        /* Liczniki SHM przenosi WYCIĄG przy BOARD/ARRIVE (jedno źródło prawdy). */
         g_waga_peronu = 0;
         
         /* Czekaj na ARRIVE od wyciągu */

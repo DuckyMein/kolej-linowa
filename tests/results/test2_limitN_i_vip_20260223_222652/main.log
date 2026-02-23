@@ -1,0 +1,55 @@
+[22:26:26][PID 399455] Start symulacji: N=6, czas=15 sekund, limit_utworzonych=21000, limit_aktywnych=60000, karnety_mask=31 [Jednorazowy,TK1,TK2,TK3,Dzienny]
+[22:26:26][PID 399455] Handlery sygnałów zainstalowane
+[22:26:26][PID 399455] Inicjalizacja zasobów IPC...
+[22:26:26][PID 399455] Inicjalizacja IPC (N=6)...
+[22:26:26][PID 399455] Klucz bazowy: 0x4b300b6b
+[22:26:26][PID 399455] Semafory utworzone (id=24)
+[22:26:26][PID 399455] Pamięć współdzielona utworzona (id=24, size=64000152)
+[22:26:26][PID 399455] Kolejki komunikatów utworzone
+[22:26:26][PID 399455] Inicjalizacja IPC zakończona pomyślnie
+[22:26:26][PID 399455] Czas końca dnia: 1771882001 (za 15 sekund)
+[22:26:26][PID 399455] Sprzątacz IPC uruchomiony (PID=399457, PGID=399455)
+[22:26:26][PID 399455] Uruchamianie procesów stałych...
+[22:26:26][PID 399455] Kasjer uruchomiony (PID=399458)
+[22:26:26][PID 399455] Pracownik1 uruchomiony (PID=399459)
+[22:26:26][PID 399455] Pracownik2 uruchomiony (PID=399460)
+[22:26:26][PID 399455] Wyciąg uruchomiony (PID=399461)
+[22:26:26][PID 399455] Bramka 1 uruchomiona (PID=399462)
+[22:26:26][PID 399455] Bramka 2 uruchomiona (PID=399463)
+[22:26:26][PID 399455] Bramka 3 uruchomiona (PID=399464)
+[22:26:26][PID 399455] Bramka 4 uruchomiona (PID=399465)
+[22:26:26][PID 399455] Generator uruchomiony (PID=399466)
+[22:26:26][PID 399455] Wszystkie procesy stałe uruchomione
+[22:26:26][PID 399455] === SYMULACJA ROZPOCZĘTA ===
+[22:26:41][PID 399455] Czas symulacji (15 sek) upłynął (elapsed=15)
+[22:26:41][PID 399455] === KONIEC DNIA - ZAMYKANIE ===
+[22:26:41][PID 399455] === PROCEDURA KOŃCA DNIA ===
+[22:26:41][PID 399455] FAZA 1: CLOSING - nie wpuszczamy nowych klientów
+[22:26:41][PID 399455]   faza_dnia = CLOSING
+[22:26:41][PID 399455]   czas_konca_dnia = 1771882001
+[22:26:41][PID 399455]   aktywni_klienci = 16034
+[22:26:41][PID 399455] FAZA 2: DRAINING - kończymy transport z peronu (czekam na wyciąg)
+[22:26:41][PID 399455]   Czekam na wyciąg (PID 399461)...
+[22:26:52][PID 399455]   Wyciąg zakończył drenowanie i wyłączył się
+[22:26:52][PID 399455] FAZA 3: SHUTDOWN - zamykanie procesów
+[22:26:52][PID 399455]   Kolej zatrzymana
+[22:26:52][PID 399455] Oczekiwanie na zakończenie procesów potomnych...
+[22:26:52][PID 399455] Wszystkie procesy potomne zakończone
+[22:26:52][PID 399455] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+[22:26:52][PID 399455] Generowanie raportu końcowego...
+[22:26:52][PID 399455] Raport zapisany do: output/raport_dzienny.txt
+[22:26:52][PID 399455] Log przejść zapisany do: output/log_przejsc.txt (6984 wpisów)
+[22:26:52][PID 399455] Czyszczenie zasobów...
+[22:26:52][PID 399455] Czyszczenie zasobów IPC...
+[22:26:52][PID 399455] Pamięć współdzielona usunięta
+[22:26:52][PID 399455] Semafory usunięte
+[22:26:52][PID 399455] Kolejki komunikatów usunięte
+[22:26:52][PID 399455] Czyszczenie IPC zakończone
+==============================================
+   SYMULACJA KOLEI KRZESEŁKOWEJ
+==============================================
+
+
+==============================================
+   SYMULACJA ZAKOŃCZONA POMYŚLNIE
+==============================================

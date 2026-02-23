@@ -1,0 +1,1873 @@
+[22:29:55][PID 527564] KLIENT 4: start pid=527564 wiek=46 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527561] KLIENT 1: start pid=527561 wiek=54 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527563] KLIENT 3: start pid=527563 wiek=3 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527563] KLIENT 3: odchodzi - dziś nie korzysta z kolei (los=6 < 10%)
+[22:29:55][PID 527566] KLIENT 6: start pid=527566 wiek=34 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527566] KLIENT 6: kupił karnet id_karnetu=3 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527566] KLIENT 6: id_karnetu=3 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527575] KLIENT 15: start pid=527575 wiek=72 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527565] KLIENT 5: start pid=527565 wiek=24 typ=ROWER vip=0 dzieci=2 (4,5) rozmiar_grupy=4
+[22:29:55][PID 527565] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527565] DZIECKO 2: razem z opiekunem -> START
+[22:29:55][PID 527565] KLIENT 5: odchodzi - dziś nie korzysta z kolei (los=1 < 10%)
+[22:29:55][PID 527565] DZIECKO 1: razem z opiekunem -> ODCHODZI
+[22:29:55][PID 527565] DZIECKO 2: razem z opiekunem -> ODCHODZI
+[22:29:55][PID 527567] KLIENT 7: start pid=527567 wiek=60 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527568] KLIENT 8: start pid=527568 wiek=78 typ=ROWER vip=0 dzieci=1 (6,0) rozmiar_grupy=3
+[22:29:55][PID 527568] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527577] KLIENT 17: start pid=527577 wiek=56 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527578] KLIENT 18: start pid=527578 wiek=10 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527575] KLIENT 15: kupił karnet id_karnetu=4 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527575] KLIENT 15: id_karnetu=4 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527577] KLIENT 17: kupił karnet id_karnetu=8 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527577] KLIENT 17: id_karnetu=8 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527578] KLIENT 18: kupił karnet id_karnetu=9 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527578] KLIENT 18: id_karnetu=9 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527567] KLIENT 7: kupił karnet id_karnetu=5 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527567] KLIENT 7: id_karnetu=5 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527579] KLIENT 19: start pid=527579 wiek=91 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527579] KLIENT 19: kupił karnet id_karnetu=10 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527579] KLIENT 19: id_karnetu=10 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527564] KLIENT 4: kupił karnet id_karnetu=1 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527564] KLIENT 4: id_karnetu=1 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527566] KLIENT 6: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527566] KLIENT 6: czekam na peron (sloty=2, bramka2=3)
+[22:29:55][PID 527566] KLIENT 6: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:55][PID 527562] KLIENT 2: start pid=527562 wiek=65 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527562] KLIENT 2: kupił karnet id_karnetu=11 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527562] KLIENT 2: id_karnetu=11 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527561] KLIENT 1: kupił karnet id_karnetu=2 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527561] KLIENT 1: id_karnetu=2 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527561] KLIENT 1: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527561] KLIENT 1: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527561] KLIENT 1: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527568] KLIENT 8: kupił karnet id_karnetu=6 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527568] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527568] KLIENT 8: id_karnetu=6 -> BRAMKA1 nr=3 (vip=0, grupa=3)
+[22:29:55][PID 527592] KLIENT 29: start pid=527592 wiek=63 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527592] KLIENT 29: kupił karnet id_karnetu=12 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527592] KLIENT 29: id_karnetu=12 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527592] KLIENT 29: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527592] KLIENT 29: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527592] KLIENT 29: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527575] KLIENT 15: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527575] KLIENT 15: czekam na peron (sloty=1, bramka2=1)
+[22:29:55][PID 527575] KLIENT 15: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:55][PID 527577] KLIENT 17: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527577] KLIENT 17: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527577] KLIENT 17: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527588] KLIENT 26: start pid=527588 wiek=49 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527588] KLIENT 26: odchodzi - dziś nie korzysta z kolei (los=5 < 10%)
+[22:29:55][PID 527578] KLIENT 18: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527582] KLIENT 22: start pid=527582 wiek=100 typ=PIESZY vip=0 dzieci=1 (2,0) rozmiar_grupy=2
+[22:29:55][PID 527567] KLIENT 7: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527567] KLIENT 7: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527567] KLIENT 7: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527578] KLIENT 18: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527578] KLIENT 18: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527582] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527562] KLIENT 2: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527562] KLIENT 2: czekam na peron (sloty=1, bramka2=1)
+[22:29:55][PID 527562] KLIENT 2: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:55][PID 527579] KLIENT 19: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527579] KLIENT 19: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527579] KLIENT 19: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527583] KLIENT 23: start pid=527583 wiek=51 typ=PIESZY vip=0 dzieci=1 (6,0) rozmiar_grupy=2
+[22:29:55][PID 527582] KLIENT 22: kupił karnet id_karnetu=13 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527582] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527582] KLIENT 22: id_karnetu=13 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527583] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527582] KLIENT 22: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527582] KLIENT 22: czekam na peron (sloty=2, bramka2=3)
+[22:29:55][PID 527582] KLIENT 22: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:55][PID 527584] KLIENT 24: start pid=527584 wiek=73 typ=ROWER vip=0 dzieci=1 (6,0) rozmiar_grupy=3
+[22:29:55][PID 527583] KLIENT 23: kupił karnet id_karnetu=15 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527583] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527583] KLIENT 23: id_karnetu=15 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527568] KLIENT 8: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527568] KLIENT 8: czekam na peron (sloty=3, bramka2=2)
+[22:29:55][PID 527568] KLIENT 8: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=3)
+[22:29:55][PID 527584] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527583] KLIENT 23: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527583] KLIENT 23: czekam na peron (sloty=2, bramka2=3)
+[22:29:55][PID 527583] KLIENT 23: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:55][PID 527584] KLIENT 24: kupił karnet id_karnetu=17 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527584] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527584] KLIENT 24: id_karnetu=17 -> BRAMKA1 nr=2 (vip=0, grupa=3)
+[22:29:55][PID 527584] KLIENT 24: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527584] KLIENT 24: czekam na peron (sloty=3, bramka2=1)
+[22:29:55][PID 527584] KLIENT 24: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:55][PID 527590] KLIENT 28: start pid=527590 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527590] KLIENT 28: kupił karnet id_karnetu=19 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527590] KLIENT 28: id_karnetu=19 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527590] KLIENT 28: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527590] KLIENT 28: czekam na peron (sloty=1, bramka2=3)
+[22:29:55][PID 527590] KLIENT 28: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:55][PID 527597] KLIENT 31: start pid=527597 wiek=22 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527597] KLIENT 31: kupił karnet id_karnetu=20 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527597] KLIENT 31: id_karnetu=20 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527597] KLIENT 31: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527597] KLIENT 31: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527597] KLIENT 31: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527599] KLIENT 33: start pid=527599 wiek=65 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527599] KLIENT 33: kupił karnet id_karnetu=21 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527599] KLIENT 33: id_karnetu=21 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527599] KLIENT 33: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527599] KLIENT 33: czekam na peron (sloty=1, bramka2=2)
+[22:29:55][PID 527599] KLIENT 33: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:55][PID 527607] KLIENT 41: start pid=527607 wiek=93 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527607] KLIENT 41: kupił karnet id_karnetu=22 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527607] KLIENT 41: id_karnetu=22 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527607] KLIENT 41: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527607] KLIENT 41: czekam na peron (sloty=2, bramka2=3)
+[22:29:55][PID 527607] KLIENT 41: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:55][PID 527606] KLIENT 40: start pid=527606 wiek=86 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527611] KLIENT 45: start pid=527611 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527606] KLIENT 40: kupił karnet id_karnetu=23 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527595] KLIENT 30: start pid=527595 wiek=19 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527606] KLIENT 40: id_karnetu=23 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527595] KLIENT 30: kupił karnet id_karnetu=24 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527595] KLIENT 30: id_karnetu=24 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527595] KLIENT 30: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527595] KLIENT 30: czekam na peron (sloty=1, bramka2=2)
+[22:29:55][PID 527595] KLIENT 30: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:55][PID 527598] KLIENT 32: start pid=527598 wiek=55 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527598] KLIENT 32: kupił karnet id_karnetu=25 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527598] KLIENT 32: id_karnetu=25 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527598] KLIENT 32: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527598] KLIENT 32: czekam na peron (sloty=1, bramka2=3)
+[22:29:55][PID 527598] KLIENT 32: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:55][PID 527606] KLIENT 40: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527606] KLIENT 40: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527606] KLIENT 40: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527609] KLIENT 43: start pid=527609 wiek=67 typ=PIESZY vip=0 dzieci=1 (2,0) rozmiar_grupy=2
+[22:29:55][PID 527609] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527621] KLIENT 55: start pid=527621 wiek=79 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527621] KLIENT 55: odchodzi - dziś nie korzysta z kolei (los=0 < 10%)
+[22:29:55][PID 527612] KLIENT 46: start pid=527612 wiek=96 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527609] KLIENT 43: kupił karnet id_karnetu=26 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527609] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527609] KLIENT 43: id_karnetu=26 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527609] KLIENT 43: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527609] KLIENT 43: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527609] KLIENT 43: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527624] KLIENT 58: start pid=527624 wiek=37 typ=ROWER vip=0 dzieci=1 (2,0) rozmiar_grupy=3
+[22:29:55][PID 527624] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527612] KLIENT 46: kupił karnet id_karnetu=28 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527612] KLIENT 46: id_karnetu=28 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527624] KLIENT 58: kupił karnet id_karnetu=30 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527624] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527624] KLIENT 58: id_karnetu=30 -> BRAMKA1 nr=4 (vip=0, grupa=3)
+[22:29:55][PID 527611] KLIENT 45: kupił karnet id_karnetu=29 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527611] KLIENT 45: id_karnetu=29 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527611] KLIENT 45: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527611] KLIENT 45: czekam na peron (sloty=1, bramka2=1)
+[22:29:55][PID 527611] KLIENT 45: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:55][PID 527610] KLIENT 44: start pid=527610 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527628] KLIENT 61: start pid=527628 wiek=100 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527610] KLIENT 44: kupił karnet id_karnetu=32 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527610] KLIENT 44: id_karnetu=32 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527628] KLIENT 61: kupił karnet id_karnetu=33 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527628] KLIENT 61: id_karnetu=33 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527645] KLIENT 77: start pid=527645 wiek=88 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527646] KLIENT 78: start pid=527646 wiek=68 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527645] KLIENT 77: kupił karnet id_karnetu=34 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527645] KLIENT 77: id_karnetu=34 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527646] KLIENT 78: kupił karnet id_karnetu=35 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527646] KLIENT 78: id_karnetu=35 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527653] KLIENT 85: start pid=527653 wiek=31 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527653] KLIENT 85: kupił karnet id_karnetu=36 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527653] KLIENT 85: id_karnetu=36 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527627] KLIENT 60: start pid=527627 wiek=34 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527654] KLIENT 86: start pid=527654 wiek=98 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527613] KLIENT 47: start pid=527613 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527627] KLIENT 60: kupił karnet id_karnetu=37 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527627] KLIENT 60: id_karnetu=37 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527620] KLIENT 54: start pid=527620 wiek=26 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527654] KLIENT 86: kupił karnet id_karnetu=38 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527654] KLIENT 86: id_karnetu=38 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527620] KLIENT 54: kupił karnet id_karnetu=40 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527620] KLIENT 54: id_karnetu=40 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527641] KLIENT 74: start pid=527641 wiek=56 typ=ROWER vip=0 dzieci=1 (6,0) rozmiar_grupy=3
+[22:29:55][PID 527641] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527614] KLIENT 48: start pid=527614 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527641] KLIENT 74: kupił karnet id_karnetu=41 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527641] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527641] KLIENT 74: id_karnetu=41 -> BRAMKA1 nr=2 (vip=0, grupa=3)
+[22:29:55][PID 527638] KLIENT 71: start pid=527638 wiek=49 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527603] KLIENT 37: start pid=527603 wiek=43 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527636] KLIENT 69: start pid=527636 wiek=25 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527636] KLIENT 69: odchodzi - dziś nie korzysta z kolei (los=2 < 10%)
+[22:29:55][PID 527614] KLIENT 48: kupił karnet id_karnetu=43 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527614] KLIENT 48: id_karnetu=43 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527629] KLIENT 62: start pid=527629 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527630] KLIENT 63: start pid=527630 wiek=43 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527649] KLIENT 81: start pid=527649 wiek=100 typ=PIESZY vip=0 dzieci=1 (1,0) rozmiar_grupy=2
+[22:29:55][PID 527649] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527613] KLIENT 47: kupił karnet id_karnetu=39 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527613] KLIENT 47: id_karnetu=39 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527649] KLIENT 81: kupił karnet id_karnetu=48 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527649] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527649] KLIENT 81: id_karnetu=48 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527603] KLIENT 37: kupił karnet id_karnetu=45 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527603] KLIENT 37: id_karnetu=45 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527638] KLIENT 71: kupił karnet id_karnetu=44 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527638] KLIENT 71: id_karnetu=44 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527629] KLIENT 62: kupił karnet id_karnetu=46 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527629] KLIENT 62: id_karnetu=46 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527640] KLIENT 73: start pid=527640 wiek=90 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527619] KLIENT 53: start pid=527619 wiek=97 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527640] KLIENT 73: kupił karnet id_karnetu=50 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527640] KLIENT 73: id_karnetu=50 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527619] KLIENT 53: kupił karnet id_karnetu=51 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527619] KLIENT 53: id_karnetu=51 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527639] KLIENT 72: start pid=527639 wiek=10 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527630] KLIENT 63: kupił karnet id_karnetu=47 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527630] KLIENT 63: id_karnetu=47 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527639] KLIENT 72: kupił karnet id_karnetu=52 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527639] KLIENT 72: id_karnetu=52 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527569] KLIENT 9: start pid=527569 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527643] KLIENT 75: start pid=527643 wiek=49 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527569] KLIENT 9: kupił karnet id_karnetu=53 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527569] KLIENT 9: id_karnetu=53 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527617] KLIENT 51: start pid=527617 wiek=50 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527651] KLIENT 83: start pid=527651 wiek=78 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527651] KLIENT 83: kupił karnet id_karnetu=56 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527651] KLIENT 83: id_karnetu=56 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527616] KLIENT 50: start pid=527616 wiek=38 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527605] KLIENT 39: start pid=527605 wiek=71 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527616] KLIENT 50: kupił karnet id_karnetu=57 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527616] KLIENT 50: id_karnetu=57 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527650] KLIENT 82: start pid=527650 wiek=48 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527618] KLIENT 52: start pid=527618 wiek=90 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527605] KLIENT 39: kupił karnet id_karnetu=58 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527605] KLIENT 39: id_karnetu=58 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527650] KLIENT 82: kupił karnet id_karnetu=59 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527650] KLIENT 82: id_karnetu=59 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527643] KLIENT 75: kupił karnet id_karnetu=54 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527643] KLIENT 75: id_karnetu=54 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527652] KLIENT 84: start pid=527652 wiek=70 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527618] KLIENT 52: kupił karnet id_karnetu=60 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527618] KLIENT 52: id_karnetu=60 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527652] KLIENT 84: kupił karnet id_karnetu=61 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527652] KLIENT 84: id_karnetu=61 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527601] KLIENT 35: start pid=527601 wiek=47 typ=PIESZY vip=0 dzieci=1 (1,0) rozmiar_grupy=2
+[22:29:55][PID 527647] KLIENT 79: start pid=527647 wiek=10 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527601] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527601] KLIENT 35: kupił karnet id_karnetu=63 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527601] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527601] KLIENT 35: id_karnetu=63 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527647] KLIENT 79: kupił karnet id_karnetu=62 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527647] KLIENT 79: id_karnetu=62 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527572] KLIENT 12: start pid=527572 wiek=27 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527632] KLIENT 65: start pid=527632 wiek=88 typ=ROWER vip=0 dzieci=1 (5,0) rozmiar_grupy=3
+[22:29:55][PID 527632] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527572] KLIENT 12: kupił karnet id_karnetu=65 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527572] KLIENT 12: id_karnetu=65 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527631] KLIENT 64: start pid=527631 wiek=66 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527632] KLIENT 65: kupił karnet id_karnetu=66 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527617] KLIENT 51: kupił karnet id_karnetu=55 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527617] KLIENT 51: id_karnetu=55 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527632] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527632] KLIENT 65: id_karnetu=66 -> BRAMKA1 nr=4 (vip=0, grupa=3)
+[22:29:55][PID 527631] KLIENT 64: kupił karnet id_karnetu=68 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527631] KLIENT 64: id_karnetu=68 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527564] KLIENT 4: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527564] KLIENT 4: czekam na peron (sloty=1, bramka2=3)
+[22:29:55][PID 527564] KLIENT 4: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:55][PID 527635] KLIENT 68: start pid=527635 wiek=27 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527644] KLIENT 76: start pid=527644 wiek=31 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527622] KLIENT 56: start pid=527622 wiek=12 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527648] KLIENT 80: start pid=527648 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527576] KLIENT 16: start pid=527576 wiek=45 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527589] KLIENT 27: start pid=527589 wiek=31 typ=PIESZY vip=0 dzieci=2 (1,6) rozmiar_grupy=3
+[22:29:55][PID 527589] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527589] DZIECKO 2: razem z opiekunem -> START
+[22:29:55][PID 527622] KLIENT 56: kupił karnet id_karnetu=71 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527622] KLIENT 56: id_karnetu=71 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527648] KLIENT 80: kupił karnet id_karnetu=72 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527648] KLIENT 80: id_karnetu=72 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527570] KLIENT 10: start pid=527570 wiek=85 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527589] KLIENT 27: kupił karnet id_karnetu=74 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527589] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527589] DZIECKO 2: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527589] KLIENT 27: id_karnetu=74 -> BRAMKA1 nr=2 (vip=0, grupa=3)
+[22:29:55][PID 527576] KLIENT 16: kupił karnet id_karnetu=73 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527576] KLIENT 16: id_karnetu=73 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527573] KLIENT 13: start pid=527573 wiek=96 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527570] KLIENT 10: kupił karnet id_karnetu=77 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527570] KLIENT 10: id_karnetu=77 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527644] KLIENT 76: kupił karnet id_karnetu=70 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527644] KLIENT 76: id_karnetu=70 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527635] KLIENT 68: kupił karnet id_karnetu=69 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527635] KLIENT 68: id_karnetu=69 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527633] KLIENT 66: start pid=527633 wiek=95 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527573] KLIENT 13: kupił karnet id_karnetu=78 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527573] KLIENT 13: id_karnetu=78 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527600] KLIENT 34: start pid=527600 wiek=71 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527600] KLIENT 34: kupił karnet id_karnetu=80 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527600] KLIENT 34: id_karnetu=80 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527633] KLIENT 66: kupił karnet id_karnetu=79 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527633] KLIENT 66: id_karnetu=79 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527580] KLIENT 20: start pid=527580 wiek=65 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527581] KLIENT 21: start pid=527581 wiek=33 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527580] KLIENT 20: kupił karnet id_karnetu=81 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527580] KLIENT 20: id_karnetu=81 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527634] KLIENT 67: start pid=527634 wiek=43 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527634] KLIENT 67: odchodzi - dziś nie korzysta z kolei (los=7 < 10%)
+[22:29:55][PID 527637] KLIENT 70: start pid=527637 wiek=88 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527574] KLIENT 14: start pid=527574 wiek=91 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527623] KLIENT 57: start pid=527623 wiek=71 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527574] KLIENT 14: kupił karnet id_karnetu=84 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527574] KLIENT 14: id_karnetu=84 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527608] KLIENT 42: start pid=527608 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527608] KLIENT 42: odchodzi - dziś nie korzysta z kolei (los=5 < 10%)
+[22:29:55][PID 527604] KLIENT 38: start pid=527604 wiek=46 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527604] KLIENT 38: kupił karnet id_karnetu=86 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527604] KLIENT 38: id_karnetu=86 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527661] KLIENT 87: start pid=527661 wiek=51 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527661] KLIENT 87: odchodzi - dziś nie korzysta z kolei (los=4 < 10%)
+[22:29:55][PID 527637] KLIENT 70: kupił karnet id_karnetu=83 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527637] KLIENT 70: id_karnetu=83 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527623] KLIENT 57: kupił karnet id_karnetu=85 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527623] KLIENT 57: id_karnetu=85 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527615] KLIENT 49: start pid=527615 wiek=15 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527664] KLIENT 90: start pid=527664 wiek=47 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527581] KLIENT 21: kupił karnet id_karnetu=82 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527581] KLIENT 21: id_karnetu=82 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527666] KLIENT 92: start pid=527666 wiek=25 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527665] KLIENT 91: start pid=527665 wiek=83 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527665] KLIENT 91: odchodzi - dziś nie korzysta z kolei (los=7 < 10%)
+[22:29:55][PID 527587] KLIENT 25: start pid=527587 wiek=83 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527668] KLIENT 94: start pid=527668 wiek=36 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527670] KLIENT 96: start pid=527670 wiek=18 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527587] KLIENT 25: kupił karnet id_karnetu=90 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527587] KLIENT 25: id_karnetu=90 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527669] KLIENT 95: start pid=527669 wiek=61 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527669] KLIENT 95: odchodzi - dziś nie korzysta z kolei (los=0 < 10%)
+[22:29:55][PID 527670] KLIENT 96: kupił karnet id_karnetu=92 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527670] KLIENT 96: id_karnetu=92 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527615] KLIENT 49: kupił karnet id_karnetu=87 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527615] KLIENT 49: id_karnetu=87 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527664] KLIENT 90: kupił karnet id_karnetu=88 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527664] KLIENT 90: id_karnetu=88 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527666] KLIENT 92: kupił karnet id_karnetu=89 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527666] KLIENT 92: id_karnetu=89 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527674] KLIENT 100: start pid=527674 wiek=27 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527668] KLIENT 94: kupił karnet id_karnetu=91 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527668] KLIENT 94: id_karnetu=91 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527672] KLIENT 98: start pid=527672 wiek=20 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527671] KLIENT 97: start pid=527671 wiek=78 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527673] KLIENT 99: start pid=527673 wiek=58 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527625] KLIENT 59: start pid=527625 wiek=55 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527672] KLIENT 98: kupił karnet id_karnetu=94 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527672] KLIENT 98: id_karnetu=94 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527625] KLIENT 59: kupił karnet id_karnetu=97 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527625] KLIENT 59: id_karnetu=97 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527675] KLIENT 101: start pid=527675 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527671] KLIENT 97: kupił karnet id_karnetu=95 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527671] KLIENT 97: id_karnetu=95 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527673] KLIENT 99: kupił karnet id_karnetu=96 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527673] KLIENT 99: id_karnetu=96 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527667] KLIENT 93: start pid=527667 wiek=51 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527676] KLIENT 102: start pid=527676 wiek=3 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527678] KLIENT 104: start pid=527678 wiek=92 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527674] KLIENT 100: kupił karnet id_karnetu=93 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527674] KLIENT 100: id_karnetu=93 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527677] KLIENT 103: start pid=527677 wiek=15 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527675] KLIENT 101: kupił karnet id_karnetu=98 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527675] KLIENT 101: id_karnetu=98 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527679] KLIENT 105: start pid=527679 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527680] KLIENT 106: start pid=527680 wiek=47 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527682] KLIENT 108: start pid=527682 wiek=42 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527667] KLIENT 93: kupił karnet id_karnetu=99 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527667] KLIENT 93: id_karnetu=99 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527678] KLIENT 104: kupił karnet id_karnetu=100 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527678] KLIENT 104: id_karnetu=100 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527681] KLIENT 107: start pid=527681 wiek=21 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527683] KLIENT 109: start pid=527683 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527683] KLIENT 109: kupił karnet id_karnetu=106 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527683] KLIENT 109: id_karnetu=106 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527677] KLIENT 103: kupił karnet id_karnetu=101 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527677] KLIENT 103: id_karnetu=101 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527679] KLIENT 105: kupił karnet id_karnetu=102 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527679] KLIENT 105: id_karnetu=102 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527685] KLIENT 111: start pid=527685 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527687] KLIENT 113: start pid=527687 wiek=99 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527680] KLIENT 106: kupił karnet id_karnetu=103 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527680] KLIENT 106: id_karnetu=103 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527681] KLIENT 107: kupił karnet id_karnetu=105 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527681] KLIENT 107: id_karnetu=105 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527682] KLIENT 108: kupił karnet id_karnetu=104 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527682] KLIENT 108: id_karnetu=104 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527686] KLIENT 112: start pid=527686 wiek=56 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527566] KLIENT 6: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527566] KLIENT 6: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527684] KLIENT 110: start pid=527684 wiek=32 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527684] KLIENT 110: odchodzi - dziś nie korzysta z kolei (los=8 < 10%)
+[22:29:55][PID 527689] KLIENT 115: start pid=527689 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527690] KLIENT 116: start pid=527690 wiek=22 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527688] KLIENT 114: start pid=527688 wiek=1 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527686] KLIENT 112: kupił karnet id_karnetu=109 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527686] KLIENT 112: id_karnetu=109 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527689] KLIENT 115: kupił karnet id_karnetu=110 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527689] KLIENT 115: id_karnetu=110 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527685] KLIENT 111: kupił karnet id_karnetu=107 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527685] KLIENT 111: id_karnetu=107 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527687] KLIENT 113: kupił karnet id_karnetu=108 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527687] KLIENT 113: id_karnetu=108 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527691] KLIENT 117: start pid=527691 wiek=38 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527691] KLIENT 117: odchodzi - dziś nie korzysta z kolei (los=3 < 10%)
+[22:29:55][PID 527692] KLIENT 118: start pid=527692 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527610] KLIENT 44: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527693] KLIENT 119: start pid=527693 wiek=57 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527610] KLIENT 44: czekam na peron (sloty=1, bramka2=3)
+[22:29:55][PID 527610] KLIENT 44: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:55][PID 527612] KLIENT 46: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527612] KLIENT 46: czekam na peron (sloty=1, bramka2=1)
+[22:29:55][PID 527612] KLIENT 46: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:55][PID 527690] KLIENT 116: kupił karnet id_karnetu=111 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527690] KLIENT 116: id_karnetu=111 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527693] KLIENT 119: kupił karnet id_karnetu=112 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527693] KLIENT 119: id_karnetu=112 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527561] KLIENT 1: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527561] KLIENT 1: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527577] KLIENT 17: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527694] KLIENT 120: start pid=527694 wiek=41 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527696] KLIENT 122: start pid=527696 wiek=68 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527592] KLIENT 29: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527575] KLIENT 15: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527695] KLIENT 121: start pid=527695 wiek=100 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527645] KLIENT 77: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527645] KLIENT 77: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527645] KLIENT 77: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527567] KLIENT 7: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527699] KLIENT 125: start pid=527699 wiek=98 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527579] KLIENT 19: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527697] KLIENT 123: start pid=527697 wiek=13 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527578] KLIENT 18: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527696] KLIENT 122: kupił karnet id_karnetu=114 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527696] KLIENT 122: id_karnetu=114 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527694] KLIENT 120: kupił karnet id_karnetu=113 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527694] KLIENT 120: id_karnetu=113 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527699] KLIENT 125: kupił karnet id_karnetu=116 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527699] KLIENT 125: id_karnetu=116 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527695] KLIENT 121: kupił karnet id_karnetu=115 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527695] KLIENT 121: id_karnetu=115 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527697] KLIENT 123: kupił karnet id_karnetu=117 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527697] KLIENT 123: id_karnetu=117 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527568] KLIENT 8: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527562] KLIENT 2: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527698] KLIENT 124: start pid=527698 wiek=51 typ=PIESZY vip=0 dzieci=2 (1,6) rozmiar_grupy=3
+[22:29:55][PID 527582] KLIENT 22: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527583] KLIENT 23: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527584] KLIENT 24: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527698] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527698] DZIECKO 2: razem z opiekunem -> START
+[22:29:55][PID 527698] KLIENT 124: kupił karnet id_karnetu=118 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527698] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527698] DZIECKO 2: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527698] KLIENT 124: id_karnetu=118 -> BRAMKA1 nr=3 (vip=0, grupa=3)
+[22:29:55][PID 527571] KLIENT 11: start pid=527571 wiek=48 typ=PIESZY vip=0 dzieci=1 (7,0) rozmiar_grupy=2
+[22:29:55][PID 527663] KLIENT 89: start pid=527663 wiek=74 typ=PIESZY vip=0 dzieci=1 (5,0) rozmiar_grupy=2
+[22:29:55][PID 527571] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527663] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527663] KLIENT 89: odchodzi - dziś nie korzysta z kolei (los=7 < 10%)
+[22:29:55][PID 527663] DZIECKO 1: razem z opiekunem -> ODCHODZI
+[22:29:55][PID 527597] KLIENT 31: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527571] KLIENT 11: kupił karnet id_karnetu=121 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527571] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527571] KLIENT 11: id_karnetu=121 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527599] KLIENT 33: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527662] KLIENT 88: start pid=527662 wiek=8 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527704] KLIENT 128: start pid=527704 wiek=77 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527590] KLIENT 28: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527704] KLIENT 128: kupił karnet id_karnetu=124 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527704] KLIENT 128: id_karnetu=124 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527662] KLIENT 88: kupił karnet id_karnetu=123 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527662] KLIENT 88: id_karnetu=123 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527705] KLIENT 129: start pid=527705 wiek=12 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527708] KLIENT 130: start pid=527708 wiek=77 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527607] KLIENT 41: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527705] KLIENT 129: kupił karnet id_karnetu=125 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527705] KLIENT 129: id_karnetu=125 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527708] KLIENT 130: kupił karnet id_karnetu=126 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527708] KLIENT 130: id_karnetu=126 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527700] KLIENT 126: start pid=527700 wiek=77 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527595] KLIENT 30: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527606] KLIENT 40: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527598] KLIENT 32: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527700] KLIENT 126: kupił karnet id_karnetu=127 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527700] KLIENT 126: id_karnetu=127 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527712] KLIENT 134: start pid=527712 wiek=4 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527711] KLIENT 133: start pid=527711 wiek=33 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527714] KLIENT 136: start pid=527714 wiek=76 typ=ROWER vip=0 dzieci=1 (3,0) rozmiar_grupy=3
+[22:29:55][PID 527714] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527609] KLIENT 43: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527716] KLIENT 138: start pid=527716 wiek=84 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527710] KLIENT 132: start pid=527710 wiek=61 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527709] KLIENT 131: start pid=527709 wiek=92 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527611] KLIENT 45: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527713] KLIENT 135: start pid=527713 wiek=37 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527715] KLIENT 137: start pid=527715 wiek=72 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527719] KLIENT 140: start pid=527719 wiek=57 typ=PIESZY vip=0 dzieci=1 (4,0) rozmiar_grupy=2
+[22:29:55][PID 527719] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527717] KLIENT 139: start pid=527717 wiek=87 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527720] KLIENT 141: start pid=527720 wiek=75 typ=PIESZY vip=0 dzieci=1 (2,0) rozmiar_grupy=2
+[22:29:55][PID 527720] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527721] KLIENT 142: start pid=527721 wiek=5 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527721] KLIENT 142: odchodzi - dziś nie korzysta z kolei (los=2 < 10%)
+[22:29:55][PID 527724] KLIENT 144: start pid=527724 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527726] KLIENT 146: start pid=527726 wiek=48 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527726] KLIENT 146: odchodzi - dziś nie korzysta z kolei (los=5 < 10%)
+[22:29:55][PID 527722] KLIENT 143: start pid=527722 wiek=32 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527729] KLIENT 148: start pid=527729 wiek=69 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527602] KLIENT 36: start pid=527602 wiek=36 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527725] KLIENT 145: start pid=527725 wiek=11 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527728] KLIENT 147: start pid=527728 wiek=47 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527731] KLIENT 150: start pid=527731 wiek=54 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527731] KLIENT 150: odchodzi - dziś nie korzysta z kolei (los=2 < 10%)
+[22:29:55][PID 527732] KLIENT 151: start pid=527732 wiek=93 typ=ROWER vip=0 dzieci=1 (4,0) rozmiar_grupy=3
+[22:29:55][PID 527732] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527703] KLIENT 127: start pid=527703 wiek=77 typ=PIESZY vip=0 dzieci=1 (7,0) rozmiar_grupy=2
+[22:29:55][PID 527735] KLIENT 154: start pid=527735 wiek=5 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527703] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527714] KLIENT 136: kupił karnet id_karnetu=129 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527714] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527714] KLIENT 136: id_karnetu=129 -> BRAMKA1 nr=3 (vip=0, grupa=3)
+[22:29:55][PID 527716] KLIENT 138: kupił karnet id_karnetu=131 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527716] KLIENT 138: id_karnetu=131 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527711] KLIENT 133: kupił karnet id_karnetu=128 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527711] KLIENT 133: id_karnetu=128 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527710] KLIENT 132: kupił karnet id_karnetu=132 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527710] KLIENT 132: id_karnetu=132 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527709] KLIENT 131: kupił karnet id_karnetu=133 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527709] KLIENT 131: id_karnetu=133 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527715] KLIENT 137: kupił karnet id_karnetu=135 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527715] KLIENT 137: id_karnetu=135 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527724] KLIENT 144: kupił karnet id_karnetu=141 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527724] KLIENT 144: id_karnetu=141 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527720] KLIENT 141: kupił karnet id_karnetu=139 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527720] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527720] KLIENT 141: id_karnetu=139 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527729] KLIENT 148: kupił karnet id_karnetu=143 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527729] KLIENT 148: id_karnetu=143 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527713] KLIENT 135: kupił karnet id_karnetu=134 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527713] KLIENT 135: id_karnetu=134 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527719] KLIENT 140: kupił karnet id_karnetu=136 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527732] KLIENT 151: kupił karnet id_karnetu=147 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527719] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527732] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527732] KLIENT 151: id_karnetu=147 -> BRAMKA1 nr=2 (vip=0, grupa=3)
+[22:29:55][PID 527719] KLIENT 140: id_karnetu=136 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527717] KLIENT 139: kupił karnet id_karnetu=138 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527717] KLIENT 139: id_karnetu=138 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527728] KLIENT 147: kupił karnet id_karnetu=146 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527728] KLIENT 147: id_karnetu=146 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527741] KLIENT 158: start pid=527741 wiek=84 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527741] KLIENT 158: kupił karnet id_karnetu=151 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527741] KLIENT 158: id_karnetu=151 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527602] KLIENT 36: kupił karnet id_karnetu=145 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527602] KLIENT 36: id_karnetu=145 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527703] KLIENT 127: kupił karnet id_karnetu=149 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527703] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527703] KLIENT 127: id_karnetu=149 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527734] KLIENT 153: start pid=527734 wiek=87 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527730] KLIENT 149: start pid=527730 wiek=70 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527743] KLIENT 160: start pid=527743 wiek=83 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527722] KLIENT 143: kupił karnet id_karnetu=142 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527722] KLIENT 143: id_karnetu=142 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527744] KLIENT 161: start pid=527744 wiek=31 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527744] KLIENT 161: odchodzi - dziś nie korzysta z kolei (los=1 < 10%)
+[22:29:55][PID 527742] KLIENT 159: start pid=527742 wiek=88 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527743] KLIENT 160: kupił karnet id_karnetu=154 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527743] KLIENT 160: id_karnetu=154 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527742] KLIENT 159: kupił karnet id_karnetu=155 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527742] KLIENT 159: id_karnetu=155 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527725] KLIENT 145: kupił karnet id_karnetu=144 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527725] KLIENT 145: id_karnetu=144 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527745] KLIENT 162: start pid=527745 wiek=64 typ=ROWER vip=0 dzieci=1 (2,0) rozmiar_grupy=3
+[22:29:55][PID 527745] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527745] KLIENT 162: kupił karnet id_karnetu=156 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527745] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527745] KLIENT 162: id_karnetu=156 -> BRAMKA1 nr=3 (vip=0, grupa=3)
+[22:29:55][PID 527730] KLIENT 149: kupił karnet id_karnetu=153 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527730] KLIENT 149: id_karnetu=153 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527737] KLIENT 155: start pid=527737 wiek=54 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527737] KLIENT 155: kupił karnet id_karnetu=158 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527737] KLIENT 155: id_karnetu=158 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527733] KLIENT 152: start pid=527733 wiek=3 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527746] KLIENT 163: start pid=527746 wiek=91 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527746] KLIENT 163: kupił karnet id_karnetu=159 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527746] KLIENT 163: id_karnetu=159 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527734] KLIENT 153: kupił karnet id_karnetu=152 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527734] KLIENT 153: id_karnetu=152 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527566] KLIENT 6: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527561] KLIENT 1: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527749] KLIENT 165: start pid=527749 wiek=17 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527592] KLIENT 29: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527749] KLIENT 165: kupił karnet id_karnetu=160 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527749] KLIENT 165: id_karnetu=160 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527738] KLIENT 156: start pid=527738 wiek=28 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527738] KLIENT 156: kupił karnet id_karnetu=161 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527750] KLIENT 166: start pid=527750 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527738] KLIENT 156: id_karnetu=161 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527750] KLIENT 166: kupił karnet id_karnetu=162 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527750] KLIENT 166: id_karnetu=162 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527753] KLIENT 169: start pid=527753 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527748] KLIENT 164: start pid=527748 wiek=16 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527748] KLIENT 164: kupił karnet id_karnetu=163 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527748] KLIENT 164: id_karnetu=163 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527754] KLIENT 170: start pid=527754 wiek=98 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527754] KLIENT 170: kupił karnet id_karnetu=164 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527754] KLIENT 170: id_karnetu=164 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527654] KLIENT 86: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527654] KLIENT 86: czekam na peron (sloty=1, bramka2=1)
+[22:29:55][PID 527654] KLIENT 86: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:55][PID 527628] KLIENT 61: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527628] KLIENT 61: czekam na peron (sloty=1, bramka2=2)
+[22:29:55][PID 527628] KLIENT 61: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:55][PID 527751] KLIENT 167: start pid=527751 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527756] KLIENT 172: start pid=527756 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527751] KLIENT 167: odchodzi - dziś nie korzysta z kolei (los=6 < 10%)
+[22:29:55][PID 527577] KLIENT 17: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527627] KLIENT 60: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527627] KLIENT 60: czekam na peron (sloty=2, bramka2=1)
+[22:29:55][PID 527627] KLIENT 60: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:55][PID 527564] KLIENT 4: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527756] KLIENT 172: kupił karnet id_karnetu=165 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527756] KLIENT 172: id_karnetu=165 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527758] KLIENT 174: start pid=527758 wiek=46 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527758] KLIENT 174: kupił karnet id_karnetu=166 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527758] KLIENT 174: id_karnetu=166 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527762] KLIENT 178: start pid=527762 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527777] KLIENT 193: start pid=527777 wiek=86 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527760] KLIENT 176: start pid=527760 wiek=76 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527740] KLIENT 157: start pid=527740 wiek=82 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527762] KLIENT 178: kupił karnet id_karnetu=167 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527762] KLIENT 178: id_karnetu=167 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527777] KLIENT 193: kupił karnet id_karnetu=168 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527777] KLIENT 193: id_karnetu=168 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527760] KLIENT 176: kupił karnet id_karnetu=169 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527760] KLIENT 176: id_karnetu=169 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527740] KLIENT 157: kupił karnet id_karnetu=170 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527740] KLIENT 157: id_karnetu=170 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527789] KLIENT 205: start pid=527789 wiek=28 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527789] KLIENT 205: kupił karnet id_karnetu=171 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527789] KLIENT 205: id_karnetu=171 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527761] KLIENT 177: start pid=527761 wiek=50 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527761] KLIENT 177: odchodzi - dziś nie korzysta z kolei (los=9 < 10%)
+[22:29:55][PID 527763] KLIENT 179: start pid=527763 wiek=2 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527788] KLIENT 204: start pid=527788 wiek=71 typ=PIESZY vip=0 dzieci=1 (3,0) rozmiar_grupy=2
+[22:29:55][PID 527780] KLIENT 196: start pid=527780 wiek=21 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527788] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527788] KLIENT 204: kupił karnet id_karnetu=172 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527788] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527788] KLIENT 204: id_karnetu=172 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527791] KLIENT 207: start pid=527791 wiek=18 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527791] KLIENT 207: kupił karnet id_karnetu=175 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527791] KLIENT 207: id_karnetu=175 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527781] KLIENT 197: start pid=527781 wiek=16 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527781] KLIENT 197: kupił karnet id_karnetu=176 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527781] KLIENT 197: id_karnetu=176 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527787] KLIENT 203: start pid=527787 wiek=55 typ=ROWER vip=0 dzieci=1 (2,0) rozmiar_grupy=3
+[22:29:55][PID 527787] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527783] KLIENT 199: start pid=527783 wiek=90 typ=PIESZY vip=0 dzieci=2 (4,2) rozmiar_grupy=3
+[22:29:55][PID 527787] KLIENT 203: kupił karnet id_karnetu=177 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527787] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527787] KLIENT 203: id_karnetu=177 -> BRAMKA1 nr=4 (vip=0, grupa=3)
+[22:29:55][PID 527783] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527783] DZIECKO 2: razem z opiekunem -> START
+[22:29:55][PID 527783] KLIENT 199: odchodzi - dziś nie korzysta z kolei (los=8 < 10%)
+[22:29:55][PID 527783] DZIECKO 1: razem z opiekunem -> ODCHODZI
+[22:29:55][PID 527783] DZIECKO 2: razem z opiekunem -> ODCHODZI
+[22:29:55][PID 527771] KLIENT 187: start pid=527771 wiek=57 typ=PIESZY vip=0 dzieci=1 (2,0) rozmiar_grupy=2
+[22:29:55][PID 527771] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527771] KLIENT 187: kupił karnet id_karnetu=179 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527771] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527771] KLIENT 187: id_karnetu=179 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527774] KLIENT 190: start pid=527774 wiek=62 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527774] KLIENT 190: kupił karnet id_karnetu=181 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527774] KLIENT 190: id_karnetu=181 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527782] KLIENT 198: start pid=527782 wiek=79 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527782] KLIENT 198: kupił karnet id_karnetu=182 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527782] KLIENT 198: id_karnetu=182 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527785] KLIENT 201: start pid=527785 wiek=63 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527784] KLIENT 200: start pid=527784 wiek=1 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527779] KLIENT 195: start pid=527779 wiek=93 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527785] KLIENT 201: kupił karnet id_karnetu=183 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527785] KLIENT 201: id_karnetu=183 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527779] KLIENT 195: kupił karnet id_karnetu=184 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527779] KLIENT 195: id_karnetu=184 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527780] KLIENT 196: kupił karnet id_karnetu=174 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527780] KLIENT 196: id_karnetu=174 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527776] KLIENT 192: start pid=527776 wiek=15 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527776] KLIENT 192: kupił karnet id_karnetu=185 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527776] KLIENT 192: id_karnetu=185 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527764] KLIENT 180: start pid=527764 wiek=77 typ=ROWER vip=0 dzieci=1 (4,0) rozmiar_grupy=3
+[22:29:55][PID 527764] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527764] KLIENT 180: kupił karnet id_karnetu=186 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527764] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527764] KLIENT 180: id_karnetu=186 -> BRAMKA1 nr=3 (vip=0, grupa=3)
+[22:29:55][PID 527775] KLIENT 191: start pid=527775 wiek=78 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527752] KLIENT 168: start pid=527752 wiek=40 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527786] KLIENT 202: start pid=527786 wiek=96 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527773] KLIENT 189: start pid=527773 wiek=9 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527757] KLIENT 173: start pid=527757 wiek=75 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527766] KLIENT 182: start pid=527766 wiek=34 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527767] KLIENT 183: start pid=527767 wiek=44 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527768] KLIENT 184: start pid=527768 wiek=83 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527769] KLIENT 185: start pid=527769 wiek=80 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527773] KLIENT 189: kupił karnet id_karnetu=191 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527773] KLIENT 189: id_karnetu=191 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527759] KLIENT 175: start pid=527759 wiek=61 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527759] KLIENT 175: odchodzi - dziś nie korzysta z kolei (los=1 < 10%)
+[22:29:55][PID 527786] KLIENT 202: kupił karnet id_karnetu=190 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527786] KLIENT 202: id_karnetu=190 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527772] KLIENT 188: start pid=527772 wiek=41 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527768] KLIENT 184: kupił karnet id_karnetu=195 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527768] KLIENT 184: id_karnetu=195 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:29:55][PID 527765] KLIENT 181: start pid=527765 wiek=30 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527775] KLIENT 191: kupił karnet id_karnetu=188 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527775] KLIENT 191: id_karnetu=188 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527767] KLIENT 183: kupił karnet id_karnetu=194 typ=TK2 (60min) czas_waznosci=3600s vip=0
+[22:29:55][PID 527767] KLIENT 183: id_karnetu=194 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527610] KLIENT 44: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527766] KLIENT 182: kupił karnet id_karnetu=193 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527766] KLIENT 182: id_karnetu=193 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:29:55][PID 527612] KLIENT 46: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527770] KLIENT 186: start pid=527770 wiek=72 typ=PIESZY vip=0 dzieci=2 (5,2) rozmiar_grupy=3
+[22:29:55][PID 527752] KLIENT 168: kupił karnet id_karnetu=189 typ=TK1 (30min) czas_waznosci=1800s vip=0
+[22:29:55][PID 527752] KLIENT 168: id_karnetu=189 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:55][PID 527770] DZIECKO 1: razem z opiekunem -> START
+[22:29:55][PID 527770] DZIECKO 2: razem z opiekunem -> START
+[22:29:55][PID 527757] KLIENT 173: kupił karnet id_karnetu=192 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527757] KLIENT 173: id_karnetu=192 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527769] KLIENT 185: kupił karnet id_karnetu=196 typ=Dzienny czas_waznosci=86400s vip=0
+[22:29:55][PID 527769] KLIENT 185: id_karnetu=196 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:29:55][PID 527772] KLIENT 188: kupił karnet id_karnetu=197 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527772] KLIENT 188: id_karnetu=197 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:55][PID 527765] KLIENT 181: kupił karnet id_karnetu=198 typ=TK3 (120min) czas_waznosci=7200s vip=0
+[22:29:55][PID 527765] KLIENT 181: id_karnetu=198 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:55][PID 527566] KLIENT 6: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527566] KLIENT 6: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:55][PID 527755] KLIENT 171: start pid=527755 wiek=98 typ=PIESZY vip=1 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527561] KLIENT 1: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527561] KLIENT 1: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:55][PID 527770] KLIENT 186: kupił karnet id_karnetu=199 typ=Jednorazowy czas_waznosci=0s vip=0
+[22:29:55][PID 527770] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527770] DZIECKO 2: razem z opiekunem -> BRAMKA1
+[22:29:55][PID 527770] KLIENT 186: id_karnetu=199 -> BRAMKA1 nr=4 (vip=0, grupa=3)
+[22:29:55][PID 527592] KLIENT 29: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527575] KLIENT 15: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527562] KLIENT 2: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527645] KLIENT 77: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527613] KLIENT 47: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527755] KLIENT 171: kupił karnet id_karnetu=202 typ=TK1 (30min) czas_waznosci=1800s vip=1
+[22:29:55][PID 527755] KLIENT 171: id_karnetu=202 -> BRAMKA1 nr=1 (vip=1, grupa=1)
+[22:29:55][PID 527613] KLIENT 47: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527613] KLIENT 47: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527778] KLIENT 194: start pid=527778 wiek=47 typ=ROWER vip=0 dzieci=0 (0,0) rozmiar_grupy=2
+[22:29:55][PID 527778] KLIENT 194: odchodzi - dziś nie korzysta z kolei (los=0 < 10%)
+[22:29:55][PID 527790] KLIENT 206: start pid=527790 wiek=38 typ=PIESZY vip=0 dzieci=0 (0,0) rozmiar_grupy=1
+[22:29:55][PID 527790] KLIENT 206: odchodzi - dziś nie korzysta z kolei (los=6 < 10%)
+[22:29:55][PID 527577] KLIENT 17: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527567] KLIENT 7: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527620] KLIENT 54: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:55][PID 527620] KLIENT 54: czekam na peron (sloty=2, bramka2=3)
+[22:29:55][PID 527620] KLIENT 54: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:55][PID 527592] KLIENT 29: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527575] KLIENT 15: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:55][PID 527562] KLIENT 2: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:55][PID 527592] KLIENT 29: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:55][PID 527599] KLIENT 33: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527590] KLIENT 28: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527755] KLIENT 171: BRAMKA1 OK (nr=1) - jestem na terenie
+[22:29:55][PID 527755] KLIENT 171: czekam na peron (sloty=1, bramka2=2)
+[22:29:55][PID 527755] KLIENT 171: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:55][PID 527654] KLIENT 86: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527628] KLIENT 61: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527627] KLIENT 60: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527577] KLIENT 17: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527577] KLIENT 17: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:55][PID 527567] KLIENT 7: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527579] KLIENT 19: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527624] KLIENT 58: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527624] KLIENT 58: czekam na peron (sloty=3, bramka2=2)
+[22:29:55][PID 527624] KLIENT 58: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=3)
+[22:29:55][PID 527613] KLIENT 47: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527562] KLIENT 2: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527562] KLIENT 2: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:55][PID 527575] KLIENT 15: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527575] KLIENT 15: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:55][PID 527599] KLIENT 33: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:55][PID 527590] KLIENT 28: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:55][PID 527595] KLIENT 30: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527598] KLIENT 32: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:55][PID 527649] KLIENT 81: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:55][PID 527649] KLIENT 81: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527649] KLIENT 81: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:55][PID 527567] KLIENT 7: ARRIVE - jestem na górze (przejazd=1)
+[22:29:55][PID 527567] KLIENT 7: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:55][PID 527579] KLIENT 19: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:55][PID 527620] KLIENT 54: PRACOWNIK1 pozwolił wejść na peron
+[22:29:55][PID 527578] KLIENT 18: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:55][PID 527646] KLIENT 78: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:55][PID 527646] KLIENT 78: czekam na peron (sloty=2, bramka2=2)
+[22:29:55][PID 527646] KLIENT 78: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527599] KLIENT 33: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527599] KLIENT 33: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527755] KLIENT 171: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527598] KLIENT 32: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527595] KLIENT 30: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527611] KLIENT 45: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527590] KLIENT 28: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527564] KLIENT 4: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527595] KLIENT 30: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527590] KLIENT 28: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527598] KLIENT 32: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527598] KLIENT 32: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527595] KLIENT 30: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527640] KLIENT 73: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527640] KLIENT 73: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527640] KLIENT 73: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527579] KLIENT 19: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527579] KLIENT 19: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:56][PID 527624] KLIENT 58: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527578] KLIENT 18: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527578] KLIENT 18: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527578] KLIENT 18: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:56][PID 527582] KLIENT 22: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527653] KLIENT 85: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527653] KLIENT 85: czekam na peron (sloty=2, bramka2=3)
+[22:29:56][PID 527653] KLIENT 85: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:56][PID 527649] KLIENT 81: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527611] KLIENT 45: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527564] KLIENT 4: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527610] KLIENT 44: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527612] KLIENT 46: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527619] KLIENT 53: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527619] KLIENT 53: czekam na peron (sloty=1, bramka2=1)
+[22:29:56][PID 527619] KLIENT 53: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:56][PID 527616] KLIENT 50: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527616] KLIENT 50: czekam na peron (sloty=1, bramka2=2)
+[22:29:56][PID 527616] KLIENT 50: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:56][PID 527646] KLIENT 78: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527582] KLIENT 22: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527583] KLIENT 23: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527638] KLIENT 71: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527638] KLIENT 71: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527638] KLIENT 71: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527640] KLIENT 73: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527611] KLIENT 45: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527564] KLIENT 4: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527612] KLIENT 46: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527611] KLIENT 45: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527564] KLIENT 4: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527610] KLIENT 44: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527654] KLIENT 86: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527612] KLIENT 46: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527610] KLIENT 44: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527612] KLIENT 46: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527628] KLIENT 61: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527610] KLIENT 44: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527643] KLIENT 75: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527643] KLIENT 75: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527643] KLIENT 75: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527629] KLIENT 62: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527629] KLIENT 62: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527629] KLIENT 62: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527653] KLIENT 85: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527582] KLIENT 22: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527582] KLIENT 22: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527583] KLIENT 23: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527597] KLIENT 31: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527618] KLIENT 52: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527639] KLIENT 72: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527618] KLIENT 52: czekam na peron (sloty=1, bramka2=2)
+[22:29:56][PID 527618] KLIENT 52: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:56][PID 527639] KLIENT 72: czekam na peron (sloty=1, bramka2=2)
+[22:29:56][PID 527639] KLIENT 72: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:56][PID 527619] KLIENT 53: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527616] KLIENT 50: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527654] KLIENT 86: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527628] KLIENT 61: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527755] KLIENT 171: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527619] KLIENT 53: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527576] KLIENT 16: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527576] KLIENT 16: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527576] KLIENT 16: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527638] KLIENT 71: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527583] KLIENT 23: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527583] KLIENT 23: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527597] KLIENT 31: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527607] KLIENT 41: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527641] KLIENT 74: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527641] KLIENT 74: czekam na peron (sloty=3, bramka2=1)
+[22:29:56][PID 527641] KLIENT 74: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:56][PID 527654] KLIENT 86: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527654] KLIENT 86: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527643] KLIENT 75: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527628] KLIENT 61: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527629] KLIENT 62: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527628] KLIENT 61: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527619] KLIENT 53: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527755] KLIENT 171: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527616] KLIENT 50: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527643] KLIENT 75: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527614] KLIENT 48: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527614] KLIENT 48: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527614] KLIENT 48: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527618] KLIENT 52: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527639] KLIENT 72: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527597] KLIENT 31: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527597] KLIENT 31: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:56][PID 527607] KLIENT 41: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527606] KLIENT 40: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527601] KLIENT 35: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527601] KLIENT 35: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527601] KLIENT 35: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527619] KLIENT 53: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527576] KLIENT 16: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527619] KLIENT 53: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527643] KLIENT 75: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527616] KLIENT 50: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527629] KLIENT 62: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527643] KLIENT 75: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527643] KLIENT 75: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527755] KLIENT 171: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527616] KLIENT 50: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527755] KLIENT 171: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527618] KLIENT 52: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527616] KLIENT 50: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527644] KLIENT 76: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527644] KLIENT 76: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527644] KLIENT 76: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527600] KLIENT 34: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527600] KLIENT 34: czekam na peron (sloty=1, bramka2=1)
+[22:29:56][PID 527600] KLIENT 34: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:56][PID 527607] KLIENT 41: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527641] KLIENT 74: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527607] KLIENT 41: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:56][PID 527606] KLIENT 40: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527606] KLIENT 40: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527606] KLIENT 40: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:56][PID 527609] KLIENT 43: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527603] KLIENT 37: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527603] KLIENT 37: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527603] KLIENT 37: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527614] KLIENT 48: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527629] KLIENT 62: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527618] KLIENT 52: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527576] KLIENT 16: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527639] KLIENT 72: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527630] KLIENT 63: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527633] KLIENT 66: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527630] KLIENT 63: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527630] KLIENT 63: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527633] KLIENT 66: czekam na peron (sloty=1, bramka2=3)
+[22:29:56][PID 527633] KLIENT 66: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:56][PID 527601] KLIENT 35: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527609] KLIENT 43: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527645] KLIENT 77: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527647] KLIENT 79: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527647] KLIENT 79: czekam na peron (sloty=2, bramka2=1)
+[22:29:56][PID 527647] KLIENT 79: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:56][PID 527644] KLIENT 76: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527618] KLIENT 52: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527618] KLIENT 52: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527629] KLIENT 62: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527600] KLIENT 34: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527639] KLIENT 72: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527629] KLIENT 62: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527576] KLIENT 16: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527614] KLIENT 48: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527600] KLIENT 34: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527574] KLIENT 14: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527574] KLIENT 14: czekam na peron (sloty=2, bramka2=1)
+[22:29:56][PID 527574] KLIENT 14: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:56][PID 527609] KLIENT 43: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527609] KLIENT 43: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527603] KLIENT 37: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527645] KLIENT 77: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527627] KLIENT 60: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527569] KLIENT 9: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527569] KLIENT 9: czekam na peron (sloty=2, bramka2=1)
+[22:29:56][PID 527569] KLIENT 9: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:56][PID 527633] KLIENT 66: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527630] KLIENT 63: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527614] KLIENT 48: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527576] KLIENT 16: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527576] KLIENT 16: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527600] KLIENT 34: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527639] KLIENT 72: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527639] KLIENT 72: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527614] KLIENT 48: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527600] KLIENT 34: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527633] KLIENT 66: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527630] KLIENT 63: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:56][PID 527600] KLIENT 34: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527614] KLIENT 48: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:56][PID 527587] KLIENT 25: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527587] KLIENT 25: czekam na peron (sloty=1, bramka2=1)
+[22:29:56][PID 527587] KLIENT 25: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:56][PID 527647] KLIENT 79: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527645] KLIENT 77: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527645] KLIENT 77: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:56][PID 527627] KLIENT 60: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527613] KLIENT 47: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527632] KLIENT 65: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:56][PID 527632] KLIENT 65: czekam na peron (sloty=3, bramka2=3)
+[22:29:56][PID 527632] KLIENT 65: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=3)
+[22:29:56][PID 527574] KLIENT 14: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527630] KLIENT 63: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527633] KLIENT 66: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:56][PID 527620] KLIENT 54: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527651] KLIENT 83: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:56][PID 527651] KLIENT 83: czekam na peron (sloty=2, bramka2=1)
+[22:29:56][PID 527651] KLIENT 83: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:56][PID 527627] KLIENT 60: ARRIVE - jestem na górze (przejazd=1)
+[22:29:56][PID 527627] KLIENT 60: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:56][PID 527613] KLIENT 47: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:56][PID 527569] KLIENT 9: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527649] KLIENT 81: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:56][PID 527670] KLIENT 96: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:56][PID 527670] KLIENT 96: czekam na peron (sloty=2, bramka2=2)
+[22:29:56][PID 527670] KLIENT 96: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:56][PID 527587] KLIENT 25: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527632] KLIENT 65: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527651] KLIENT 83: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527670] KLIENT 96: PRACOWNIK1 pozwolił wejść na peron
+[22:29:56][PID 527577] KLIENT 17: wróciłem na dół po trasie T1 (łatwa)
+[22:29:56][PID 527577] KLIENT 17: id_karnetu=8 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:57][PID 527607] KLIENT 41: wróciłem na dół po trasie T1 (łatwa)
+[22:29:57][PID 527607] KLIENT 41: koniec (przejazdy=1)
+[22:29:57][PID 527646] KLIENT 78: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527622] KLIENT 56: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527622] KLIENT 56: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527622] KLIENT 56: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527622] KLIENT 56: koniec (przejazdy=0)
+[22:29:57][PID 527605] KLIENT 39: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527605] KLIENT 39: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527605] KLIENT 39: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527605] KLIENT 39: koniec (przejazdy=0)
+[22:29:57][PID 527677] KLIENT 103: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527677] KLIENT 103: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527677] KLIENT 103: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527677] KLIENT 103: koniec (przejazdy=0)
+[22:29:57][PID 527635] KLIENT 68: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527635] KLIENT 68: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527635] KLIENT 68: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527635] KLIENT 68: koniec (przejazdy=0)
+[22:29:57][PID 527650] KLIENT 82: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527650] KLIENT 82: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527650] KLIENT 82: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527650] KLIENT 82: koniec (przejazdy=0)
+[22:29:57][PID 527679] KLIENT 105: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527679] KLIENT 105: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527679] KLIENT 105: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527679] KLIENT 105: koniec (przejazdy=0)
+[22:29:57][PID 527573] KLIENT 13: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527685] KLIENT 111: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527573] KLIENT 13: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527573] KLIENT 13: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527685] KLIENT 111: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527573] KLIENT 13: koniec (przejazdy=0)
+[22:29:57][PID 527685] KLIENT 111: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527685] KLIENT 111: koniec (przejazdy=0)
+[22:29:57][PID 527687] KLIENT 113: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527687] KLIENT 113: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527687] KLIENT 113: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527687] KLIENT 113: koniec (przejazdy=0)
+[22:29:57][PID 527652] KLIENT 84: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527652] KLIENT 84: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527652] KLIENT 84: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527652] KLIENT 84: koniec (przejazdy=0)
+[22:29:57][PID 527637] KLIENT 70: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527637] KLIENT 70: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527637] KLIENT 70: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527637] KLIENT 70: koniec (przejazdy=0)
+[22:29:57][PID 527572] KLIENT 12: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527572] KLIENT 12: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527572] KLIENT 12: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527572] KLIENT 12: koniec (przejazdy=0)
+[22:29:57][PID 527617] KLIENT 51: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527617] KLIENT 51: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527617] KLIENT 51: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527617] KLIENT 51: koniec (przejazdy=0)
+[22:29:57][PID 527631] KLIENT 64: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527631] KLIENT 64: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527631] KLIENT 64: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527631] KLIENT 64: koniec (przejazdy=0)
+[22:29:57][PID 527648] KLIENT 80: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527648] KLIENT 80: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527648] KLIENT 80: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527648] KLIENT 80: koniec (przejazdy=0)
+[22:29:57][PID 527615] KLIENT 49: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527615] KLIENT 49: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527615] KLIENT 49: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527615] KLIENT 49: koniec (przejazdy=0)
+[22:29:57][PID 527664] KLIENT 90: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527664] KLIENT 90: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527664] KLIENT 90: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527664] KLIENT 90: koniec (przejazdy=0)
+[22:29:57][PID 527668] KLIENT 94: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527668] KLIENT 94: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527668] KLIENT 94: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527668] KLIENT 94: koniec (przejazdy=0)
+[22:29:57][PID 527625] KLIENT 59: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527625] KLIENT 59: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527625] KLIENT 59: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527625] KLIENT 59: koniec (przejazdy=0)
+[22:29:57][PID 527671] KLIENT 97: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527671] KLIENT 97: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527671] KLIENT 97: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527671] KLIENT 97: koniec (przejazdy=0)
+[22:29:57][PID 527683] KLIENT 109: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527683] KLIENT 109: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527683] KLIENT 109: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527683] KLIENT 109: koniec (przejazdy=0)
+[22:29:57][PID 527682] KLIENT 108: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527682] KLIENT 108: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527682] KLIENT 108: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527682] KLIENT 108: koniec (przejazdy=0)
+[22:29:57][PID 527686] KLIENT 112: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527686] KLIENT 112: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527686] KLIENT 112: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527686] KLIENT 112: koniec (przejazdy=0)
+[22:29:57][PID 527689] KLIENT 115: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527689] KLIENT 115: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527689] KLIENT 115: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527689] KLIENT 115: koniec (przejazdy=0)
+[22:29:57][PID 527690] KLIENT 116: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527690] KLIENT 116: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527690] KLIENT 116: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527690] KLIENT 116: koniec (przejazdy=0)
+[22:29:57][PID 527693] KLIENT 119: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527693] KLIENT 119: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527693] KLIENT 119: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527693] KLIENT 119: koniec (przejazdy=0)
+[22:29:57][PID 527699] KLIENT 125: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527699] KLIENT 125: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527699] KLIENT 125: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527699] KLIENT 125: koniec (przejazdy=0)
+[22:29:57][PID 527694] KLIENT 120: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527694] KLIENT 120: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527694] KLIENT 120: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527694] KLIENT 120: koniec (przejazdy=0)
+[22:29:57][PID 527697] KLIENT 123: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527697] KLIENT 123: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527697] KLIENT 123: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527697] KLIENT 123: koniec (przejazdy=0)
+[22:29:57][PID 527704] KLIENT 128: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527704] KLIENT 128: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527704] KLIENT 128: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527704] KLIENT 128: koniec (przejazdy=0)
+[22:29:57][PID 527724] KLIENT 144: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527724] KLIENT 144: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527724] KLIENT 144: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527724] KLIENT 144: koniec (przejazdy=0)
+[22:29:57][PID 527602] KLIENT 36: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527602] KLIENT 36: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527602] KLIENT 36: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527602] KLIENT 36: koniec (przejazdy=0)
+[22:29:57][PID 527722] KLIENT 143: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527722] KLIENT 143: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527722] KLIENT 143: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527722] KLIENT 143: koniec (przejazdy=0)
+[22:29:57][PID 527742] KLIENT 159: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527742] KLIENT 159: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527742] KLIENT 159: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527742] KLIENT 159: koniec (przejazdy=0)
+[22:29:57][PID 527725] KLIENT 145: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527725] KLIENT 145: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527725] KLIENT 145: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527725] KLIENT 145: koniec (przejazdy=0)
+[22:29:57][PID 527737] KLIENT 155: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527737] KLIENT 155: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527737] KLIENT 155: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527737] KLIENT 155: koniec (przejazdy=0)
+[22:29:57][PID 527758] KLIENT 174: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527758] KLIENT 174: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527758] KLIENT 174: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527758] KLIENT 174: koniec (przejazdy=0)
+[22:29:57][PID 527777] KLIENT 193: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527777] KLIENT 193: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527777] KLIENT 193: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527777] KLIENT 193: koniec (przejazdy=0)
+[22:29:57][PID 527791] KLIENT 207: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527791] KLIENT 207: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527791] KLIENT 207: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527791] KLIENT 207: koniec (przejazdy=0)
+[22:29:57][PID 527781] KLIENT 197: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527781] KLIENT 197: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527781] KLIENT 197: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527781] KLIENT 197: koniec (przejazdy=0)
+[22:29:57][PID 527630] KLIENT 63: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527630] KLIENT 63: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:57][PID 527633] KLIENT 66: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527633] KLIENT 66: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:57][PID 527613] KLIENT 47: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527613] KLIENT 47: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:57][PID 527620] KLIENT 54: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527620] KLIENT 54: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527640] KLIENT 73: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527620] KLIENT 54: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:57][PID 527698] KLIENT 124: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527698] KLIENT 124: czekam na peron (sloty=3, bramka2=3)
+[22:29:57][PID 527698] KLIENT 124: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=3)
+[22:29:57][PID 527698] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527698] DZIECKO 2: razem z opiekunem -> KONIEC
+[22:29:57][PID 527698] KLIENT 124: koniec (przejazdy=0)
+[22:29:57][PID 527589] KLIENT 27: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527589] KLIENT 27: czekam na peron (sloty=3, bramka2=1)
+[22:29:57][PID 527589] KLIENT 27: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:57][PID 527589] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527589] DZIECKO 2: razem z opiekunem -> KONIEC
+[22:29:57][PID 527589] KLIENT 27: koniec (przejazdy=0)
+[22:29:57][PID 527787] KLIENT 203: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527787] KLIENT 203: czekam na peron (sloty=3, bramka2=1)
+[22:29:57][PID 527787] KLIENT 203: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:57][PID 527787] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527787] KLIENT 203: koniec (przejazdy=0)
+[22:29:57][PID 527700] KLIENT 126: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527570] KLIENT 10: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527700] KLIENT 126: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527700] KLIENT 126: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527570] KLIENT 10: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527570] KLIENT 10: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527700] KLIENT 126: koniec (przejazdy=0)
+[22:29:57][PID 527570] KLIENT 10: koniec (przejazdy=0)
+[22:29:57][PID 527580] KLIENT 20: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527580] KLIENT 20: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527580] KLIENT 20: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527580] KLIENT 20: koniec (przejazdy=0)
+[22:29:57][PID 527782] KLIENT 198: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527782] KLIENT 198: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527782] KLIENT 198: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527782] KLIENT 198: koniec (przejazdy=0)
+[22:29:57][PID 527773] KLIENT 189: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527773] KLIENT 189: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527773] KLIENT 189: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527773] KLIENT 189: koniec (przejazdy=0)
+[22:29:57][PID 527604] KLIENT 38: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527604] KLIENT 38: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527604] KLIENT 38: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527604] KLIENT 38: koniec (przejazdy=0)
+[22:29:57][PID 527752] KLIENT 168: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527752] KLIENT 168: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527752] KLIENT 168: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527752] KLIENT 168: koniec (przejazdy=0)
+[22:29:57][PID 527623] KLIENT 57: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527769] KLIENT 185: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527623] KLIENT 57: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527623] KLIENT 57: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527623] KLIENT 57: koniec (przejazdy=0)
+[22:29:57][PID 527769] KLIENT 185: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527581] KLIENT 21: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527581] KLIENT 21: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527581] KLIENT 21: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527581] KLIENT 21: koniec (przejazdy=0)
+[22:29:57][PID 527769] KLIENT 185: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527769] KLIENT 185: koniec (przejazdy=0)
+[22:29:57][PID 527714] KLIENT 136: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527714] KLIENT 136: czekam na peron (sloty=3, bramka2=1)
+[22:29:57][PID 527714] KLIENT 136: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:57][PID 527714] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527714] KLIENT 136: koniec (przejazdy=0)
+[22:29:57][PID 527711] KLIENT 133: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527711] KLIENT 133: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527711] KLIENT 133: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527711] KLIENT 133: koniec (przejazdy=0)
+[22:29:57][PID 527710] KLIENT 132: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527710] KLIENT 132: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527710] KLIENT 132: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527710] KLIENT 132: koniec (przejazdy=0)
+[22:29:57][PID 527770] KLIENT 186: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:57][PID 527770] KLIENT 186: czekam na peron (sloty=3, bramka2=3)
+[22:29:57][PID 527770] KLIENT 186: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=3)
+[22:29:57][PID 527770] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527770] DZIECKO 2: razem z opiekunem -> KONIEC
+[22:29:57][PID 527770] KLIENT 186: koniec (przejazdy=0)
+[22:29:57][PID 527666] KLIENT 92: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527666] KLIENT 92: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527666] KLIENT 92: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527666] KLIENT 92: koniec (przejazdy=0)
+[22:29:57][PID 527720] KLIENT 141: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527720] KLIENT 141: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527720] KLIENT 141: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527729] KLIENT 148: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527729] KLIENT 148: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527729] KLIENT 148: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527729] KLIENT 148: koniec (przejazdy=0)
+[22:29:57][PID 527720] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527672] KLIENT 98: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527720] KLIENT 141: koniec (przejazdy=0)
+[22:29:57][PID 527672] KLIENT 98: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527672] KLIENT 98: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527672] KLIENT 98: koniec (przejazdy=0)
+[22:29:57][PID 527719] KLIENT 140: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527719] KLIENT 140: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527719] KLIENT 140: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527719] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527719] KLIENT 140: koniec (przejazdy=0)
+[22:29:57][PID 527673] KLIENT 99: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527673] KLIENT 99: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527673] KLIENT 99: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527673] KLIENT 99: koniec (przejazdy=0)
+[22:29:57][PID 527717] KLIENT 139: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527717] KLIENT 139: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527717] KLIENT 139: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527717] KLIENT 139: koniec (przejazdy=0)
+[22:29:57][PID 527674] KLIENT 100: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527674] KLIENT 100: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527674] KLIENT 100: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527674] KLIENT 100: koniec (przejazdy=0)
+[22:29:57][PID 527675] KLIENT 101: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527675] KLIENT 101: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527675] KLIENT 101: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527675] KLIENT 101: koniec (przejazdy=0)
+[22:29:57][PID 527728] KLIENT 147: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527728] KLIENT 147: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527728] KLIENT 147: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527728] KLIENT 147: koniec (przejazdy=0)
+[22:29:57][PID 527703] KLIENT 127: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527703] KLIENT 127: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527703] KLIENT 127: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527703] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527703] KLIENT 127: koniec (przejazdy=0)
+[22:29:57][PID 527667] KLIENT 93: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527667] KLIENT 93: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527667] KLIENT 93: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527667] KLIENT 93: koniec (przejazdy=0)
+[22:29:57][PID 527743] KLIENT 160: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527743] KLIENT 160: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527743] KLIENT 160: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527743] KLIENT 160: koniec (przejazdy=0)
+[22:29:57][PID 527678] KLIENT 104: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527678] KLIENT 104: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527678] KLIENT 104: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527678] KLIENT 104: koniec (przejazdy=0)
+[22:29:57][PID 527745] KLIENT 162: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527745] KLIENT 162: czekam na peron (sloty=3, bramka2=3)
+[22:29:57][PID 527745] KLIENT 162: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=3)
+[22:29:57][PID 527745] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527745] KLIENT 162: koniec (przejazdy=0)
+[22:29:57][PID 527746] KLIENT 163: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527746] KLIENT 163: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527746] KLIENT 163: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527746] KLIENT 163: koniec (przejazdy=0)
+[22:29:57][PID 527680] KLIENT 106: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527680] KLIENT 106: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527680] KLIENT 106: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527680] KLIENT 106: koniec (przejazdy=0)
+[22:29:57][PID 527734] KLIENT 153: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527734] KLIENT 153: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527734] KLIENT 153: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527734] KLIENT 153: koniec (przejazdy=0)
+[22:29:57][PID 527681] KLIENT 107: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527681] KLIENT 107: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527681] KLIENT 107: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527681] KLIENT 107: koniec (przejazdy=0)
+[22:29:57][PID 527750] KLIENT 166: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527750] KLIENT 166: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527750] KLIENT 166: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527750] KLIENT 166: koniec (przejazdy=0)
+[22:29:57][PID 527696] KLIENT 122: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527696] KLIENT 122: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527696] KLIENT 122: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527696] KLIENT 122: koniec (przejazdy=0)
+[22:29:57][PID 527748] KLIENT 164: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527748] KLIENT 164: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527748] KLIENT 164: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527748] KLIENT 164: koniec (przejazdy=0)
+[22:29:57][PID 527695] KLIENT 121: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527695] KLIENT 121: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527695] KLIENT 121: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527695] KLIENT 121: koniec (przejazdy=0)
+[22:29:57][PID 527754] KLIENT 170: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527754] KLIENT 170: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527754] KLIENT 170: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527754] KLIENT 170: koniec (przejazdy=0)
+[22:29:57][PID 527571] KLIENT 11: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527571] KLIENT 11: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527571] KLIENT 11: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527571] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527571] KLIENT 11: koniec (przejazdy=0)
+[22:29:57][PID 527762] KLIENT 178: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527762] KLIENT 178: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527762] KLIENT 178: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527762] KLIENT 178: koniec (przejazdy=0)
+[22:29:57][PID 527760] KLIENT 176: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527760] KLIENT 176: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527760] KLIENT 176: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527760] KLIENT 176: koniec (przejazdy=0)
+[22:29:57][PID 527662] KLIENT 88: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527662] KLIENT 88: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527662] KLIENT 88: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527662] KLIENT 88: koniec (przejazdy=0)
+[22:29:57][PID 527705] KLIENT 129: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527705] KLIENT 129: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527705] KLIENT 129: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527705] KLIENT 129: koniec (przejazdy=0)
+[22:29:57][PID 527789] KLIENT 205: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527789] KLIENT 205: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527789] KLIENT 205: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527789] KLIENT 205: koniec (przejazdy=0)
+[22:29:57][PID 527708] KLIENT 130: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527708] KLIENT 130: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527708] KLIENT 130: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527708] KLIENT 130: koniec (przejazdy=0)
+[22:29:57][PID 527774] KLIENT 190: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527774] KLIENT 190: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527774] KLIENT 190: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527716] KLIENT 138: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527776] KLIENT 192: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527776] KLIENT 192: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527776] KLIENT 192: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527776] KLIENT 192: koniec (przejazdy=0)
+[22:29:57][PID 527716] KLIENT 138: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527716] KLIENT 138: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527774] KLIENT 190: koniec (przejazdy=0)
+[22:29:57][PID 527716] KLIENT 138: koniec (przejazdy=0)
+[22:29:57][PID 527715] KLIENT 137: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527709] KLIENT 131: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527715] KLIENT 137: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527715] KLIENT 137: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527715] KLIENT 137: koniec (przejazdy=0)
+[22:29:57][PID 527709] KLIENT 131: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527709] KLIENT 131: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527709] KLIENT 131: koniec (przejazdy=0)
+[22:29:57][PID 527713] KLIENT 135: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527713] KLIENT 135: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527713] KLIENT 135: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527713] KLIENT 135: koniec (przejazdy=0)
+[22:29:57][PID 527764] KLIENT 180: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527764] KLIENT 180: czekam na peron (sloty=3, bramka2=1)
+[22:29:57][PID 527764] KLIENT 180: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:29:57][PID 527764] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527764] KLIENT 180: koniec (przejazdy=0)
+[22:29:57][PID 527768] KLIENT 184: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527768] KLIENT 184: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527768] KLIENT 184: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527768] KLIENT 184: koniec (przejazdy=0)
+[22:29:57][PID 527732] KLIENT 151: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527732] KLIENT 151: czekam na peron (sloty=3, bramka2=3)
+[22:29:57][PID 527732] KLIENT 151: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=3)
+[22:29:57][PID 527732] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527732] KLIENT 151: koniec (przejazdy=0)
+[22:29:57][PID 527741] KLIENT 158: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527741] KLIENT 158: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527741] KLIENT 158: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527741] KLIENT 158: koniec (przejazdy=0)
+[22:29:57][PID 527772] KLIENT 188: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527772] KLIENT 188: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527772] KLIENT 188: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527772] KLIENT 188: koniec (przejazdy=0)
+[22:29:57][PID 527730] KLIENT 149: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527646] KLIENT 78: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527730] KLIENT 149: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527749] KLIENT 165: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527730] KLIENT 149: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527646] KLIENT 78: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527730] KLIENT 149: koniec (przejazdy=0)
+[22:29:57][PID 527749] KLIENT 165: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527749] KLIENT 165: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527749] KLIENT 165: koniec (przejazdy=0)
+[22:29:57][PID 527646] KLIENT 78: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:57][PID 527653] KLIENT 85: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527756] KLIENT 172: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527756] KLIENT 172: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527756] KLIENT 172: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527756] KLIENT 172: koniec (przejazdy=0)
+[22:29:57][PID 527738] KLIENT 156: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527788] KLIENT 204: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527740] KLIENT 157: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527740] KLIENT 157: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527740] KLIENT 157: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527740] KLIENT 157: koniec (przejazdy=0)
+[22:29:57][PID 527788] KLIENT 204: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527788] KLIENT 204: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527738] KLIENT 156: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527738] KLIENT 156: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527738] KLIENT 156: koniec (przejazdy=0)
+[22:29:57][PID 527788] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527788] KLIENT 204: koniec (przejazdy=0)
+[22:29:57][PID 527785] KLIENT 201: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527785] KLIENT 201: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527785] KLIENT 201: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527785] KLIENT 201: koniec (przejazdy=0)
+[22:29:57][PID 527771] KLIENT 187: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527771] KLIENT 187: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527771] KLIENT 187: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527771] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:57][PID 527771] KLIENT 187: koniec (przejazdy=0)
+[22:29:57][PID 527779] KLIENT 195: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527779] KLIENT 195: czekam na peron (sloty=1, bramka2=3)
+[22:29:57][PID 527779] KLIENT 195: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:29:57][PID 527779] KLIENT 195: koniec (przejazdy=0)
+[22:29:57][PID 527786] KLIENT 202: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527786] KLIENT 202: czekam na peron (sloty=2, bramka2=1)
+[22:29:57][PID 527786] KLIENT 202: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:57][PID 527786] KLIENT 202: koniec (przejazdy=0)
+[22:29:57][PID 527780] KLIENT 196: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527780] KLIENT 196: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527780] KLIENT 196: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527780] KLIENT 196: koniec (przejazdy=0)
+[22:29:57][PID 527775] KLIENT 191: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527775] KLIENT 191: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527775] KLIENT 191: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527767] KLIENT 183: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527767] KLIENT 183: czekam na peron (sloty=1, bramka2=1)
+[22:29:57][PID 527767] KLIENT 183: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:29:57][PID 527775] KLIENT 191: koniec (przejazdy=0)
+[22:29:57][PID 527767] KLIENT 183: koniec (przejazdy=0)
+[22:29:57][PID 527766] KLIENT 182: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527766] KLIENT 182: czekam na peron (sloty=1, bramka2=2)
+[22:29:57][PID 527766] KLIENT 182: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:29:57][PID 527766] KLIENT 182: koniec (przejazdy=0)
+[22:29:57][PID 527757] KLIENT 173: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527577] KLIENT 17: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527577] KLIENT 17: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527577] KLIENT 17: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527757] KLIENT 173: czekam na peron (sloty=2, bramka2=3)
+[22:29:57][PID 527577] KLIENT 17: koniec (przejazdy=1)
+[22:29:57][PID 527757] KLIENT 173: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:57][PID 527765] KLIENT 181: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:57][PID 527757] KLIENT 173: koniec (przejazdy=0)
+[22:29:57][PID 527765] KLIENT 181: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527765] KLIENT 181: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527765] KLIENT 181: koniec (przejazdy=0)
+[22:29:57][PID 527640] KLIENT 73: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527640] KLIENT 73: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527640] KLIENT 73: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:57][PID 527638] KLIENT 71: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527653] KLIENT 85: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527653] KLIENT 85: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527653] KLIENT 85: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:57][PID 527601] KLIENT 35: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527638] KLIENT 71: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527638] KLIENT 71: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527638] KLIENT 71: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:57][PID 527644] KLIENT 76: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527601] KLIENT 35: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527601] KLIENT 35: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527601] KLIENT 35: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:57][PID 527603] KLIENT 37: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527644] KLIENT 76: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527644] KLIENT 76: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527644] KLIENT 76: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:57][PID 527647] KLIENT 79: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527603] KLIENT 37: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527603] KLIENT 37: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527603] KLIENT 37: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:57][PID 527574] KLIENT 14: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527647] KLIENT 79: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527647] KLIENT 79: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527647] KLIENT 79: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:57][PID 527569] KLIENT 9: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:57][PID 527574] KLIENT 14: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:57][PID 527574] KLIENT 14: ARRIVE - jestem na górze (przejazd=1)
+[22:29:57][PID 527574] KLIENT 14: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:57][PID 527587] KLIENT 25: NA_PERONIE (sloty=1) - czekam na BOARD
+[22:29:57][PID 527566] KLIENT 6: wróciłem na dół po trasie T2 (średnia)
+[22:29:57][PID 527566] KLIENT 6: id_karnetu=3 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:57][PID 527561] KLIENT 1: wróciłem na dół po trasie T2 (średnia)
+[22:29:57][PID 527561] KLIENT 1: koniec (przejazdy=1)
+[22:29:57][PID 527566] KLIENT 6: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:57][PID 527566] KLIENT 6: czekam na peron (sloty=2, bramka2=2)
+[22:29:57][PID 527566] KLIENT 6: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:57][PID 527566] KLIENT 6: koniec (przejazdy=1)
+[22:29:58][PID 527578] KLIENT 18: wróciłem na dół po trasie T2 (średnia)
+[22:29:58][PID 527578] KLIENT 18: id_karnetu=9 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:58][PID 527578] KLIENT 18: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:58][PID 527578] KLIENT 18: czekam na peron (sloty=2, bramka2=1)
+[22:29:58][PID 527578] KLIENT 18: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:29:58][PID 527578] KLIENT 18: koniec (przejazdy=1)
+[22:29:58][PID 527579] KLIENT 19: wróciłem na dół po trasie T2 (średnia)
+[22:29:58][PID 527579] KLIENT 19: koniec (przejazdy=1)
+[22:29:58][PID 527597] KLIENT 31: wróciłem na dół po trasie T2 (średnia)
+[22:29:58][PID 527597] KLIENT 31: id_karnetu=20 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:58][PID 527597] KLIENT 31: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:58][PID 527597] KLIENT 31: czekam na peron (sloty=2, bramka2=2)
+[22:29:58][PID 527597] KLIENT 31: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:58][PID 527597] KLIENT 31: koniec (przejazdy=1)
+[22:29:58][PID 527569] KLIENT 9: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:58][PID 527569] KLIENT 9: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527569] KLIENT 9: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:58][PID 527568] KLIENT 8: NA_PERONIE (sloty=3) - czekam na BOARD
+[22:29:58][PID 527587] KLIENT 25: BOARD - wsiadam na krzesełko (sloty=1)
+[22:29:58][PID 527587] KLIENT 25: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527587] KLIENT 25: zjazd trasą T4 (piesza) (czas=4s)
+[22:29:58][PID 527645] KLIENT 77: wróciłem na dół po trasie T2 (średnia)
+[22:29:58][PID 527645] KLIENT 77: id_karnetu=34 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:58][PID 527645] KLIENT 77: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:58][PID 527645] KLIENT 77: czekam na peron (sloty=2, bramka2=2)
+[22:29:58][PID 527645] KLIENT 77: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:58][PID 527645] KLIENT 77: koniec (przejazdy=1)
+[22:29:58][PID 527627] KLIENT 60: wróciłem na dół po trasie T2 (średnia)
+[22:29:58][PID 527627] KLIENT 60: koniec (przejazdy=1)
+[22:29:58][PID 527568] KLIENT 8: BOARD - wsiadam na krzesełko (sloty=3)
+[22:29:58][PID 527568] KLIENT 8: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527568] KLIENT 8: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:58][PID 527584] KLIENT 24: NA_PERONIE (sloty=3) - czekam na BOARD
+[22:29:58][PID 527584] KLIENT 24: BOARD - wsiadam na krzesełko (sloty=3)
+[22:29:58][PID 527584] KLIENT 24: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527584] KLIENT 24: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:58][PID 527624] KLIENT 58: NA_PERONIE (sloty=3) - czekam na BOARD
+[22:29:58][PID 527624] KLIENT 58: BOARD - wsiadam na krzesełko (sloty=3)
+[22:29:58][PID 527624] KLIENT 58: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527624] KLIENT 58: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:58][PID 527641] KLIENT 74: NA_PERONIE (sloty=3) - czekam na BOARD
+[22:29:58][PID 527641] KLIENT 74: BOARD - wsiadam na krzesełko (sloty=3)
+[22:29:58][PID 527641] KLIENT 74: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527641] KLIENT 74: zjazd trasą T1 (łatwa) (czas=1s)
+[22:29:58][PID 527632] KLIENT 65: NA_PERONIE (sloty=3) - czekam na BOARD
+[22:29:58][PID 527646] KLIENT 78: wróciłem na dół po trasie T1 (łatwa)
+[22:29:58][PID 527646] KLIENT 78: id_karnetu=35 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:58][PID 527646] KLIENT 78: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:58][PID 527646] KLIENT 78: czekam na peron (sloty=2, bramka2=3)
+[22:29:58][PID 527646] KLIENT 78: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:58][PID 527646] KLIENT 78: koniec (przejazdy=1)
+[22:29:58][PID 527632] KLIENT 65: BOARD - wsiadam na krzesełko (sloty=3)
+[22:29:58][PID 527632] KLIENT 65: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527632] KLIENT 65: zjazd trasą T3 (trudna) (czas=3s)
+[22:29:58][PID 527651] KLIENT 83: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:58][PID 527670] KLIENT 96: NA_PERONIE (sloty=2) - czekam na BOARD
+[22:29:58][PID 527653] KLIENT 85: wróciłem na dół po trasie T1 (łatwa)
+[22:29:58][PID 527653] KLIENT 85: koniec (przejazdy=1)
+[22:29:58][PID 527670] KLIENT 96: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:58][PID 527651] KLIENT 83: BOARD - wsiadam na krzesełko (sloty=2)
+[22:29:58][PID 527670] KLIENT 96: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527651] KLIENT 83: ARRIVE - jestem na górze (przejazd=1)
+[22:29:58][PID 527670] KLIENT 96: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:58][PID 527651] KLIENT 83: zjazd trasą T2 (średnia) (czas=2s)
+[22:29:58][PID 527603] KLIENT 37: wróciłem na dół po trasie T1 (łatwa)
+[22:29:58][PID 527603] KLIENT 37: id_karnetu=45 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:58][PID 527603] KLIENT 37: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:58][PID 527603] KLIENT 37: czekam na peron (sloty=2, bramka2=2)
+[22:29:58][PID 527603] KLIENT 37: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:58][PID 527603] KLIENT 37: koniec (przejazdy=1)
+[22:29:58][PID 527647] KLIENT 79: wróciłem na dół po trasie T1 (łatwa)
+[22:29:58][PID 527647] KLIENT 79: id_karnetu=62 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:58][PID 527647] KLIENT 79: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:58][PID 527647] KLIENT 79: czekam na peron (sloty=2, bramka2=3)
+[22:29:58][PID 527647] KLIENT 79: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:58][PID 527647] KLIENT 79: koniec (przejazdy=1)
+[22:29:58][PID 527592] KLIENT 29: wróciłem na dół po trasie T3 (trudna)
+[22:29:58][PID 527592] KLIENT 29: koniec (przejazdy=1)
+[22:29:58][PID 527567] KLIENT 7: wróciłem na dół po trasie T3 (trudna)
+[22:29:58][PID 527567] KLIENT 7: id_karnetu=5 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:58][PID 527567] KLIENT 7: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:58][PID 527567] KLIENT 7: czekam na peron (sloty=2, bramka2=3)
+[22:29:58][PID 527567] KLIENT 7: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:58][PID 527567] KLIENT 7: koniec (przejazdy=1)
+[22:29:59][PID 527606] KLIENT 40: wróciłem na dół po trasie T3 (trudna)
+[22:29:59][PID 527606] KLIENT 40: koniec (przejazdy=1)
+[22:29:59][PID 527569] KLIENT 9: wróciłem na dół po trasie T1 (łatwa)
+[22:29:59][PID 527569] KLIENT 9: id_karnetu=53 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:59][PID 527569] KLIENT 9: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:59][PID 527569] KLIENT 9: czekam na peron (sloty=2, bramka2=3)
+[22:29:59][PID 527569] KLIENT 9: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:59][PID 527569] KLIENT 9: koniec (przejazdy=1)
+[22:29:59][PID 527584] KLIENT 24: wróciłem na dół po trasie T1 (łatwa)
+[22:29:59][PID 527584] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:59][PID 527584] KLIENT 24: koniec (przejazdy=1)
+[22:29:59][PID 527624] KLIENT 58: wróciłem na dół po trasie T1 (łatwa)
+[22:29:59][PID 527624] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:59][PID 527624] KLIENT 58: koniec (przejazdy=1)
+[22:29:59][PID 527613] KLIENT 47: wróciłem na dół po trasie T2 (średnia)
+[22:29:59][PID 527613] KLIENT 47: id_karnetu=39 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:29:59][PID 527613] KLIENT 47: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:29:59][PID 527613] KLIENT 47: czekam na peron (sloty=2, bramka2=2)
+[22:29:59][PID 527613] KLIENT 47: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:29:59][PID 527613] KLIENT 47: koniec (przejazdy=1)
+[22:29:59][PID 527641] KLIENT 74: wróciłem na dół po trasie T1 (łatwa)
+[22:29:59][PID 527641] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:29:59][PID 527641] KLIENT 74: id_karnetu=41 -> BRAMKA1 nr=2 (vip=0, grupa=3)
+[22:29:59][PID 527641] KLIENT 74: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:59][PID 527641] KLIENT 74: czekam na peron (sloty=3, bramka2=2)
+[22:29:59][PID 527641] KLIENT 74: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=3)
+[22:29:59][PID 527641] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:29:59][PID 527641] KLIENT 74: koniec (przejazdy=1)
+[22:29:59][PID 527620] KLIENT 54: wróciłem na dół po trasie T2 (średnia)
+[22:29:59][PID 527620] KLIENT 54: id_karnetu=40 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:29:59][PID 527620] KLIENT 54: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:29:59][PID 527620] KLIENT 54: czekam na peron (sloty=2, bramka2=3)
+[22:29:59][PID 527620] KLIENT 54: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:59][PID 527620] KLIENT 54: koniec (przejazdy=1)
+[22:29:59][PID 527574] KLIENT 14: wróciłem na dół po trasie T2 (średnia)
+[22:29:59][PID 527574] KLIENT 14: id_karnetu=84 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:29:59][PID 527574] KLIENT 14: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:29:59][PID 527574] KLIENT 14: czekam na peron (sloty=2, bramka2=3)
+[22:29:59][PID 527574] KLIENT 14: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:29:59][PID 527574] KLIENT 14: koniec (przejazdy=1)
+[22:29:59][PID 527562] KLIENT 2: wróciłem na dół po trasie T4 (piesza)
+[22:29:59][PID 527562] KLIENT 2: koniec (przejazdy=1)
+[22:29:59][PID 527575] KLIENT 15: wróciłem na dół po trasie T4 (piesza)
+[22:29:59][PID 527575] KLIENT 15: koniec (przejazdy=1)
+[22:30:00][PID 527599] KLIENT 33: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527598] KLIENT 32: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527598] KLIENT 32: id_karnetu=25 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:00][PID 527599] KLIENT 33: id_karnetu=21 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527598] KLIENT 32: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527598] KLIENT 32: czekam na peron (sloty=1, bramka2=2)
+[22:30:00][PID 527598] KLIENT 32: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:30:00][PID 527599] KLIENT 33: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527598] KLIENT 32: koniec (przejazdy=1)
+[22:30:00][PID 527599] KLIENT 33: czekam na peron (sloty=1, bramka2=2)
+[22:30:00][PID 527599] KLIENT 33: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:30:00][PID 527599] KLIENT 33: koniec (przejazdy=1)
+[22:30:00][PID 527590] KLIENT 28: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527590] KLIENT 28: id_karnetu=19 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:00][PID 527590] KLIENT 28: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527590] KLIENT 28: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527590] KLIENT 28: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527590] KLIENT 28: koniec (przejazdy=1)
+[22:30:00][PID 527595] KLIENT 30: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527595] KLIENT 30: id_karnetu=24 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527595] KLIENT 30: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527595] KLIENT 30: czekam na peron (sloty=1, bramka2=2)
+[22:30:00][PID 527595] KLIENT 30: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:30:00][PID 527595] KLIENT 30: koniec (przejazdy=1)
+[22:30:00][PID 527611] KLIENT 45: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527612] KLIENT 46: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527611] KLIENT 45: id_karnetu=29 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:00][PID 527612] KLIENT 46: id_karnetu=28 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527611] KLIENT 45: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527611] KLIENT 45: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527611] KLIENT 45: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527611] KLIENT 45: koniec (przejazdy=1)
+[22:30:00][PID 527612] KLIENT 46: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527612] KLIENT 46: czekam na peron (sloty=1, bramka2=3)
+[22:30:00][PID 527612] KLIENT 46: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:30:00][PID 527612] KLIENT 46: koniec (przejazdy=1)
+[22:30:00][PID 527610] KLIENT 44: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527610] KLIENT 44: id_karnetu=32 -> BRAMKA1 nr=2 (vip=0, grupa=1)
+[22:30:00][PID 527610] KLIENT 44: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:30:00][PID 527610] KLIENT 44: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527610] KLIENT 44: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527610] KLIENT 44: koniec (przejazdy=1)
+[22:30:00][PID 527564] KLIENT 4: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527564] KLIENT 4: id_karnetu=1 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:00][PID 527564] KLIENT 4: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527564] KLIENT 4: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527564] KLIENT 4: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527564] KLIENT 4: koniec (przejazdy=1)
+[22:30:00][PID 527582] KLIENT 22: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527582] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:30:00][PID 527582] KLIENT 22: id_karnetu=13 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:30:00][PID 527582] KLIENT 22: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:30:00][PID 527582] KLIENT 22: czekam na peron (sloty=2, bramka2=3)
+[22:30:00][PID 527582] KLIENT 22: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:30:00][PID 527582] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:00][PID 527582] KLIENT 22: koniec (przejazdy=1)
+[22:30:00][PID 527583] KLIENT 23: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527583] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:30:00][PID 527583] KLIENT 23: id_karnetu=15 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:30:00][PID 527583] KLIENT 23: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527583] KLIENT 23: czekam na peron (sloty=2, bramka2=2)
+[22:30:00][PID 527583] KLIENT 23: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:30:00][PID 527583] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:00][PID 527583] KLIENT 23: koniec (przejazdy=1)
+[22:30:00][PID 527628] KLIENT 61: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527628] KLIENT 61: koniec (przejazdy=1)
+[22:30:00][PID 527654] KLIENT 86: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527654] KLIENT 86: koniec (przejazdy=1)
+[22:30:00][PID 527616] KLIENT 50: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527616] KLIENT 50: koniec (przejazdy=1)
+[22:30:00][PID 527643] KLIENT 75: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527643] KLIENT 75: id_karnetu=54 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527643] KLIENT 75: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527643] KLIENT 75: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527643] KLIENT 75: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527643] KLIENT 75: koniec (przejazdy=1)
+[22:30:00][PID 527619] KLIENT 53: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527619] KLIENT 53: koniec (przejazdy=1)
+[22:30:00][PID 527755] KLIENT 171: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527755] KLIENT 171: id_karnetu=202 -> BRAMKA1 nr=1 (vip=1, grupa=1)
+[22:30:00][PID 527755] KLIENT 171: BRAMKA1 OK (nr=1) - jestem na terenie
+[22:30:00][PID 527755] KLIENT 171: czekam na peron (sloty=1, bramka2=3)
+[22:30:00][PID 527755] KLIENT 171: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:30:00][PID 527755] KLIENT 171: koniec (przejazdy=1)
+[22:30:00][PID 527618] KLIENT 52: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527618] KLIENT 52: koniec (przejazdy=1)
+[22:30:00][PID 527629] KLIENT 62: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527609] KLIENT 43: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527629] KLIENT 62: id_karnetu=46 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527609] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:00][PID 527609] KLIENT 43: koniec (przejazdy=1)
+[22:30:00][PID 527629] KLIENT 62: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527629] KLIENT 62: czekam na peron (sloty=1, bramka2=2)
+[22:30:00][PID 527629] KLIENT 62: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:30:00][PID 527629] KLIENT 62: koniec (przejazdy=1)
+[22:30:00][PID 527614] KLIENT 48: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527614] KLIENT 48: koniec (przejazdy=1)
+[22:30:00][PID 527600] KLIENT 34: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527600] KLIENT 34: id_karnetu=80 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:00][PID 527600] KLIENT 34: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527600] KLIENT 34: czekam na peron (sloty=1, bramka2=2)
+[22:30:00][PID 527600] KLIENT 34: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=1)
+[22:30:00][PID 527600] KLIENT 34: koniec (przejazdy=1)
+[22:30:00][PID 527576] KLIENT 16: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527576] KLIENT 16: id_karnetu=73 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527639] KLIENT 72: wróciłem na dół po trasie T4 (piesza)
+[22:30:00][PID 527639] KLIENT 72: id_karnetu=52 -> BRAMKA1 nr=3 (vip=0, grupa=1)
+[22:30:00][PID 527576] KLIENT 16: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527576] KLIENT 16: czekam na peron (sloty=1, bramka2=1)
+[22:30:00][PID 527576] KLIENT 16: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:00][PID 527576] KLIENT 16: koniec (przejazdy=1)
+[22:30:00][PID 527639] KLIENT 72: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527639] KLIENT 72: czekam na peron (sloty=1, bramka2=3)
+[22:30:00][PID 527639] KLIENT 72: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=1)
+[22:30:00][PID 527639] KLIENT 72: koniec (przejazdy=1)
+[22:30:00][PID 527568] KLIENT 8: wróciłem na dół po trasie T2 (średnia)
+[22:30:00][PID 527568] DZIECKO 1: razem z opiekunem -> BRAMKA1
+[22:30:00][PID 527568] KLIENT 8: id_karnetu=6 -> BRAMKA1 nr=4 (vip=0, grupa=3)
+[22:30:00][PID 527568] KLIENT 8: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527568] KLIENT 8: czekam na peron (sloty=3, bramka2=1)
+[22:30:00][PID 527568] KLIENT 8: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=3)
+[22:30:00][PID 527568] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:00][PID 527568] KLIENT 8: koniec (przejazdy=1)
+[22:30:00][PID 527640] KLIENT 73: wróciłem na dół po trasie T3 (trudna)
+[22:30:00][PID 527640] KLIENT 73: id_karnetu=50 -> BRAMKA1 nr=3 (vip=0, grupa=2)
+[22:30:00][PID 527640] KLIENT 73: BRAMKA1 OK (nr=3) - jestem na terenie
+[22:30:00][PID 527640] KLIENT 73: czekam na peron (sloty=2, bramka2=3)
+[22:30:00][PID 527640] KLIENT 73: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:30:00][PID 527640] KLIENT 73: koniec (przejazdy=1)
+[22:30:00][PID 527651] KLIENT 83: wróciłem na dół po trasie T2 (średnia)
+[22:30:00][PID 527651] KLIENT 83: id_karnetu=56 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:30:00][PID 527670] KLIENT 96: wróciłem na dół po trasie T2 (średnia)
+[22:30:00][PID 527670] KLIENT 96: koniec (przejazdy=1)
+[22:30:00][PID 527651] KLIENT 83: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527651] KLIENT 83: czekam na peron (sloty=2, bramka2=1)
+[22:30:00][PID 527651] KLIENT 83: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=2)
+[22:30:00][PID 527651] KLIENT 83: koniec (przejazdy=1)
+[22:30:00][PID 527638] KLIENT 71: wróciłem na dół po trasie T3 (trudna)
+[22:30:00][PID 527638] KLIENT 71: id_karnetu=44 -> BRAMKA1 nr=2 (vip=0, grupa=2)
+[22:30:00][PID 527638] KLIENT 71: BRAMKA1 OK (nr=2) - jestem na terenie
+[22:30:00][PID 527638] KLIENT 71: czekam na peron (sloty=2, bramka2=3)
+[22:30:00][PID 527638] KLIENT 71: prosi PRACOWNIK1 o wejście na peron (bramka2=3 sloty=2)
+[22:30:00][PID 527638] KLIENT 71: koniec (przejazdy=1)
+[22:30:00][PID 527644] KLIENT 76: wróciłem na dół po trasie T3 (trudna)
+[22:30:00][PID 527644] KLIENT 76: id_karnetu=70 -> BRAMKA1 nr=4 (vip=0, grupa=2)
+[22:30:00][PID 527644] KLIENT 76: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:00][PID 527644] KLIENT 76: czekam na peron (sloty=2, bramka2=2)
+[22:30:00][PID 527644] KLIENT 76: prosi PRACOWNIK1 o wejście na peron (bramka2=2 sloty=2)
+[22:30:00][PID 527644] KLIENT 76: koniec (przejazdy=1)
+[22:30:01][PID 527630] KLIENT 63: wróciłem na dół po trasie T4 (piesza)
+[22:30:01][PID 527630] KLIENT 63: id_karnetu=47 -> BRAMKA1 nr=4 (vip=0, grupa=1)
+[22:30:01][PID 527630] KLIENT 63: BRAMKA1 OK (nr=4) - jestem na terenie
+[22:30:01][PID 527630] KLIENT 63: czekam na peron (sloty=1, bramka2=1)
+[22:30:01][PID 527630] KLIENT 63: prosi PRACOWNIK1 o wejście na peron (bramka2=1 sloty=1)
+[22:30:01][PID 527630] KLIENT 63: koniec (przejazdy=1)
+[22:30:01][PID 527633] KLIENT 66: wróciłem na dół po trasie T4 (piesza)
+[22:30:01][PID 527633] KLIENT 66: koniec (przejazdy=1)
+[22:30:01][PID 527632] KLIENT 65: wróciłem na dół po trasie T3 (trudna)
+[22:30:01][PID 527632] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:01][PID 527632] KLIENT 65: koniec (przejazdy=1)
+[22:30:01][PID 527601] KLIENT 35: wróciłem na dół po trasie T4 (piesza)
+[22:30:01][PID 527601] DZIECKO 1: razem z opiekunem -> KONIEC
+[22:30:01][PID 527601] KLIENT 35: koniec (przejazdy=1)
+[22:30:01][PID 527587] KLIENT 25: wróciłem na dół po trasie T4 (piesza)
+[22:30:01][PID 527587] KLIENT 25: koniec (przejazdy=1)

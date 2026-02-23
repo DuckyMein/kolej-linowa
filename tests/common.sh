@@ -54,12 +54,28 @@ reset_logs() {
 RUN_MAIN_PID=""
 run_main_bg() {
   local N="$1"; local T="$2"
+  shift 2
+  local args=("$N" "$T")
+  # opcjonalne dodatkowe argumenty: limit_utworzonych, limit_aktywnych, karnety_mask
+  if [[ "$#" -gt 0 ]]; then
+    args+=("$@")
+  fi
+
   mkdir -p "$OUTPUT_DIR"
   # uruchamiamy bez subshella; pushd/popd zachowuje poprawny PID dla wait
   pushd "$APP_DIR" >/dev/null
-  ./main "$N" "$T" > "$OUTPUT_DIR/main.log" 2>&1 &
+  ./main "${args[@]}" > "$OUTPUT_DIR/main.log" 2>&1 &
   RUN_MAIN_PID="$!"
   popd >/dev/null
+
+  # Sprawdź czy main faktycznie wystartował (np. lock / błąd init IPC)
+  sleep 0.2
+  if ! kill -0 "$RUN_MAIN_PID" 2>/dev/null; then
+    echo "[common.sh] main zakończył się od razu (PID=$RUN_MAIN_PID)." >&2
+    echo "[common.sh] Ostatnie linie main.log:" >&2
+    tail -n 50 "$OUTPUT_DIR/main.log" >&2 || true
+    exit 1
+  fi
 }
 
 wait_main() {
@@ -92,7 +108,7 @@ print_hint_screenshots() {
   cat <<MSG
 
 [INFO] Wyniki zapisane w: $outdir
-[INFO] Do sprawozania:
+[INFO] Do screena do sprawozdania pokaż:
   - $outdir/summary.txt
   - (opcjonalnie) wybrane logi w $outdir/*.log
 MSG

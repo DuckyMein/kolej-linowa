@@ -28,8 +28,26 @@ static void handler_sigterm(int sig) {
 }
 
 int main(int argc, char *argv[]) {
-    (void)argc;
-    (void)argv;
+    /* Opcjonalna konfiguracja: maska dozwolonych typów karnetów.
+     * Można podać jako argv[1] (np. "1" albo "jednorazowy,tk1")
+     * albo przez zmienną środowiskową KASJER_TICKETS.
+     */
+    int ticket_mask = KASJER_TICKET_MASK_DEFAULT;
+    if (argc >= 2) {
+        int m = parse_ticket_mask(argv[1]);
+        if (m < 0) {
+            fprintf(stderr, "KASJER: Niepoprawna maska typów karnetów: '%s'\n", argv[1]);
+            fprintf(stderr, "  Poprawne przykłady: 1 | 31 | jednorazowy | jednorazowy,tk1,dzienny | wszystkie\n");
+            return EXIT_FAILURE;
+        }
+        if (m != 0) ticket_mask = m; /* 0 traktujemy jako domyślne */
+    } else {
+        const char *env = getenv("KASJER_TICKETS");
+        if (env && *env) {
+            int m = parse_ticket_mask(env);
+            if (m >= 0 && m != 0) ticket_mask = m;
+        }
+    }
     
     /* Ustaw aby zginąć gdy rodzic (main) umrze */
     ustaw_smierc_z_rodzicem();
@@ -52,7 +70,11 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
     
-    loguj("KASJER: Rozpoczynam pracę");
+    {
+        char desc[128];
+        format_ticket_mask(ticket_mask, desc, sizeof(desc));
+        loguj("KASJER: Rozpoczynam pracę (dozwolone_typy mask=%d [%s])", ticket_mask, desc);
+    }
     
     /* Główna pętla - blokujące msg_recv */
     while (!g_koniec) {
@@ -97,8 +119,8 @@ int main(int argc, char *argv[]) {
             continue;
         }
         
-        /* Losuj typ karnetu */
-        TypKarnetu typ = losuj_typ_karnetu();
+        /* Losuj typ karnetu (z uwzględnieniem maski dozwolonych typów) */
+        TypKarnetu typ = losuj_typ_karnetu_mask(ticket_mask);
         int cena = pobierz_cene_karnetu(typ);
         
         /* Zastosuj zniżkę */

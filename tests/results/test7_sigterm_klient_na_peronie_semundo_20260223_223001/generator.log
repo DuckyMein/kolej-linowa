@@ -1,0 +1,210 @@
+[22:29:55][PID 527560] GENERATOR: Start (czas=25 sek, limit_utworzonych=2000, limit_aktywnych=150)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=1 pid=527561 wiek=54 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=2 pid=527562 wiek=65 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=3 pid=527563 wiek=3 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=4 pid=527564 wiek=46 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=5 pid=527565 wiek=24 typ=ROWER vip=0 dzieci=2 (wiek:4,5)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=6 pid=527566 wiek=34 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=7 pid=527567 wiek=60 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=8 pid=527568 wiek=78 typ=ROWER vip=0 dzieci=1 (wiek:6,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=9 pid=527569 wiek=84 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=10 pid=527570 wiek=85 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=11 pid=527571 wiek=48 typ=PIESZY vip=0 dzieci=1 (wiek:7,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=12 pid=527572 wiek=27 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=13 pid=527573 wiek=96 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=14 pid=527574 wiek=91 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=15 pid=527575 wiek=72 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=16 pid=527576 wiek=45 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=17 pid=527577 wiek=56 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=18 pid=527578 wiek=10 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=19 pid=527579 wiek=91 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=20 pid=527580 wiek=65 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=21 pid=527581 wiek=33 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=22 pid=527582 wiek=100 typ=PIESZY vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=23 pid=527583 wiek=51 typ=PIESZY vip=0 dzieci=1 (wiek:6,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=24 pid=527584 wiek=73 typ=ROWER vip=0 dzieci=1 (wiek:6,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=25 pid=527587 wiek=83 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=26 pid=527588 wiek=49 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=27 pid=527589 wiek=31 typ=PIESZY vip=0 dzieci=2 (wiek:1,6)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=28 pid=527590 wiek=9 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=29 pid=527592 wiek=63 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=30 pid=527595 wiek=19 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=31 pid=527597 wiek=22 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=32 pid=527598 wiek=55 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=33 pid=527599 wiek=65 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=34 pid=527600 wiek=71 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=35 pid=527601 wiek=47 typ=PIESZY vip=0 dzieci=1 (wiek:1,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=36 pid=527602 wiek=36 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=37 pid=527603 wiek=43 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=38 pid=527604 wiek=46 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=39 pid=527605 wiek=71 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=40 pid=527606 wiek=86 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=41 pid=527607 wiek=93 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=42 pid=527608 wiek=99 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=43 pid=527609 wiek=67 typ=PIESZY vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=44 pid=527610 wiek=99 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=45 pid=527611 wiek=45 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=46 pid=527612 wiek=96 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=47 pid=527613 wiek=84 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=48 pid=527614 wiek=45 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=49 pid=527615 wiek=15 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=50 pid=527616 wiek=38 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=51 pid=527617 wiek=50 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=52 pid=527618 wiek=90 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=53 pid=527619 wiek=97 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=54 pid=527620 wiek=26 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=55 pid=527621 wiek=79 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=56 pid=527622 wiek=12 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=57 pid=527623 wiek=71 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=58 pid=527624 wiek=37 typ=ROWER vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=59 pid=527625 wiek=55 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=60 pid=527627 wiek=34 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=61 pid=527628 wiek=100 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=62 pid=527629 wiek=93 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=63 pid=527630 wiek=43 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=64 pid=527631 wiek=66 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=65 pid=527632 wiek=88 typ=ROWER vip=0 dzieci=1 (wiek:5,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=66 pid=527633 wiek=95 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=67 pid=527634 wiek=43 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=68 pid=527635 wiek=27 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=69 pid=527636 wiek=25 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=70 pid=527637 wiek=88 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=71 pid=527638 wiek=49 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=72 pid=527639 wiek=10 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=73 pid=527640 wiek=90 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=74 pid=527641 wiek=56 typ=ROWER vip=0 dzieci=1 (wiek:6,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=75 pid=527643 wiek=49 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=76 pid=527644 wiek=31 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=77 pid=527645 wiek=88 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=78 pid=527646 wiek=68 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=79 pid=527647 wiek=10 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=80 pid=527648 wiek=99 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=81 pid=527649 wiek=100 typ=PIESZY vip=0 dzieci=1 (wiek:1,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=82 pid=527650 wiek=48 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=83 pid=527651 wiek=78 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=84 pid=527652 wiek=70 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=85 pid=527653 wiek=31 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=86 pid=527654 wiek=98 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=87 pid=527661 wiek=51 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=88 pid=527662 wiek=8 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=89 pid=527663 wiek=74 typ=PIESZY vip=0 dzieci=1 (wiek:5,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=90 pid=527664 wiek=47 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=91 pid=527665 wiek=83 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=92 pid=527666 wiek=25 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=93 pid=527667 wiek=51 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=94 pid=527668 wiek=36 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=95 pid=527669 wiek=61 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=96 pid=527670 wiek=18 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=97 pid=527671 wiek=78 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=98 pid=527672 wiek=20 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=99 pid=527673 wiek=58 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=100 pid=527674 wiek=27 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=101 pid=527675 wiek=61 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=102 pid=527676 wiek=3 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=103 pid=527677 wiek=15 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=104 pid=527678 wiek=92 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=105 pid=527679 wiek=99 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=106 pid=527680 wiek=47 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=107 pid=527681 wiek=21 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=108 pid=527682 wiek=42 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=109 pid=527683 wiek=9 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=110 pid=527684 wiek=32 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=111 pid=527685 wiek=61 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=112 pid=527686 wiek=56 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=113 pid=527687 wiek=99 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=114 pid=527688 wiek=1 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=115 pid=527689 wiek=84 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=116 pid=527690 wiek=22 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=117 pid=527691 wiek=38 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=118 pid=527692 wiek=6 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=119 pid=527693 wiek=57 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=120 pid=527694 wiek=41 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=121 pid=527695 wiek=100 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=122 pid=527696 wiek=68 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=123 pid=527697 wiek=13 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=124 pid=527698 wiek=51 typ=PIESZY vip=0 dzieci=2 (wiek:1,6)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=125 pid=527699 wiek=98 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=126 pid=527700 wiek=77 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=127 pid=527703 wiek=77 typ=PIESZY vip=0 dzieci=1 (wiek:7,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=128 pid=527704 wiek=77 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=129 pid=527705 wiek=12 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=130 pid=527708 wiek=77 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=131 pid=527709 wiek=92 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=132 pid=527710 wiek=61 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=133 pid=527711 wiek=33 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=134 pid=527712 wiek=4 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=135 pid=527713 wiek=37 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=136 pid=527714 wiek=76 typ=ROWER vip=0 dzieci=1 (wiek:3,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=137 pid=527715 wiek=72 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=138 pid=527716 wiek=84 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=139 pid=527717 wiek=87 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=140 pid=527719 wiek=57 typ=PIESZY vip=0 dzieci=1 (wiek:4,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=141 pid=527720 wiek=75 typ=PIESZY vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=142 pid=527721 wiek=5 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=143 pid=527722 wiek=32 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=144 pid=527724 wiek=82 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=145 pid=527725 wiek=11 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=146 pid=527726 wiek=48 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=147 pid=527728 wiek=47 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=148 pid=527729 wiek=69 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=149 pid=527730 wiek=70 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=150 pid=527731 wiek=54 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=151 pid=527732 wiek=93 typ=ROWER vip=0 dzieci=1 (wiek:4,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=152 pid=527733 wiek=3 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=153 pid=527734 wiek=87 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=154 pid=527735 wiek=5 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=155 pid=527737 wiek=54 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=156 pid=527738 wiek=28 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=157 pid=527740 wiek=82 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=158 pid=527741 wiek=84 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=159 pid=527742 wiek=88 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=160 pid=527743 wiek=83 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=161 pid=527744 wiek=31 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=162 pid=527745 wiek=64 typ=ROWER vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=163 pid=527746 wiek=91 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=164 pid=527748 wiek=16 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=165 pid=527749 wiek=17 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=166 pid=527750 wiek=82 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=167 pid=527751 wiek=6 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=168 pid=527752 wiek=40 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=169 pid=527753 wiek=6 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=170 pid=527754 wiek=98 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=171 pid=527755 wiek=98 typ=PIESZY vip=1 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=172 pid=527756 wiek=76 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=173 pid=527757 wiek=75 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=174 pid=527758 wiek=46 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=175 pid=527759 wiek=61 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=176 pid=527760 wiek=76 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=177 pid=527761 wiek=50 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=178 pid=527762 wiek=76 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=179 pid=527763 wiek=2 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=180 pid=527764 wiek=77 typ=ROWER vip=0 dzieci=1 (wiek:4,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=181 pid=527765 wiek=30 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=182 pid=527766 wiek=34 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=183 pid=527767 wiek=44 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=184 pid=527768 wiek=83 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=185 pid=527769 wiek=80 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=186 pid=527770 wiek=72 typ=PIESZY vip=0 dzieci=2 (wiek:5,2)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=187 pid=527771 wiek=57 typ=PIESZY vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=188 pid=527772 wiek=41 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=189 pid=527773 wiek=9 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=190 pid=527774 wiek=62 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=191 pid=527775 wiek=78 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=192 pid=527776 wiek=15 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=193 pid=527777 wiek=86 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=194 pid=527778 wiek=47 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=195 pid=527779 wiek=93 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=196 pid=527780 wiek=21 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=197 pid=527781 wiek=16 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=198 pid=527782 wiek=79 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=199 pid=527783 wiek=90 typ=PIESZY vip=0 dzieci=2 (wiek:4,2)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=200 pid=527784 wiek=1 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=201 pid=527785 wiek=63 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=202 pid=527786 wiek=96 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=203 pid=527787 wiek=55 typ=ROWER vip=0 dzieci=1 (wiek:2,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=204 pid=527788 wiek=71 typ=PIESZY vip=0 dzieci=1 (wiek:3,0)
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=205 pid=527789 wiek=28 typ=ROWER vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=206 pid=527790 wiek=38 typ=PIESZY vip=0 dzieci=0
+[22:29:55][PID 527560] GENERATOR: utworzono klienta id=207 pid=527791 wiek=18 typ=PIESZY vip=0 dzieci=0
+[22:29:57][PID 527560] GENERATOR: Kończę generowanie (utworzono=207, ostatnie_id=207)
+[22:29:57][PID 527560] GENERATOR: Kończę

@@ -1,0 +1,108 @@
+# test6_skrajnosci_sigstop_kolejki
+
+Cel: zasymulować skrajność (chwilowe zatrzymanie procesu kasjera) i pokazać, że kolejki IPC się zapełniają, a potem wracają do normy.
+
+Kasjer PID: 501865
+MQ kasa msg_qnum: przed=0 w_STOP=0 po=0
+[WARN] msg_qnum nie wzrosło (możliwe za mało klientów / zbyt krótki STOP)
+
+## Snapshot przed SIGSTOP
+```
+KOLEJ KRZESEŁKOWA - MONITOR
+------------------------------------------------------------
+Faza dnia: OPEN   awaria=0   panic=0
+Czas do konca dnia: 33 s   (start=1771882150, koniec=1771882185)
+------------------------------------------------------------
+Liczniki: teren=0  peron=0  w_krzesle=0  gora=0  aktywni_klienci=0
+Statystyki: wygenerowani=0  przejazdy=0  przychod=0.00 zl
+------------------------------------------------------------
+Semafory: TEREN=30  PERON=4  BARIERA_AWARIA=0
+------------------------------------------------------------
+MQ: kasa=0/16384  kasa_odp=0/16384  bramka=0/16384  bramka_odp=0/16384
+MQ: peron=0/16384  peron_odp=0/16384  wyciag_req=0/16384  wyciag_odp=0/16384  prac=0/16384
+------------------------------------------------------------
+PIDy: main=501862  gen=501873  kasjer=501865  wyciag=501868
+PIDy: P1=501866  P2=501867  bramki: 501869 501870 501871 501872
+```
+
+## Snapshot w trakcie SIGSTOP (kolejki rosną)
+```
+KOLEJ KRZESEŁKOWA - MONITOR
+------------------------------------------------------------
+Faza dnia: OPEN   awaria=0   panic=0
+Czas do konca dnia: 22 s   (start=1771882150, koniec=1771882185)
+------------------------------------------------------------
+Liczniki: teren=0  peron=0  w_krzesle=0  gora=0  aktywni_klienci=0
+Statystyki: wygenerowani=0  przejazdy=0  przychod=0.00 zl
+------------------------------------------------------------
+Semafory: TEREN=30  PERON=4  BARIERA_AWARIA=0
+------------------------------------------------------------
+MQ: kasa=0/16384  kasa_odp=0/16384  bramka=0/16384  bramka_odp=0/16384
+MQ: peron=0/16384  peron_odp=0/16384  wyciag_req=0/16384  wyciag_odp=0/16384  prac=0/16384
+------------------------------------------------------------
+PIDy: main=501862  gen=501873  kasjer=501865  wyciag=501868
+PIDy: P1=501866  P2=501867  bramki: 501869 501870 501871 501872
+```
+
+## Snapshot po SIGCONT (system wraca do pracy)
+```
+KOLEJ KRZESEŁKOWA - MONITOR
+------------------------------------------------------------
+Faza dnia: OPEN   awaria=0   panic=0
+Czas do konca dnia: 18 s   (start=1771882150, koniec=1771882185)
+------------------------------------------------------------
+Liczniki: teren=30  peron=0  w_krzesle=0  gora=4  aktywni_klienci=577
+Statystyki: wygenerowani=572  przejazdy=3  przychod=18690.00 zl
+------------------------------------------------------------
+Semafory: TEREN=0  PERON=0  BARIERA_AWARIA=0
+------------------------------------------------------------
+MQ: kasa=0/16384  kasa_odp=0/16384  bramka=409/16384  bramka_odp=0/16384
+MQ: peron=0/16384  peron_odp=0/16384  wyciag_req=0/16384  wyciag_odp=3/16384  prac=0/16384
+------------------------------------------------------------
+PIDy: main=501862  gen=501873  kasjer=501865  wyciag=501868
+PIDy: P1=501866  P2=501867  bramki: 501869 501870 501871 501872
+```
+
+## Fragmenty logów (ciągłość działania)
+
+### kasa.log (widać, że po wznowieniu znowu sprzedaje)
+[22:29:44][PID 501865] KASJER: SPRZEDAŻ id_klienta=9322 pid=511206 -> karnet=6565 typ=TK3 (120min) cena=37.50 zł vip=0
+[22:29:44][PID 501865] KASJER: sprzedano karnet id_karnetu=6565 typ=TK3 (120min) cena=37.50 zł dla klienta id=9322 (pid=511206)
+[22:29:45][PID 501865] KASJER: klient id=10855 pid=512739 wiek=49 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=10855 pid=512739 -> karnet=6568 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6568 typ=Jednorazowy cena=5.00 zł dla klienta id=10855 (pid=512739)
+[22:29:45][PID 501865] KASJER: klient id=7469 pid=509353 wiek=16 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=7469 pid=509353 -> karnet=6569 typ=TK2 (60min) cena=35.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6569 typ=TK2 (60min) cena=35.00 zł dla klienta id=7469 (pid=509353)
+[22:29:45][PID 501865] KASJER: klient id=7932 pid=509816 wiek=44 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=7932 pid=509816 -> karnet=6570 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6570 typ=TK3 (120min) cena=50.00 zł dla klienta id=7932 (pid=509816)
+[22:29:45][PID 501865] KASJER: klient id=7094 pid=508978 wiek=46 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=7094 pid=508978 -> karnet=6571 typ=TK3 (120min) cena=50.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6571 typ=TK3 (120min) cena=50.00 zł dla klienta id=7094 (pid=508978)
+[22:29:45][PID 501865] KASJER: klient id=7004 pid=508888 wiek=6 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: klient id=6575 pid=508459 wiek=79 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=6575 pid=508459 -> karnet=6572 typ=Jednorazowy cena=3.75 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6572 typ=Jednorazowy cena=3.75 zł dla klienta id=6575 (pid=508459)
+[22:29:45][PID 501865] KASJER: klient id=7042 pid=508926 wiek=91 typ=ROWER vip=0 dzieci=1 (7,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=7042 pid=508926 -> karnet=6573 typ=TK2 (60min) cena=26.25 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6573 typ=TK2 (60min) cena=26.25 zł dla klienta id=7042 (pid=508926)
+[22:29:45][PID 501865] KASJER: klient id=10162 pid=512046 wiek=71 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=10162 pid=512046 -> karnet=6575 typ=Dzienny cena=75.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6575 typ=Dzienny cena=75.00 zł dla klienta id=10162 (pid=512046)
+[22:29:45][PID 501865] KASJER: klient id=7370 pid=509254 wiek=18 typ=PIESZY vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=7370 pid=509254 -> karnet=6576 typ=Jednorazowy cena=5.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6576 typ=Jednorazowy cena=5.00 zł dla klienta id=7370 (pid=509254)
+[22:29:45][PID 501865] KASJER: klient id=9166 pid=511050 wiek=96 typ=ROWER vip=0 dzieci=0 (0,0)
+[22:29:45][PID 501865] KASJER: SPRZEDAŻ id_klienta=9166 pid=511050 -> karnet=6577 typ=Dzienny cena=75.00 zł vip=0
+[22:29:45][PID 501865] KASJER: sprzedano karnet id_karnetu=6577 typ=Dzienny cena=75.00 zł dla klienta id=9166 (pid=511050)
+
+### main.log (uruchomione procesy, koniec dnia)
+[22:29:10][PID 501862] Kasjer uruchomiony (PID=501865)
+[22:29:45][PID 501862] Czas symulacji (35 sek) upłynął (elapsed=35)
+[22:29:45][PID 501862] === PROCEDURA KOŃCA DNIA ===
+[22:29:55][PID 501862] === PROCEDURA KOŃCA DNIA ZAKOŃCZONA ===
+
+## Interpretacja (do prezentacji)
+- SIGSTOP kasjera zatrzymuje obsługę MQ kasa → w monitorze widać rosnące msg_qnum (backlog).
+- Po SIGCONT proces wraca i backlog maleje, co pokazuje że komunikaty nie znikają i są obsługiwane.
