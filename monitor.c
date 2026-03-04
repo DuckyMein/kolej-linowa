@@ -69,10 +69,11 @@ static long mq_qbytes(int mqid) {
     return (long)ds.msg_qbytes;
 }
 
-static void print_snapshot(Ui *ui) {
+/* Zwraca 0 gdy OK, !=0 gdy monitor powinien wyjść (np. IPC usunięte / main nie żyje). */
+static int print_snapshot(Ui *ui) {
     if (!g_shm) {
         printf("Brak SHM (g_shm=NULL)\n");
-        return;
+        return 1;
     }
 
     /*
@@ -113,7 +114,7 @@ static void print_snapshot(Ui *ui) {
     /* Odczyt bezpieczny (z mutexem). Jeśli mutex padł (IPC usunięte), pokaż info zamiast crash. */
     if (mutex_lock(SEM_MUTEX_SHM) != 0) {
         printf("Brak dostepu do SHM (mutex SEM_MUTEX_SHM) - czy IPC zostalo usuniete?\n");
-        return;
+        return 1;
     }
     s.faza_dnia = g_shm->faza_dnia;
     s.awaria = g_shm->awaria;
@@ -138,6 +139,12 @@ static void print_snapshot(Ui *ui) {
     s.pid_pracownik2 = g_shm->pid_pracownik2;
     memcpy(s.pid_bramki1, g_shm->pid_bramki1, sizeof(s.pid_bramki1));
     mutex_unlock(SEM_MUTEX_SHM);
+
+    /* Jeśli main nie żyje, nie ma sensu trzymać SHM (a po IPC_RMID blokuje to zwolnienie segmentu). */
+    if (!is_alive(s.pid_main)) {
+        printf("[monitor] main=%d nie zyje -> koncze monitor\n", (int)s.pid_main);
+        return 1;
+    }
 
     time_t now = time(NULL);
     long left = (s.czas_konca_dnia > 0) ? (long)(s.czas_konca_dnia - now) : -1;
@@ -199,6 +206,8 @@ static void print_snapshot(Ui *ui) {
         printf(" %d%s", (int)s.pid_bramki1[i], is_alive(s.pid_bramki1[i]) ? "" : "(dead)");
     }
     printf("\n");
+
+    return 0;
 }
 
 static void usage(const char *argv0) {
@@ -236,7 +245,7 @@ int main(int argc, char **argv) {
     signal(SIGTERM, on_sigint);
 
     if (once) {
-        print_snapshot(&ui);
+        (void)print_snapshot(&ui);
         detach_ipc();
         return 0;
     }
@@ -248,7 +257,9 @@ int main(int argc, char **argv) {
         } else {
             printf("\n\n");
         }
-        print_snapshot(&ui);
+        if (print_snapshot(&ui) != 0) {
+            break;
+        }
         fflush(stdout);
         usleep((useconds_t)interval_ms * 1000u);
     }

@@ -22,6 +22,9 @@ need tail
 
 mkdir -p output
 
+# Globalny agregat błędów/ostrzeżeń (żeby nic nie uciekło w innym oknie)
+: > output/_errors.log
+
 # Upewnij się, że logi istnieją (tail -F nie lubi brakujących plików)
 for f in main pracownicy generator kasa bramki wyciag klienci sprzatacz; do
   : > "output/${f}.log"
@@ -108,8 +111,70 @@ wait "$T" 2>/dev/null || true
 EOF
 chmod +x "$TIMELINE_HELPER"
 
+# Helper: ERRORS — wycina błędy/ostrzeżenia ze wszystkich logów i dopisuje do output/_errors.log
+ERRORS_HELPER="output/_errors_view.sh"
+cat > "$ERRORS_HELPER" <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+MAIN_PID="$1"
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+
+LOGS=(
+  output/main.log output/pracownicy.log output/generator.log
+  output/kasa.log output/bramki.log output/wyciag.log output/klienci.log output/sprzatacz.log
+)
+
+# Wzorce błędów (ASCII/bez polskich znaków dla stabilności)
+  # Uwaga: nie używamy "\\ " (backslash+spacja), bo niektóre awk (np. mawk) ostrzegają.
+  KEY='(ERROR|ERR|WARN|WARNING|FATAL|PANIC|SEGFAULT|ASSERT|ABORT|CRASH|killed|Terminated|Brak \\.\\/|No such file|usage:|nie znaleziono|bled|blad|ostrzez|awaria)'
+
+tail -F "${LOGS[@]}" \
+| stdbuf -oL -eL awk -v KEY="$KEY" '
+BEGIN{
+  reset="\033[0m";
+  red="\033[31m"; yellow="\033[33m"; wht="\033[37m";
+  # plik z agregatem (bez kolorow)
+  errfile="output/_errors.log";
+}
+function pick(line){
+  if (line ~ /(FATAL|PANIC|SEGFAULT|ASSERT|ABORT|CRASH)/) return red;
+  if (line ~ /(WARN|WARNING|ostrzez)/) return yellow;
+  return wht;
+}
+{
+  if ($0 !~ KEY) next;
+  # zapis bez kolorow
+  print $0 >> errfile;
+  fflush(errfile);
+  c=pick($0);
+  print c $0 reset;
+  fflush();
+}' &
+T=$!
+
+while kill -0 "$MAIN_PID" 2>/dev/null; do sleep 1; done
+kill "$T" 2>/dev/null || true
+wait "$T" 2>/dev/null || true
+EOF
+chmod +x "$ERRORS_HELPER"
+
 # --- TMUX: okna ---
 tmux new-session -d -s "$SESSION" -n RUN
+
+# Jakość życia: podświetl okno, w którym pojawiła się aktywność (np. błędy)
+tmux set -t "$SESSION" -g remain-on-exit on
+tmux set -t "$SESSION" -g monitor-activity on
+tmux set -t "$SESSION" -g visual-activity on
+
+# Skrót: Ctrl+b k (lub Ctrl+b K) zamyka całą sesję demo (kill-session)
+# (Ctrl+b q jest domyślnie zajęte w tmux do numerowania paneli)
+tmux bind-key -T prefix k kill-session
+tmux bind-key -T prefix K kill-session
+
+# ERRORS (agregat błędów/ostrzeżeń)
+tmux new-window -t "$SESSION" -n ERRORS
+tmux send-keys -t "$SESSION:ERRORS" \
+  "cd \"$PROJ_DIR\"; echo 'ERRORS (filtrowane z wszystkich logow)'; echo; \"$ERRORS_HELPER\" \"$MAIN_PID\"" C-m
 
 # RUN
 tmux send-keys -t "$SESSION:RUN" \
@@ -152,6 +217,8 @@ tmux new-window -t "$SESSION" -n CONTROL
 tmux send-keys -t "$SESSION:CONTROL" "cd \"$PROJ_DIR\"; bash" C-m
 tmux send-keys -t "$SESSION:CONTROL" "cat <<'HELP'
 === CONTROL: komendy demo ===
+
+# TMUX: Ctrl+b k (lub Ctrl+b K) -> kill-session (zamyka wszystkie okna tej sesji)
 
 # PIDy:
 pgrep -a main kasjer wyciag generator sprzatacz pracownik1 pracownik2 bramka || true

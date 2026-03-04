@@ -137,6 +137,8 @@ static void hard_kill_remaining(void) {
     /* Kolejność: najpierw wyciąg, potem klienci, reszta */
     kill_by_exe_name("wyciag", SIGKILL);
     kill_by_exe_name("klient", SIGKILL);
+    /* monitor bywa uruchamiany z tmux (poza PGID symulacji) -> musi być dobijany po nazwie */
+    kill_by_exe_name("monitor", SIGKILL);
     kill_by_exe_name("generator", SIGKILL);
     kill_by_exe_name("kasjer", SIGKILL);
     kill_by_exe_name("bramka", SIGKILL);

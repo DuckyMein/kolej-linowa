@@ -37,7 +37,7 @@
 #define LICZBA_RZEDOW       18      // liczba rzędów w ringu wyciągu
 
 /* Szansa, że wygenerowany klient "nie korzysta" z kolei (przychodzi i odchodzi) */
-#define PROC_NIE_KORZYSTA   0      // %
+#define PROC_NIE_KORZYSTA   10      // % wymaganie projektu
 #define KRZESLA_W_RZEDZIE   4       // miejsc w jednym rzędzie
 #define LICZBA_WYJSC_GORA   2       // wyjścia ze stacji górnej
 
@@ -70,9 +70,9 @@
  * PRAWDOPODOBIEŃSTWA (w procentach)
  * ============================================ */
 #define PROC_VIP            1       // 1% klientów to VIP
-#define PROC_ROWERZYSTA     0      // 50% klientów to rowerzyści
-#define PROC_DZIECKO        0      // 20% dorosłych ma dziecko
-#define PROC_DRUGIE_DZIECKO 0      // 30% z dzieci ma drugie dziecko
+#define PROC_ROWERZYSTA     50      // 50% klientów to rowerzyści
+#define PROC_DZIECKO        20      // 20% dorosłych ma dziecko
+#define PROC_DRUGIE_DZIECKO 30      // 30% z dzieci ma drugie dziecko
 
 /* ============================================
  * CENY KARNETÓW (w groszach dla uniknięcia float)

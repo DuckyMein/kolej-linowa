@@ -22,11 +22,11 @@ COMMON_OBJ = ipc.o utils.o
 all: $(PROGRAMS)
 	@echo "=== Kompilacja zakończona ==="
 	@echo "Uruchom: ./main [N] [czas_symulacji] [limit_utworzonych] [limit_aktywnych] [karnety_mask]"
-	@echo "  N - limit osób na terenie (domyślnie 100)"
-	@echo "  czas_symulacji - czas symulacji w sekundach (domyślnie 300)"
-	@echo "  limit_utworzonych - limit łączny wygenerowanych klientów (0=bez limitu, domyślnie 5000)"
-	@echo "  limit_aktywnych - limit aktywnych klientów jednocześnie (0=bez limitu, domyślnie 100)"
-	@echo "  karnety_mask - dozwolone typy karnetów (np. 1 | 31 | jednorazowy,tk1 | wszystkie)"
+	@echo "  N - limit osób na terenie (domyślnie: N_LIMIT_TERENU z config.h)"
+	@echo "  czas_symulacji - czas symulacji w sekundach (domyślnie: CZAS_SYMULACJI z config.h)"
+	@echo "  limit_utworzonych - limit łączny wygenerowanych klientów (0=bez limitu, domyślnie: MAX_WYG_KLIENTOW z config.h)"
+	@echo "  limit_aktywnych - limit aktywnych klientów jednocześnie (0=bez limitu, domyślnie: MAX_KLIENTOW z config.h)"
+	@echo "  karnety_mask - dozwolone typy karnetów (domyślnie: KASJER_TICKET_MASK_DEFAULT z config.h; np. 1 | 31)"
 
 # ============================================
 # PROGRAMY WYKONYWALNE

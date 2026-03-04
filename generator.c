@@ -12,6 +12,16 @@
 #include "utils.h"
 
 /*
+ * Guard na "minę" konfiguracyjną:
+ * generator losuje wiek dziecka z zakresu [WIEK_MIN..WIEK_WYMAGA_OPIEKI-1].
+ * Jeśli ktoś włączy dzieci, a zostawi WIEK_WYMAGA_OPIEKI=0, to zakres robi się pusty.
+ */
+#if PROC_DZIECKO > 0
+_Static_assert(WIEK_WYMAGA_OPIEKI > WIEK_MIN,
+               "WIEK_WYMAGA_OPIEKI musi byc > WIEK_MIN gdy PROC_DZIECKO>0");
+#endif
+
+/*
  * KOLEJ KRZESEŁKOWA - GENERATOR KLIENTÓW
  * 
  * Odpowiedzialności:

@@ -1,7 +1,0 @@
-[22:26:52][PID 425018] WYCIAG: Start (INTERWAL=1ms, PRZEJAZD=9ms, RZEDOW=18, SLOTY/RZAD=4)
-[22:26:54][PID 425018] WYCIAG: Awaria - zatrzymuję
-[22:26:54][PID 425018] WYCIAG: Awaria - czekam na wznowienie (pozycja 2)
-[22:26:56][PID 425018] WYCIAG: Wznowiono - kontynuuję
-[22:26:56][PID 425018] WYCIAG: Wznowiono
-[22:27:41][PID 425018] WYCIAG: Drenowanie zakończone (w_krzesle=0, kolejka=0, peron=0, teren=0) - wyłączam za 3s
-[22:27:44][PID 425018] WYCIAG: Kończę pracę
